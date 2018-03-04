@@ -307,13 +307,6 @@ class MAGCustomGeometryView: SCNView
     let normalSource = SCNGeometrySource(normals: globalNormals)
     let geometry = SCNGeometry(sources: [vertexSource, normalSource],
                                elements: globalElements)
-    let material1 = SCNMaterial()
-    material1.diffuse.contents = UIColor.red
-    material1.locksAmbientWithDiffuse = true
-    
-    let material2 = SCNMaterial()
-    material2.diffuse.contents = UIColor.blue
-    material2.locksAmbientWithDiffuse = true
     geometry.materials = globalMaterials
     let cubeNode = SCNNode(geometry: geometry)
     self.scene?.rootNode.addChildNode(cubeNode)
