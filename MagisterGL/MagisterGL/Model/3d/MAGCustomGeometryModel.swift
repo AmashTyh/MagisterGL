@@ -64,7 +64,7 @@ class MAGCustomGeometryModel: NSObject
                 }
                 else
                 {
-                    materialsArray.append(grid)
+                  break
                 }
                 i = i + 1
             }
@@ -85,7 +85,7 @@ class MAGCustomGeometryModel: NSObject
                 }
                 else
                 {
-                    break
+                  materialsArray.append(gridNum)
                 }
                 i = i + 1
             }
