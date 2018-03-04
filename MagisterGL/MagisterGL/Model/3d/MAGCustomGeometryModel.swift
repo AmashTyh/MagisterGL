@@ -19,7 +19,7 @@ class MAGCustomGeometryModel: NSObject
     var maxVector: SCNVector3 = SCNVector3Zero
     var xyzArray: Array<SCNVector3> = []
     var nverArray:  [[Int]] = []
-    var nvkatArray: Array<Int> = []
+    var nvkatArray: [Int] = []
     
     override init()
     {
@@ -52,6 +52,7 @@ class MAGCustomGeometryModel: NSObject
         maxVector = xyzArray.last!
         
         var countArray = Array(repeating: 0, count: 100000)
+        var materialsArray: [Int] = []
         for nver in nverArray
         {
             var i : Int = 0
@@ -63,7 +64,7 @@ class MAGCustomGeometryModel: NSObject
                 }
                 else
                 {
-                    break
+                    materialsArray.append(grid)
                 }
                 i = i + 1
             }
@@ -90,7 +91,8 @@ class MAGCustomGeometryModel: NSObject
             }
             j = j + 1
             elementsArray.append(MAGHexahedron.init(positions: positionArray!,
-                                                    counts: nverCountArray))
+                                                    counts: nverCountArray,
+                                                    materialsArray: materialsArray))
         }
         centerPoint = SCNVector3Make((maxVector.x - minVector.x) / 2.0 + minVector.x,
                                      (maxVector.y - minVector.y) / 2.0 + minVector.y,

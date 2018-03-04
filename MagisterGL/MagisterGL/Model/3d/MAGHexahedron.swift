@@ -14,18 +14,21 @@ import SceneKit
 class MAGHexahedron: NSObject
 {
   var positions: [SCNVector3];
-    var countArray: [Int];
+  var countArray: [Int];
+  var materialsArray: [Int] = []
   
-    init(positions: [SCNVector3],
-         counts: [Int])
+  init(positions: [SCNVector3],
+       counts: [Int],
+      materialsArray: [Int])
   {
-    self.positions = positions;
+    self.positions = positions
     self.countArray = counts
+    self.materialsArray = materialsArray
   }
-    
-    func minCount() -> Int
-    {
-        return self.countArray.min()!;
-    }
+  
+  func minCount() -> Int
+  {
+    return self.countArray.min()!
+  }
   
 }
