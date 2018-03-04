@@ -173,4 +173,71 @@ class MAGFileManager: NSObject
         }
         return []
     }
+    
+    func getNVKATArray() -> Array<Int>
+    {
+        var path: String
+        switch testType
+        {
+        case 0:
+            path = Bundle.main.path(forResource: "nvkat",
+                                    ofType: "txt")!
+            break;
+        case 1:
+            path = Bundle.main.path(forResource: "nvkat2",
+                                    ofType: "txt")!
+            break;
+        case 2:
+            path = Bundle.main.path(forResource: "nvkat",
+                                    ofType: "dat")!
+            break;
+        default:
+            path = Bundle.main.path(forResource: "nvkat",
+                                    ofType: "txt")!
+            break;
+        }
+        return self.getNVKATArray(path: path)
+    }
+    
+    func getNVKATArray(path: String) -> Array<Int>
+    {
+        do
+        {
+            let fileExtension = URL.init(fileURLWithPath: path).pathExtension
+            if  fileExtension == "dat"
+            {
+                let scaner = try MAGBinaryDataScanner.init(data: NSData.init(contentsOfFile: path),
+                                                           littleEndian: true,
+                                                           encoding: String.Encoding.ascii)
+                var array: [Int]? = []
+                while let value = scaner.read32()
+                {
+                    array?.append(Int(value))
+                }
+                return array!
+            }
+            else
+            {
+                let data = try String(contentsOfFile: path,
+                                      encoding: String.Encoding.ascii)
+                var array: [Int]? = []
+                for string in data.components(separatedBy: "\n")
+                {
+                    if string != ""
+                    {
+                        let tempArray = string.components(separatedBy: "\r");
+                        let value = Int(tempArray[0].trimmingCharacters(in: .whitespaces))!
+                        array?.append(Int(value))
+                    }
+                }
+                return array!
+            }
+        }
+        catch let err as NSError
+        {
+            // do something with Error
+            print(err)
+        }
+        return []
+    }
 }
