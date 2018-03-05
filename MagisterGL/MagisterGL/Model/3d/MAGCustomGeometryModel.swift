@@ -71,11 +71,14 @@ class MAGCustomGeometryModel: NSObject
             }
         }
         var j : Int = 0
+        var numberOfElement : Int = 0
         for nverElementArray in nverArray
         {
+            var sidesFlagsArray: [Bool] = [true, true, true, true, true, true]
             var nverCountArray : [Int] = []
             var positionArray : [SCNVector3]? = []
             var i : Int = 0
+            
             for gridNum in nverElementArray
             {
                 if i < 8
@@ -91,34 +94,44 @@ class MAGCustomGeometryModel: NSObject
                 i = i + 1
             }
             j = j + 1
-          
+            
+            
+            for numberOfSide in 0..<6
+            {
+                sidesFlagsArray[numberOfSide] = (neibArray[6*numberOfElement + numberOfSide].count == 1)
+            }
+            
             let sidesArray: [MAGSide]? = [
-              MAGSide.init(positions: [positionArray![0], positionArray![2], positionArray![4], positionArray![6]],
-                           positionType: .Left,
-                           isVisible: true), //левая
-              MAGSide.init(positions: [positionArray![0], positionArray![1], positionArray![4], positionArray![5]],
-                           positionType: .Front,
-                           isVisible: true), //передняя
-              MAGSide.init(positions: [positionArray![0], positionArray![1], positionArray![2], positionArray![3]],
-                           positionType: .Bottom,
-                           isVisible: true), //нижняя
-              MAGSide.init(positions: [positionArray![1], positionArray![3], positionArray![5], positionArray![7]],
-                           positionType: .Right,
-                           isVisible: true), //правая
-              MAGSide.init(positions: [positionArray![2], positionArray![3], positionArray![6], positionArray![7]],
-                           positionType: .Back,
-                           isVisible: true), //задняя
-              MAGSide.init(positions: [positionArray![4], positionArray![5], positionArray![6], positionArray![7]],
-                           positionType: .Top,
-                           isVisible: true),  //верхняя
+                MAGSide.init(positions: [positionArray![0], positionArray![2], positionArray![6], positionArray![4]],
+                             positionType: .Left,
+                             isVisible: sidesFlagsArray[0]), //левая
+                MAGSide.init(positions: [positionArray![0], positionArray![1], positionArray![5], positionArray![4]],
+                             positionType: .Front,
+                             isVisible: sidesFlagsArray[1]), //передняя
+                MAGSide.init(positions: [positionArray![0], positionArray![1], positionArray![3], positionArray![2]],
+                             positionType: .Bottom,
+                             isVisible: sidesFlagsArray[2]), //нижняя
+                MAGSide.init(positions: [positionArray![1], positionArray![3], positionArray![7], positionArray![5]],
+                             positionType: .Right,
+                             isVisible: sidesFlagsArray[3]), //правая
+                MAGSide.init(positions: [positionArray![2], positionArray![3], positionArray![7], positionArray![6]],
+                             positionType: .Back,
+                             isVisible: sidesFlagsArray[4]), //задняя
+                MAGSide.init(positions: [positionArray![4], positionArray![5], positionArray![7], positionArray![6]],
+                             positionType: .Top,
+                             isVisible: sidesFlagsArray[5]),  //верхняя
             ]
-          
+            
+            
             elementsArray.append(MAGHexahedron.init(positions: positionArray!,
-                                                     sidesArray: sidesArray!,
+                                                    sidesArray: sidesArray!,
                                                     counts: nverCountArray))
+            //break
+            numberOfElement = numberOfElement + 1
         }
         centerPoint = SCNVector3Make((maxVector.x - minVector.x) / 2.0 + minVector.x,
                                      (maxVector.y - minVector.y) / 2.0 + minVector.y,
                                      (maxVector.z - minVector.z) / 2.0 + minVector.z)
     }
 }
+
