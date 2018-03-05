@@ -38,44 +38,44 @@ class MAGSide: NSObject
   
   func normalsArray() -> [SCNVector3]
   {
-//    switch positionType
-//    {
-//    case .Left:
-//      return [SCNVector3Make( 0, 0,  1),
-//              SCNVector3Make( 0, 0,  1),
-//              SCNVector3Make( 0, 0, -1),
-//              SCNVector3Make( 0, 0, -1)]
-//
-//    case .Front:
-//      return [SCNVector3Make(-1, 0, 0),
-//              SCNVector3Make( 1, 0, 0),
-//              SCNVector3Make(-1, 0, 0),
-//              SCNVector3Make( 1, 0, 0),]
-//
-//    case .Bottom:
-//      return [SCNVector3Make( 0, -1, 0),
-//              SCNVector3Make( 0, -1, 0),
-//              SCNVector3Make( 0, -1, 0),
-//              SCNVector3Make( 0, -1, 0)]
-//
-//    case .Right:
-//      return [SCNVector3Make( 0, 0, 1),
-//              SCNVector3Make( 0, 0, 1),
-//              SCNVector3Make( 0, 0, -1),
-//              SCNVector3Make( 0, 0, -1),]
-//
-//    case .Back:
+    switch positionType
+    {
+    case .Left:
+      return [SCNVector3Make( 0, 0,  1),
+              SCNVector3Make( 0, 0,  1),
+              SCNVector3Make( 0, 0, -1),
+              SCNVector3Make( 0, 0, -1)]
+
+    case .Front:
+      return [SCNVector3Make(-1, 0, 0),
+              SCNVector3Make( 1, 0, 0),
+              SCNVector3Make(-1, 0, 0),
+              SCNVector3Make( 1, 0, 0),]
+
+    case .Bottom:
+      return [SCNVector3Make( 0, -1, 0),
+              SCNVector3Make( 0, -1, 0),
+              SCNVector3Make( 0, -1, 0),
+              SCNVector3Make( 0, -1, 0)]
+
+    case .Right:
+      return [SCNVector3Make( 0, 0, 1),
+              SCNVector3Make( 0, 0, 1),
+              SCNVector3Make( 0, 0, -1),
+              SCNVector3Make( 0, 0, -1),]
+
+    case .Back:
       return [SCNVector3Make( 0, 1, 0),
               SCNVector3Make( 0, 1, 0),
               SCNVector3Make( 0, 1, 0),
               SCNVector3Make( 0, 1, 0),]
 
-//    case .Top:
-//      return [SCNVector3Make(-1, 0, 0),
-//              SCNVector3Make( 1, 0, 0),
-//              SCNVector3Make(-1, 0, 0),
-//              SCNVector3Make( 1, 0, 0),]
-//    }
+    case .Top:
+      return [SCNVector3Make(-1, 0, 0),
+              SCNVector3Make( 1, 0, 0),
+              SCNVector3Make(-1, 0, 0),
+              SCNVector3Make( 1, 0, 0),]
+    }
   }
   
   func indicesArray(addValue: Int32) -> [Int32]

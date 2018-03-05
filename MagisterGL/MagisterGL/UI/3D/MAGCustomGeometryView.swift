@@ -141,12 +141,6 @@ class MAGCustomGeometryView: SCNView
       
       let vertexSource = SCNGeometrySource(vertices: globalPositions)
       let normalSource = SCNGeometrySource(normals: globalNormals)
-      let indexData = Data(bytes: globalIndicies,
-                           count: MemoryLayout<CInt>.size * globalIndicies.count)
-      let element = SCNGeometryElement(data: indexData,
-                                       primitiveType: .triangles,
-                                       primitiveCount: globalIndicies.count / 3,
-                                       bytesPerIndex: MemoryLayout<CInt>.size)
       let geometry = SCNGeometry(sources: [vertexSource, normalSource],
                                  elements: globalElements)
       geometry.firstMaterial?.diffuse.contents = UIColor(red: 0.149,
