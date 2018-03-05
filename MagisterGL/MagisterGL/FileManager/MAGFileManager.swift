@@ -225,12 +225,118 @@ class MAGFileManager: NSObject
                 {
                     if string != ""
                     {
-                        let tempArray = string.components(separatedBy: "\r");
-                        let value = Int(tempArray[0].trimmingCharacters(in: .whitespaces))!
+                        let value = Int(string.components(separatedBy: "\r")[0]
+                                        .trimmingCharacters(in: .whitespaces))!
                         array?.append(Int(value))
                     }
                 }
                 return array!
+            }
+        }
+        catch let err as NSError
+        {
+            // do something with Error
+            print(err)
+        }
+        return []
+    }
+    
+    func getNEIBArray() -> [[Int]]
+    {
+        var path: String
+        switch testType
+        {
+        case 0:
+            path = Bundle.main.path(forResource: "elem_neib",
+                                    ofType: "txt")!
+            break;
+        case 1:
+            path = Bundle.main.path(forResource: "elem_neib2",
+                                    ofType: "txt")!
+            break;
+        case 2:
+            path = Bundle.main.path(forResource: "elem_neib",
+                                    ofType: "")!
+            break;
+        default:
+            path = Bundle.main.path(forResource: "elem_neib",
+                                    ofType: "txt")!
+            break;
+        }
+        return self.getNEIBArray(path: path)
+    }
+    
+    func getNEIBArray(path: String) -> [[Int]]
+    {
+        do
+        {
+            let fileExtension = URL.init(fileURLWithPath: path).pathExtension
+            if  fileExtension == ""
+            {
+                let scaner = try MAGBinaryDataScanner.init(data: NSData.init(contentsOfFile: path),
+                                                           littleEndian: true,
+                                                           encoding: String.Encoding.ascii)
+                var arrayOfVectors: [[Int]]? = []
+                var array: [Int]? = []
+                while let value = scaner.read32()
+                {
+                    let arrayCount = Int(value)
+                    if ( arrayCount == 0)
+                    {
+                        arrayOfVectors?.append([arrayCount])
+                    }
+                    else if (arrayCount > 0)
+                    {
+                        array?.append(arrayCount)
+                        while let val = scaner.read32()
+                        {
+                            array?.append(Int(val))
+                            
+                            if array?.count == arrayCount+1
+                            {
+                                arrayOfVectors?.append(array!)
+                                array = []
+                                break
+                            }
+                        }
+                    }
+                }
+                return arrayOfVectors!
+            }
+            else
+            {
+                let data = try String(contentsOfFile: path,
+                                      encoding: String.Encoding.ascii)
+                var arrayOfVectors: [[Int]]? = []
+                for string in data.components(separatedBy: "\n")
+                {
+                    if string != ""
+                    {
+                        // trim \r if need
+                        let array = string.components(separatedBy: "\r")[0].trimmingCharacters(in: .whitespaces).components(separatedBy: " ")
+                        if (array.count == 1)
+                        {
+                            let value = Int(array[0])
+                            if value == 0
+                            {
+                                arrayOfVectors?.append([0])
+                            }
+                            
+                        }
+                        else if (array.count > 1)
+                        {
+                            var neibArray: [Int] = []
+                            let countOfNeib: Int = Int(array[0])!
+                            neibArray.append(countOfNeib)
+                            for index in 1...countOfNeib
+                            {
+                                neibArray.append(Int(array[index])!)
+                            }
+                            arrayOfVectors?.append(neibArray)
+                        }
+                    }
+                }
+                return arrayOfVectors!
             }
         }
         catch let err as NSError
