@@ -20,6 +20,7 @@ class MAGCustomGeometryModel: NSObject
     var xyzArray: Array<SCNVector3> = []
     var nverArray:  [[Int]] = []
     var nvkatArray: Array<Int> = []
+    var neibArray: [[Int]] = []
     
     override init()
     {
@@ -33,6 +34,7 @@ class MAGCustomGeometryModel: NSObject
         xyzArray = MAGFileManager.sharedInstance.getXYZArray()
         nverArray = MAGFileManager.sharedInstance.getNVERArray()
         nvkatArray = MAGFileManager.sharedInstance.getNVKATArray()
+        neibArray = MAGFileManager.sharedInstance.getNEIBArray()
         
         minVector = xyzArray.first!
         maxVector = xyzArray.last!
