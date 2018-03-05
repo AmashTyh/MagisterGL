@@ -93,18 +93,24 @@ class MAGCustomGeometryModel: NSObject
             j = j + 1
           
             let sidesArray: [MAGSide]? = [
-              MAGSide.init(positions: [positionArray![0], positionArray![1], positionArray![2], positionArray![3]],
-                           positionType: .Bottom), //нижняя
-              MAGSide.init(positions: [positionArray![2], positionArray![3], positionArray![6], positionArray![7]],
-                           positionType: .Back), //задняя
               MAGSide.init(positions: [positionArray![0], positionArray![2], positionArray![4], positionArray![6]],
-                           positionType: .Left), //левая
-              MAGSide.init(positions: [positionArray![1], positionArray![3], positionArray![5], positionArray![7]],
-                           positionType: .Right), //правая
+                           positionType: .Left,
+                           isVisible: true), //левая
               MAGSide.init(positions: [positionArray![0], positionArray![1], positionArray![4], positionArray![5]],
-                           positionType: .Front), //передняя
+                           positionType: .Front,
+                           isVisible: true), //передняя
+              MAGSide.init(positions: [positionArray![0], positionArray![1], positionArray![2], positionArray![3]],
+                           positionType: .Bottom,
+                           isVisible: true), //нижняя
+              MAGSide.init(positions: [positionArray![1], positionArray![3], positionArray![5], positionArray![7]],
+                           positionType: .Right,
+                           isVisible: true), //правая
+              MAGSide.init(positions: [positionArray![2], positionArray![3], positionArray![6], positionArray![7]],
+                           positionType: .Back,
+                           isVisible: true), //задняя
               MAGSide.init(positions: [positionArray![4], positionArray![5], positionArray![6], positionArray![7]],
-                           positionType: .Top)  //верхняя
+                           positionType: .Top,
+                           isVisible: true),  //верхняя
             ]
           
             elementsArray.append(MAGHexahedron.init(positions: positionArray!,

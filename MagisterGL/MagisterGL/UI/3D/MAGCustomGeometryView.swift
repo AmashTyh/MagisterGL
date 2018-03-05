@@ -99,24 +99,32 @@ class MAGCustomGeometryView: SCNView
         for hexahedron in self.model.elementsArray
         {
             var normals: [SCNVector3] = []
-            var indices : [CInt] = []
+            var indices: [CInt] = []
+            var positions: [SCNVector3] = []
+            var k = 0 as Int32
             for side in hexahedron.sidesArray
             {
-              let indicesSide = side.indicesArray(addValue: j * 24)
-              
-              let indexDataSide = Data(bytes: indicesSide,
-                                       count: MemoryLayout<CInt>.size * indicesSide.count)
-              let elementSide = SCNGeometryElement(data: indexDataSide,
-                                                   primitiveType: .triangles,
-                                                   primitiveCount: indicesSide.count / 3,
-                                                   bytesPerIndex: MemoryLayout<CInt>.size)
-              globalElements.append(elementSide)
-              
-              normals = normals + side.normalsArray()
-              indices = indices + indicesSide
-            }
-            let positions = hexahedron.positions + hexahedron.positions + hexahedron.positions
-            globalPositions = globalPositions + positions
+              if side.isVisible
+              {
+                let indicesSide = side.indicesArray(addValue: j * 24)
+                
+                let indexDataSide = Data(bytes: indicesSide,
+                                         count: MemoryLayout<CInt>.size * indicesSide.count)
+                let elementSide = SCNGeometryElement(data: indexDataSide,
+                                                     primitiveType: .triangles,
+                                                     primitiveCount: indicesSide.count / 3,
+                                                     bytesPerIndex: MemoryLayout<CInt>.size)
+                globalElements.append(elementSide)
+                
+                normals = normals + side.normalsArray()
+                indices = indices + indicesSide
+                positions = positions + side.positions
+              }
+              k = k + 1
+          }
+          let positions2 = hexahedron.positions + hexahedron.positions + hexahedron.positions
+
+            globalPositions = globalPositions + positions2
           
             globalNormals = globalNormals + normals
             let addValue = j * 24
@@ -156,7 +164,7 @@ class MAGCustomGeometryView: SCNView
                                              primitiveType: .line,
                                              primitiveCount: globalIndiciesCarcas.count / 2,
                                              bytesPerIndex: MemoryLayout<CInt>.size)
-      let geometryBorder = SCNGeometry(sources: [vertexSource, normalSource],
+      let geometryBorder = SCNGeometry(sources: [vertexSource],
                                        elements: [elementBorder])
       geometryBorder.firstMaterial?.diffuse.contents = UIColor.red
       let borderCubeNode = SCNNode(geometry: geometryBorder)
