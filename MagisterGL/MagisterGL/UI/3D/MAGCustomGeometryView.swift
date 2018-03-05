@@ -94,63 +94,32 @@ class MAGCustomGeometryView: SCNView
         var globalNormals : [SCNVector3] = []
         var globalIndicies : [CInt] = []
         var globalIndiciesCarcas : [CInt] = []
+        var globalElements : [SCNGeometryElement] = []
+
         for hexahedron in self.model.elementsArray
         {
+            var normals: [SCNVector3] = []
+            var indices : [CInt] = []
+            for side in hexahedron.sidesArray
+            {
+              let indicesSide = side.indicesArray(addValue: j * 24)
+              
+              let indexDataSide = Data(bytes: indicesSide,
+                                       count: MemoryLayout<CInt>.size * indicesSide.count)
+              let elementSide = SCNGeometryElement(data: indexDataSide,
+                                                   primitiveType: .triangles,
+                                                   primitiveCount: indicesSide.count / 3,
+                                                   bytesPerIndex: MemoryLayout<CInt>.size)
+              globalElements.append(elementSide)
+              
+              normals = normals + side.normalsArray()
+              indices = indices + indicesSide
+            }
             let positions = hexahedron.positions + hexahedron.positions + hexahedron.positions
             globalPositions = globalPositions + positions
-            let normals = [
-                SCNVector3Make( 0, -1, 0),
-                SCNVector3Make( 0, -1, 0),
-                SCNVector3Make( 0, -1, 0),
-                SCNVector3Make( 0, -1, 0),
-                
-                SCNVector3Make( 0, 1, 0),
-                SCNVector3Make( 0, 1, 0),
-                SCNVector3Make( 0, 1, 0),
-                SCNVector3Make( 0, 1, 0),
-                
-                
-                SCNVector3Make( 0, 0,  1),
-                SCNVector3Make( 0, 0,  1),
-                SCNVector3Make( 0, 0, -1),
-                SCNVector3Make( 0, 0, -1),
-                
-                SCNVector3Make( 0, 0, 1),
-                SCNVector3Make( 0, 0, 1),
-                SCNVector3Make( 0, 0, -1),
-                SCNVector3Make( 0, 0, -1),
-                
-                
-                SCNVector3Make(-1, 0, 0),
-                SCNVector3Make( 1, 0, 0),
-                SCNVector3Make(-1, 0, 0),
-                SCNVector3Make( 1, 0, 0),
-                
-                SCNVector3Make(-1, 0, 0),
-                SCNVector3Make( 1, 0, 0),
-                SCNVector3Make(-1, 0, 0),
-                SCNVector3Make( 1, 0, 0),]
+          
             globalNormals = globalNormals + normals
             let addValue = j * 24
-            let indices = [
-                // bottom
-                0 + addValue, 2 + addValue, 1 + addValue,
-                1 + addValue, 2 + addValue, 3 + addValue,
-                // back
-                10 + addValue, 14 + addValue, 11 + addValue,  // 2, 6, 3,   + 8
-                11 + addValue, 14 + addValue, 15 + addValue,  // 3, 6, 7,   + 8
-                // left
-                16 + addValue, 20 + addValue, 18 + addValue,  // 0, 4, 2,   + 16
-                18 + addValue, 20 + addValue, 22 + addValue,  // 2, 4, 6,   + 16
-                // right
-                17 + addValue, 19 + addValue, 21 + addValue,  // 1, 3, 5,   + 16
-                19 + addValue, 23 + addValue, 21 + addValue,  // 3, 7, 5,   + 16
-                // front
-                8 + addValue,  9 + addValue, 12 + addValue,  // 0, 1, 4,   + 8
-                9 + addValue, 13 + addValue, 12 + addValue,  // 1, 5, 4,   + 8
-                // top
-                4 + addValue, 5 + addValue, 6 + addValue,
-                5 + addValue, 7 + addValue, 6 + addValue] as [CInt]
             globalIndicies = globalIndicies + indices
           let indicesCarcas = [
             0 + addValue, 1 + addValue,
@@ -179,16 +148,16 @@ class MAGCustomGeometryView: SCNView
                                        primitiveCount: globalIndicies.count / 3,
                                        bytesPerIndex: MemoryLayout<CInt>.size)
       let geometry = SCNGeometry(sources: [vertexSource, normalSource],
-                                 elements: [element])
+                                 elements: globalElements)
       geometry.firstMaterial?.diffuse.contents = UIColor(red: 0.149,
                                                          green: 0.604,
                                                          blue: 0.859,
                                                          alpha: 1.0)
       let cubeNode = SCNNode(geometry: geometry)
       self.scene?.rootNode.addChildNode(cubeNode)
-      
+    
       let indexDataCarcas = Data(bytes: globalIndiciesCarcas,
-                           count: MemoryLayout<CInt>.size * globalIndiciesCarcas.count)
+                                 count: MemoryLayout<CInt>.size * globalIndiciesCarcas.count)
       let elementBorder = SCNGeometryElement(data: indexDataCarcas,
                                              primitiveType: .line,
                                              primitiveCount: globalIndiciesCarcas.count / 2,

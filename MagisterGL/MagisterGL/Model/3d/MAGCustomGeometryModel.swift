@@ -91,7 +91,23 @@ class MAGCustomGeometryModel: NSObject
                 i = i + 1
             }
             j = j + 1
+            let sidesArray: [MAGSide]? = [
+              MAGSide.init(positions: [positionArray![0], positionArray![2], positionArray![4], positionArray![6]],
+                           positionType: .Left), //левая
+              MAGSide.init(positions: [positionArray![0], positionArray![1], positionArray![4], positionArray![5]],
+                           positionType: .Front), //передняя
+              MAGSide.init(positions: [positionArray![0], positionArray![1], positionArray![2], positionArray![3]],
+                           positionType: .Bottom), //нижняя
+              MAGSide.init(positions: [positionArray![1], positionArray![3], positionArray![5], positionArray![7]],
+                           positionType: .Right), //правая
+              MAGSide.init(positions: [positionArray![2], positionArray![3], positionArray![6], positionArray![7]],
+                           positionType: .Back), //задняя
+              MAGSide.init(positions: [positionArray![4], positionArray![5], positionArray![6], positionArray![7]],
+                           positionType: .Top)  //верхняя
+          ]
+          
             elementsArray.append(MAGHexahedron.init(positions: positionArray!,
+                                                     sidesArray: sidesArray!,
                                                     counts: nverCountArray))
         }
         centerPoint = SCNVector3Make((maxVector.x - minVector.x) / 2.0 + minVector.x,

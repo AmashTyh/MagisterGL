@@ -23,6 +23,7 @@
 		9A577D381F03B0AC0017F40F /* Texture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A577D301F03B0AC0017F40F /* Texture.swift */; };
 		9A6D28151F935B1B0059AABE /* nver3.txt in Resources */ = {isa = PBXBuildFile; fileRef = 9A6D28131F935AE10059AABE /* nver3.txt */; };
 		9A6D28161F935B1B0059AABE /* xyz3.txt in Resources */ = {isa = PBXBuildFile; fileRef = 9A6D28141F935AE10059AABE /* xyz3.txt */; };
+		9A889F0F204D606000CA6069 /* MAGSide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A889F0E204D606000CA6069 /* MAGSide.swift */; };
 		9AB601A61F762993004C50AB /* MAGIsolineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB601A51F762993004C50AB /* MAGIsolineViewController.swift */; };
 		9AB601A91F762BF2004C50AB /* MAGScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB601A81F762BF2004C50AB /* MAGScene.swift */; };
 		9AB601AC1F762F19004C50AB /* MAGSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB601AB1F762F19004C50AB /* MAGSource.swift */; };
@@ -71,6 +72,7 @@
 		9A577D301F03B0AC0017F40F /* Texture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Texture.swift; sourceTree = "<group>"; };
 		9A6D28131F935AE10059AABE /* nver3.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = nver3.txt; sourceTree = "<group>"; };
 		9A6D28141F935AE10059AABE /* xyz3.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = xyz3.txt; sourceTree = "<group>"; };
+		9A889F0E204D606000CA6069 /* MAGSide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAGSide.swift; sourceTree = "<group>"; };
 		9AB601A51F762993004C50AB /* MAGIsolineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAGIsolineViewController.swift; sourceTree = "<group>"; };
 		9AB601A81F762BF2004C50AB /* MAGScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAGScene.swift; sourceTree = "<group>"; };
 		9AB601AB1F762F19004C50AB /* MAGSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAGSource.swift; sourceTree = "<group>"; };
@@ -283,6 +285,7 @@
 			children = (
 				9AE6156D1F8A03B00067893C /* MAGHexahedron.swift */,
 				9AE6156F1F8A07250067893C /* MAGCustomGeometryModel.swift */,
+				9A889F0E204D606000CA6069 /* MAGSide.swift */,
 			);
 			path = 3d;
 			sourceTree = "<group>";
@@ -431,6 +434,7 @@
 				84541B071FB069BD00DC6E43 /* MAGChooseFileViewController.swift in Sources */,
 				9A577D381F03B0AC0017F40F /* Texture.swift in Sources */,
 				9AE6156E1F8A03B00067893C /* MAGHexahedron.swift in Sources */,
+				9A889F0F204D606000CA6069 /* MAGSide.swift in Sources */,
 				9A577D361F03B0AC0017F40F /* Scene.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
