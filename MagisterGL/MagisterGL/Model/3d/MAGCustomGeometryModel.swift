@@ -99,33 +99,33 @@ class MAGCustomGeometryModel: NSObject
             
             for numberOfSide in 0..<6
             {
-                sidesFlagsArray[numberOfSide] = (neibArray[6*numberOfElement + numberOfSide].count == 1)
+                sidesFlagsArray[numberOfSide] = (neibArray[6 * numberOfElement + numberOfSide].count == 1)
             }
             
             let sidesArray: [MAGSide]? = [
                 MAGSide.init(positions: [positionArray![0], positionArray![2], positionArray![6], positionArray![4]],
                              positionType: .Left,
-                             material: materialsArray[0],
+                             material: nvkatArray[numberOfElement],
                              isVisible: sidesFlagsArray[0]), //левая
                 MAGSide.init(positions: [positionArray![0], positionArray![1], positionArray![5], positionArray![4]],
                              positionType: .Front,
-                             material: materialsArray[1],
+                             material: nvkatArray[numberOfElement],
                              isVisible: sidesFlagsArray[1]), //передняя
                 MAGSide.init(positions: [positionArray![0], positionArray![1], positionArray![3], positionArray![2]],
                              positionType: .Bottom,
-                             material: materialsArray[2],
+                             material: nvkatArray[numberOfElement],
                              isVisible: sidesFlagsArray[2]), //нижняя
                 MAGSide.init(positions: [positionArray![1], positionArray![3], positionArray![7], positionArray![5]],
                              positionType: .Right,
-                             material: materialsArray[3],
+                             material: nvkatArray[numberOfElement],
                              isVisible: sidesFlagsArray[3]), //правая
                 MAGSide.init(positions: [positionArray![2], positionArray![3], positionArray![7], positionArray![6]],
                              positionType: .Back,
-                             material: materialsArray[4],
+                             material: nvkatArray[numberOfElement],
                              isVisible: sidesFlagsArray[4]), //задняя
                 MAGSide.init(positions: [positionArray![4], positionArray![5], positionArray![7], positionArray![6]],
                              positionType: .Top,
-                             material: materialsArray[5],
+                             material: nvkatArray[numberOfElement],
                              isVisible: sidesFlagsArray[5]),  //верхняя
             ]
             
