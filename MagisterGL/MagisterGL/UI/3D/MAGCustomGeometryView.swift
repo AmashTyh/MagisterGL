@@ -87,87 +87,91 @@ class MAGCustomGeometryView: SCNView
         createCube()
     }
     
-    private func createCube()
-    {
-        var j = 0 as Int32
-        var globalPositions : [SCNVector3] = []
-        var globalNormals : [SCNVector3] = []
-        var globalIndicies : [CInt] = []
-        var globalIndiciesCarcas : [CInt] = []
-        var globalElements : [SCNGeometryElement] = []
-
-        for hexahedron in self.model.elementsArray
-        {
-            var normals: [SCNVector3] = []
-            var indices: [CInt] = []
-            var positions: [SCNVector3] = []
-            var k = 0 as Int32
-            for side in hexahedron.sidesArray
-            {
-              if side.isVisible
-              {
-                let indicesSide = side.indicesArray(addValue: j * 24)
-                
-                let indexDataSide = Data(bytes: indicesSide,
-                                         count: MemoryLayout<CInt>.size * indicesSide.count)
-                let elementSide = SCNGeometryElement(data: indexDataSide,
-                                                     primitiveType: .triangles,
-                                                     primitiveCount: indicesSide.count / 3,
-                                                     bytesPerIndex: MemoryLayout<CInt>.size)
-                globalElements.append(elementSide)
-                
-                normals = normals + side.normalsArray()
-                indices = indices + indicesSide
-                positions = positions + side.positions
-              }
-              k = k + 1
-          }
-          let positions2 = hexahedron.positions + hexahedron.positions + hexahedron.positions
-
-            globalPositions = globalPositions + positions2
-          
-            globalNormals = globalNormals + normals
-            let addValue = j * 24
-            globalIndicies = globalIndicies + indices
-          let indicesCarcas = [
-            0 + addValue, 1 + addValue,
-            0 + addValue, 2 + addValue,
-            0 + addValue, 4 + addValue,
-            1 + addValue, 3 + addValue,
-            2 + addValue, 3 + addValue,
-            1 + addValue, 5 + addValue,
-            4 + addValue, 5 + addValue,
-            2 + addValue, 6 + addValue,
-            4 + addValue, 6 + addValue,
-            6 + addValue, 7 + addValue,
-            3 + addValue, 7 + addValue,
-            5 + addValue, 7 + addValue,
-            ] as [CInt]
-          globalIndiciesCarcas = globalIndiciesCarcas + indicesCarcas
-          j = j + 1
-        }
-      
-      let vertexSource = SCNGeometrySource(vertices: globalPositions)
-      let normalSource = SCNGeometrySource(normals: globalNormals)
-      let geometry = SCNGeometry(sources: [vertexSource, normalSource],
-                                 elements: globalElements)
-      geometry.firstMaterial?.diffuse.contents = UIColor(red: 0.149,
-                                                         green: 0.604,
-                                                         blue: 0.859,
-                                                         alpha: 1.0)
-      let cubeNode = SCNNode(geometry: geometry)
-      self.scene?.rootNode.addChildNode(cubeNode)
+  private func createCube()
+  {
+    var j = 0 as Int32
+    var globalPositions : [SCNVector3] = []
+    var globalNormals : [SCNVector3] = []
+    var globalIndicies : [CInt] = []
+    var globalIndiciesCarcas : [CInt] = []
+    var globalElements : [SCNGeometryElement] = []
     
-      let indexDataCarcas = Data(bytes: globalIndiciesCarcas,
-                                 count: MemoryLayout<CInt>.size * globalIndiciesCarcas.count)
-      let elementBorder = SCNGeometryElement(data: indexDataCarcas,
-                                             primitiveType: .line,
-                                             primitiveCount: globalIndiciesCarcas.count / 2,
-                                             bytesPerIndex: MemoryLayout<CInt>.size)
-      let geometryBorder = SCNGeometry(sources: [vertexSource],
-                                       elements: [elementBorder])
-      geometryBorder.firstMaterial?.diffuse.contents = UIColor.red
-      let borderCubeNode = SCNNode(geometry: geometryBorder)
-      self.scene?.rootNode.addChildNode(borderCubeNode)
+    for hexahedron in self.model.elementsArray
+    {
+      var normals: [SCNVector3] = []
+      var indices: [CInt] = []
+      for side in hexahedron.sidesArray
+      {
+        if side.isVisible
+        {
+          let indicesSide = side.indicesArray(addValue: j * 8)
+          
+          let indexDataSide = Data(bytes: indicesSide,
+                                   count: MemoryLayout<CInt>.size * indicesSide.count)
+          let elementSide = SCNGeometryElement(data: indexDataSide,
+                                               primitiveType: .triangles,
+                                               primitiveCount: indicesSide.count / 3,
+                                               bytesPerIndex: MemoryLayout<CInt>.size)
+          globalElements.append(elementSide)
+          
+          normals = normals + side.normalsArray()
+          indices = indices + indicesSide
+        }
+      }
+      
+      globalPositions = globalPositions + hexahedron.positions
+      let normals2 = [
+        SCNVector3Make( 1, 0, 0),
+        SCNVector3Make( 1, 0, 0),
+        SCNVector3Make( 1, 0, 0),
+        SCNVector3Make( 1, 0, 0),
+        SCNVector3Make( 1, 0, 0),
+        SCNVector3Make( 1, 0, 0),
+        SCNVector3Make( 1, 0, 0),
+        SCNVector3Make( 1, 0, 0),]
+      
+      globalNormals = globalNormals + normals2
+      let addValue = j * 8
+      globalIndicies = globalIndicies + indices
+      let indicesCarcas = [
+        0 + addValue, 1 + addValue,
+        0 + addValue, 2 + addValue,
+        0 + addValue, 4 + addValue,
+        1 + addValue, 3 + addValue,
+        2 + addValue, 3 + addValue,
+        1 + addValue, 5 + addValue,
+        4 + addValue, 5 + addValue,
+        2 + addValue, 6 + addValue,
+        4 + addValue, 6 + addValue,
+        6 + addValue, 7 + addValue,
+        3 + addValue, 7 + addValue,
+        5 + addValue, 7 + addValue,
+        ] as [CInt]
+      globalIndiciesCarcas = globalIndiciesCarcas + indicesCarcas
+      j = j + 1
+    }
+    
+    let vertexSource = SCNGeometrySource(vertices: globalPositions)
+    let normalSource = SCNGeometrySource(normals: globalNormals)
+    let geometry = SCNGeometry(sources: [vertexSource, normalSource],
+                               elements: globalElements)
+    geometry.firstMaterial?.diffuse.contents = UIColor(red: 0.149,
+                                                       green: 0.604,
+                                                       blue: 0.859,
+                                                       alpha: 1.0)
+    let cubeNode = SCNNode(geometry: geometry)
+    self.scene?.rootNode.addChildNode(cubeNode)
+    
+    let indexDataCarcas = Data(bytes: globalIndiciesCarcas,
+                               count: MemoryLayout<CInt>.size * globalIndiciesCarcas.count)
+    let elementBorder = SCNGeometryElement(data: indexDataCarcas,
+                                           primitiveType: .line,
+                                           primitiveCount: globalIndiciesCarcas.count / 2,
+                                           bytesPerIndex: MemoryLayout<CInt>.size)
+    let geometryBorder = SCNGeometry(sources: [vertexSource],
+                                     elements: [elementBorder])
+    geometryBorder.firstMaterial?.diffuse.contents = UIColor.red
+    let borderCubeNode = SCNNode(geometry: geometryBorder)
+    self.scene?.rootNode.addChildNode(borderCubeNode)
   }
 }

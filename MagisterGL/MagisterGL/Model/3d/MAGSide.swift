@@ -86,13 +86,13 @@ class MAGSide: NSObject
     switch positionType
     {
     case .Left:
-      return [16 + addValue, 20 + addValue, 18 + addValue,  // 0, 4, 2,   + 16
-              18 + addValue, 20 + addValue, 22 + addValue,  // 2, 4, 6,   + 16
+      return [0 + addValue, 4 + addValue, 2 + addValue,  // 0, 4, 2,   + 16
+              2 + addValue, 4 + addValue, 6 + addValue,  // 2, 4, 6,   + 16
               ]
       
     case .Front:
-      return [8 + addValue,  9 + addValue, 12 + addValue,  // 0, 1, 4,   + 8
-              9 + addValue, 13 + addValue, 12 + addValue,  // 1, 5, 4,   + 8
+      return [0 + addValue,  1 + addValue, 4 + addValue,  // 0, 1, 4,   + 8
+              1 + addValue, 5 + addValue, 4 + addValue,  // 1, 5, 4,   + 8
               ]
       
     case .Bottom:
@@ -100,13 +100,13 @@ class MAGSide: NSObject
               1 + addValue, 2 + addValue, 3 + addValue]
       
     case .Right:
-      return [17 + addValue, 19 + addValue, 21 + addValue,  // 1, 3, 5,   + 16
-              19 + addValue, 23 + addValue, 21 + addValue,  // 3, 7, 5,   + 16
+      return [1 + addValue, 3 + addValue, 5 + addValue,  // 1, 3, 5,   + 16
+              3 + addValue, 7 + addValue, 5 + addValue,  // 3, 7, 5,   + 16
               ]
       
     case .Back:
-      return [ 10 + addValue, 14 + addValue, 11 + addValue,  // 2, 6, 3,   + 8
-              11 + addValue, 14 + addValue, 15 + addValue,  // 3, 6, 7,   + 8
+      return [2 + addValue, 6 + addValue, 3 + addValue,  // 2, 6, 3,   + 8
+              3 + addValue, 6 + addValue, 7 + addValue,  // 3, 6, 7,   + 8
               ]
 
       
