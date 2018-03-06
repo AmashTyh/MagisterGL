@@ -126,14 +126,15 @@ class MAGCustomGeometryView: SCNView
       
       globalPositions = globalPositions + hexahedron.positions
       let normals2 = [
-        SCNVector3Make( 1, 0, 0),
-        SCNVector3Make( 1, 0, 0),
-        SCNVector3Make( 1, 0, 0),
-        SCNVector3Make( 1, 0, 0),
-        SCNVector3Make( 1, 0, 0),
-        SCNVector3Make( 1, 0, 0),
-        SCNVector3Make( 1, 0, 0),
-        SCNVector3Make( 1, 0, 0),]
+        SCNVector3Make( 1, 1, 1),
+        SCNVector3Make( 1, 1, 1),
+        SCNVector3Make( 1, 1, 1),
+        SCNVector3Make( 1, 1, 1),
+        SCNVector3Make( 1, 1, 1),
+        SCNVector3Make( 1, 1, 1),
+        SCNVector3Make( 1, 1, 1),
+        SCNVector3Make( 1, 1, 1),
+        ]
       
       globalNormals = globalNormals + normals2
       let addValue = j * 8
@@ -203,6 +204,6 @@ class MAGCustomGeometryView: SCNView
     {
       return UIColor.orange
     }
-    return UIColor.gray    
+    return UIColor.yellow
   }
 }

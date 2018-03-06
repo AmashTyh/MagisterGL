@@ -134,7 +134,6 @@ class MAGCustomGeometryModel: NSObject
                                                     sidesArray: sidesArray!,
                                                     materialsArray: materialsArray,
                                                     counts: nverCountArray))
-            //break
             numberOfElement = numberOfElement + 1
         }
         centerPoint = SCNVector3Make((maxVector.x - minVector.x) / 2.0 + minVector.x,
