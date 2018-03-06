@@ -21,13 +21,20 @@ class MAGHexahedron: NSObject
  */
   var sidesArray: [MAGSide] = []
   
+  /**
+   Массив материалов - 6 штук
+   */
+  var materialsArray: [Int] = []
+  
   init(positions: [SCNVector3],
        sidesArray: [MAGSide],
+       materialsArray: [Int],
        counts: [Int])
   {
     self.positions = positions
     self.countArray = counts
     self.sidesArray = sidesArray
+    self.materialsArray = materialsArray
   }
   
   func minCount() -> Int

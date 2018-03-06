@@ -29,14 +29,17 @@ class MAGSide: NSObject
   var positions: [SCNVector3] = []
   var positionType: PositionType
   var isVisible: Bool
+  var material: Int
   
   init(positions: [SCNVector3],
        positionType: PositionType,
+       material: Int,
        isVisible: Bool)
   {
     self.positions = positions
     self.positionType = positionType
     self.isVisible = isVisible
+    self.material = material
   }
   
   func normalsArray() -> [SCNVector3]

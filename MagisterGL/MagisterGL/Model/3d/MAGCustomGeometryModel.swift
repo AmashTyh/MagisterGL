@@ -17,9 +17,9 @@ class MAGCustomGeometryModel: NSObject
     var centerPoint: SCNVector3 = SCNVector3Zero
     var minVector: SCNVector3 = SCNVector3Zero
     var maxVector: SCNVector3 = SCNVector3Zero
-    var xyzArray: Array<SCNVector3> = []
-    var nverArray:  [[Int]] = []
-    var nvkatArray: Array<Int> = []
+    var xyzArray: [SCNVector3] = []
+    var nverArray: [[Int]] = []
+    var nvkatArray: [Int] = []
     var neibArray: [[Int]] = []
     
     override init()
@@ -77,6 +77,7 @@ class MAGCustomGeometryModel: NSObject
             var sidesFlagsArray: [Bool] = [true, true, true, true, true, true]
             var nverCountArray : [Int] = []
             var positionArray : [SCNVector3]? = []
+            var materialsArray: [Int] = []
             var i : Int = 0
             
             for gridNum in nverElementArray
@@ -89,7 +90,7 @@ class MAGCustomGeometryModel: NSObject
                 }
                 else
                 {
-                    break
+                    materialsArray.append(gridNum)
                 }
                 i = i + 1
             }
@@ -104,27 +105,34 @@ class MAGCustomGeometryModel: NSObject
             let sidesArray: [MAGSide]? = [
                 MAGSide.init(positions: [positionArray![0], positionArray![2], positionArray![6], positionArray![4]],
                              positionType: .Left,
+                             material: materialsArray[0],
                              isVisible: sidesFlagsArray[0]), //левая
                 MAGSide.init(positions: [positionArray![0], positionArray![1], positionArray![5], positionArray![4]],
                              positionType: .Front,
+                             material: materialsArray[1],
                              isVisible: sidesFlagsArray[1]), //передняя
                 MAGSide.init(positions: [positionArray![0], positionArray![1], positionArray![3], positionArray![2]],
                              positionType: .Bottom,
+                             material: materialsArray[2],
                              isVisible: sidesFlagsArray[2]), //нижняя
                 MAGSide.init(positions: [positionArray![1], positionArray![3], positionArray![7], positionArray![5]],
                              positionType: .Right,
+                             material: materialsArray[3],
                              isVisible: sidesFlagsArray[3]), //правая
                 MAGSide.init(positions: [positionArray![2], positionArray![3], positionArray![7], positionArray![6]],
                              positionType: .Back,
+                             material: materialsArray[4],
                              isVisible: sidesFlagsArray[4]), //задняя
                 MAGSide.init(positions: [positionArray![4], positionArray![5], positionArray![7], positionArray![6]],
                              positionType: .Top,
+                             material: materialsArray[5],
                              isVisible: sidesFlagsArray[5]),  //верхняя
             ]
             
             
             elementsArray.append(MAGHexahedron.init(positions: positionArray!,
                                                     sidesArray: sidesArray!,
+                                                    materialsArray: materialsArray,
                                                     counts: nverCountArray))
             //break
             numberOfElement = numberOfElement + 1

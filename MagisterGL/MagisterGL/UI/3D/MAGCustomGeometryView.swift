@@ -95,7 +95,8 @@ class MAGCustomGeometryView: SCNView
     var globalIndicies : [CInt] = []
     var globalIndiciesCarcas : [CInt] = []
     var globalElements : [SCNGeometryElement] = []
-    
+    var globalMaterials : [SCNMaterial] = []
+
     for hexahedron in self.model.elementsArray
     {
       var normals: [SCNVector3] = []
@@ -113,6 +114,10 @@ class MAGCustomGeometryView: SCNView
                                                primitiveCount: indicesSide.count / 3,
                                                bytesPerIndex: MemoryLayout<CInt>.size)
           globalElements.append(elementSide)
+          let material = SCNMaterial()
+          material.diffuse.contents = self.getColor(material: side.material)
+          material.locksAmbientWithDiffuse = true
+          globalMaterials.append(material)
           
           normals = normals + side.normalsArray()
           indices = indices + indicesSide
@@ -155,10 +160,7 @@ class MAGCustomGeometryView: SCNView
     let normalSource = SCNGeometrySource(normals: globalNormals)
     let geometry = SCNGeometry(sources: [vertexSource, normalSource],
                                elements: globalElements)
-    geometry.firstMaterial?.diffuse.contents = UIColor(red: 0.149,
-                                                       green: 0.604,
-                                                       blue: 0.859,
-                                                       alpha: 1.0)
+    geometry.materials = globalMaterials
     let cubeNode = SCNNode(geometry: geometry)
     self.scene?.rootNode.addChildNode(cubeNode)
     
@@ -173,5 +175,34 @@ class MAGCustomGeometryView: SCNView
     geometryBorder.firstMaterial?.diffuse.contents = UIColor.red
     let borderCubeNode = SCNNode(geometry: geometryBorder)
     self.scene?.rootNode.addChildNode(borderCubeNode)
+  }
+  
+  private func getColor(material: Int) -> UIColor
+  {
+    if material == 0
+    {
+      return UIColor.red
+    }
+    if material == 1
+    {
+      return UIColor.blue
+    }
+    if material == 2
+    {
+      return UIColor.green
+    }
+    if material == 3
+    {
+      return UIColor.cyan
+    }
+    if material == 4
+    {
+      return UIColor.magenta
+    }
+    if material == 5
+    {
+      return UIColor.orange
+    }
+    return UIColor.gray    
   }
 }
