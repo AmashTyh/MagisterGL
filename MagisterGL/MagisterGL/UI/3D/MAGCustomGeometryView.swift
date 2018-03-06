@@ -179,27 +179,27 @@ class MAGCustomGeometryView: SCNView
   
   private func getColor(material: Int) -> UIColor
   {
-    if material == 0
+    if material == 1
     {
       return UIColor.red
     }
-    if material == 1
+    if material == 2
     {
       return UIColor.blue
     }
-    if material == 2
+    if material == 3
     {
       return UIColor.green
     }
-    if material == 3
+    if material == 4
     {
       return UIColor.cyan
     }
-    if material == 4
+    if material == 5
     {
       return UIColor.magenta
     }
-    if material == 5
+    if material == 6
     {
       return UIColor.orange
     }
