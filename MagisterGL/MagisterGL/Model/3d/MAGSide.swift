@@ -47,40 +47,40 @@ class MAGSide: NSObject
     switch positionType
     {
     case .Left:
-      return [SCNVector3Make( 0, 0,  1),
-              SCNVector3Make( 0, 0,  1),
+      return [SCNVector3Make(-1, 0, 0),
+              SCNVector3Make(-1, 0, 0),
+              SCNVector3Make(-1, 0, 0),
+              SCNVector3Make(-1, 0, 0)]
+
+    case .Front:
+      return [SCNVector3Make(0, 1, 0),
+              SCNVector3Make(0, 1, 0),
+              SCNVector3Make(0, 1, 0),
+              SCNVector3Make(0, 1, 0),]
+
+    case .Bottom:
+      return [SCNVector3Make( 0, 0, -1),
+              SCNVector3Make( 0, 0, -1),
               SCNVector3Make( 0, 0, -1),
               SCNVector3Make( 0, 0, -1)]
 
-    case .Front:
-      return [SCNVector3Make(-1, 0, 0),
+    case .Right:
+      return [SCNVector3Make( 1, 0, 0),
               SCNVector3Make( 1, 0, 0),
-              SCNVector3Make(-1, 0, 0),
+              SCNVector3Make( 1, 0, 0),
               SCNVector3Make( 1, 0, 0),]
 
-    case .Bottom:
+    case .Back:
       return [SCNVector3Make( 0, -1, 0),
               SCNVector3Make( 0, -1, 0),
               SCNVector3Make( 0, -1, 0),
-              SCNVector3Make( 0, -1, 0)]
-
-    case .Right:
-      return [SCNVector3Make( 0, 0, 1),
-              SCNVector3Make( 0, 0, 1),
-              SCNVector3Make( 0, 0, -1),
-              SCNVector3Make( 0, 0, -1),]
-
-    case .Back:
-      return [SCNVector3Make( 0, 1, 0),
-              SCNVector3Make( 0, 1, 0),
-              SCNVector3Make( 0, 1, 0),
-              SCNVector3Make( 0, 1, 0),]
+              SCNVector3Make( 0, -1, 0),]
 
     case .Top:
-      return [SCNVector3Make(-1, 0, 0),
-              SCNVector3Make( 1, 0, 0),
-              SCNVector3Make(-1, 0, 0),
-              SCNVector3Make( 1, 0, 0),]
+      return [SCNVector3Make( 0, 0, 1),
+              SCNVector3Make( 0, 0, 1),
+              SCNVector3Make( 0, 0, 1),
+              SCNVector3Make( 0, 0, 1),]
     }
   }
   

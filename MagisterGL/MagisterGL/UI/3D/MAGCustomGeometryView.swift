@@ -76,7 +76,7 @@ class MAGCustomGeometryView: SCNView
         let ambientLightNode = SCNNode()
         ambientLightNode.light = SCNLight()
         ambientLightNode.light?.type = .ambient
-        ambientLightNode.light?.color = UIColor.darkGray
+        ambientLightNode.light?.color = UIColor.white
         scene.rootNode.addChildNode(ambientLightNode)
         
         scene.rootNode.pivot = SCNMatrix4MakeTranslation(self.model.centerPoint.x,
@@ -173,7 +173,7 @@ class MAGCustomGeometryView: SCNView
                                            bytesPerIndex: MemoryLayout<CInt>.size)
     let geometryBorder = SCNGeometry(sources: [vertexSource],
                                      elements: [elementBorder])
-    geometryBorder.firstMaterial?.diffuse.contents = UIColor.red
+    geometryBorder.firstMaterial?.diffuse.contents = UIColor.white
     let borderCubeNode = SCNNode(geometry: geometryBorder)
     self.scene?.rootNode.addChildNode(borderCubeNode)
   }
