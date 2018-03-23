@@ -96,14 +96,7 @@ class MAGCustomGeometryView: SCNView
     var globalIndiciesCarcas : [CInt] = []
     var globalElements : [SCNGeometryElement] = []
     var globalMaterials : [SCNMaterial] = []
-    let texCoords: [vector_float2] = [
-        vector_float2(0.0, 0.0),
-        vector_float2(1.0, 0.0),
-        vector_float2(0.0, 1.0),
-        vector_float2(1.0, 1.0),
-        ]
-    
-    
+
     for hexahedron in self.model.elementsArray
     {
       var normals: [SCNVector3] = []
@@ -122,8 +115,7 @@ class MAGCustomGeometryView: SCNView
                                                bytesPerIndex: MemoryLayout<CInt>.size)
           globalElements.append(elementSide)
           let material = SCNMaterial()
-          //material.diffuse.contents = self.getColor(material: side.material)
-          material.diffuse.contents = UIImage(named: "Texture.png")
+          material.diffuse.contents = self.getColor(material: side.material)
           material.locksAmbientWithDiffuse = true
           globalMaterials.append(material)
           
@@ -133,8 +125,18 @@ class MAGCustomGeometryView: SCNView
       }
       
       globalPositions = globalPositions + hexahedron.positions
+      let normals2 = [
+        SCNVector3Make( 1, 1, 1),
+        SCNVector3Make( 1, 1, 1),
+        SCNVector3Make( 1, 1, 1),
+        SCNVector3Make( 1, 1, 1),
+        SCNVector3Make( 1, 1, 1),
+        SCNVector3Make( 1, 1, 1),
+        SCNVector3Make( 1, 1, 1),
+        SCNVector3Make( 1, 1, 1),
+        ]
       
-      globalNormals = globalNormals + normals
+      globalNormals = globalNormals + normals2
       let addValue = j * 8
       globalIndicies = globalIndicies + indices
       let indicesCarcas = [
@@ -155,28 +157,12 @@ class MAGCustomGeometryView: SCNView
       j = j + 1
     }
     
-    
-    
     let vertexSource = SCNGeometrySource(vertices: globalPositions)
     let normalSource = SCNGeometrySource(normals: globalNormals)
-    
-    let uvData = Data(bytes: texCoords, count: texCoords.count * MemoryLayout<vector_float2>.size)
-    let textureSource = SCNGeometrySource(data: uvData,
-                                          semantic: .texcoord,
-                                          vectorCount: texCoords.count,
-                                          usesFloatComponents: true,
-                                          componentsPerVector: 2,
-                                          bytesPerComponent: MemoryLayout<Float>.size,
-                                          dataOffset: 0,
-                                          dataStride: MemoryLayout<vector_float2>.size)
-    
-    
-    let geometry = SCNGeometry(sources: [vertexSource, normalSource, textureSource],
+    let geometry = SCNGeometry(sources: [vertexSource, normalSource],
                                elements: globalElements)
-    
     geometry.materials = globalMaterials
     let cubeNode = SCNNode(geometry: geometry)
-    
     self.scene?.rootNode.addChildNode(cubeNode)
     
     let indexDataCarcas = Data(bytes: globalIndiciesCarcas,
