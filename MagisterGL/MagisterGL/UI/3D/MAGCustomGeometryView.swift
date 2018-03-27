@@ -97,6 +97,7 @@ class MAGCustomGeometryView: SCNView
     var globalElements : [SCNGeometryElement] = []
     var globalMaterials : [SCNMaterial] = []
     var globalTextureCords: [CGPoint] = []
+    let gradientImageHelper: GradientImageHelper = GradientImageHelper()
 
     for hexahedron in self.model.elementsArray
     {
@@ -116,7 +117,12 @@ class MAGCustomGeometryView: SCNView
                                                bytesPerIndex: MemoryLayout<CInt>.size)
           globalElements.append(elementSide)
           let material = SCNMaterial()
-          material.diffuse.contents = UIImage(named: "normalmap.png")//self.getColor(material: side.material)
+          let gradientImage = gradientImageHelper.gradientImage(size: CGSize(width: 50, height: 50),
+                                                          topColorLeft: .red,
+                                                          topColorRight: .green,
+                                                          bottomColorLeft: .red,
+                                                          bottomColorRight: .yellow)
+          material.diffuse.contents = gradientImage//self.getColor(material: side.material)
           material.locksAmbientWithDiffuse = true
           globalMaterials.append(material)
           

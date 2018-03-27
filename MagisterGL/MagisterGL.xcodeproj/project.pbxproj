@@ -12,6 +12,7 @@
 		84541B0E1FB0AD2300DC6E43 /* xyz2.txt in Resources */ = {isa = PBXBuildFile; fileRef = 84541B0A1FB0AD2300DC6E43 /* xyz2.txt */; };
 		84541B0F1FB0AD2300DC6E43 /* nver2.txt in Resources */ = {isa = PBXBuildFile; fileRef = 84541B0B1FB0AD2300DC6E43 /* nver2.txt */; };
 		84541B101FB0AD2300DC6E43 /* nvkat2.txt in Resources */ = {isa = PBXBuildFile; fileRef = 84541B0C1FB0AD2300DC6E43 /* nvkat2.txt */; };
+		846D46C3206A8479004EB7EA /* GradientImageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846D46C2206A8479004EB7EA /* GradientImageHelper.swift */; };
 		9A4B279D1F91EA8900068550 /* MAGBinaryDataScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A4B279C1F91EA8900068550 /* MAGBinaryDataScanner.swift */; };
 		9A577D311F03B0AC0017F40F /* Cube.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A577D291F03B0AC0017F40F /* Cube.swift */; };
 		9A577D321F03B0AC0017F40F /* Cylinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A577D2A1F03B0AC0017F40F /* Cylinder.swift */; };
@@ -61,6 +62,7 @@
 		84541B0A1FB0AD2300DC6E43 /* xyz2.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = xyz2.txt; sourceTree = "<group>"; };
 		84541B0B1FB0AD2300DC6E43 /* nver2.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = nver2.txt; sourceTree = "<group>"; };
 		84541B0C1FB0AD2300DC6E43 /* nvkat2.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = nvkat2.txt; sourceTree = "<group>"; };
+		846D46C2206A8479004EB7EA /* GradientImageHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientImageHelper.swift; sourceTree = "<group>"; };
 		9A4B279C1F91EA8900068550 /* MAGBinaryDataScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAGBinaryDataScanner.swift; sourceTree = "<group>"; };
 		9A577D291F03B0AC0017F40F /* Cube.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cube.swift; sourceTree = "<group>"; };
 		9A577D2A1F03B0AC0017F40F /* Cylinder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cylinder.swift; sourceTree = "<group>"; };
@@ -177,6 +179,7 @@
 			isa = PBXGroup;
 			children = (
 				9AB601AD1F7657A7004C50AB /* SKTexture+Gradient.swift */,
+				846D46C2206A8479004EB7EA /* GradientImageHelper.swift */,
 			);
 			path = Ext;
 			sourceTree = "<group>";
@@ -434,6 +437,7 @@
 				84541B071FB069BD00DC6E43 /* MAGChooseFileViewController.swift in Sources */,
 				9A577D381F03B0AC0017F40F /* Texture.swift in Sources */,
 				9AE6156E1F8A03B00067893C /* MAGHexahedron.swift in Sources */,
+				846D46C3206A8479004EB7EA /* GradientImageHelper.swift in Sources */,
 				9A889F0F204D606000CA6069 /* MAGSide.swift in Sources */,
 				9A577D361F03B0AC0017F40F /* Scene.swift in Sources */,
 			);
