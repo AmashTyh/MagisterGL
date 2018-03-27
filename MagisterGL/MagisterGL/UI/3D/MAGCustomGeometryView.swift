@@ -96,6 +96,7 @@ class MAGCustomGeometryView: SCNView
     var globalIndiciesCarcas : [CInt] = []
     var globalElements : [SCNGeometryElement] = []
     var globalMaterials : [SCNMaterial] = []
+    var globalTextureCords: [CGPoint] = []
 
     for hexahedron in self.model.elementsArray
     {
@@ -115,7 +116,7 @@ class MAGCustomGeometryView: SCNView
                                                bytesPerIndex: MemoryLayout<CInt>.size)
           globalElements.append(elementSide)
           let material = SCNMaterial()
-          material.diffuse.contents = self.getColor(material: side.material)
+          material.diffuse.contents = UIImage(named: "normalmap.png")//self.getColor(material: side.material)
           material.locksAmbientWithDiffuse = true
           globalMaterials.append(material)
           
@@ -124,6 +125,14 @@ class MAGCustomGeometryView: SCNView
         }
       }
       
+      var textureCord: [CGPoint] = []
+        textureCord = [
+        CGPoint(x: 1, y: 1),
+        CGPoint(x: 0, y: 1),
+        CGPoint(x: 0, y: 0),
+        CGPoint(x: 1, y: 0),
+        ]
+      globalTextureCords = globalTextureCords + textureCord + textureCord + textureCord + textureCord + textureCord + textureCord
       globalPositions = globalPositions + hexahedron.positions
       let normals2 = [
         SCNVector3Make( 1, 1, 1),
@@ -159,7 +168,8 @@ class MAGCustomGeometryView: SCNView
     
     let vertexSource = SCNGeometrySource(vertices: globalPositions)
     let normalSource = SCNGeometrySource(normals: globalNormals)
-    let geometry = SCNGeometry(sources: [vertexSource, normalSource],
+    let textureSource = SCNGeometrySource(textureCoordinates: globalTextureCords)
+    let geometry = SCNGeometry(sources: [vertexSource, normalSource, textureSource],
                                elements: globalElements)
     geometry.materials = globalMaterials
     let cubeNode = SCNNode(geometry: geometry)
