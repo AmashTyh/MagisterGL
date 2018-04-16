@@ -159,14 +159,37 @@ class MAGCustomGeometryView: SCNView
     
     let vertexSource = SCNGeometrySource(vertices: globalPositions)
     let normalSource = SCNGeometrySource(normals: globalNormals)
-    let geometry = SCNGeometry(sources: [vertexSource, normalSource],
+    
+    var vertexColors = [SCNVector3]()
+    
+    for _ in 0..<globalPositions.count {
+      
+      let red = Float(arc4random() % 255) / 255.0
+      let green = Float(arc4random() % 255) / 255.0
+      let blue = Float(arc4random() % 255) / 255.0
+      
+      vertexColors.append(SCNVector3(red, green, blue))
+    }
+    let dataColor = NSData(bytes: vertexColors, length: MemoryLayout<SCNVector3>.size * globalPositions.count) as Data
+    let colors = SCNGeometrySource(data: dataColor,
+                                   semantic: .color,
+                                   vectorCount: vertexColors.count,
+                                   usesFloatComponents: true,
+                                   componentsPerVector: 3,
+                                   bytesPerComponent: MemoryLayout<Float>.size,
+                                   dataOffset: 0,
+                                   dataStride: MemoryLayout<SCNVector3>.stride)
+    
+    let geometry = SCNGeometry(sources: [vertexSource, normalSource, colors],
                                elements: globalElements)
-    geometry.materials = globalMaterials
+//    geometry.materials = globalMaterials
     let cubeNode = SCNNode(geometry: geometry)
     self.scene?.rootNode.addChildNode(cubeNode)
     
     let indexDataCarcas = Data(bytes: globalIndiciesCarcas,
                                count: MemoryLayout<CInt>.size * globalIndiciesCarcas.count)
+    
+    
     let elementBorder = SCNGeometryElement(data: indexDataCarcas,
                                            primitiveType: .line,
                                            primitiveCount: globalIndiciesCarcas.count / 2,
