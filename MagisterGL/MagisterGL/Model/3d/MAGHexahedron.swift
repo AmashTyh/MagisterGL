@@ -14,7 +14,6 @@ import SceneKit
 class MAGHexahedron: NSObject
 {
   var positions: [SCNVector3]
-  var countArray: [Int]
   /**
    Массив сторон шестигранника - 6 штук
    порядок: левая, передняя, нижняя, правая, задняя, верхняя
@@ -28,17 +27,10 @@ class MAGHexahedron: NSObject
   
   init(positions: [SCNVector3],
        sidesArray: [MAGSide],
-       material: Int,
-       counts: [Int])
+       material: Int)
   {
     self.positions = positions
-    self.countArray = counts
     self.sidesArray = sidesArray
     self.material = material
-  }
-  
-  func minCount() -> Int
-  {
-    return self.countArray.min()!
   }
 }
