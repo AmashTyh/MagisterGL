@@ -45,6 +45,7 @@ class MAGProjectsViewModel: NSObject
     return array
   }
   
+  // Передать все параметры проекта (название, урлы)
   func addProject()
   {
     let newEntity = NSEntityDescription.insertNewObject(forEntityName: "MAGProject",

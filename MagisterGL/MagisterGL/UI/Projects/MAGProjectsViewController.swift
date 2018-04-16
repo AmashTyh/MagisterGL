@@ -45,10 +45,20 @@ class MAGProjectsViewController: UIViewController,
     cell.configure(cellObject: cellObjects[indexPath.row])
     return cell
   }
+  /*
+   секлет ячейки открывает проект 3д(можно сделать тип ячейки со стрелочкой) или по кнопке
+   добавить кнопки удалить, редактировать
+ */
     
 
+  /*
+   Переделать чтение файлов - разделять дат и текстовый файлы
+ */
   @IBAction func addButtonTapped(_ sender: Any)
   {
+    /* это отсюда убрать, передавать из контроллера Create project (можно подумать как это все передавать)
+     по возвращению просто обновлять таблицу - должны браться все данные из коре даты
+    */
     self.viewModel.addProject()
   }
   
