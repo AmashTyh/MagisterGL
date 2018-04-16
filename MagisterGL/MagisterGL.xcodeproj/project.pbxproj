@@ -12,6 +12,7 @@
 		84541B0E1FB0AD2300DC6E43 /* xyz2.txt in Resources */ = {isa = PBXBuildFile; fileRef = 84541B0A1FB0AD2300DC6E43 /* xyz2.txt */; };
 		84541B0F1FB0AD2300DC6E43 /* nver2.txt in Resources */ = {isa = PBXBuildFile; fileRef = 84541B0B1FB0AD2300DC6E43 /* nver2.txt */; };
 		84541B101FB0AD2300DC6E43 /* nvkat2.txt in Resources */ = {isa = PBXBuildFile; fileRef = 84541B0C1FB0AD2300DC6E43 /* nvkat2.txt */; };
+		992685A973168ED57CDB8564 /* Pods_MagisterGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DA4F8BFD9D8D310D40705BF /* Pods_MagisterGL.framework */; };
 		9A4B279D1F91EA8900068550 /* MAGBinaryDataScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A4B279C1F91EA8900068550 /* MAGBinaryDataScanner.swift */; };
 		9A577D311F03B0AC0017F40F /* Cube.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A577D291F03B0AC0017F40F /* Cube.swift */; };
 		9A577D321F03B0AC0017F40F /* Cylinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A577D2A1F03B0AC0017F40F /* Cylinder.swift */; };
@@ -56,11 +57,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6DA4F8BFD9D8D310D40705BF /* Pods_MagisterGL.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MagisterGL.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		84541B061FB069BD00DC6E43 /* MAGChooseFileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAGChooseFileViewController.swift; sourceTree = "<group>"; };
 		84541B091FB0AD2300DC6E43 /* elem_neib2.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = elem_neib2.txt; sourceTree = "<group>"; };
 		84541B0A1FB0AD2300DC6E43 /* xyz2.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = xyz2.txt; sourceTree = "<group>"; };
 		84541B0B1FB0AD2300DC6E43 /* nver2.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = nver2.txt; sourceTree = "<group>"; };
 		84541B0C1FB0AD2300DC6E43 /* nvkat2.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = nvkat2.txt; sourceTree = "<group>"; };
+		8CAFC11BF7FD19D8CB4C5EF8 /* Pods-MagisterGL.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MagisterGL.release.xcconfig"; path = "Pods/Target Support Files/Pods-MagisterGL/Pods-MagisterGL.release.xcconfig"; sourceTree = "<group>"; };
 		9A4B279C1F91EA8900068550 /* MAGBinaryDataScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAGBinaryDataScanner.swift; sourceTree = "<group>"; };
 		9A577D291F03B0AC0017F40F /* Cube.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cube.swift; sourceTree = "<group>"; };
 		9A577D2A1F03B0AC0017F40F /* Cylinder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cylinder.swift; sourceTree = "<group>"; };
@@ -106,6 +109,7 @@
 		9AE615751F8A0A0E0067893C /* nvkat.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = nvkat.txt; sourceTree = "<group>"; };
 		9AF322E91F7A7FE4003AE463 /* MAG3DViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAG3DViewController.swift; sourceTree = "<group>"; };
 		9AF322EB1F7A8054003AE463 /* MAGCustomGeometryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAGCustomGeometryView.swift; sourceTree = "<group>"; };
+		A4DA327470A9B4072E5FB8C0 /* Pods-MagisterGL.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MagisterGL.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MagisterGL/Pods-MagisterGL.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,12 +117,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				992685A973168ED57CDB8564 /* Pods_MagisterGL.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		07D6A6F0844CEFEF95751DCC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6DA4F8BFD9D8D310D40705BF /* Pods_MagisterGL.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2854FD8E6A50C2C39CFD0B70 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A4DA327470A9B4072E5FB8C0 /* Pods-MagisterGL.debug.xcconfig */,
+				8CAFC11BF7FD19D8CB4C5EF8 /* Pods-MagisterGL.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		84541B081FB0AB2900DC6E43 /* Test2 */ = {
 			isa = PBXGroup;
 			children = (
@@ -128,6 +150,21 @@
 				84541B0A1FB0AD2300DC6E43 /* xyz2.txt */,
 			);
 			path = Test2;
+			sourceTree = "<group>";
+		};
+		84743B9F2084DBF1007049C6 /* GoogleDrive */ = {
+			isa = PBXGroup;
+			children = (
+				84743BA02084DBF9007049C6 /* Model */,
+			);
+			path = GoogleDrive;
+			sourceTree = "<group>";
+		};
+		84743BA02084DBF9007049C6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		9A577D281F03B0AC0017F40F /* Common */ = {
@@ -186,6 +223,8 @@
 			children = (
 				9ADE1EBA1EED062B006D409E /* MagisterGL */,
 				9ADE1EB91EED062B006D409E /* Products */,
+				2854FD8E6A50C2C39CFD0B70 /* Pods */,
+				07D6A6F0844CEFEF95751DCC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -200,6 +239,7 @@
 		9ADE1EBA1EED062B006D409E /* MagisterGL */ = {
 			isa = PBXGroup;
 			children = (
+				84743B9F2084DBF1007049C6 /* GoogleDrive */,
 				9AE615671F8A004C0067893C /* FileManager */,
 				9ADE1EBB1EED062B006D409E /* AppDelegate.swift */,
 				9ADE1EC21EED062B006D409E /* Assets.xcassets */,
@@ -326,9 +366,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9ADE1ECA1EED062B006D409E /* Build configuration list for PBXNativeTarget "MagisterGL" */;
 			buildPhases = (
+				B836A19A3150747E77B17827 /* [CP] Check Pods Manifest.lock */,
 				9ADE1EB41EED062B006D409E /* Sources */,
 				9ADE1EB51EED062B006D409E /* Frameworks */,
 				9ADE1EB61EED062B006D409E /* Resources */,
+				00CEDED1EAF94154E00386C0 /* [CP] Embed Pods Frameworks */,
+				BF29ECD8043463628CE86057 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -405,6 +448,69 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		00CEDED1EAF94154E00386C0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-MagisterGL/Pods-MagisterGL-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMOAuth2/GTMOAuth2.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleAPIClientForREST/GoogleAPIClientForREST.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMOAuth2.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleAPIClientForREST.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MagisterGL/Pods-MagisterGL-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B836A19A3150747E77B17827 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MagisterGL-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BF29ECD8043463628CE86057 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-MagisterGL/Pods-MagisterGL-resources.sh",
+				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MagisterGL/Pods-MagisterGL-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		9ADE1EB41EED062B006D409E /* Sources */ = {
@@ -572,6 +678,7 @@
 		};
 		9ADE1ECB1EED062B006D409E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A4DA327470A9B4072E5FB8C0 /* Pods-MagisterGL.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = SZ46K2Z6E6;
@@ -587,6 +694,7 @@
 		};
 		9ADE1ECC1EED062B006D409E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8CAFC11BF7FD19D8CB4C5EF8 /* Pods-MagisterGL.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = SZ46K2Z6E6;
