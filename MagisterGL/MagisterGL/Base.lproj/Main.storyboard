@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="a9V-BR-1rW">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Ksh-TJ-avS">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -101,6 +101,66 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ep5-Ia-a56" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2378" y="627"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="4gI-8k-yZk">
+            <objects>
+                <navigationController id="Ksh-TJ-avS" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="lQv-yQ-uVQ">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="iTe-ep-ynG" kind="relationship" relationship="rootViewController" id="CuA-Go-77E"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4ba-xp-FDM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-5358" y="587"/>
+        </scene>
+        <!--Projects-->
+        <scene sceneID="vZi-85-meO">
+            <objects>
+                <viewController id="iTe-ep-ynG" customClass="MAGProjectsViewController" customModule="MagisterGL" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Szy-7i-EId"/>
+                        <viewControllerLayoutGuide type="bottom" id="Gqg-mG-B32"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="5oB-rK-WWt">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pLb-T7-t2i">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="iTe-ep-ynG" id="NLv-FH-4aI"/>
+                                    <outlet property="delegate" destination="iTe-ep-ynG" id="auw-Ny-El7"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="pLb-T7-t2i" firstAttribute="leading" secondItem="5oB-rK-WWt" secondAttribute="leading" id="8De-uS-yOe"/>
+                            <constraint firstItem="pLb-T7-t2i" firstAttribute="top" secondItem="Szy-7i-EId" secondAttribute="bottom" id="WgV-Xt-EAO"/>
+                            <constraint firstAttribute="trailing" secondItem="pLb-T7-t2i" secondAttribute="trailing" id="XHY-Ai-YJu"/>
+                            <constraint firstItem="Gqg-mG-B32" firstAttribute="top" secondItem="pLb-T7-t2i" secondAttribute="bottom" id="r2a-H9-o3X"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Projects" id="Dx4-Iv-p7s">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Dfo-RU-tPW">
+                            <connections>
+                                <action selector="addButtonTapped:" destination="iTe-ep-ynG" id="Uk1-ra-MUc"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="pLb-T7-t2i" id="88x-Hj-C7m"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="J9m-tx-Ybg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-4535" y="587"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Z3s-IV-Wsa">
