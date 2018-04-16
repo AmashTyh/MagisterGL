@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="a9V-BR-1rW">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="a9V-BR-1rW">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -53,22 +55,44 @@
                                     <segue destination="fc5-rN-1wo" kind="show" id="GIL-dq-iV4"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SJg-XX-hCh">
+                                <rect key="frame" x="37.5" y="183.5" width="300" height="44"/>
+                                <state key="normal" title="Google drive"/>
+                                <connections>
+                                    <segue destination="mbA-9e-HUH" kind="presentation" modalPresentationStyle="pageSheet" id="Phd-aj-wHF"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SbA-G0-T3c">
+                                <rect key="frame" x="37.5" y="247.5" width="300" height="44"/>
+                                <state key="normal" title="Local"/>
+                                <connections>
+                                    <segue destination="aNO-hp-bjU" kind="show" id="XWM-7k-E8F"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="SbA-G0-T3c" firstAttribute="width" secondItem="6hh-Uw-tZf" secondAttribute="width" id="2C3-WP-RFG"/>
+                            <constraint firstItem="SbA-G0-T3c" firstAttribute="centerX" secondItem="ThC-U8-ezt" secondAttribute="centerX" id="4yH-K3-MaQ"/>
                             <constraint firstItem="PlZ-xa-Jtc" firstAttribute="top" secondItem="h1W-TQ-p5K" secondAttribute="bottom" constant="20" id="7co-VP-GIZ"/>
                             <constraint firstItem="Zga-fc-SN5" firstAttribute="height" secondItem="PlZ-xa-Jtc" secondAttribute="height" id="HIv-cu-WeV"/>
                             <constraint firstItem="h1W-TQ-p5K" firstAttribute="top" secondItem="6hh-Uw-tZf" secondAttribute="bottom" constant="20" id="HJ0-Ke-r4E"/>
                             <constraint firstItem="Zga-fc-SN5" firstAttribute="top" secondItem="PlZ-xa-Jtc" secondAttribute="bottom" constant="10" id="I98-Nh-1YL"/>
                             <constraint firstItem="PlZ-xa-Jtc" firstAttribute="height" secondItem="h1W-TQ-p5K" secondAttribute="height" id="Iai-JS-Bn6"/>
                             <constraint firstItem="PlZ-xa-Jtc" firstAttribute="centerX" secondItem="ThC-U8-ezt" secondAttribute="centerX" id="NXS-GH-nPK"/>
+                            <constraint firstItem="SJg-XX-hCh" firstAttribute="height" secondItem="6hh-Uw-tZf" secondAttribute="height" id="OCQ-0M-Srm"/>
                             <constraint firstItem="Zga-fc-SN5" firstAttribute="width" secondItem="PlZ-xa-Jtc" secondAttribute="width" id="Qpa-iT-DXg"/>
                             <constraint firstItem="h1W-TQ-p5K" firstAttribute="centerX" secondItem="ThC-U8-ezt" secondAttribute="centerX" id="R8H-5X-BQz"/>
                             <constraint firstItem="h1W-TQ-p5K" firstAttribute="height" secondItem="6hh-Uw-tZf" secondAttribute="height" id="SdA-Jn-lRu"/>
+                            <constraint firstItem="SJg-XX-hCh" firstAttribute="width" secondItem="6hh-Uw-tZf" secondAttribute="width" id="Usq-Fc-PG7"/>
+                            <constraint firstItem="SJg-XX-hCh" firstAttribute="centerX" secondItem="ThC-U8-ezt" secondAttribute="centerX" id="WBw-z9-3op"/>
                             <constraint firstItem="6hh-Uw-tZf" firstAttribute="centerY" secondItem="ThC-U8-ezt" secondAttribute="centerY" id="XcC-DW-XYx"/>
                             <constraint firstItem="h1W-TQ-p5K" firstAttribute="width" secondItem="6hh-Uw-tZf" secondAttribute="width" id="bKM-g2-7Yp"/>
                             <constraint firstItem="Zga-fc-SN5" firstAttribute="centerX" secondItem="ThC-U8-ezt" secondAttribute="centerX" id="bS5-kp-enL"/>
+                            <constraint firstItem="SbA-G0-T3c" firstAttribute="height" secondItem="6hh-Uw-tZf" secondAttribute="height" id="fMQ-wD-PUe"/>
+                            <constraint firstItem="SbA-G0-T3c" firstAttribute="top" secondItem="SJg-XX-hCh" secondAttribute="bottom" constant="20" id="hMK-nF-qFB"/>
                             <constraint firstItem="6hh-Uw-tZf" firstAttribute="centerX" secondItem="ThC-U8-ezt" secondAttribute="centerX" id="hgi-wX-oBQ"/>
+                            <constraint firstItem="6hh-Uw-tZf" firstAttribute="top" secondItem="SbA-G0-T3c" secondAttribute="bottom" constant="20" id="pi5-84-EQ6"/>
                             <constraint firstItem="PlZ-xa-Jtc" firstAttribute="width" secondItem="h1W-TQ-p5K" secondAttribute="width" id="zSv-nq-NOS"/>
                         </constraints>
                     </view>
@@ -76,7 +100,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ep5-Ia-a56" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1394.4000000000001" y="633.73313343328346"/>
+            <point key="canvasLocation" x="-2378" y="627"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Z3s-IV-Wsa">
@@ -92,7 +116,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B4K-q5-NIX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2254" y="634"/>
+            <point key="canvasLocation" x="-3130" y="627"/>
         </scene>
         <!--MyGLK View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -286,6 +310,104 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Grf-WK-2CD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1394" y="1477"/>
+        </scene>
+        <!--GoogleTableVC-->
+        <scene sceneID="ufs-6q-peo">
+            <objects>
+                <viewController storyboardIdentifier="GoogleTableVC" id="mbA-9e-HUH" userLabel="GoogleTableVC" customClass="MAGGoogleTableViewController" customModule="MagisterGL" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ZYL-qR-tvf">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SzV-Gn-qYA" customClass="GIDSignInButton">
+                                <rect key="frame" x="137.5" y="313" width="100" height="40"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="6gE-7I-n9C"/>
+                                    <constraint firstAttribute="height" constant="40" id="JaJ-R7-SN9"/>
+                                </constraints>
+                            </view>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xsl-2I-dJw">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <items>
+                                    <navigationItem title="Google Drive" id="KqK-Zp-4sF">
+                                        <rightBarButtonItems>
+                                            <barButtonItem systemItem="stop" id="0bp-9d-4eU">
+                                                <connections>
+                                                    <action selector="closeVC:" destination="mbA-9e-HUH" id="5G5-ai-6RU"/>
+                                                </connections>
+                                            </barButtonItem>
+                                            <barButtonItem systemItem="refresh" id="mcc-xk-5Ru">
+                                                <connections>
+                                                    <action selector="update:" destination="mbA-9e-HUH" id="b3m-7C-NYY"/>
+                                                </connections>
+                                            </barButtonItem>
+                                        </rightBarButtonItems>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="jMW-0n-kGR">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="jMW-0n-kGR" firstAttribute="leading" secondItem="ZJc-wI-mIs" secondAttribute="leading" id="Dh5-Md-yvg"/>
+                            <constraint firstItem="jMW-0n-kGR" firstAttribute="top" secondItem="Xsl-2I-dJw" secondAttribute="bottom" id="EWe-XE-i0d"/>
+                            <constraint firstItem="Xsl-2I-dJw" firstAttribute="leading" secondItem="ZJc-wI-mIs" secondAttribute="leading" id="M3H-tA-gpp"/>
+                            <constraint firstItem="SzV-Gn-qYA" firstAttribute="centerX" secondItem="ZYL-qR-tvf" secondAttribute="centerX" id="PSd-de-syE"/>
+                            <constraint firstItem="ZJc-wI-mIs" firstAttribute="trailing" secondItem="jMW-0n-kGR" secondAttribute="trailing" id="Zae-aa-f1o"/>
+                            <constraint firstItem="Xsl-2I-dJw" firstAttribute="top" secondItem="ZJc-wI-mIs" secondAttribute="top" id="eNX-QK-e7F"/>
+                            <constraint firstItem="ZJc-wI-mIs" firstAttribute="bottom" secondItem="jMW-0n-kGR" secondAttribute="bottom" id="fY7-8U-mod"/>
+                            <constraint firstAttribute="trailing" secondItem="Xsl-2I-dJw" secondAttribute="trailing" id="fpo-Lj-gXA"/>
+                            <constraint firstItem="SzV-Gn-qYA" firstAttribute="centerY" secondItem="ZYL-qR-tvf" secondAttribute="centerY" id="jNY-T6-Kgo"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="ZJc-wI-mIs"/>
+                    </view>
+                    <connections>
+                        <outlet property="signInButton" destination="SzV-Gn-qYA" id="na6-Y5-qUa"/>
+                        <outlet property="tableView" destination="jMW-0n-kGR" id="X9y-WB-GuL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LDG-UC-7Oj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2033" y="-65"/>
+        </scene>
+        <!--LocalVC-->
+        <scene sceneID="GnX-lm-nQw">
+            <objects>
+                <viewController id="aNO-hp-bjU" userLabel="LocalVC" customClass="MAGLocalViewController" customModule="MagisterGL" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cqr-00-IKF">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wpd-wC-aPp">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="aNO-hp-bjU" id="bIq-Tr-pyH"/>
+                                    <outlet property="delegate" destination="aNO-hp-bjU" id="2eI-Wb-aGR"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="wpd-wC-aPp" firstAttribute="trailing" secondItem="bd1-h7-XaP" secondAttribute="trailing" id="KFM-aY-r84"/>
+                            <constraint firstItem="wpd-wC-aPp" firstAttribute="top" secondItem="bd1-h7-XaP" secondAttribute="top" id="WND-is-GC9"/>
+                            <constraint firstItem="wpd-wC-aPp" firstAttribute="leading" secondItem="bd1-h7-XaP" secondAttribute="leading" id="aPt-7a-ebs"/>
+                            <constraint firstItem="wpd-wC-aPp" firstAttribute="bottom" secondItem="bd1-h7-XaP" secondAttribute="bottom" id="caa-Pq-iOG"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="bd1-h7-XaP"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Local Files" id="Bzm-pN-1W1"/>
+                    <connections>
+                        <outlet property="tableView" destination="wpd-wC-aPp" id="gUw-BQ-Ljp"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Who-TN-4Ql" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1329" y="-65"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
