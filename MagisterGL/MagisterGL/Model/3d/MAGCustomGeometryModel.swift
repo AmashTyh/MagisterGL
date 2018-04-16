@@ -132,7 +132,7 @@ class MAGCustomGeometryModel: NSObject
             
             elementsArray.append(MAGHexahedron.init(positions: positionArray!,
                                                     sidesArray: sidesArray!,
-                                                    materialsArray: materialsArray,
+                                                    material: nvkatArray[numberOfElement],
                                                     counts: nverCountArray))
             numberOfElement = numberOfElement + 1
         }

@@ -95,8 +95,8 @@ class MAGCustomGeometryView: SCNView
     var globalIndicies : [CInt] = []
     var globalIndiciesCarcas : [CInt] = []
     var globalElements : [SCNGeometryElement] = []
-    var globalMaterials : [SCNMaterial] = []
-
+    var globalColors : [SCNVector3] = []
+    
     for hexahedron in self.model.elementsArray
     {
       var normals: [SCNVector3] = []
@@ -114,14 +114,16 @@ class MAGCustomGeometryView: SCNView
                                                primitiveCount: indicesSide.count / 3,
                                                bytesPerIndex: MemoryLayout<CInt>.size)
           globalElements.append(elementSide)
-          let material = SCNMaterial()
-          material.diffuse.contents = self.getColor(material: side.material)
-          material.locksAmbientWithDiffuse = true
-          globalMaterials.append(material)
           
           normals = normals + side.normalsArray()
           indices = indices + indicesSide
         }
+      }
+      for position in hexahedron.positions
+      {
+        let color = self.getColor(material: hexahedron.material)
+//        let color = getColorFromFunc(position: position)
+        globalColors.append(color)
       }
       
       globalPositions = globalPositions + hexahedron.positions
@@ -160,20 +162,11 @@ class MAGCustomGeometryView: SCNView
     let vertexSource = SCNGeometrySource(vertices: globalPositions)
     let normalSource = SCNGeometrySource(normals: globalNormals)
     
-    var vertexColors = [SCNVector3]()
-    
-    for _ in 0..<globalPositions.count {
-      
-      let red = Float(arc4random() % 255) / 255.0
-      let green = Float(arc4random() % 255) / 255.0
-      let blue = Float(arc4random() % 255) / 255.0
-      
-      vertexColors.append(SCNVector3(red, green, blue))
-    }
-    let dataColor = NSData(bytes: vertexColors, length: MemoryLayout<SCNVector3>.size * globalPositions.count) as Data
+    let dataColor = NSData(bytes: globalColors,
+                           length: MemoryLayout<SCNVector3>.size * globalColors.count) as Data
     let colors = SCNGeometrySource(data: dataColor,
                                    semantic: .color,
-                                   vectorCount: vertexColors.count,
+                                   vectorCount: globalColors.count,
                                    usesFloatComponents: true,
                                    componentsPerVector: 3,
                                    bytesPerComponent: MemoryLayout<Float>.size,
@@ -182,9 +175,9 @@ class MAGCustomGeometryView: SCNView
     
     let geometry = SCNGeometry(sources: [vertexSource, normalSource, colors],
                                elements: globalElements)
-//    geometry.materials = globalMaterials
     let cubeNode = SCNNode(geometry: geometry)
     self.scene?.rootNode.addChildNode(cubeNode)
+    
     
     let indexDataCarcas = Data(bytes: globalIndiciesCarcas,
                                count: MemoryLayout<CInt>.size * globalIndiciesCarcas.count)
@@ -201,32 +194,43 @@ class MAGCustomGeometryView: SCNView
     self.scene?.rootNode.addChildNode(borderCubeNode)
   }
   
-  private func getColor(material: Int) -> UIColor
+  private func getColorFromFunc(position: SCNVector3) -> SCNVector3
   {
+    return SCNVector3(1 / (position.x * position.x + 1),
+                      1 / (position.y * position.y + 1),
+                      1 / (position.z * position.z + 1))
+  }
+  
+  private func getColor(material: Int) -> SCNVector3
+  {
+    if material == 0
+    {
+        return SCNVector3(0.5, 0, 0)
+    }
     if material == 1
     {
-      return UIColor.red
+      return SCNVector3(1, 0, 0)
     }
     if material == 2
     {
-      return UIColor.blue
+        return SCNVector3(0, 1, 0)
     }
     if material == 3
     {
-      return UIColor.green
+        return SCNVector3(0, 0, 1)
     }
     if material == 4
     {
-      return UIColor.cyan
+        return SCNVector3(1, 0, 1)
     }
     if material == 5
     {
-      return UIColor.magenta
+        return SCNVector3(1, 0.5, 0)
     }
     if material == 6
     {
-      return UIColor.orange
+        return SCNVector3(1, 0, 0)
     }
-    return UIColor.yellow
+    return SCNVector3(1, 0, 0.5)
   }
 }
