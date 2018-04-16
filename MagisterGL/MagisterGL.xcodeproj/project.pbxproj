@@ -12,6 +12,8 @@
 		84541B0E1FB0AD2300DC6E43 /* xyz2.txt in Resources */ = {isa = PBXBuildFile; fileRef = 84541B0A1FB0AD2300DC6E43 /* xyz2.txt */; };
 		84541B0F1FB0AD2300DC6E43 /* nver2.txt in Resources */ = {isa = PBXBuildFile; fileRef = 84541B0B1FB0AD2300DC6E43 /* nver2.txt */; };
 		84541B101FB0AD2300DC6E43 /* nvkat2.txt in Resources */ = {isa = PBXBuildFile; fileRef = 84541B0C1FB0AD2300DC6E43 /* nvkat2.txt */; };
+		84743BA42084DC7F007049C6 /* MAGGoogleDriveProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 84743BA32084DC7F007049C6 /* MAGGoogleDriveProvider.m */; };
+		84743BA72084DD3B007049C6 /* MAGLocalFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84743BA62084DD3B007049C6 /* MAGLocalFileManager.m */; };
 		992685A973168ED57CDB8564 /* Pods_MagisterGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DA4F8BFD9D8D310D40705BF /* Pods_MagisterGL.framework */; };
 		9A4B279D1F91EA8900068550 /* MAGBinaryDataScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A4B279C1F91EA8900068550 /* MAGBinaryDataScanner.swift */; };
 		9A577D311F03B0AC0017F40F /* Cube.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A577D291F03B0AC0017F40F /* Cube.swift */; };
@@ -63,6 +65,11 @@
 		84541B0A1FB0AD2300DC6E43 /* xyz2.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = xyz2.txt; sourceTree = "<group>"; };
 		84541B0B1FB0AD2300DC6E43 /* nver2.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = nver2.txt; sourceTree = "<group>"; };
 		84541B0C1FB0AD2300DC6E43 /* nvkat2.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = nvkat2.txt; sourceTree = "<group>"; };
+		84743BA12084DC7F007049C6 /* MagisterGL-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MagisterGL-Bridging-Header.h"; sourceTree = "<group>"; };
+		84743BA22084DC7F007049C6 /* MAGGoogleDriveProvider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MAGGoogleDriveProvider.h; sourceTree = "<group>"; };
+		84743BA32084DC7F007049C6 /* MAGGoogleDriveProvider.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MAGGoogleDriveProvider.m; sourceTree = "<group>"; };
+		84743BA52084DD3B007049C6 /* MAGLocalFileManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MAGLocalFileManager.h; sourceTree = "<group>"; };
+		84743BA62084DD3B007049C6 /* MAGLocalFileManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MAGLocalFileManager.m; sourceTree = "<group>"; };
 		8CAFC11BF7FD19D8CB4C5EF8 /* Pods-MagisterGL.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MagisterGL.release.xcconfig"; path = "Pods/Target Support Files/Pods-MagisterGL/Pods-MagisterGL.release.xcconfig"; sourceTree = "<group>"; };
 		9A4B279C1F91EA8900068550 /* MAGBinaryDataScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAGBinaryDataScanner.swift; sourceTree = "<group>"; };
 		9A577D291F03B0AC0017F40F /* Cube.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cube.swift; sourceTree = "<group>"; };
@@ -163,6 +170,11 @@
 		84743BA02084DBF9007049C6 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				84743BA22084DC7F007049C6 /* MAGGoogleDriveProvider.h */,
+				84743BA32084DC7F007049C6 /* MAGGoogleDriveProvider.m */,
+				84743BA12084DC7F007049C6 /* MagisterGL-Bridging-Header.h */,
+				84743BA52084DD3B007049C6 /* MAGLocalFileManager.h */,
+				84743BA62084DD3B007049C6 /* MAGLocalFileManager.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -395,7 +407,7 @@
 					9ADE1EB71EED062B006D409E = {
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = SZ46K2Z6E6;
-						LastSwiftMigration = 0900;
+						LastSwiftMigration = 0930;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -521,6 +533,7 @@
 				9AF322EA1F7A7FE4003AE463 /* MAG3DViewController.swift in Sources */,
 				9AB601A91F762BF2004C50AB /* MAGScene.swift in Sources */,
 				9A4B279D1F91EA8900068550 /* MAGBinaryDataScanner.swift in Sources */,
+				84743BA42084DC7F007049C6 /* MAGGoogleDriveProvider.m in Sources */,
 				9AE615691F8A009D0067893C /* MAGFileManager.swift in Sources */,
 				9ADE1F2C1EED22F5006D409E /* RectangleElement.swift in Sources */,
 				9A577D371F03B0AC0017F40F /* ShaderProgram.swift in Sources */,
@@ -534,6 +547,7 @@
 				9A577D311F03B0AC0017F40F /* Cube.swift in Sources */,
 				9AF322EC1F7A8054003AE463 /* MAGCustomGeometryView.swift in Sources */,
 				9ADE1F2A1EED1C36006D409E /* IsolineView.swift in Sources */,
+				84743BA72084DD3B007049C6 /* MAGLocalFileManager.m in Sources */,
 				9AE615701F8A07250067893C /* MAGCustomGeometryModel.swift in Sources */,
 				9AB601AE1F7657A7004C50AB /* SKTexture+Gradient.swift in Sources */,
 				9A577D331F03B0AC0017F40F /* Matrix4.swift in Sources */,
@@ -681,12 +695,15 @@
 			baseConfigurationReference = A4DA327470A9B4072E5FB8C0 /* Pods-MagisterGL.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = SZ46K2Z6E6;
 				INFOPLIST_FILE = MagisterGL/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = tyh.MagisterGL;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MagisterGL/GoogleDrive/Model/MagisterGL-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
 			};
@@ -697,12 +714,14 @@
 			baseConfigurationReference = 8CAFC11BF7FD19D8CB4C5EF8 /* Pods-MagisterGL.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = SZ46K2Z6E6;
 				INFOPLIST_FILE = MagisterGL/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = tyh.MagisterGL;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MagisterGL/GoogleDrive/Model/MagisterGL-Bridging-Header.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
 			};
