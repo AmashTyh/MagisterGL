@@ -49,6 +49,7 @@ class MAGProjectsViewController: UIViewController,
 
   @IBAction func addButtonTapped(_ sender: Any)
   {
+    self.viewModel.addProject()
   }
   
 }

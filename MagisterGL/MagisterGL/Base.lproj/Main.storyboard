@@ -152,7 +152,6 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Dfo-RU-tPW">
                             <connections>
                                 <action selector="addButtonTapped:" destination="iTe-ep-ynG" id="Uk1-ra-MUc"/>
-                                <segue destination="hFW-57-ZEW" kind="presentation" modalPresentationStyle="pageSheet" id="aoh-zB-HL9"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
