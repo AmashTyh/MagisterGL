@@ -8,12 +8,18 @@
 
 import UIKit
 
+protocol MAGGoogleTableViewControllerDelegate
+{
+  func savedFile(filePath: NSString)
+}
+
 class MAGGoogleTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, GIDSignInDelegate, GIDSignInUIDelegate {
   
   var activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.whiteLarge)
   let cellReuseIdentifier = "kReuseCellID"
   var loginPassed: Bool = false
   var provider: MAGGoogleDriveProvider = MAGGoogleDriveProvider()
+  var delegate: MAGGoogleTableViewControllerDelegate?
   
   @IBOutlet weak var tableView: UITableView!
   @IBOutlet weak var signInButton: GIDSignInButton!

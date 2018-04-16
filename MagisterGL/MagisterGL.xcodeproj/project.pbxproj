@@ -21,6 +21,7 @@
 		84743BB42084E6BF007049C6 /* MAGProjectCellObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84743BB32084E6BF007049C6 /* MAGProjectCellObject.swift */; };
 		84743BB72084E6E4007049C6 /* MAGProjectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84743BB52084E6E4007049C6 /* MAGProjectTableViewCell.swift */; };
 		84743BB82084E6E4007049C6 /* MAGProjectTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84743BB62084E6E4007049C6 /* MAGProjectTableViewCell.xib */; };
+		84743BBA2084EB16007049C6 /* MAGCreateProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84743BB92084EB16007049C6 /* MAGCreateProjectViewController.swift */; };
 		992685A973168ED57CDB8564 /* Pods_MagisterGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DA4F8BFD9D8D310D40705BF /* Pods_MagisterGL.framework */; };
 		9A4B279D1F91EA8900068550 /* MAGBinaryDataScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A4B279C1F91EA8900068550 /* MAGBinaryDataScanner.swift */; };
 		9A577D311F03B0AC0017F40F /* Cube.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A577D291F03B0AC0017F40F /* Cube.swift */; };
@@ -84,6 +85,7 @@
 		84743BB32084E6BF007049C6 /* MAGProjectCellObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAGProjectCellObject.swift; sourceTree = "<group>"; };
 		84743BB52084E6E4007049C6 /* MAGProjectTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAGProjectTableViewCell.swift; sourceTree = "<group>"; };
 		84743BB62084E6E4007049C6 /* MAGProjectTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MAGProjectTableViewCell.xib; sourceTree = "<group>"; };
+		84743BB92084EB16007049C6 /* MAGCreateProjectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAGCreateProjectViewController.swift; sourceTree = "<group>"; };
 		8CAFC11BF7FD19D8CB4C5EF8 /* Pods-MagisterGL.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MagisterGL.release.xcconfig"; path = "Pods/Target Support Files/Pods-MagisterGL/Pods-MagisterGL.release.xcconfig"; sourceTree = "<group>"; };
 		9A4B279C1F91EA8900068550 /* MAGBinaryDataScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAGBinaryDataScanner.swift; sourceTree = "<group>"; };
 		9A577D291F03B0AC0017F40F /* Cube.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cube.swift; sourceTree = "<group>"; };
@@ -210,6 +212,7 @@
 				84743BB32084E6BF007049C6 /* MAGProjectCellObject.swift */,
 				84743BB52084E6E4007049C6 /* MAGProjectTableViewCell.swift */,
 				84743BB62084E6E4007049C6 /* MAGProjectTableViewCell.xib */,
+				84743BB92084EB16007049C6 /* MAGCreateProjectViewController.swift */,
 			);
 			path = Projects;
 			sourceTree = "<group>";
@@ -581,6 +584,7 @@
 				9AB601A61F762993004C50AB /* MAGIsolineViewController.swift in Sources */,
 				9A577D351F03B0AC0017F40F /* Renderable.swift in Sources */,
 				9A577D321F03B0AC0017F40F /* Cylinder.swift in Sources */,
+				84743BBA2084EB16007049C6 /* MAGCreateProjectViewController.swift in Sources */,
 				9ADE1ED01EED07F0006D409E /* MyGLKViewController.swift in Sources */,
 				9ADE1F281EED1BFD006D409E /* IsolineViewController.swift in Sources */,
 				9A577D311F03B0AC0017F40F /* Cube.swift in Sources */,
