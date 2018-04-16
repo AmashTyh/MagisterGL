@@ -17,9 +17,9 @@ class MAGCustomGeometryModel: NSObject
     var centerPoint: SCNVector3 = SCNVector3Zero
     var minVector: SCNVector3 = SCNVector3Zero
     var maxVector: SCNVector3 = SCNVector3Zero
-    var xyzArray: Array<SCNVector3> = []
-    var nverArray:  [[Int]] = []
-    var nvkatArray: Array<Int> = []
+    var xyzArray: [SCNVector3] = []
+    var nverArray: [[Int]] = []
+    var nvkatArray: [Int] = []
     var neibArray: [[Int]] = []
     
     override init()
@@ -71,31 +71,71 @@ class MAGCustomGeometryModel: NSObject
             }
         }
         var j : Int = 0
+        var numberOfElement : Int = 0
         for nverElementArray in nverArray
         {
-            var nverCountArray : [Int] = []
+            var sidesFlagsArray: [Bool] = [true, true, true, true, true, true]
             var positionArray : [SCNVector3]? = []
+            var materialsArray: [Int] = []
             var i : Int = 0
+            
             for gridNum in nverElementArray
             {
                 if i < 8
                 {
                     let vector = xyzArray[gridNum - 1]
                     positionArray?.append(vector)
-                    nverCountArray.append(countArray[gridNum - 1])
                 }
                 else
                 {
-                    break
+                    materialsArray.append(gridNum)
                 }
                 i = i + 1
             }
             j = j + 1
+            
+            
+            for numberOfSide in 0..<6
+            {
+                sidesFlagsArray[numberOfSide] = (neibArray[6 * numberOfElement + numberOfSide].count == 1)
+            }
+            
+            let sidesArray: [MAGSide]? = [
+                MAGSide.init(positions: [positionArray![0], positionArray![2], positionArray![6], positionArray![4]],
+                             positionType: .Left,
+                             material: nvkatArray[numberOfElement],
+                             isVisible: sidesFlagsArray[0]), //левая
+                MAGSide.init(positions: [positionArray![0], positionArray![1], positionArray![5], positionArray![4]],
+                             positionType: .Front,
+                             material: nvkatArray[numberOfElement],
+                             isVisible: sidesFlagsArray[1]), //передняя
+                MAGSide.init(positions: [positionArray![0], positionArray![1], positionArray![3], positionArray![2]],
+                             positionType: .Bottom,
+                             material: nvkatArray[numberOfElement],
+                             isVisible: sidesFlagsArray[2]), //нижняя
+                MAGSide.init(positions: [positionArray![1], positionArray![3], positionArray![7], positionArray![5]],
+                             positionType: .Right,
+                             material: nvkatArray[numberOfElement],
+                             isVisible: sidesFlagsArray[3]), //правая
+                MAGSide.init(positions: [positionArray![2], positionArray![3], positionArray![7], positionArray![6]],
+                             positionType: .Back,
+                             material: nvkatArray[numberOfElement],
+                             isVisible: sidesFlagsArray[4]), //задняя
+                MAGSide.init(positions: [positionArray![4], positionArray![5], positionArray![7], positionArray![6]],
+                             positionType: .Top,
+                             material: nvkatArray[numberOfElement],
+                             isVisible: sidesFlagsArray[5]),  //верхняя
+            ]
+            
+            
             elementsArray.append(MAGHexahedron.init(positions: positionArray!,
-                                                    counts: nverCountArray))
+                                                    sidesArray: sidesArray!,
+                                                    material: nvkatArray[numberOfElement]))
+            numberOfElement = numberOfElement + 1
         }
         centerPoint = SCNVector3Make((maxVector.x - minVector.x) / 2.0 + minVector.x,
                                      (maxVector.y - minVector.y) / 2.0 + minVector.y,
                                      (maxVector.z - minVector.z) / 2.0 + minVector.z)
     }
 }
+

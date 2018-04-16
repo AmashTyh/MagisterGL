@@ -13,19 +13,24 @@ import SceneKit
 
 class MAGHexahedron: NSObject
 {
-  var positions: [SCNVector3];
-    var countArray: [Int];
+  var positions: [SCNVector3]
+  /**
+   Массив сторон шестигранника - 6 штук
+   порядок: левая, передняя, нижняя, правая, задняя, верхняя
+ */
+  var sidesArray: [MAGSide] = []
   
-    init(positions: [SCNVector3],
-         counts: [Int])
+  /**
+   Материал - целое число
+   */
+  var material: Int
+  
+  init(positions: [SCNVector3],
+       sidesArray: [MAGSide],
+       material: Int)
   {
-    self.positions = positions;
-    self.countArray = counts
+    self.positions = positions
+    self.sidesArray = sidesArray
+    self.material = material
   }
-    
-    func minCount() -> Int
-    {
-        return self.countArray.min()!;
-    }
-  
 }
