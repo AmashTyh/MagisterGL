@@ -23,14 +23,14 @@ class MAGHexahedron: NSObject
   /**
    Материал - целое число
    */
-  var material: Int
+  var color: [SCNVector3]
   
   init(positions: [SCNVector3],
        sidesArray: [MAGSide],
-       material: Int)
+       color: [SCNVector3])
   {
     self.positions = positions
     self.sidesArray = sidesArray
-    self.material = material
+    self.color = color
   }
 }
