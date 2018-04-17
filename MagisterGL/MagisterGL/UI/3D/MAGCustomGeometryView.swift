@@ -51,6 +51,7 @@ class MAGCustomGeometryView: SCNView
     private func setupScene()
     {
         self.model = MAGCustomGeometryModel.init()
+        self.model.createElementsArray()
         // Configure the Scene View
         self.backgroundColor = .darkGray
         
@@ -117,17 +118,23 @@ class MAGCustomGeometryView: SCNView
                                                primitiveCount: indicesSide.count / 3,
                                                bytesPerIndex: MemoryLayout<CInt>.size)
           globalElements.append(elementSide)
-          globalColors = globalColors + side.color
+          //globalColors = globalColors + side.color
           normals = normals + side.normalsArray()
           indices = indices + indicesSide
           vertexPositions += side.positions
+          
+          for position in side.positions
+          {
+            //let color = getColorFromFunc(position: position)
+            globalColors.append(hexahedron.color[0])
+          }
           h += 1
         }
       }
 //      for position in hexahedron.positions
 //      {
-//        let color = self.getColor(material: hexahedron.material)
-////        let color = getColorFromFunc(position: position)
+////        let color = self.getColor(material: hexahedron.material)
+//        let color = getColorFromFunc(position: position)
 //        globalColors.append(color)
 //      }
       
@@ -198,45 +205,5 @@ class MAGCustomGeometryView: SCNView
     geometryBorder.firstMaterial?.diffuse.contents = UIColor.white
     let borderCubeNode = SCNNode(geometry: geometryBorder)
     self.scene?.rootNode.addChildNode(borderCubeNode)
-  }
-  
-  private func getColorFromFunc(position: SCNVector3) -> SCNVector3
-  {
-    return SCNVector3(1 / (position.x * position.x + 1),
-                      1 / (position.y * position.y + 1),
-                      1 / (position.z * position.z + 1))
-  }
-  
-  private func getColor(material: Int) -> SCNVector3
-  {
-    if material == 0
-    {
-        return SCNVector3(0.5, 0, 0)
-    }
-    if material == 1
-    {
-      return SCNVector3(1, 0, 0)
-    }
-    if material == 2
-    {
-        return SCNVector3(0, 1, 0)
-    }
-    if material == 3
-    {
-        return SCNVector3(0, 0, 1)
-    }
-    if material == 4
-    {
-        return SCNVector3(1, 0, 1)
-    }
-    if material == 5
-    {
-        return SCNVector3(1, 0.5, 0)
-    }
-    if material == 6
-    {
-        return SCNVector3(1, 0, 0)
-    }
-    return SCNVector3(1, 0, 0.5)
   }
 }
