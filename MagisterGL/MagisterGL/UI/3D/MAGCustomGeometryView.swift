@@ -92,6 +92,7 @@ class MAGCustomGeometryView: SCNView
     
   private func createCube()
   {
+    var h = 0 as Int32
     var j = 0 as Int32
     var globalPositions : [SCNVector3] = []
     var globalNormals : [SCNVector3] = []
@@ -99,6 +100,8 @@ class MAGCustomGeometryView: SCNView
     var globalIndiciesCarcas : [CInt] = []
     var globalElements : [SCNGeometryElement] = []
     var globalColors : [SCNVector3] = []
+    
+    var vertexPositions : [SCNVector3] = []
     
     for hexahedron in self.model.elementsArray
     {
@@ -108,7 +111,7 @@ class MAGCustomGeometryView: SCNView
       {
         if side.isVisible
         {
-          let indicesSide = side.indicesArray(addValue: j * 8)
+          let indicesSide = side.indicesArray(addValue: h * 4)
           
           let indexDataSide = Data(bytes: indicesSide,
                                    count: MemoryLayout<CInt>.size * indicesSide.count)
@@ -117,17 +120,19 @@ class MAGCustomGeometryView: SCNView
                                                primitiveCount: indicesSide.count / 3,
                                                bytesPerIndex: MemoryLayout<CInt>.size)
           globalElements.append(elementSide)
-          
+          globalColors = globalColors + side.color
           normals = normals + side.normalsArray()
           indices = indices + indicesSide
+          vertexPositions += side.positions
+          h += 1
         }
       }
-      for position in hexahedron.positions
-      {
-        let color = self.getColor(material: hexahedron.material)
-//        let color = getColorFromFunc(position: position)
-        globalColors.append(color)
-      }
+//      for position in hexahedron.positions
+//      {
+//        let color = self.getColor(material: hexahedron.material)
+////        let color = getColorFromFunc(position: position)
+//        globalColors.append(color)
+//      }
       
       globalPositions = globalPositions + hexahedron.positions
       let normals2 = [
@@ -162,7 +167,8 @@ class MAGCustomGeometryView: SCNView
       j = j + 1
     }
     
-    let vertexSource = SCNGeometrySource(vertices: globalPositions)
+    let positionSource = SCNGeometrySource(vertices: globalPositions)
+    let vertexSource = SCNGeometrySource(vertices: vertexPositions)
     let normalSource = SCNGeometrySource(normals: globalNormals)
     
     let dataColor = NSData(bytes: globalColors,
@@ -190,7 +196,7 @@ class MAGCustomGeometryView: SCNView
                                            primitiveType: .line,
                                            primitiveCount: globalIndiciesCarcas.count / 2,
                                            bytesPerIndex: MemoryLayout<CInt>.size)
-    let geometryBorder = SCNGeometry(sources: [vertexSource],
+    let geometryBorder = SCNGeometry(sources: [positionSource],
                                      elements: [elementBorder])
     geometryBorder.firstMaterial?.diffuse.contents = UIColor.white
     let borderCubeNode = SCNNode(geometry: geometryBorder)
