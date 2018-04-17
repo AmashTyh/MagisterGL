@@ -100,38 +100,75 @@ class MAGCustomGeometryModel: NSObject
                 sidesFlagsArray[numberOfSide] = (neibArray[6 * numberOfElement + numberOfSide].count == 1)
             }
             
-            let sidesArray: [MAGSide]? = [
-                MAGSide.init(positions: [positionArray![0], positionArray![2], positionArray![6], positionArray![4]],
-                             positionType: .Left,
-                             material: nvkatArray[numberOfElement],
-                             isVisible: sidesFlagsArray[0]), //левая
-                MAGSide.init(positions: [positionArray![0], positionArray![1], positionArray![5], positionArray![4]],
-                             positionType: .Front,
-                             material: nvkatArray[numberOfElement],
-                             isVisible: sidesFlagsArray[1]), //передняя
-                MAGSide.init(positions: [positionArray![0], positionArray![1], positionArray![3], positionArray![2]],
-                             positionType: .Bottom,
-                             material: nvkatArray[numberOfElement],
-                             isVisible: sidesFlagsArray[2]), //нижняя
-                MAGSide.init(positions: [positionArray![1], positionArray![3], positionArray![7], positionArray![5]],
-                             positionType: .Right,
-                             material: nvkatArray[numberOfElement],
-                             isVisible: sidesFlagsArray[3]), //правая
-                MAGSide.init(positions: [positionArray![2], positionArray![3], positionArray![7], positionArray![6]],
-                             positionType: .Back,
-                             material: nvkatArray[numberOfElement],
-                             isVisible: sidesFlagsArray[4]), //задняя
-                MAGSide.init(positions: [positionArray![4], positionArray![5], positionArray![7], positionArray![6]],
-                             positionType: .Top,
-                             material: nvkatArray[numberOfElement],
-                             isVisible: sidesFlagsArray[5]),  //верхняя
-            ]
-            
-            
-            elementsArray.append(MAGHexahedron.init(positions: positionArray!,
+//            let sidesArray: [MAGSide]? = [
+//                MAGSide.init(positions: [positionArray![0], positionArray![2], positionArray![6], positionArray![4]],
+//                             positionType: .Left,
+//                             material: nvkatArray[numberOfElement],
+//                             isVisible: sidesFlagsArray[0]), //левая
+//                MAGSide.init(positions: [positionArray![0], positionArray![1], positionArray![5], positionArray![4]],
+//                             positionType: .Front,
+//                             material: nvkatArray[numberOfElement],
+//                             isVisible: sidesFlagsArray[1]), //передняя
+//                MAGSide.init(positions: [positionArray![0], positionArray![1], positionArray![3], positionArray![2]],
+//                             positionType: .Bottom,
+//                             material: nvkatArray[numberOfElement],
+//                             isVisible: sidesFlagsArray[2]), //нижняя
+//                MAGSide.init(positions: [positionArray![1], positionArray![3], positionArray![7], positionArray![5]],
+//                             positionType: .Right,
+//                             material: nvkatArray[numberOfElement],
+//                             isVisible: sidesFlagsArray[3]), //правая
+//                MAGSide.init(positions: [positionArray![2], positionArray![3], positionArray![7], positionArray![6]],
+//                             positionType: .Back,
+//                             material: nvkatArray[numberOfElement],
+//                             isVisible: sidesFlagsArray[4]), //задняя
+//                MAGSide.init(positions: [positionArray![4], positionArray![5], positionArray![7], positionArray![6]],
+//                             positionType: .Top,
+//                             material: nvkatArray[numberOfElement],
+//                             isVisible: sidesFlagsArray[5]),  //верхняя
+//            ]
+          var color:[SCNVector3] = []
+          color.append(SCNVector3(1, 0, 0))
+          color.append(SCNVector3(0, 0, 1))
+          color.append(SCNVector3(0, 1, 0))
+          color.append(SCNVector3(1, 1, 0))
+          
+          let sidesArray: [MAGSide]? = [
+            MAGSide.init(positions: [positionArray![0], positionArray![2], positionArray![6], positionArray![4]],
+                         positionType: .Left,
+                         material: nvkatArray[numberOfElement],
+                         color: color,
+                         isVisible: sidesFlagsArray[0]), //левая
+            MAGSide.init(positions: [positionArray![1], positionArray![0], positionArray![4], positionArray![5]],
+                         positionType: .Front,
+                         material: nvkatArray[numberOfElement],
+                         color: color,
+                         isVisible: sidesFlagsArray[1]), //передняя
+            MAGSide.init(positions: [positionArray![0], positionArray![1], positionArray![3], positionArray![2]],
+                         positionType: .Bottom,
+                         material: nvkatArray[numberOfElement],
+                         color: color,
+                         isVisible: sidesFlagsArray[2]), //нижняя
+            MAGSide.init(positions: [positionArray![1], positionArray![5], positionArray![7], positionArray![3]],
+                         positionType: .Right,
+                         material: nvkatArray[numberOfElement],
+                         color: color,
+                         isVisible: sidesFlagsArray[3]), //правая
+            MAGSide.init(positions: [positionArray![2], positionArray![3], positionArray![7], positionArray![6]],
+                         positionType: .Back,
+                         material: nvkatArray[numberOfElement],
+                         color: color,
+                         isVisible: sidesFlagsArray[4]), //задняя
+            MAGSide.init(positions: [positionArray![5], positionArray![4], positionArray![6], positionArray![7]],
+                         positionType: .Top,
+                         material: nvkatArray[numberOfElement],
+                         color: color,
+                         isVisible: sidesFlagsArray[5]),  //верхняя
+          ]
+          
+           elementsArray.append(MAGHexahedron.init(positions: positionArray!,
                                                     sidesArray: sidesArray!,
                                                     material: nvkatArray[numberOfElement]))
-            numberOfElement = numberOfElement + 1
+           numberOfElement = numberOfElement + 1
         }
         centerPoint = SCNVector3Make((maxVector.x - minVector.x) / 2.0 + minVector.x,
                                      (maxVector.y - minVector.y) / 2.0 + minVector.y,
