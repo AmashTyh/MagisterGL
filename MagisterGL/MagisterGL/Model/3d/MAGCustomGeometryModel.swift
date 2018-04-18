@@ -157,8 +157,8 @@ class MAGCustomGeometryModel: NSObject
          elementsArray.append(MAGHexahedron.init(positions: positionArray!,
                                                  sidesArray: sidesArray!,
                                                  material: nvkatArray[numberOfElement],
-                                                 //color:self.colorGenerator.getColorsFor(vertexes: positionArray!)))
-                                                 color: [self.getColor(material: nvkatArray[numberOfElement])]))
+                                                 color:self.colorGenerator.getColorsFor(vertexes: positionArray!)))
+                                                 //color: [self.getColor(material: nvkatArray[numberOfElement])]))
          numberOfElement = numberOfElement + 1
       }
       centerPoint = SCNVector3Make((maxVector.x - minVector.x) / 2.0 + minVector.x,
