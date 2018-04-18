@@ -30,6 +30,7 @@ class MAGSide: NSObject
   var positionType: PositionType
   var isVisible: Bool
   var material: Int
+  var color: [SCNVector3] = []
   
   init(positions: [SCNVector3],
        positionType: PositionType,
