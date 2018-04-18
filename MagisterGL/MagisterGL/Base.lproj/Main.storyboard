@@ -149,6 +149,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Projects" id="Dx4-Iv-p7s">
+                        <barButtonItem key="leftBarButtonItem" title="Locals" id="CRD-wt-iDx">
+                            <connections>
+                                <segue destination="aNO-hp-bjU" kind="show" id="71c-yL-HRo"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Dfo-RU-tPW">
                             <connections>
                                 <action selector="addButtonTapped:" destination="iTe-ep-ynG" id="Uk1-ra-MUc"/>
@@ -592,6 +597,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="71c-yL-HRo"/>
         <segue reference="zKT-4M-LcO"/>
         <segue reference="GIL-dq-iV4"/>
     </inferredMetricsTieBreakers>

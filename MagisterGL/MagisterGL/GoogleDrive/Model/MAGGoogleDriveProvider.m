@@ -75,6 +75,9 @@
                                         appropriateForURL:nil
                                                    create:NO
                                                     error:nil];
+      /*
+       Генерировать название и отправлять в комплишине
+       */
       NSURL *filePath = [documentsPath URLByAppendingPathComponent:fileName];
       BOOL fileExists = [fileManager fileExistsAtPath:filePath.absoluteString];
       if (fileExists == NO) {
