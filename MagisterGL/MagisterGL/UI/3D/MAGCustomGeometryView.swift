@@ -14,82 +14,82 @@ import OpenGLES
 
 extension SCNNode
 {
-    func cleanup()
+  func cleanup()
+  {
+    for child in childNodes
     {
-        for child in childNodes
-        {
-            child.cleanup()
-        }
-        geometry = nil
+      child.cleanup()
     }
+    geometry = nil
+  }
 }
 
 
 class MAGCustomGeometryView: SCNView
 {
-   private var model: MAGCustomGeometryModel = MAGCustomGeometryModel()
-   
-   deinit
-   {
-      scene?.rootNode.cleanup()
-   }
-   
-   
-   public func redraw()
-   {
-      scene?.rootNode.cleanup()
-      self.model = MAGCustomGeometryModel()
-      self.model.runTest()
-      setupScene()
-   }
-   
-   
-   func configure(project: MAGProject)
-   {
-      scene?.rootNode.cleanup()
-      self.model = MAGCustomGeometryModel()
-      self.model.configure(project: project)
-      setupScene()
-   }
+  private var model: MAGCustomGeometryModel = MAGCustomGeometryModel()
   
-    private func setupScene()
-    {
-        // Configure the Scene View
-        self.backgroundColor = .darkGray
-        
-        // Create the scene
-        let scene = SCNScene()
-        
-        // Create a camera and attach it to a node
-        let camera = SCNCamera()
-        //camera.xFov = 10
-        //camera.yFov = 45
-        
-        let cameraNode = SCNNode()
-        cameraNode.camera = camera
-        cameraNode.position = SCNVector3(self.model.centerPoint.x,
-                                         self.model.centerPoint.y,
-                                         self.model.centerPoint.z + (self.model.maxVector.z - self.model.minVector.z) / 2.0 + 20)
-        scene.rootNode.addChildNode(cameraNode)
-        
-        self.allowsCameraControl = true
-        self.showsStatistics = true
-        
-        // create and add an ambient light to the scene
-        let ambientLightNode = SCNNode()
-        ambientLightNode.light = SCNLight()
-        ambientLightNode.light?.type = .ambient
-        ambientLightNode.light?.color = UIColor.white
-        scene.rootNode.addChildNode(ambientLightNode)
-        
-        scene.rootNode.pivot = SCNMatrix4MakeTranslation(self.model.centerPoint.x,
-                                                         self.model.centerPoint.y,
-                                                         self.model.centerPoint.z)
-      
-        self.scene = scene
-        createCube()
-    }
+  deinit
+  {
+    scene?.rootNode.cleanup()
+  }
+  
+  
+  public func redraw()
+  {
+    scene?.rootNode.cleanup()
+    self.model = MAGCustomGeometryModel()
+    self.model.runTest()
+    setupScene()
+  }
+  
+  
+  func configure(project: MAGProject)
+  {
+    scene?.rootNode.cleanup()
+    self.model = MAGCustomGeometryModel()
+    self.model.configure(project: project)
+    setupScene()
+  }
+  
+  private func setupScene()
+  {
+    // Configure the Scene View
+    self.backgroundColor = .darkGray
     
+    // Create the scene
+    let scene = SCNScene()
+    
+    // Create a camera and attach it to a node
+    let camera = SCNCamera()
+    //camera.xFov = 10
+    //camera.yFov = 45
+    
+    let cameraNode = SCNNode()
+    cameraNode.camera = camera
+    cameraNode.position = SCNVector3(self.model.centerPoint.x,
+                                     self.model.centerPoint.y,
+                                     self.model.centerPoint.z + (self.model.maxVector.z - self.model.minVector.z) / 2.0 + 20)
+    scene.rootNode.addChildNode(cameraNode)
+    
+    self.allowsCameraControl = true
+    self.showsStatistics = true
+    
+    // create and add an ambient light to the scene
+    let ambientLightNode = SCNNode()
+    ambientLightNode.light = SCNLight()
+    ambientLightNode.light?.type = .ambient
+    ambientLightNode.light?.color = UIColor.white
+    scene.rootNode.addChildNode(ambientLightNode)
+    
+    scene.rootNode.pivot = SCNMatrix4MakeTranslation(self.model.centerPoint.x,
+                                                     self.model.centerPoint.y,
+                                                     self.model.centerPoint.z)
+    
+    self.scene = scene
+    createCube()
+  }
+  
   private func createCube()
   {
     var h = 0 as Int32
@@ -105,6 +105,7 @@ class MAGCustomGeometryView: SCNView
     
     for hexahedron in self.model.elementsArray
     {
+      hexahedron.setColorToSides()
       var normals: [SCNVector3] = []
       var indices: [CInt] = []
       for side in hexahedron.sidesArray
@@ -120,25 +121,14 @@ class MAGCustomGeometryView: SCNView
                                                primitiveCount: indicesSide.count / 3,
                                                bytesPerIndex: MemoryLayout<CInt>.size)
           globalElements.append(elementSide)
-          //globalColors = globalColors + side.color
           normals = normals + side.normalsArray()
           indices = indices + indicesSide
           vertexPositions += side.positions
           
-          for position in side.positions
-          {
-            //let color = getColorFromFunc(position: position)
-            globalColors.append(hexahedron.color[0])
-          }
+          globalColors = globalColors + side.color
           h += 1
         }
       }
-//      for position in hexahedron.positions
-//      {
-////        let color = self.getColor(material: hexahedron.material)
-//        let color = getColorFromFunc(position: position)
-//        globalColors.append(color)
-//      }
       
       globalPositions = globalPositions + hexahedron.positions
       let normals2 = [
