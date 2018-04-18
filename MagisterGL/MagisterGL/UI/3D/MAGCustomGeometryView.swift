@@ -79,7 +79,7 @@ class MAGCustomGeometryView: SCNView
     let ambientLightNode = SCNNode()
     ambientLightNode.light = SCNLight()
     ambientLightNode.light?.type = .ambient
-    ambientLightNode.light?.color = UIColor.white
+    //ambientLightNode.light?.color = UIColor.white
     scene.rootNode.addChildNode(ambientLightNode)
     
     scene.rootNode.pivot = SCNMatrix4MakeTranslation(self.model.centerPoint.x,
@@ -112,7 +112,7 @@ class MAGCustomGeometryView: SCNView
       {
         if side.isVisible
         {
-          let indicesSide = side.indicesArray(addValue: h * 4)
+          let indicesSide = side.indicesArray(addValue: h * 5)
           
           let indexDataSide = Data(bytes: indicesSide,
                                    count: MemoryLayout<CInt>.size * indicesSide.count)
@@ -125,7 +125,7 @@ class MAGCustomGeometryView: SCNView
           indices = indices + indicesSide
           vertexPositions += side.positions
           
-          globalColors = globalColors + side.color
+          globalColors = globalColors + side.colors
           h += 1
         }
       }
@@ -134,6 +134,13 @@ class MAGCustomGeometryView: SCNView
       let normals2 = [
         SCNVector3Make( 1, 1, 1),
         SCNVector3Make( 1, 1, 1),
+        SCNVector3Make( 1, 1, 1),
+        SCNVector3Make( 1, 1, 1),
+        SCNVector3Make( 1, 1, 1),
+        SCNVector3Make( 1, 1, 1),
+        SCNVector3Make( 1, 1, 1),
+        SCNVector3Make( 1, 1, 1),
+        //
         SCNVector3Make( 1, 1, 1),
         SCNVector3Make( 1, 1, 1),
         SCNVector3Make( 1, 1, 1),
@@ -178,7 +185,8 @@ class MAGCustomGeometryView: SCNView
                                    dataOffset: 0,
                                    dataStride: MemoryLayout<SCNVector3>.stride)
     
-    let geometry = SCNGeometry(sources: [vertexSource, normalSource, colors],
+    // let geometry = SCNGeometry(sources: [vertexSource, normalSource, colors],
+    let geometry = SCNGeometry(sources: [vertexSource, colors],
                                elements: globalElements)
     let cubeNode = SCNNode(geometry: geometry)
     self.scene?.rootNode.addChildNode(cubeNode)

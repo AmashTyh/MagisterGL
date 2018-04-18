@@ -52,7 +52,7 @@ class MAGColorGenerator: NSObject
               y: Double,
               z: Double) -> Double
    {
-      return x*x*x + y*y*y + z*z*z
+      return x*x + y*y
    }
    
    func getColorForU(u: Double) -> SCNVector3

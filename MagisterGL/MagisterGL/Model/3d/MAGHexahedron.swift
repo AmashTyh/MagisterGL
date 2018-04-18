@@ -26,7 +26,7 @@ class MAGHexahedron: NSObject
    var material: Int
    
    
-   var color: [SCNVector3]
+   var colors: [SCNVector3]
    
    init(positions: [SCNVector3],
         sidesArray: [MAGSide],
@@ -36,54 +36,65 @@ class MAGHexahedron: NSObject
       self.positions = positions
       self.sidesArray = sidesArray
       self.material = material
-      self.color = color
+      self.colors = color
    }
    
    func setColorToSides()
    {
-      if (self.color.count > 1) {
+      if (self.colors.count > 1) {
          for side in sidesArray {
+//            side.colors.append(SCNVector3(1, 0, 0))
+//            side.colors.append(SCNVector3(0, 0, 1))
+//            side.colors.append(SCNVector3(1, 1, 0))
+//            side.colors.append(SCNVector3(0, 1, 0))
+//            side.generateCenterColor()
+            
             switch side.positionType {
             case .Left:
-               side.color.append(self.color[0])
-               side.color.append(self.color[2])
-               side.color.append(self.color[6])
-               side.color.append(self.color[4])
+               side.colors.append(self.colors[0])
+               side.colors.append(self.colors[2])
+               side.colors.append(self.colors[6])
+               side.colors.append(self.colors[4])
+               side.generateCenterColor()
             case .Front:
-               side.color.append(self.color[1])
-               side.color.append(self.color[0])
-               side.color.append(self.color[4])
-               side.color.append(self.color[5])
+               side.colors.append(self.colors[1])
+               side.colors.append(self.colors[0])
+               side.colors.append(self.colors[4])
+               side.colors.append(self.colors[5])
+               side.generateCenterColor()
             case .Bottom:
-               side.color.append(self.color[0])
-               side.color.append(self.color[1])
-               side.color.append(self.color[3])
-               side.color.append(self.color[2])
+               side.colors.append(self.colors[0])
+               side.colors.append(self.colors[1])
+               side.colors.append(self.colors[3])
+               side.colors.append(self.colors[2])
+               side.generateCenterColor()
             case .Right:
-               side.color.append(self.color[1])
-               side.color.append(self.color[5])
-               side.color.append(self.color[7])
-               side.color.append(self.color[3])
+               side.colors.append(self.colors[1])
+               side.colors.append(self.colors[5])
+               side.colors.append(self.colors[7])
+               side.colors.append(self.colors[3])
+               side.generateCenterColor()
             case .Back:
-               side.color.append(self.color[2])
-               side.color.append(self.color[3])
-               side.color.append(self.color[7])
-               side.color.append(self.color[6])
+               side.colors.append(self.colors[2])
+               side.colors.append(self.colors[3])
+               side.colors.append(self.colors[7])
+               side.colors.append(self.colors[6])
+               side.generateCenterColor()
             case .Top:
-               side.color.append(self.color[5])
-               side.color.append(self.color[4])
-               side.color.append(self.color[6])
-               side.color.append(self.color[7])
+               side.colors.append(self.colors[5])
+               side.colors.append(self.colors[4])
+               side.colors.append(self.colors[6])
+               side.colors.append(self.colors[7])
+               side.generateCenterColor()
             }
          }
       } else {
          for side in sidesArray {
-            for _ in 0..<4
+            for _ in 0..<5
             {
-               side.color.append(self.color[0])
+               side.colors.append(self.colors[0])
             }
          }
       }
-      
    }
 }
