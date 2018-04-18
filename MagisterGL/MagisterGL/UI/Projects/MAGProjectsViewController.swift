@@ -59,7 +59,7 @@ class MAGProjectsViewController: UIViewController,
     /* это отсюда убрать, передавать из контроллера Create project (можно подумать как это все передавать)
      по возвращению просто обновлять таблицу - должны браться все данные из коре даты
     */
-    self.viewModel.addProject()
+//    self.viewModel.addProject()
   }
   
 }

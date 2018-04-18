@@ -8,12 +8,25 @@
 
 import UIKit
 
-class MAGCreateProjectViewController: UIViewController
+class MAGCreateProjectViewController: UIViewController,
+                                      UITableViewDelegate,
+                                      UITableViewDataSource
 {
+  
+  let viewModel: MAGCreateProjectViewModel = MAGCreateProjectViewModel()
+  
+  var cellObjects: [MAGProjectFileAddTableViewCellObject] = []
+  
+  @IBOutlet weak var tableView: UITableView!
   
   override func viewDidLoad()
   {
     super.viewDidLoad()
+    
+    self.tableView.register(UINib.init(nibName: "MAGProjectFileAddTableViewCell",
+                                       bundle: nil),
+                            forCellReuseIdentifier: "MAGProjectFileAddTableViewCell")
+    self.cellObjects = self.viewModel.cellObjects()
     
   }
   
@@ -62,6 +75,23 @@ class MAGCreateProjectViewController: UIViewController
   {
     self.performSegue(withIdentifier: "showGoogleDrive",
                       sender: self)
+  }
+  
+  
+  //MARK: UITableViewDataSource
+  
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+  {
+    return self.cellObjects.count
+  }
+  
+  func tableView(_ tableView: UITableView,
+                 cellForRowAt indexPath: IndexPath) -> UITableViewCell
+  {
+    let cell = tableView.dequeueReusableCell(withIdentifier: "MAGProjectFileAddTableViewCell",
+                                             for: indexPath) as! MAGProjectFileAddTableViewCell
+    cell.configure(cellObject: cellObjects[indexPath.row])
+    return cell
   }
   
 }

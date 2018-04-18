@@ -43,7 +43,7 @@ class MAGGoogleTableViewController: UIViewController, UITableViewDelegate, UITab
     // Configure Google Sign-in.
     GIDSignIn.sharedInstance().delegate = self
     GIDSignIn.sharedInstance().uiDelegate = self
-    GIDSignIn.sharedInstance().scopes = [kGTLRAuthScopeDriveReadonly]
+//    GIDSignIn.sharedInstance().scopes = [kGTLRAuthScopeDriveReadonly]/
     GIDSignIn.sharedInstance().signInSilently()
     
     tableView.delegate = self
