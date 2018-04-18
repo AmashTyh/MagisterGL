@@ -46,12 +46,20 @@ class MAGProjectsViewModel: NSObject
   }
   
   // Передать все параметры проекта (название, урлы)
-  func addProject()
+  func addProject(name: String,
+                  nverPath: String,
+                  xyzPath: String,
+                  nvkatPath: String,
+                  elemNeibPath: String)
   {
     let newEntity = NSEntityDescription.insertNewObject(forEntityName: "MAGProject",
                                                         into: self.persistentContainer.viewContext) as! MAGProject
    
-    newEntity.name = "kjdfglkdf"
+    newEntity.name = name
+    newEntity.nverFilePath = nverPath
+    newEntity.nvkatFilePath = nvkatPath
+    newEntity.xyzFilePath = xyzPath
+    newEntity.elemNeibFilePath = elemNeibPath
     
     do
     {

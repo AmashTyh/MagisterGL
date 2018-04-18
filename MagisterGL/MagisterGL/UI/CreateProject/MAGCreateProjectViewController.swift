@@ -10,7 +10,8 @@ import UIKit
 
 class MAGCreateProjectViewController: UIViewController,
                                       UITableViewDelegate,
-                                      UITableViewDataSource
+                                      UITableViewDataSource,
+                                      MAGProjectFileAddTableViewCellDelegate
 {
   
   let viewModel: MAGCreateProjectViewModel = MAGCreateProjectViewModel()
@@ -19,6 +20,8 @@ class MAGCreateProjectViewController: UIViewController,
   
   @IBOutlet weak var tableView: UITableView!
   
+  @IBOutlet weak var nameTextField: UITextField!
+  
   override func viewDidLoad()
   {
     super.viewDidLoad()
@@ -26,17 +29,8 @@ class MAGCreateProjectViewController: UIViewController,
     self.tableView.register(UINib.init(nibName: "MAGProjectFileAddTableViewCell",
                                        bundle: nil),
                             forCellReuseIdentifier: "MAGProjectFileAddTableViewCell")
-    self.cellObjects = self.viewModel.cellObjects()
+    self.cellObjects = self.viewModel.cellObjects
     
-  }
-  
-  override func performSegue(withIdentifier identifier: String,
-                             sender: Any?)
-  {
-    if identifier.elementsEqual("showGoogleDrive")
-    {
-      
-    }
   }
   
   /*Возможно стоит переделать в таблицу
@@ -59,28 +53,23 @@ class MAGCreateProjectViewController: UIViewController,
                       sender: nil)
   }
   
-  @IBAction func addXYZTapped()
+  @IBAction func cancelCreateProject()
   {
-    self.performSegue(withIdentifier: "showGoogleDrive",
-                      sender: self)
+    self.dismiss(animated: true,
+                 completion: nil)
   }
   
-  @IBAction func addNVKATTapped(_ sender: Any)
+  @IBAction func addNewProject()
   {
-    self.performSegue(withIdentifier: "showGoogleDrive",
-                      sender: self)
-  }
-  
-  @IBAction func addElemNeibTapped()
-  {
-    self.performSegue(withIdentifier: "showGoogleDrive",
-                      sender: self)
+    self.viewModel.name = self.nameTextField.text
+    self.viewModel.createProject()
   }
   
   
   //MARK: UITableViewDataSource
   
-  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+  func tableView(_ tableView: UITableView,
+                 numberOfRowsInSection section: Int) -> Int
   {
     return self.cellObjects.count
   }
@@ -90,8 +79,29 @@ class MAGCreateProjectViewController: UIViewController,
   {
     let cell = tableView.dequeueReusableCell(withIdentifier: "MAGProjectFileAddTableViewCell",
                                              for: indexPath) as! MAGProjectFileAddTableViewCell
-    cell.configure(cellObject: cellObjects[indexPath.row])
+    cell.configure(cellObject: cellObjects[indexPath.row],
+                   delegate: self)
     return cell
+  }
+  
+  //MARK: MAGProjectFileAddTableViewCellDelegate
+  
+  func showGoogleDrive(cellObject: MAGProjectFileAddTableViewCellObject)
+  {
+    let storyboard = UIStoryboard(name: "Main",
+                                  bundle: nil)
+    let googleDriceVC = storyboard.instantiateViewController(withIdentifier: "MAGGoogleTableViewController") as! MAGGoogleTableViewController
+    googleDriceVC.completion = {
+      obj in
+      cellObject.filePath = obj
+      self.tableView.reloadData()
+      /*
+       Сохранить файл в документах
+ */
+    }
+    self.present(googleDriceVC,
+                 animated: true,
+                 completion: nil)
   }
   
 }

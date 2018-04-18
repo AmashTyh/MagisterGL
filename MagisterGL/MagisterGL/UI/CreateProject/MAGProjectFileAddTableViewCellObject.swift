@@ -13,9 +13,12 @@ import UIKit
 class MAGProjectFileAddTableViewCellObject: NSObject
 {
   var name: String
+  var filePath: String
 
-  init(name: String)
+  init(name: String,
+       filePath: String)
   {
     self.name = name
+    self.filePath = filePath
   }
 }

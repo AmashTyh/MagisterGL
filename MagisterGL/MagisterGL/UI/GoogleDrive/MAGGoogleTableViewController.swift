@@ -7,13 +7,21 @@
 //
 
 import UIKit
+import GoogleAPIClientForREST
 
 protocol MAGGoogleTableViewControllerDelegate
 {
   func savedFile(filePath: NSString)
 }
 
-class MAGGoogleTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, GIDSignInDelegate, GIDSignInUIDelegate {
+class MAGGoogleTableViewController: UIViewController,
+                                    UITableViewDelegate,
+                                    UITableViewDataSource,
+                                    GIDSignInDelegate,
+                                    GIDSignInUIDelegate
+{
+  
+  var completion : ((String) -> Void)?
   
   var activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.whiteLarge)
   let cellReuseIdentifier = "kReuseCellID"
@@ -24,32 +32,32 @@ class MAGGoogleTableViewController: UIViewController, UITableViewDelegate, UITab
   @IBOutlet weak var tableView: UITableView!
   @IBOutlet weak var signInButton: GIDSignInButton!
   
-  @IBAction func update(_ sender: Any) {
+  @IBAction func update(_ sender: Any)
+  {
     activityIndicator.startAnimating()
-    provider.listFiles(completionBlock: {(success: Bool) -> Void in
+    provider.listFiles(completionBlock: {
+      (success: Bool) -> Void in
       self.tableView.reloadData()
       self.activityIndicator.stopAnimating()
       print(self.provider.filesDictionary)
     })
   }
   
-  @IBAction func closeVC(_ sender: Any) {
-    self.dismiss(animated: true, completion: nil)
+  @IBAction func closeVC(_ sender: Any)
+  {
+    self.dismiss(animated: true,
+                 completion: nil)
   }
   
-  override func viewDidLoad() {
+  override func viewDidLoad()
+  {
     super.viewDidLoad()
     
     // Configure Google Sign-in.
     GIDSignIn.sharedInstance().delegate = self
     GIDSignIn.sharedInstance().uiDelegate = self
-//    GIDSignIn.sharedInstance().scopes = [kGTLRAuthScopeDriveReadonly]/
+    GIDSignIn.sharedInstance().scopes = [kGTLRAuthScopeDriveReadonly]
     GIDSignIn.sharedInstance().signInSilently()
-    
-    tableView.delegate = self
-    tableView.dataSource = self
-    
-    
     
     self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellReuseIdentifier)
     //activityIndicator.hidesWhenStopped = true
@@ -65,13 +73,17 @@ class MAGGoogleTableViewController: UIViewController, UITableViewDelegate, UITab
     view.addConstraint(verticalConstraint)
   }
   
-  override func viewWillAppear(_ animated: Bool) {
+  override func viewWillAppear(_ animated: Bool)
+  {
     super.viewWillAppear(animated)
     
-    if (!loginPassed) {
+    if (!loginPassed)
+    {
       self.tableView.isHidden = true
       self.signInButton.isHidden = false
-    } else {
+    }
+    else
+    {
       self.tableView.isHidden = false
       self.signInButton.isHidden = true
       self.update(self)
@@ -79,11 +91,18 @@ class MAGGoogleTableViewController: UIViewController, UITableViewDelegate, UITab
   }
   
   // MARK: Google Drive
-  func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
-    if let error = error {
-      showAlert(title: "Authentication Error", message: error.localizedDescription)
+  func sign(_ signIn: GIDSignIn!,
+            didSignInFor user: GIDGoogleUser!,
+            withError error: Error!)
+  {
+    if let error = error
+    {
+      showAlert(title: "Authentication Error",
+                message: error.localizedDescription)
       provider.service.authorizer = nil
-    } else {
+    }
+    else
+    {
       loginPassed = true
       self.signInButton.isHidden = true
       self.tableView.isHidden = false
@@ -93,30 +112,35 @@ class MAGGoogleTableViewController: UIViewController, UITableViewDelegate, UITab
   }
   
   // Helper for showing an alert
-  func showAlert(title : String, message: String) {
-    let alert = UIAlertController(
-      title: title,
-      message: message,
-      preferredStyle: UIAlertControllerStyle.alert
-    )
-    let ok = UIAlertAction(
-      title: "OK",
-      style: UIAlertActionStyle.default,
-      handler: {(alert: UIAlertAction!) in
-        self.dismiss(animated: true, completion: nil)
+  func showAlert(title : String,
+                 message: String)
+  {
+    let alert = UIAlertController(title: title,
+                                  message: message,
+                                  preferredStyle: UIAlertControllerStyle.alert)
+    let ok = UIAlertAction(title: "OK",
+                           style: UIAlertActionStyle.default,
+                           handler: {
+                            (alert: UIAlertAction!) in self.dismiss(animated: true,
+                                                                    completion: nil)
     }
     )
     alert.addAction(ok)
-    present(alert, animated: true, completion: nil)
+    present(alert, animated: true,
+            completion: nil)
   }
   
   
   // MARK: TableView
-  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+  func tableView(_ tableView: UITableView,
+                 numberOfRowsInSection section: Int) -> Int
+  {
     return provider.filesDictionary.count
   }
   
-  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+  func tableView(_ tableView: UITableView,
+                 cellForRowAt indexPath: IndexPath) -> UITableViewCell
+  {
     // create a new cell if needed or reuse an old one
     let cell : UITableViewCell = (self.tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier) as UITableViewCell?)!
     
@@ -126,13 +150,20 @@ class MAGGoogleTableViewController: UIViewController, UITableViewDelegate, UITab
     return cell
   }
   
-  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+  func tableView(_ tableView: UITableView,
+                 didSelectRowAt indexPath: IndexPath)
+  {
     activityIndicator.startAnimating()
     let filename = Array(provider.filesDictionary.keys)[indexPath.row]
     let fileId = provider.filesDictionary[filename]
     
-    provider.downloadFile(withFileID: fileId, fileName: filename, completionBlock: {_ in
-      self.activityIndicator.stopAnimating()
+    provider.downloadFile(withFileID: fileId,
+                          fileName: filename,
+                          completionBlock: {_ in
+                            self.activityIndicator.stopAnimating()
+                            self.completion!(filename)
+                            self.dismiss(animated: true,
+                                         completion: nil)
     })
   }
 
