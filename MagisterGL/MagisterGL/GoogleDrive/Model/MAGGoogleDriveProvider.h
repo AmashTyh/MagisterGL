@@ -11,14 +11,19 @@
 @import GoogleSignIn;
 #import <GoogleAPIClientForREST/GTLRDrive.h>
 
+
 @interface MAGGoogleDriveProvider : NSObject
 
-@property (nonatomic, strong) GTLRDriveService* service;
-@property (nonatomic, strong) NSDictionary<NSString*, NSString*>* filesDictionary;
+@property (nonnull, nonatomic, strong) NSFileManager *fileManager;
+@property (nonnull, nonatomic, strong) NSString *workDirectoryName;
+@property (nonnull, nonatomic, strong) GTLRDriveService *service;
+@property (nonnull, nonatomic, strong) NSDictionary<NSString *, NSString *> *filesDictionary;
 
 //+ (GoogleDriveProvider*)sharedInstance;
 
-- (void)listFilesWithCompletionBlock:(void (^)(BOOL success))completion;
-- (void)downloadFileWithFileID: (NSString*)fileID fileName: (NSString*)fileName completionBlock:(void (^)(BOOL result))completion;
+- (void) listFilesWithCompletionBlock:(void (^_Nullable)(BOOL success))completion;
+- (void) downloadFileWithFileID: (nonnull NSString *) fileID
+                       fileName: (nonnull NSString *) fileName
+                completionBlock: (void (^_Nonnull)(BOOL result, NSString * _Nullable filePath)) completion;
 
 @end

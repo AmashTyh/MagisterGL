@@ -26,72 +26,107 @@
 //    return sharedInstance_;
 //}
 
-- (instancetype)init
+- (instancetype) init
 {
   self = [super init];
-  if (self) {
+  if (self)
+  {
+    _fileManager = [NSFileManager defaultManager];
     _service = [[GTLRDriveService alloc] init];
     _filesDictionary = [NSDictionary dictionary];
+    _workDirectoryName = @"Files";
   }
   return self;
 }
 
-- (void)listFilesWithCompletionBlock:(void (^)(BOOL success))completion
+- (void) listFilesWithCompletionBlock: (void (^)(BOOL success)) completion
 {
   self.mutFilesDictionary = [NSMutableDictionary dictionary];
   self.service.shouldFetchNextPages = YES;
   GTLRDriveQuery_FilesList *query = [GTLRDriveQuery_FilesList query];
   query.fields = @"nextPageToken, files(id, name)";
   
-  [self.service executeQuery:query completionHandler:^(GTLRServiceTicket *ticket, GTLRDrive_FileList *result, NSError *error) {
-    if (error == nil) {
-      
-      if (result.files.count > 0) {
-        int count = 1;
-        for (GTLRDrive_File *file in result.files) {
-          self.mutFilesDictionary[file.name] = file.identifier;
-          count++;
-        }
-        self.filesDictionary = [self.mutFilesDictionary copy];
-        completion(YES);
-      }
-    } else {
-      NSLog(@"Something strange");
-      completion(NO);
-    }
-  }];
+  [self.service executeQuery: query
+           completionHandler: ^(GTLRServiceTicket *ticket,
+                                GTLRDrive_FileList *result,
+                                NSError *error)
+   {
+     if (error == nil)
+     {
+       if (result.files.count > 0)
+       {
+         int count = 1;
+         for (GTLRDrive_File *file in result.files)
+         {
+           self.mutFilesDictionary[file.name] = file.identifier;
+           count++;
+         }
+         self.filesDictionary = [self.mutFilesDictionary copy];
+         completion(YES);
+       }
+     }
+     else
+     {
+       NSLog(@"Something strange");
+       completion(NO);
+     }
+   }];
 }
 
-- (void)downloadFileWithFileID: (NSString*)fileID fileName: (NSString*)fileName completionBlock:(void (^)(BOOL result))completion
+- (void) downloadFileWithFileID: (NSString *) fileID
+                       fileName: (NSString *) fileName
+                completionBlock: (void (^) (BOOL result, NSString * filePath)) completion
 {
-  GTLRQuery *query = [GTLRDriveQuery_FilesGet queryForMediaWithFileId:fileID];
-  [self.service executeQuery:query completionHandler:^(GTLRServiceTicket *ticket,
-                                                       GTLRDataObject *file,
-                                                       NSError *error) {
-    if (error == nil) {
-      NSFileManager *fileManager = [NSFileManager defaultManager];
-      NSURL *documentsPath = [fileManager URLForDirectory:NSDocumentDirectory
-                                                 inDomain:NSUserDomainMask
-                                        appropriateForURL:nil
-                                                   create:NO
-                                                    error:nil];
-      /*
-       Генерировать название и отправлять в комплишине
-       */
-      NSURL *filePath = [documentsPath URLByAppendingPathComponent:fileName];
-      BOOL fileExists = [fileManager fileExistsAtPath:filePath.absoluteString];
-      if (fileExists == NO) {
-        [file.data writeToURL:filePath atomically:NO];
-        NSLog(@"Downloaded %lu bytes", file.data.length);
-      } else {
-        NSLog(@"File already exist");
-      }
-      completion(YES);
-    } else {
-      NSLog(@"An error occurred: %@", error);
-      completion(NO);
+  GTLRQuery *query = [GTLRDriveQuery_FilesGet queryForMediaWithFileId: fileID];
+  [self.service executeQuery: query
+           completionHandler: ^(GTLRServiceTicket *ticket,
+                                GTLRDataObject *file,
+                                NSError *error)
+   {
+     if (error == nil)
+     {
+       /*
+        Генерировать название и отправлять в комплишине
+        */
+       NSURL *filePath = [self localRandomURLforFileWithType: [[fileName componentsSeparatedByString: @"."] lastObject]];
+       [file.data writeToURL: filePath
+                  atomically: NO];
+       NSLog(@"Downloaded %lu bytes", file.data.length);
+       
+       NSString *filePathString = [NSString stringWithFormat: @"%@/%@", self.workDirectoryName, [[filePath.absoluteString componentsSeparatedByString: @"/"] lastObject]];
+       completion(YES, filePathString);
+     }
+     else
+     {
+       NSLog(@"An error occurred: %@", error);
+       completion(NO, nil);
+     }
+   }];
+}
+
+
+#pragma mark - Private
+
+- (NSURL *) localRandomURLforFileWithType: (NSString *) type
+{
+  NSString *workDirectoryPath = [self workDirectory].path;
+  while (YES)
+  {
+    NSString *fileName = [[NSString stringWithFormat: @"file_%u.", arc4random()] stringByAppendingString: type];
+    NSString *path = [workDirectoryPath stringByAppendingPathComponent: fileName];
+    
+    if (![self.fileManager fileExistsAtPath: path])
+    {
+      return [NSURL fileURLWithPath: path];
     }
-  }];
+  }
+}
+
+- (NSURL *) workDirectory
+{
+  NSArray <NSURL *> *urls = [self.fileManager URLsForDirectory: NSDocumentDirectory
+                                                     inDomains: NSUserDomainMask];
+  return [urls.firstObject URLByAppendingPathComponent: self.workDirectoryName];
 }
 
 @end

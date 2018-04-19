@@ -157,11 +157,15 @@ class MAGGoogleTableViewController: UIViewController,
     let filename = Array(provider.filesDictionary.keys)[indexPath.row]
     let fileId = provider.filesDictionary[filename]
     
-    provider.downloadFile(withFileID: fileId,
+    provider.downloadFile(withFileID: fileId!,
                           fileName: filename,
-                          completionBlock: {_ in
+                          completionBlock: {_,filePath  in
+                            
                             self.activityIndicator.stopAnimating()
-                            self.completion!(filename)
+                            if filePath != nil
+                            {
+                              self.completion!(filePath!)
+                            }
                             self.dismiss(animated: true,
                                          completion: nil)
     })

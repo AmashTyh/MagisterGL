@@ -6,7 +6,9 @@
 //  Copyright © 2018 Хохлова Татьяна. All rights reserved.
 //
 
+
 #import "MAGLocalFileManager.h"
+
 
 @interface MAGLocalFileManager ()
 
@@ -14,35 +16,38 @@
 
 @end
 
+
 @implementation MAGLocalFileManager
 
-- (instancetype)init
+- (instancetype) init
 {
   self = [super init];
-  if (self) {
+  if (self)
+  {
     _filesnameArrayMutable = [NSMutableArray array];
   }
   return self;
 }
 
 
-- (NSArray<NSString*> *)getFilenamesArray
+- (NSArray<NSString*> *) getFilenamesArray
 {
   return  [self.filesnameArrayMutable copy];
 }
 
-- (NSUInteger)findFilesInLocalDirectory
+- (NSUInteger) findFilesInLocalDirectory
 {
   NSFileManager *fileManager = [NSFileManager defaultManager];
   NSString *documentsPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
   
-  NSArray *contents = [fileManager contentsOfDirectoryAtURL:[NSURL URLWithString:documentsPath]
-                                 includingPropertiesForKeys:@[]
-                                                    options:NSDirectoryEnumerationSkipsHiddenFiles
-                                                      error:nil];
-  for (NSURL *fileURL in contents) {
+  NSArray *contents = [fileManager contentsOfDirectoryAtURL: [NSURL URLWithString:documentsPath]
+                                 includingPropertiesForKeys: @[]
+                                                    options: NSDirectoryEnumerationSkipsHiddenFiles
+                                                      error: nil];
+  for (NSURL *fileURL in contents)
+  {
     NSLog(@"%@", fileURL.absoluteString);
-    [self.filesnameArrayMutable addObject:fileURL.absoluteString];
+    [self.filesnameArrayMutable addObject: fileURL.absoluteString];
   }
   return contents.count;
 }
