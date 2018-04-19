@@ -30,7 +30,10 @@ class MAG3DViewController: UIViewController, UIPopoverPresentationControllerDele
     super.viewDidLoad()
     
     self.customGeometryView.delegate = self
-     self.customGeometryView.configure(project: self.project)
+    if self.project != nil
+    {
+      self.customGeometryView.configure(project: self.project)
+    }
   }
     
     override func prepare(for segue: UIStoryboardSegue,

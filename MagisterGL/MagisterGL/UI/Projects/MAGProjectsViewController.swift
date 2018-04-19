@@ -73,4 +73,8 @@ class MAGProjectsViewController: UIViewController,
 //    self.viewModel.addProject()
   }
   
+  @IBAction func refresh(_ sender: Any)
+  {
+    self.tableView.reloadData()
+  }
 }

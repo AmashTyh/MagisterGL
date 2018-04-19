@@ -149,17 +149,31 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Projects" id="Dx4-Iv-p7s">
-                        <barButtonItem key="leftBarButtonItem" title="Locals" id="CRD-wt-iDx">
-                            <connections>
-                                <segue destination="aNO-hp-bjU" kind="show" id="71c-yL-HRo"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Dfo-RU-tPW">
-                            <connections>
-                                <action selector="addButtonTapped:" destination="iTe-ep-ynG" id="Uk1-ra-MUc"/>
-                                <segue destination="hFW-57-ZEW" kind="presentation" modalPresentationStyle="overFullScreen" id="YMc-NK-g2t"/>
-                            </connections>
-                        </barButtonItem>
+                        <leftBarButtonItems>
+                            <barButtonItem systemItem="organize" id="CRD-wt-iDx">
+                                <connections>
+                                    <segue destination="aNO-hp-bjU" kind="show" id="71c-yL-HRo"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="rewind" id="BGo-3Q-5mU">
+                                <connections>
+                                    <segue destination="uBJ-RP-nfx" kind="show" id="VMv-cl-oTN"/>
+                                </connections>
+                            </barButtonItem>
+                        </leftBarButtonItems>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="add" id="Dfo-RU-tPW">
+                                <connections>
+                                    <action selector="addButtonTapped:" destination="iTe-ep-ynG" id="Uk1-ra-MUc"/>
+                                    <segue destination="hFW-57-ZEW" kind="presentation" modalPresentationStyle="overFullScreen" id="YMc-NK-g2t"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="refresh" id="Soe-Do-50o">
+                                <connections>
+                                    <action selector="refresh:" destination="iTe-ep-ynG" id="DWz-aI-1te"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="pLb-T7-t2i" id="88x-Hj-C7m"/>
@@ -600,5 +614,6 @@
         <segue reference="71c-yL-HRo"/>
         <segue reference="zKT-4M-LcO"/>
         <segue reference="GIL-dq-iV4"/>
+        <segue reference="VMv-cl-oTN"/>
     </inferredMetricsTieBreakers>
 </document>
