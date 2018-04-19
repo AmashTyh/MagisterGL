@@ -15,7 +15,6 @@
 @interface MAGGoogleDriveProvider : NSObject
 
 @property (nonnull, nonatomic, strong) NSFileManager *fileManager;
-@property (nonnull, nonatomic, strong) NSString *workDirectoryName;
 @property (nonnull, nonatomic, strong) GTLRDriveService *service;
 @property (nonnull, nonatomic, strong) NSDictionary<NSString *, NSString *> *filesDictionary;
 

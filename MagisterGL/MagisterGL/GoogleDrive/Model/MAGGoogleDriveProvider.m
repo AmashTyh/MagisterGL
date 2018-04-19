@@ -34,7 +34,6 @@
     _fileManager = [NSFileManager defaultManager];
     _service = [[GTLRDriveService alloc] init];
     _filesDictionary = [NSDictionary dictionary];
-    _workDirectoryName = @"Files";
   }
   return self;
 }
@@ -93,7 +92,7 @@
                   atomically: NO];
        NSLog(@"Downloaded %lu bytes", file.data.length);
        
-       NSString *filePathString = [NSString stringWithFormat: @"%@/%@", self.workDirectoryName, [[filePath.absoluteString componentsSeparatedByString: @"/"] lastObject]];
+       NSString *filePathString = [[filePath.absoluteString componentsSeparatedByString: @"/"] lastObject];
        completion(YES, filePathString);
      }
      else
@@ -126,7 +125,7 @@
 {
   NSArray <NSURL *> *urls = [self.fileManager URLsForDirectory: NSDocumentDirectory
                                                      inDomains: NSUserDomainMask];
-  return [urls.firstObject URLByAppendingPathComponent: self.workDirectoryName];
+  return urls.firstObject;
 }
 
 @end

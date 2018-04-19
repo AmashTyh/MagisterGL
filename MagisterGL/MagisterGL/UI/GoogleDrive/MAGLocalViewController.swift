@@ -32,19 +32,24 @@ class MAGLocalViewController: UIViewController, UITableViewDelegate, UITableView
   }
   
   // MARK: TableView
-  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+  func tableView(_ tableView: UITableView,
+                 numberOfRowsInSection section: Int) -> Int {
     return filesCount
   }
   
-  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+  func tableView(_ tableView: UITableView,
+                 cellForRowAt indexPath: IndexPath) -> UITableViewCell
+  {
     // create a new cell if needed or reuse an old one
     let cell : UITableViewCell = (self.tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier) as UITableViewCell?)!
     
-    cell.textLabel?.text = localFileManager.filesnameArray[indexPath.row];
+    cell.textLabel?.text = localFileManager.filesnameArray[indexPath.row].components(separatedBy: "/").last;
     return cell
   }
   
-  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+  func tableView(_ tableView: UITableView,
+                 didSelectRowAt indexPath: IndexPath)
+  {
     
   }
 

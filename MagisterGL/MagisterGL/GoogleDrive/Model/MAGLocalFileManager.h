@@ -10,9 +10,9 @@
 
 @interface MAGLocalFileManager : NSObject
 
-@property (nonatomic, strong, readonly, getter=getFilenamesArray) NSArray<NSString*> *filesnameArray;
+@property (nonnull, nonatomic, strong) NSFileManager *fileManager;
+@property (nonnull, nonatomic, strong, readonly, getter=getFilenamesArray) NSArray<NSString*> *filesnameArray;
 
-- (NSArray<NSString*> *)getFilenamesArray;
-- (NSUInteger)findFilesInLocalDirectory;
+- (NSUInteger) findFilesInLocalDirectory;
 
 @end

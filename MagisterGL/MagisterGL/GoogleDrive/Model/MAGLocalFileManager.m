@@ -24,32 +24,38 @@
   self = [super init];
   if (self)
   {
+    _fileManager = [NSFileManager defaultManager];
     _filesnameArrayMutable = [NSMutableArray array];
   }
   return self;
 }
 
 
-- (NSArray<NSString*> *) getFilenamesArray
+- (NSArray <NSString*> *) getFilenamesArray
 {
   return  [self.filesnameArrayMutable copy];
 }
 
 - (NSUInteger) findFilesInLocalDirectory
 {
-  NSFileManager *fileManager = [NSFileManager defaultManager];
-  NSString *documentsPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
-  
-  NSArray *contents = [fileManager contentsOfDirectoryAtURL: [NSURL URLWithString:documentsPath]
-                                 includingPropertiesForKeys: @[]
-                                                    options: NSDirectoryEnumerationSkipsHiddenFiles
-                                                      error: nil];
+  NSURL *workDirectory = [self workDirectory];
+  NSError *error = nil;
+  NSArray <NSURL *> *contents = [self.fileManager contentsOfDirectoryAtURL: workDirectory
+                                                includingPropertiesForKeys: nil
+                                                                   options: 0
+                                                                     error: &error];
   for (NSURL *fileURL in contents)
   {
-    NSLog(@"%@", fileURL.absoluteString);
     [self.filesnameArrayMutable addObject: fileURL.absoluteString];
   }
   return contents.count;
+}
+
+- (NSURL *) workDirectory
+{
+  NSArray <NSURL *> *urls = [self.fileManager URLsForDirectory: NSDocumentDirectory
+                                                     inDomains: NSUserDomainMask];
+  return urls.firstObject;
 }
 
 @end
