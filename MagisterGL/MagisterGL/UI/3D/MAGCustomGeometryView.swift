@@ -38,6 +38,7 @@ class MAGCustomGeometryView: SCNView
     public func redraw()
     {
         scene?.rootNode.cleanup()
+      self.model.runTest()
         setupScene()
     }
   
@@ -47,14 +48,6 @@ class MAGCustomGeometryView: SCNView
     self.model.configure(project: project)
     setupScene()
   }
-    
-//    override func awakeFromNib()
-//    {
-//        super.awakeFromNib()
-//
-//      self.model.runTest()
-//        setupScene()
-//    }
   
     private func setupScene()
     {
