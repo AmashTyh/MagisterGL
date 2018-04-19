@@ -84,10 +84,14 @@
    {
      if (error == nil)
      {
-       /*
-        Генерировать название и отправлять в комплишине
-        */
-       NSURL *filePath = [self localRandomURLforFileWithType: [[fileName componentsSeparatedByString: @"."] lastObject]];
+       NSString *fileType = @"";
+       NSString *lastPath = [[fileName componentsSeparatedByString: @"."] lastObject];
+       if ([lastPath isEqualToString: @"txt"] ||
+           [lastPath isEqualToString: @"dat"])
+       {
+         fileType = lastPath;
+       }
+       NSURL *filePath = [self localRandomURLforFileWithType: fileType];
        [file.data writeToURL: filePath
                   atomically: NO];
        NSLog(@"Downloaded %lu bytes", file.data.length);

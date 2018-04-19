@@ -35,7 +35,8 @@ class MAGProjectsViewModel: NSObject
       let fetchedEntities = try self.persistentContainer.viewContext.fetch(fetchRequest) as! [MAGProject]
       for entity in fetchedEntities
       {
-        let cellObject = MAGProjectCellObject(name: entity.name!)
+        let cellObject = MAGProjectCellObject(name: entity.name!,
+                                              project: entity)
         array.append(cellObject)
       }
     }

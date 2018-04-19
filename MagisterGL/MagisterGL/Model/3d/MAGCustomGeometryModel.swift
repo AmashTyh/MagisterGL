@@ -13,6 +13,8 @@ import SceneKit
 
 class MAGCustomGeometryModel: NSObject
 {
+  let fileManager: MAGFileManager = MAGFileManager()
+  
     var elementsArray: [MAGHexahedron] = []
     var centerPoint: SCNVector3 = SCNVector3Zero
     var minVector: SCNVector3 = SCNVector3Zero
@@ -21,21 +23,30 @@ class MAGCustomGeometryModel: NSObject
     var nverArray: [[Int]] = []
     var nvkatArray: [Int] = []
     var neibArray: [[Int]] = []
+  
+  func runTest()
+  {
+    xyzArray = MAGFileManager.sharedInstance.getXYZArray()
+    nverArray = MAGFileManager.sharedInstance.getNVERArray()
+    nvkatArray = MAGFileManager.sharedInstance.getNVKATArray()
+    neibArray = MAGFileManager.sharedInstance.getNEIBArray()
     
-    override init()
-    {
-        super.init()
-        
-        createElementsArray()
-    }
+    createElementsArray()
+  }
+  
+  func configure(project: MAGProject)
+  {
+    let documentsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] + "/"
+    xyzArray = self.fileManager.getXYZArray(path: documentsPath + project.xyzFilePath!)
+    nverArray = self.fileManager.getNVERArray(path: documentsPath + project.nverFilePath!)
+    nvkatArray = self.fileManager.getNVKATArray(path: documentsPath + project.nvkatFilePath!)
+    neibArray = self.fileManager.getNEIBArray(path: documentsPath + project.elemNeibFilePath!)
+    
+    createElementsArray()
+  }
     
     func createElementsArray ()
     {
-        xyzArray = MAGFileManager.sharedInstance.getXYZArray()
-        nverArray = MAGFileManager.sharedInstance.getNVERArray()
-        nvkatArray = MAGFileManager.sharedInstance.getNVKATArray()
-        neibArray = MAGFileManager.sharedInstance.getNEIBArray()
-        
         minVector = xyzArray.first!
         maxVector = xyzArray.last!
         

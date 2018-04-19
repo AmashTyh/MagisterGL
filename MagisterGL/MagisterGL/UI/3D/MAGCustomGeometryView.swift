@@ -27,7 +27,7 @@ extension SCNNode
 
 class MAGCustomGeometryView: SCNView
 {
-    private var model: MAGCustomGeometryModel = MAGCustomGeometryModel.init()
+    private var model: MAGCustomGeometryModel = MAGCustomGeometryModel()
     
     deinit
     {
@@ -40,17 +40,24 @@ class MAGCustomGeometryView: SCNView
         scene?.rootNode.cleanup()
         setupScene()
     }
+  
+  
+  func configure(project: MAGProject)
+  {
+    self.model.configure(project: project)
+    setupScene()
+  }
     
-    override func awakeFromNib()
-    {
-        super.awakeFromNib()
-        
-        setupScene()
-    }
-    
+//    override func awakeFromNib()
+//    {
+//        super.awakeFromNib()
+//
+//      self.model.runTest()
+//        setupScene()
+//    }
+  
     private func setupScene()
     {
-        self.model = MAGCustomGeometryModel.init()
         // Configure the Scene View
         self.backgroundColor = .darkGray
         

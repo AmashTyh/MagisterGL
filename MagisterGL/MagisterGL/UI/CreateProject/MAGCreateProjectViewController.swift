@@ -62,7 +62,9 @@ class MAGCreateProjectViewController: UIViewController,
   @IBAction func addNewProject()
   {
     self.viewModel.name = self.nameTextField.text
-    self.viewModel.createProject()
+    self.viewModel.createProject()    
+    self.dismiss(animated: true,
+                 completion: nil)
   }
   
   

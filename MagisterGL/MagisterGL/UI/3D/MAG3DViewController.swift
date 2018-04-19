@@ -16,13 +16,21 @@ class MAG3DViewController: UIViewController, UIPopoverPresentationControllerDele
 
 {
   
-    @IBOutlet weak var customGeometryView: MAGCustomGeometryView!
+  @IBOutlet weak var customGeometryView: MAGCustomGeometryView!
+  
+  var project: MAGProject!
+  
+  func configure(project: MAGProject)
+  {
+    self.project = project
+  }
     
   override func viewDidLoad()
   {
     super.viewDidLoad()
     
     self.customGeometryView.delegate = self
+     self.customGeometryView.configure(project: self.project)
   }
     
     override func prepare(for segue: UIStoryboardSegue,

@@ -49,6 +49,17 @@ class MAGProjectsViewController: UIViewController,
    секлет ячейки открывает проект 3д(можно сделать тип ячейки со стрелочкой) или по кнопке
    добавить кнопки удалить, редактировать
  */
+  
+  func tableView(_ tableView: UITableView,
+                 didSelectRowAt indexPath: IndexPath)
+  {
+    let storyboard = UIStoryboard(name: "Main",
+                                  bundle: nil)
+    let geometryVC = storyboard.instantiateViewController(withIdentifier: "MAG3DViewController") as! MAG3DViewController    
+    geometryVC.configure(project: cellObjects[indexPath.row].project)
+    self.navigationController?.pushViewController(geometryVC,
+                                                  animated: true)
+  }
     
 
   /*

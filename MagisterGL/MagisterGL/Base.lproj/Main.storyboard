@@ -374,7 +374,7 @@
         <!--View Controller-->
         <scene sceneID="BAt-HF-GMA">
             <objects>
-                <viewController id="fc5-rN-1wo" customClass="MAG3DViewController" customModule="MagisterGL" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MAG3DViewController" id="fc5-rN-1wo" customClass="MAG3DViewController" customModule="MagisterGL" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="8sy-F7-irp"/>
                         <viewControllerLayoutGuide type="bottom" id="zCg-JB-xlA"/>
