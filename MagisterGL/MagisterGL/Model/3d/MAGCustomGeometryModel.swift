@@ -76,6 +76,7 @@ class MAGCustomGeometryModel: NSObject
     
     self.colorGenerator.generateColor(minValue: self.colorGenerator.uFunc(x: Double(minX), y: Double(minY), z: Double(minZ)),
                                       maxValue: self.colorGenerator.uFunc(x: Double(maxX), y: Double(maxY), z: Double(maxZ)))
+    var crossSection: MAGCrossSection = MAGCrossSection(plane: .X, value: 1)
     
     let xyzCalc: Float = abs((maxVector.y - minVector.y) / 4.0)
     
@@ -165,10 +166,16 @@ class MAGCustomGeometryModel: NSObject
                      isVisible: sidesFlagsArray[5]),  //верхняя
       ]
       
-      elementsArray.append(MAGHexahedron.init(positions: positionArray!,
-                                              sidesArray: sidesArray!,
-                                              material: nvkatArray[numberOfElement],
-                                              color:self.colorGenerator.getColorsFor(vertexes: positionArray!)))
+      let hexahedron = MAGHexahedron(positions: positionArray!,
+                                     sidesArray: sidesArray!,
+                                     material: nvkatArray[numberOfElement],
+                                     //color:self.colorGenerator.getColorsFor(vertexes: positionArray!)))
+        color: [self.getColor(material: nvkatArray[numberOfElement])])
+      // когда формируем hexahedronы смотрим их видимость
+      hexahedron.visible = crossSection.setVisibleToHexahedron(positions: positionArray!)
+      
+      elementsArray.append(hexahedron)
+
       //color: [self.getColor(material: nvkatArray[numberOfElement])]))
       numberOfElement = numberOfElement + 1
     }

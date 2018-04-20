@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		843BE691208A43C300A25448 /* MAGCrossSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843BE690208A43C300A25448 /* MAGCrossSection.swift */; };
 		843FFE82208792E700B717D2 /* MAGColorGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843FFE81208792E700B717D2 /* MAGColorGenerator.swift */; };
 		84541B071FB069BD00DC6E43 /* MAGChooseFileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84541B061FB069BD00DC6E43 /* MAGChooseFileViewController.swift */; };
 		84541B0D1FB0AD2300DC6E43 /* elem_neib2.txt in Resources */ = {isa = PBXBuildFile; fileRef = 84541B091FB0AD2300DC6E43 /* elem_neib2.txt */; };
@@ -74,6 +75,7 @@
 
 /* Begin PBXFileReference section */
 		6DA4F8BFD9D8D310D40705BF /* Pods_MagisterGL.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MagisterGL.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		843BE690208A43C300A25448 /* MAGCrossSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAGCrossSection.swift; sourceTree = "<group>"; };
 		843FFE81208792E700B717D2 /* MAGColorGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAGColorGenerator.swift; sourceTree = "<group>"; };
 		84541B061FB069BD00DC6E43 /* MAGChooseFileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAGChooseFileViewController.swift; sourceTree = "<group>"; };
 		84541B091FB0AD2300DC6E43 /* elem_neib2.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = elem_neib2.txt; sourceTree = "<group>"; };
@@ -400,6 +402,7 @@
 				9AE6156F1F8A07250067893C /* MAGCustomGeometryModel.swift */,
 				9A889F0E204D606000CA6069 /* MAGSide.swift */,
 				843FFE81208792E700B717D2 /* MAGColorGenerator.swift */,
+				843BE690208A43C300A25448 /* MAGCrossSection.swift */,
 			);
 			path = 3d;
 			sourceTree = "<group>";
@@ -644,6 +647,7 @@
 				84743BB22084E66F007049C6 /* MAGProjectsViewModel.swift in Sources */,
 				9A889F0F204D606000CA6069 /* MAGSide.swift in Sources */,
 				9A577D361F03B0AC0017F40F /* Scene.swift in Sources */,
+				843BE691208A43C300A25448 /* MAGCrossSection.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

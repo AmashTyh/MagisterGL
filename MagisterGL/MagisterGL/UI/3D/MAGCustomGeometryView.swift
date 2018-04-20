@@ -105,69 +105,72 @@ class MAGCustomGeometryView: SCNView
     
     for hexahedron in self.model.elementsArray
     {
-      hexahedron.setColorToSides()
-      var normals: [SCNVector3] = []
-      var indices: [CInt] = []
-      for side in hexahedron.sidesArray
+      if hexahedron.visible == .isVisible
       {
-        if side.isVisible
+        hexahedron.setColorToSides()
+        var normals: [SCNVector3] = []
+        var indices: [CInt] = []
+        for side in hexahedron.sidesArray
         {
-          let indicesSide = side.indicesArray(addValue: h * 5)
-          
-          let indexDataSide = Data(bytes: indicesSide,
-                                   count: MemoryLayout<CInt>.size * indicesSide.count)
-          let elementSide = SCNGeometryElement(data: indexDataSide,
-                                               primitiveType: .triangles,
-                                               primitiveCount: indicesSide.count / 3,
-                                               bytesPerIndex: MemoryLayout<CInt>.size)
-          globalElements.append(elementSide)
-          normals = normals + side.normalsArray()
-          indices = indices + indicesSide
-          vertexPositions += side.positions
-          
-          globalColors = globalColors + side.colors
-          h += 1
+          if side.isVisible
+          {
+            let indicesSide = side.indicesArray(addValue: h * 5)
+            
+            let indexDataSide = Data(bytes: indicesSide,
+                                     count: MemoryLayout<CInt>.size * indicesSide.count)
+            let elementSide = SCNGeometryElement(data: indexDataSide,
+                                                 primitiveType: .triangles,
+                                                 primitiveCount: indicesSide.count / 3,
+                                                 bytesPerIndex: MemoryLayout<CInt>.size)
+            globalElements.append(elementSide)
+            normals = normals + side.normalsArray()
+            indices = indices + indicesSide
+            vertexPositions += side.positions
+            
+            globalColors = globalColors + side.colors
+            h += 1
+          }
         }
+        
+        globalPositions = globalPositions + hexahedron.positions
+        let normals2 = [
+          SCNVector3Make( 1, 1, 1),
+          SCNVector3Make( 1, 1, 1),
+          SCNVector3Make( 1, 1, 1),
+          SCNVector3Make( 1, 1, 1),
+          SCNVector3Make( 1, 1, 1),
+          SCNVector3Make( 1, 1, 1),
+          SCNVector3Make( 1, 1, 1),
+          SCNVector3Make( 1, 1, 1),
+          //
+          SCNVector3Make( 1, 1, 1),
+          SCNVector3Make( 1, 1, 1),
+          SCNVector3Make( 1, 1, 1),
+          SCNVector3Make( 1, 1, 1),
+          SCNVector3Make( 1, 1, 1),
+          SCNVector3Make( 1, 1, 1),
+          ]
+        
+        globalNormals = globalNormals + normals2
+        let addValue = j * 8
+        globalIndicies = globalIndicies + indices
+        let indicesCarcas = [
+          0 + addValue, 1 + addValue,
+          0 + addValue, 2 + addValue,
+          0 + addValue, 4 + addValue,
+          1 + addValue, 3 + addValue,
+          2 + addValue, 3 + addValue,
+          1 + addValue, 5 + addValue,
+          4 + addValue, 5 + addValue,
+          2 + addValue, 6 + addValue,
+          4 + addValue, 6 + addValue,
+          6 + addValue, 7 + addValue,
+          3 + addValue, 7 + addValue,
+          5 + addValue, 7 + addValue,
+          ] as [CInt]
+        globalIndiciesCarcas = globalIndiciesCarcas + indicesCarcas
+        j = j + 1
       }
-      
-      globalPositions = globalPositions + hexahedron.positions
-      let normals2 = [
-        SCNVector3Make( 1, 1, 1),
-        SCNVector3Make( 1, 1, 1),
-        SCNVector3Make( 1, 1, 1),
-        SCNVector3Make( 1, 1, 1),
-        SCNVector3Make( 1, 1, 1),
-        SCNVector3Make( 1, 1, 1),
-        SCNVector3Make( 1, 1, 1),
-        SCNVector3Make( 1, 1, 1),
-        //
-        SCNVector3Make( 1, 1, 1),
-        SCNVector3Make( 1, 1, 1),
-        SCNVector3Make( 1, 1, 1),
-        SCNVector3Make( 1, 1, 1),
-        SCNVector3Make( 1, 1, 1),
-        SCNVector3Make( 1, 1, 1),
-        ]
-      
-      globalNormals = globalNormals + normals2
-      let addValue = j * 8
-      globalIndicies = globalIndicies + indices
-      let indicesCarcas = [
-        0 + addValue, 1 + addValue,
-        0 + addValue, 2 + addValue,
-        0 + addValue, 4 + addValue,
-        1 + addValue, 3 + addValue,
-        2 + addValue, 3 + addValue,
-        1 + addValue, 5 + addValue,
-        4 + addValue, 5 + addValue,
-        2 + addValue, 6 + addValue,
-        4 + addValue, 6 + addValue,
-        6 + addValue, 7 + addValue,
-        3 + addValue, 7 + addValue,
-        5 + addValue, 7 + addValue,
-        ] as [CInt]
-      globalIndiciesCarcas = globalIndiciesCarcas + indicesCarcas
-      j = j + 1
     }
     
     let positionSource = SCNGeometrySource(vertices: globalPositions)
