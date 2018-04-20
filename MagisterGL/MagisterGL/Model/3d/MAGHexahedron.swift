@@ -10,6 +10,12 @@
 import UIKit
 import SceneKit
 
+enum HexahedronVisible
+{
+   case isVisible
+   case notVisible
+   case needSection
+}
 
 class MAGHexahedron: NSObject
 {
@@ -24,7 +30,13 @@ class MAGHexahedron: NSObject
     Материал - целое число
     */
    var material: Int
-   
+   /**
+    Видимость - три состояния
+    0 - не видим
+    1 - видим
+    2 - через него проходит сечение
+    */
+   var visible: HexahedronVisible = .isVisible
    
    var colors: [SCNVector3]
    
