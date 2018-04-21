@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		843BE691208A43C300A25448 /* MAGCrossSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843BE690208A43C300A25448 /* MAGCrossSection.swift */; };
+		843FFE82208792E700B717D2 /* MAGColorGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843FFE81208792E700B717D2 /* MAGColorGenerator.swift */; };
 		84541B071FB069BD00DC6E43 /* MAGChooseFileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84541B061FB069BD00DC6E43 /* MAGChooseFileViewController.swift */; };
 		84541B0D1FB0AD2300DC6E43 /* elem_neib2.txt in Resources */ = {isa = PBXBuildFile; fileRef = 84541B091FB0AD2300DC6E43 /* elem_neib2.txt */; };
 		84541B0E1FB0AD2300DC6E43 /* xyz2.txt in Resources */ = {isa = PBXBuildFile; fileRef = 84541B0A1FB0AD2300DC6E43 /* xyz2.txt */; };
@@ -73,6 +75,8 @@
 
 /* Begin PBXFileReference section */
 		6DA4F8BFD9D8D310D40705BF /* Pods_MagisterGL.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MagisterGL.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		843BE690208A43C300A25448 /* MAGCrossSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAGCrossSection.swift; sourceTree = "<group>"; };
+		843FFE81208792E700B717D2 /* MAGColorGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAGColorGenerator.swift; sourceTree = "<group>"; };
 		84541B061FB069BD00DC6E43 /* MAGChooseFileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAGChooseFileViewController.swift; sourceTree = "<group>"; };
 		84541B091FB0AD2300DC6E43 /* elem_neib2.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = elem_neib2.txt; sourceTree = "<group>"; };
 		84541B0A1FB0AD2300DC6E43 /* xyz2.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = xyz2.txt; sourceTree = "<group>"; };
@@ -397,6 +401,8 @@
 				9AE6156D1F8A03B00067893C /* MAGHexahedron.swift */,
 				9AE6156F1F8A07250067893C /* MAGCustomGeometryModel.swift */,
 				9A889F0E204D606000CA6069 /* MAGSide.swift */,
+				843FFE81208792E700B717D2 /* MAGColorGenerator.swift */,
+				843BE690208A43C300A25448 /* MAGCrossSection.swift */,
 			);
 			path = 3d;
 			sourceTree = "<group>";
@@ -477,7 +483,7 @@
 				TargetAttributes = {
 					9ADE1EB71EED062B006D409E = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = U8KD48QDBK;
+						DevelopmentTeam = SZ46K2Z6E6;
 						LastSwiftMigration = 0930;
 						ProvisioningStyle = Automatic;
 					};
@@ -606,6 +612,7 @@
 				9AB601AC1F762F19004C50AB /* MAGSource.swift in Sources */,
 				9AF322EA1F7A7FE4003AE463 /* MAG3DViewController.swift in Sources */,
 				9AB601A91F762BF2004C50AB /* MAGScene.swift in Sources */,
+				843FFE82208792E700B717D2 /* MAGColorGenerator.swift in Sources */,
 				9A4B279D1F91EA8900068550 /* MAGBinaryDataScanner.swift in Sources */,
 				84743BA42084DC7F007049C6 /* MAGGoogleDriveProvider.m in Sources */,
 				84743BAD2084DEB6007049C6 /* MAGLocalViewController.swift in Sources */,
@@ -640,6 +647,7 @@
 				84743BB22084E66F007049C6 /* MAGProjectsViewModel.swift in Sources */,
 				9A889F0F204D606000CA6069 /* MAGSide.swift in Sources */,
 				9A577D361F03B0AC0017F40F /* Scene.swift in Sources */,
+				843BE691208A43C300A25448 /* MAGCrossSection.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -780,7 +788,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = U8KD48QDBK;
+				DEVELOPMENT_TEAM = SZ46K2Z6E6;
 				INFOPLIST_FILE = MagisterGL/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -799,7 +807,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = U8KD48QDBK;
+				DEVELOPMENT_TEAM = SZ46K2Z6E6;
 				INFOPLIST_FILE = MagisterGL/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
