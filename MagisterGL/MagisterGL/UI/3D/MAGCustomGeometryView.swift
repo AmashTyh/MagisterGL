@@ -107,7 +107,7 @@ class MAGCustomGeometryView: SCNView
     {
       if hexahedron.visible == .isVisible
       {
-        hexahedron.setColorToSides()
+        //hexahedron.setColorToSides()
         var normals: [SCNVector3] = []
         var indices: [CInt] = []
         for side in hexahedron.sidesArray

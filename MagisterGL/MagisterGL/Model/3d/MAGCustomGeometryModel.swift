@@ -54,6 +54,11 @@ class MAGCustomGeometryModel: NSObject
     minVector = xyzArray.first!
     maxVector = xyzArray.last!
     
+    var arrayOfVectors: [SCNVector3]? = []
+    let xyzCalc: Float = abs((maxVector.y - minVector.y) / 4.0)
+    let crossSection: MAGCrossSection = MAGCrossSection(plane: .X, value: 3000 / xyzCalc)
+    
+    
     // минимумы и максимумы по осям
     let minX = xyzArray.min { (first, second) -> Bool in
       return first.x < second.x
@@ -76,11 +81,7 @@ class MAGCustomGeometryModel: NSObject
     
     self.colorGenerator.generateColor(minValue: self.colorGenerator.uFunc(x: Double(minX), y: Double(minY), z: Double(minZ)),
                                       maxValue: self.colorGenerator.uFunc(x: Double(maxX), y: Double(maxY), z: Double(maxZ)))
-    
-    let xyzCalc: Float = abs((maxVector.y - minVector.y) / 4.0)
-    let crossSection: MAGCrossSection = MAGCrossSection(plane: .X, value: 3000 / xyzCalc)
-    
-    var arrayOfVectors: [SCNVector3]? = []
+
     for xyz in xyzArray
     {
       let vector = SCNVector3Make(Float(xyz.x / xyzCalc),
@@ -113,7 +114,7 @@ class MAGCustomGeometryModel: NSObject
     var numberOfElement : Int = 0
     for nverElementArray in nverArray
     {
-      var sidesFlagsArray: [Bool] = [true, true, true, true, true, true]
+      
       var positionArray : [SCNVector3]? = []
       var materialsArray: [Int] = []
       var i : Int = 0
@@ -133,44 +134,20 @@ class MAGCustomGeometryModel: NSObject
       }
       j = j + 1
       
-      
+      var neibsArray: [[Int]] = []
       for numberOfSide in 0..<6
       {
-        sidesFlagsArray[numberOfSide] = (neibArray[6 * numberOfElement + numberOfSide].count == 1)
+        neibsArray.insert(neibArray[6 * numberOfElement + numberOfSide], at: numberOfSide)
       }
       
-      let sidesArray: [MAGSide]? = [
-        MAGSide.init(positions: [positionArray![0], positionArray![2], positionArray![6], positionArray![4]],
-                     positionType: .Left,
-                     material: nvkatArray[numberOfElement],
-                     isVisible: sidesFlagsArray[0]), //левая
-        MAGSide.init(positions: [positionArray![1], positionArray![0], positionArray![4], positionArray![5]],
-                     positionType: .Front,
-                     material: nvkatArray[numberOfElement],
-                     isVisible: sidesFlagsArray[1]), //передняя
-        MAGSide.init(positions: [positionArray![0], positionArray![1], positionArray![3], positionArray![2]],
-                     positionType: .Bottom,
-                     material: nvkatArray[numberOfElement],
-                     isVisible: sidesFlagsArray[2]), //нижняя
-        MAGSide.init(positions: [positionArray![1], positionArray![5], positionArray![7], positionArray![3]],
-                     positionType: .Right,
-                     material: nvkatArray[numberOfElement],
-                     isVisible: sidesFlagsArray[3]), //правая
-        MAGSide.init(positions: [positionArray![2], positionArray![3], positionArray![7], positionArray![6]],
-                     positionType: .Back,
-                     material: nvkatArray[numberOfElement],
-                     isVisible: sidesFlagsArray[4]), //задняя
-        MAGSide.init(positions: [positionArray![5], positionArray![4], positionArray![6], positionArray![7]],
-                     positionType: .Top,
-                     material: nvkatArray[numberOfElement],
-                     isVisible: sidesFlagsArray[5]),  //верхняя
-      ]
-      
       let hexahedron = MAGHexahedron(positions: positionArray!,
-                                     sidesArray: sidesArray!,
+                                     neighbours: neibsArray,
                                      material: nvkatArray[numberOfElement],
-                                     //color:self.colorGenerator.getColorsFor(vertexes: positionArray!)))
-        color: [self.getColor(material: nvkatArray[numberOfElement])])
+                                     colors: [self.getColor(material: nvkatArray[numberOfElement])])
+                                     //colors: self.colorGenerator.getColorsFor(vertexes: positionArray!))
+      hexahedron.generateSides() 
+      
+      
       // когда формируем hexahedronы смотрим их видимость
       hexahedron.visible = crossSection.setVisibleToHexahedron(positions: positionArray!)
       
