@@ -48,8 +48,6 @@ class MAGCrossSection: NSObject {
          {
             return HexahedronVisible.needSection
          }
-      default:
-         return HexahedronVisible.isVisible
       }
       return HexahedronVisible.isVisible
    }

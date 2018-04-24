@@ -82,8 +82,7 @@ class MAGCustomGeometryModel: NSObject
     self.colorGenerator.generateColor(minValue: self.colorGenerator.uFunc(x: Double(minX), y: Double(minY), z: Double(minZ)),
                                       maxValue: self.colorGenerator.uFunc(x: Double(maxX), y: Double(maxY), z: Double(maxZ)))
 
-    for xyz in xyzArray
-    {
+    for xyz in xyzArray {
       let vector = SCNVector3Make(Float(xyz.x / xyzCalc),
                                   Float(xyz.y / xyzCalc),
                                   Float(xyz.z / xyzCalc))
@@ -135,8 +134,7 @@ class MAGCustomGeometryModel: NSObject
       j = j + 1
       
       var neibsArray: [[Int]] = []
-      for numberOfSide in 0..<6
-      {
+      for numberOfSide in 0..<6 {
         neibsArray.insert(neibArray[6 * numberOfElement + numberOfSide], at: numberOfSide)
       }
       
@@ -153,12 +151,39 @@ class MAGCustomGeometryModel: NSObject
       
       elementsArray.append(hexahedron)
 
-      //color: [self.getColor(material: nvkatArray[numberOfElement])]))
       numberOfElement = numberOfElement + 1
     }
+    setVisibleToHexahedrons()
+    
     centerPoint = SCNVector3Make((maxVector.x - minVector.x) / 2.0 + minVector.x,
                                  (maxVector.y - minVector.y) / 2.0 + minVector.y,
                                  (maxVector.z - minVector.z) / 2.0 + minVector.z)
+  }
+  
+  func setVisibleToHexahedrons()
+  {
+    for hexahedron in self.elementsArray {
+      if hexahedron.visible == .needSection {
+        setVisibleNeibOf(hexahedron: hexahedron)
+      }
+    }
+  }
+  
+  // видимость соседей
+  func setVisibleNeibOf(hexahedron: MAGHexahedron)
+  {
+    for i in 0..<6 {
+      if (hexahedron.neighbours[i].count > 1) {
+        let count = hexahedron.neighbours[i][0]
+        for j in 0..<count {
+          if (elementsArray[hexahedron.neighbours[i][j + 1] - 1].visible == .isVisible)
+          {
+            elementsArray[hexahedron.neighbours[i][j + 1] - 1].setHexahedronSides(visible: true)
+            elementsArray[hexahedron.neighbours[i][j + 1] - 1].updateSides()
+          }
+        }
+      }
+    }
   }
   
   // TODO: Надо сделать цвета кастомизируемыми(хотя бы из файла).

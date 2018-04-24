@@ -21,7 +21,7 @@ class MAGHexahedron: NSObject
 {
   /**
    Номера элементов соседей
-   порядок: [левый], [передний], [нижний], [правый], [задний], [верхний]
+   порядок: [[левый], [передний], [нижний], [правый], [задний], [верхний]]
    */
   var neighbours: [[Int]] = [[]]
   
@@ -67,23 +67,36 @@ class MAGHexahedron: NSObject
   }
   
   
+  func setHexahedronSides(visible: Bool)
+  {
+    if (visible) {
+      isSideVisibleArray = [true, true, true, true, true, true]
+    }
+    else {
+      isSideVisibleArray = [false, false, false, false, false, false]
+    }
+  }
+  
   /**
    Используйте, если хотите работать с Side
    */
   func generateSides()
   {
-    for i in 0..<6
-    {
-       if (neighbours[i].count == 1)
-       {
+    for i in 0..<6 {
+       if (neighbours[i].count == 1) {
           isSideVisibleArray[i] = true
        }
-       else
-       {
+       else {
           isSideVisibleArray[i] = false
        }
     }
     
+    updateSides()
+  }
+  
+  
+  func updateSides()
+  {
     sidesArray = [
       MAGSide.init(positions: [positions[0], positions[2], positions[6], positions[4]],
                    positionType: .Left,
