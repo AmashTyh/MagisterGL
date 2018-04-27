@@ -1,32 +1,16 @@
 //
-//  MAGCustomGeometryView.swift
+//  MAGSectionView.swift
 //  MagisterGL
 //
-//  Created by Хохлова Татьяна on 26.09.17.
-//  Copyright © 2017 Хохлова Татьяна. All rights reserved.
+//  Created by Admin on 27.04.2018.
+//  Copyright © 2018 Хохлова Татьяна. All rights reserved.
 //
-
 
 import UIKit
 import SceneKit
-import OpenGLES
 
+class MAGSectionView: SCNView {
 
-extension SCNNode
-{
-  func cleanup()
-  {
-    for child in childNodes
-    {
-      child.cleanup()
-    }
-    geometry = nil
-  }
-}
-
-
-class MAGCustomGeometryView: SCNView
-{
   private var model: MAGCustomGeometryModel = MAGCustomGeometryModel()
   
   deinit
@@ -87,10 +71,11 @@ class MAGCustomGeometryView: SCNView
                                                      self.model.centerPoint.z)
     
     self.scene = scene
-    createCube()
+    
+    createSection()
   }
   
-  private func createCube()
+  private func createSection()
   {
     var h = 0 as Int32
     var j = 0 as Int32
@@ -105,12 +90,14 @@ class MAGCustomGeometryView: SCNView
     
     for hexahedron in self.model.elementsArray
     {
-        //hexahedron.setColorToSides()
+      if hexahedron.visible == .needSection
+      {
+        hexahedron.setColorToSides()
         var normals: [SCNVector3] = []
         var indices: [CInt] = []
         for side in hexahedron.sidesArray
         {
-          if side.isVisible
+          if side.positionType == .Front
           {
             let indicesSide = side.indicesArray(addValue: h * 5)
             
@@ -168,6 +155,7 @@ class MAGCustomGeometryView: SCNView
           ] as [CInt]
         globalIndiciesCarcas = globalIndiciesCarcas + indicesCarcas
         j = j + 1
+      }
     }
     
     let positionSource = SCNGeometrySource(vertices: globalPositions)
@@ -190,20 +178,5 @@ class MAGCustomGeometryView: SCNView
                                elements: globalElements)
     let cubeNode = SCNNode(geometry: geometry)
     self.scene?.rootNode.addChildNode(cubeNode)
-    
-    
-//    let indexDataCarcas = Data(bytes: globalIndiciesCarcas,
-//                               count: MemoryLayout<CInt>.size * globalIndiciesCarcas.count)
-//
-//
-//    let elementBorder = SCNGeometryElement(data: indexDataCarcas,
-//                                           primitiveType: .line,
-//                                           primitiveCount: globalIndiciesCarcas.count / 2,
-//                                           bytesPerIndex: MemoryLayout<CInt>.size)
-//    let geometryBorder = SCNGeometry(sources: [positionSource],
-//                                     elements: [elementBorder])
-//    geometryBorder.firstMaterial?.diffuse.contents = UIColor.white
-//    let borderCubeNode = SCNNode(geometry: geometryBorder)
-//    self.scene?.rootNode.addChildNode(borderCubeNode)
   }
 }

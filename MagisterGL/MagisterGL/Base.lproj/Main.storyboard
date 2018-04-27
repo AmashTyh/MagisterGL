@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Ksh-TJ-avS">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Ksh-TJ-avS">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -410,13 +410,20 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="hnv-r4-Fgi">
-                        <barButtonItem key="rightBarButtonItem" title="Test" id="7Wn-zH-ad6">
-                            <connections>
-                                <segue destination="HKY-s1-MDh" kind="popoverPresentation" popoverAnchorBarButtonItem="7Wn-zH-ad6" id="C0F-kz-hg9">
-                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                </segue>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem title="Test" id="7Wn-zH-ad6">
+                                <connections>
+                                    <segue destination="HKY-s1-MDh" kind="popoverPresentation" popoverAnchorBarButtonItem="7Wn-zH-ad6" id="C0F-kz-hg9">
+                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                    </segue>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Section" id="JIs-Sg-bh9">
+                                <connections>
+                                    <segue destination="t2h-2f-k0f" kind="show" id="Wlw-2I-UjQ"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="customGeometryView" destination="Lyg-Da-mv5" id="dZ7-sS-rwd"/>
@@ -424,7 +431,39 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lgB-Av-xWo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2322" y="1477"/>
+            <point key="canvasLocation" x="-2710" y="1492"/>
+        </scene>
+        <!--Section View Controller-->
+        <scene sceneID="SJ4-0D-ggs">
+            <objects>
+                <viewController id="t2h-2f-k0f" customClass="MAGSectionViewController" customModule="MagisterGL" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="onx-nc-OAz"/>
+                        <viewControllerLayoutGuide type="bottom" id="m7L-Ep-sbw"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="wpt-Nv-upC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <sceneKitView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FM4-c8-eM8" customClass="MAGSectionView" customModule="MagisterGL" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                            </sceneKitView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="m7L-Ep-sbw" firstAttribute="top" secondItem="FM4-c8-eM8" secondAttribute="bottom" id="R2V-jI-9dQ"/>
+                            <constraint firstItem="FM4-c8-eM8" firstAttribute="leading" secondItem="wpt-Nv-upC" secondAttribute="leading" id="b0S-7K-qy0"/>
+                            <constraint firstAttribute="trailing" secondItem="FM4-c8-eM8" secondAttribute="trailing" id="cC1-H7-Oet"/>
+                            <constraint firstItem="FM4-c8-eM8" firstAttribute="top" secondItem="onx-nc-OAz" secondAttribute="bottom" id="sy5-d7-1GY"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="customGeometryView" destination="FM4-c8-eM8" id="ZD2-VV-3WA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZxY-qo-hFE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1937" y="1492"/>
         </scene>
         <!--Choose File View Controller-->
         <scene sceneID="yJc-5A-4gx">
@@ -505,7 +544,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Grf-WK-2CD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1394" y="1477"/>
+            <point key="canvasLocation" x="-1081" y="1492"/>
         </scene>
         <!--GoogleTableVC-->
         <scene sceneID="ufs-6q-peo">

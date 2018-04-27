@@ -78,7 +78,7 @@ class MAGCustomGeometryModel: NSObject
                                       maxValue: self.colorGenerator.uFunc(x: Double(maxX), y: Double(maxY), z: Double(maxZ)))
     
     let xyzCalc: Float = abs((maxVector.y - minVector.y) / 4.0)
-    let crossSection: MAGCrossSection = MAGCrossSection(plane: .X, value: 3000 / xyzCalc, greater: false)
+    let crossSection: MAGCrossSection = MAGCrossSection(plane: .Y, value: -4000 / xyzCalc, greater: false)
     
     var arrayOfVectors: [SCNVector3]? = []
     for xyz in xyzArray
