@@ -93,6 +93,7 @@ class MAGHexahedron: NSObject
                    material: self.material,
                    isVisible: isSideVisibleArray[5]),  //верхняя
     ]
+    setColorToSides()
   }
   
   func setColorToSides()
