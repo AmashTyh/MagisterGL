@@ -74,11 +74,13 @@ class MAGCustomGeometryModel: NSObject
       return first.z < second.z
       }!.z
     
-    self.colorGenerator.generateColor(minValue: self.colorGenerator.uFunc(x: Double(minX), y: Double(minY), z: Double(minZ)),
-                                      maxValue: self.colorGenerator.uFunc(x: Double(maxX), y: Double(maxY), z: Double(maxZ)))
+
     
     let xyzCalc: Float = abs((maxVector.y - minVector.y) / 4.0)
     let crossSection: MAGCrossSection = MAGCrossSection(plane: .Y, value: -4000 / xyzCalc, greater: false)
+    
+    self.colorGenerator.generateColor(minValue: self.colorGenerator.uFunc(x: Double(minVector.x / xyzCalc), y: Double(minVector.y / xyzCalc), z: Double(minVector.z / xyzCalc)),
+                                      maxValue: self.colorGenerator.uFunc(x: Double(maxVector.x / xyzCalc), y: Double(maxVector.y / xyzCalc), z: Double(maxVector.z / xyzCalc)))
     
     var arrayOfVectors: [SCNVector3]? = []
     for xyz in xyzArray
@@ -123,8 +125,8 @@ class MAGCustomGeometryModel: NSObject
       let hexahedron = MAGHexahedron(positions: positionArray!,
                                      neighbours: elementNeibsArray,
                                      material: nvkatArray[numberOfElement],
-                                     //color:self.colorGenerator.getColorsFor(vertexes: positionArray!)))
-                                     color: [self.getColor(material: nvkatArray[numberOfElement])])
+                                     color:self.colorGenerator.getColorsFor(vertexes: positionArray!))
+                                     //color: [self.getColor(material: nvkatArray[numberOfElement])])
       
       hexahedron.generateSides()
       // когда формируем hexahedronы смотрим их видимость
