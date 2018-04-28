@@ -185,25 +185,25 @@ class MAGCustomGeometryView: SCNView
                                    dataOffset: 0,
                                    dataStride: MemoryLayout<SCNVector3>.stride)
     
-    // let geometry = SCNGeometry(sources: [vertexSource, normalSource, colors],
-    let geometry = SCNGeometry(sources: [vertexSource, colors],
+     let geometry = SCNGeometry(sources: [vertexSource, normalSource, colors],
+    //let geometry = SCNGeometry(sources: [vertexSource, colors],
                                elements: globalElements)
     let cubeNode = SCNNode(geometry: geometry)
     self.scene?.rootNode.addChildNode(cubeNode)
     
     
-//    let indexDataCarcas = Data(bytes: globalIndiciesCarcas,
-//                               count: MemoryLayout<CInt>.size * globalIndiciesCarcas.count)
-//
-//
-//    let elementBorder = SCNGeometryElement(data: indexDataCarcas,
-//                                           primitiveType: .line,
-//                                           primitiveCount: globalIndiciesCarcas.count / 2,
-//                                           bytesPerIndex: MemoryLayout<CInt>.size)
-//    let geometryBorder = SCNGeometry(sources: [positionSource],
-//                                     elements: [elementBorder])
-//    geometryBorder.firstMaterial?.diffuse.contents = UIColor.white
-//    let borderCubeNode = SCNNode(geometry: geometryBorder)
-//    self.scene?.rootNode.addChildNode(borderCubeNode)
+    let indexDataCarcas = Data(bytes: globalIndiciesCarcas,
+                               count: MemoryLayout<CInt>.size * globalIndiciesCarcas.count)
+
+
+    let elementBorder = SCNGeometryElement(data: indexDataCarcas,
+                                           primitiveType: .line,
+                                           primitiveCount: globalIndiciesCarcas.count / 2,
+                                           bytesPerIndex: MemoryLayout<CInt>.size)
+    let geometryBorder = SCNGeometry(sources: [positionSource],
+                                     elements: [elementBorder])
+    geometryBorder.firstMaterial?.diffuse.contents = UIColor.white
+    let borderCubeNode = SCNNode(geometry: geometryBorder)
+    self.scene?.rootNode.addChildNode(borderCubeNode)
   }
 }

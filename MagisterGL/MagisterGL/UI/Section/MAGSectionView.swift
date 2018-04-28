@@ -12,6 +12,7 @@ import SceneKit
 class MAGSectionView: SCNView {
 
   private var model: MAGCustomGeometryModel = MAGCustomGeometryModel()
+  private var zoomValue: Float = 1.0
   
   deinit
   {
@@ -73,6 +74,12 @@ class MAGSectionView: SCNView {
     self.scene = scene
     
     createSection()
+  }
+  
+  func zoomScene()
+  {
+     zoomValue *= 2.0
+    self.redraw()
   }
   
   private func createSection()
@@ -177,6 +184,7 @@ class MAGSectionView: SCNView {
     let geometry = SCNGeometry(sources: [vertexSource, colors],
                                elements: globalElements)
     let cubeNode = SCNNode(geometry: geometry)
+    cubeNode.scale = SCNVector3(x: zoomValue, y: zoomValue, z: zoomValue)
     self.scene?.rootNode.addChildNode(cubeNode)
   }
 }
