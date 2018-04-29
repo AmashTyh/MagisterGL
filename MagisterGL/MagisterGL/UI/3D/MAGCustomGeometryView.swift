@@ -112,7 +112,7 @@ class MAGCustomGeometryView: SCNView
         {
           if side.isVisible
           {
-            let indicesSide = side.indicesArray(addValue: h * 5)
+            let indicesSide = side.indicesArray(addValue: h * 9)
             
             let indexDataSide = Data(bytes: indicesSide,
                                      count: MemoryLayout<CInt>.size * indicesSide.count)
@@ -185,8 +185,8 @@ class MAGCustomGeometryView: SCNView
                                    dataOffset: 0,
                                    dataStride: MemoryLayout<SCNVector3>.stride)
     
-     let geometry = SCNGeometry(sources: [vertexSource, normalSource, colors],
-    //let geometry = SCNGeometry(sources: [vertexSource, colors],
+    // let geometry = SCNGeometry(sources: [vertexSource, normalSource, colors],
+    let geometry = SCNGeometry(sources: [vertexSource, colors],
                                elements: globalElements)
     let cubeNode = SCNNode(geometry: geometry)
     self.scene?.rootNode.addChildNode(cubeNode)

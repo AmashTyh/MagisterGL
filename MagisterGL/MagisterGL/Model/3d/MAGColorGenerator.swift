@@ -11,7 +11,7 @@ import SceneKit
 
 class MAGColorGenerator: NSObject
 {
-   private static let kCountOfColorAreas: Int = 100
+   private static let kCountOfColorAreas: Int = 255
    var rainbow: [Color] = []
   
    
@@ -52,7 +52,7 @@ class MAGColorGenerator: NSObject
               y: Double,
               z: Double) -> Double
    {
-      return x*x + y*y + z*z
+      return x + y + z
    }
    
    func getColorForU(u: Double) -> SCNVector3
