@@ -112,7 +112,7 @@ class MAGCustomGeometryView: SCNView
         {
           if side.isVisible
           {
-            let indicesSide = side.indicesArray(addValue: h * 9)
+            let indicesSide = side.indicesArray(addValue: h * 5)
             
             let indexDataSide = Data(bytes: indicesSide,
                                      count: MemoryLayout<CInt>.size * indicesSide.count)

@@ -44,10 +44,10 @@ class MAGSide: NSObject
     
     self.positions.append(MAGSide.getCenterFor(first: positions[0], second: positions[2]))
     
-    self.positions.append(MAGSide.getCenterFor(first: positions[0], second: positions[1]))
-    self.positions.append(MAGSide.getCenterFor(first: positions[0], second: positions[3]))
-    self.positions.append(MAGSide.getCenterFor(first: positions[1], second: positions[2]))
-    self.positions.append(MAGSide.getCenterFor(first: positions[2], second: positions[3]))
+//    self.positions.append(MAGSide.getCenterFor(first: positions[0], second: positions[1]))
+//    self.positions.append(MAGSide.getCenterFor(first: positions[0], second: positions[3]))
+//    self.positions.append(MAGSide.getCenterFor(first: positions[1], second: positions[2]))
+//    self.positions.append(MAGSide.getCenterFor(first: positions[2], second: positions[3]))
     
    }
    
@@ -102,17 +102,17 @@ class MAGSide: NSObject
    }
   
   
-  func indicesArray(addValue: Int32) -> [Int32]
-  {
-    return [0 + addValue, 6 + addValue, 5 + addValue,
-            6 + addValue, 4 + addValue, 5 + addValue,
-            5 + addValue, 4 + addValue, 1 + addValue,
-            4 + addValue, 7 + addValue, 1 + addValue,
-            6 + addValue, 3 + addValue, 4 + addValue,
-            3 + addValue, 8 + addValue, 4 + addValue,
-            4 + addValue, 8 + addValue, 7 + addValue,
-            8 + addValue, 2 + addValue, 7 + addValue]
-  }
+//  func indicesArray(addValue: Int32) -> [Int32]
+//  {
+//    return [0 + addValue, 6 + addValue, 5 + addValue,
+//            6 + addValue, 4 + addValue, 5 + addValue,
+//            5 + addValue, 4 + addValue, 1 + addValue,
+//            4 + addValue, 7 + addValue, 1 + addValue,
+//            6 + addValue, 3 + addValue, 4 + addValue,
+//            3 + addValue, 8 + addValue, 4 + addValue,
+//            4 + addValue, 8 + addValue, 7 + addValue,
+//            8 + addValue, 2 + addValue, 7 + addValue]
+//  }
   
 //  func indicesArray(addValue: Int32) -> [Int32]
 //  {
@@ -120,13 +120,13 @@ class MAGSide: NSObject
 //            3 + addValue, 2 + addValue, 1 + addValue]
 //  }
   
-//   func indicesArray(addValue: Int32) -> [Int32]
-//   {
-//      return [0 + addValue, 3 + addValue, 4 + addValue,
-//              3 + addValue, 2 + addValue, 4 + addValue,
-//              2 + addValue, 1 + addValue, 4 + addValue,
-//              1 + addValue, 0 + addValue, 4 + addValue]
-//   }
+   func indicesArray(addValue: Int32) -> [Int32]
+   {
+      return [0 + addValue, 3 + addValue, 4 + addValue,
+              3 + addValue, 2 + addValue, 4 + addValue,
+              2 + addValue, 1 + addValue, 4 + addValue,
+              1 + addValue, 0 + addValue, 4 + addValue]
+   }
   
    func generateCenterColor() -> SCNVector3
    {
