@@ -74,6 +74,12 @@ class MAGCustomGeometryView: SCNView
     
     self.allowsCameraControl = true
     self.showsStatistics = true
+    if #available(iOS 11.0, *) {
+      self.cameraControlConfiguration.allowsTranslation = false
+      self.cameraControlConfiguration.rotationSensitivity = 0
+    } else {
+      // Fallback on earlier versions
+    }
     
     // create and add an ambient light to the scene
     let ambientLightNode = SCNNode()
