@@ -57,6 +57,14 @@ class MAGSectionView: SCNView {
                                      self.model.centerPoint.z + (self.model.maxVector.z - self.model.minVector.z) / 2.0 + 20)
     scene.rootNode.addChildNode(cameraNode)
     
+    if #available(iOS 11.0, *) {
+      self.cameraControlConfiguration.allowsTranslation = false
+      self.cameraControlConfiguration.rotationSensitivity = 0
+    } else {
+      // Fallback on earlier versions
+    }
+    
+    
     self.allowsCameraControl = true
     self.showsStatistics = true
     
