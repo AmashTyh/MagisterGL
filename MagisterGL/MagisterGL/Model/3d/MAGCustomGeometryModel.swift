@@ -80,7 +80,6 @@ class MAGCustomGeometryModel: NSObject
 
     
     self.xyzCalc = abs((maxVector.y - minVector.y) / 2.0)
-    self.sectionValue = 3000.0
     let crossSection: MAGCrossSection = MAGCrossSection(plane: .X, value: sectionValue / xyzCalc, greater: false)
     //let crossSection: MAGCrossSection = MAGCrossSection(plane: .Y, value: -4000 / xyzCalc, greater: false)
     

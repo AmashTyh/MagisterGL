@@ -12,10 +12,15 @@ class MAGSectionViewController: UIViewController {
 
   @IBOutlet weak var customGeometryView: MAGSectionView!
   
+  var sectionType: PlaneType = .X
+  var sectionValue: Float = 0
+  
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+      self.customGeometryView.model.sectionValue = sectionValue
+      self.customGeometryView.model.sectionType = sectionType
       self.customGeometryView.redraw()
     }
 }

@@ -27,7 +27,7 @@ extension SCNNode
 
 class MAGCustomGeometryView: SCNView
 {
-  private var model: MAGCustomGeometryModel = MAGCustomGeometryModel()
+  var model: MAGCustomGeometryModel = MAGCustomGeometryModel()
   
   deinit
   {

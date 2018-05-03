@@ -11,7 +11,7 @@ import SceneKit
 
 class MAGSectionView: SCNView {
 
-  private var model: MAGCustomGeometryModel = MAGCustomGeometryModel()
+  var model: MAGCustomGeometryModel = MAGCustomGeometryModel()
   private var zoomValue: Float = 1.0
   
   deinit
@@ -23,7 +23,6 @@ class MAGSectionView: SCNView {
   public func redraw()
   {
     scene?.rootNode.cleanup()
-    self.model = MAGCustomGeometryModel()
     self.model.runTest()
     setupScene()
   }
@@ -32,7 +31,6 @@ class MAGSectionView: SCNView {
   func configure(project: MAGProject)
   {
     scene?.rootNode.cleanup()
-    self.model = MAGCustomGeometryModel()
     self.model.configure(project: project)
     setupScene()
   }

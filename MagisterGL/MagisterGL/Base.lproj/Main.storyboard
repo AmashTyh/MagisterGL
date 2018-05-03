@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -425,13 +426,16 @@
                             </barButtonItem>
                             <barButtonItem title="Section" id="JIs-Sg-bh9">
                                 <connections>
-                                    <segue destination="t2h-2f-k0f" kind="show" id="Wlw-2I-UjQ"/>
+                                    <segue destination="Yia-fo-B5Z" kind="popoverPresentation" popoverAnchorBarButtonItem="JIs-Sg-bh9" id="qME-yA-Mos">
+                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                    </segue>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="customGeometryView" destination="Lyg-Da-mv5" id="dZ7-sS-rwd"/>
+                        <segue destination="t2h-2f-k0f" kind="show" identifier="showSection" id="PVb-yN-1lr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lgB-Av-xWo" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -469,6 +473,60 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZxY-qo-hFE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1937" y="1492"/>
+        </scene>
+        <!--Choose Section View Controller-->
+        <scene sceneID="D8r-x7-cRE">
+            <objects>
+                <viewController id="Yia-fo-B5Z" customClass="MAGChooseSectionViewController" customModule="MagisterGL" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Yya-f5-dRa"/>
+                        <viewControllerLayoutGuide type="bottom" id="qCS-lO-t9e"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="yXD-bt-t1G">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Section X" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kTA-HI-aEP">
+                                <rect key="frame" x="30" y="70" width="73.5" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BxM-xQ-I8b">
+                                <rect key="frame" x="37" y="587" width="300" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="gOM-px-WIf"/>
+                                </constraints>
+                                <state key="normal" title="Draw section"/>
+                                <connections>
+                                    <action selector="drawSectionButtonTapped" destination="Yia-fo-B5Z" eventType="touchUpInside" id="kWu-Ff-rz8"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="C5N-yv-Q2a">
+                                <rect key="frame" x="123.5" y="70" width="215.5" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="qCS-lO-t9e" firstAttribute="top" secondItem="BxM-xQ-I8b" secondAttribute="bottom" constant="50" id="A7w-Nx-J9d"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="C5N-yv-Q2a" secondAttribute="trailing" constant="20" id="DsV-Wk-bmZ"/>
+                            <constraint firstItem="kTA-HI-aEP" firstAttribute="leading" secondItem="yXD-bt-t1G" secondAttribute="leading" constant="30" id="Okm-27-e13"/>
+                            <constraint firstItem="C5N-yv-Q2a" firstAttribute="leading" secondItem="kTA-HI-aEP" secondAttribute="trailing" constant="20" id="WfU-3P-UA3"/>
+                            <constraint firstItem="BxM-xQ-I8b" firstAttribute="centerX" secondItem="yXD-bt-t1G" secondAttribute="centerX" id="cKK-Yb-38N"/>
+                            <constraint firstItem="kTA-HI-aEP" firstAttribute="top" secondItem="Yya-f5-dRa" secondAttribute="bottom" constant="50" id="dft-WU-ace"/>
+                            <constraint firstItem="C5N-yv-Q2a" firstAttribute="top" secondItem="Yya-f5-dRa" secondAttribute="bottom" constant="50" id="syU-Gu-nxK"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="sectionXTextField" destination="C5N-yv-Q2a" id="1fu-hg-HSw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FhZ-SY-XXy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3102" y="2267"/>
         </scene>
         <!--Choose File View Controller-->
         <scene sceneID="yJc-5A-4gx">
