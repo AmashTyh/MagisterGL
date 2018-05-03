@@ -92,23 +92,6 @@ class MAGCustomGeometryModel: NSObject
     minVector = xyzArray.first!
     maxVector = xyzArray.last!
     
-    var countArray = Array(repeating: 0, count: 100000)
-    for nver in nverArray
-    {
-      var i : Int = 0
-      for grid in nver
-      {
-        if i < 8
-        {
-          countArray[grid - 1] += 1
-        }
-        else
-        {
-          break
-        }
-        i = i + 1
-      }
-    }
     var j : Int = 0
     var numberOfElement : Int = 0
     for nverElementArray in nverArray
