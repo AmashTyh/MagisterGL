@@ -27,6 +27,8 @@ class MAGCustomGeometryModel: NSObject
   var nvkatArray: [Int] = []
   var neibArray: [[Int]] = []
   var xyzCalc: Float = 1
+  var sectionType: PlaneType = .X
+  var sectionValue: Float = 0
   
   func runTest()
   {
@@ -78,7 +80,8 @@ class MAGCustomGeometryModel: NSObject
 
     
     self.xyzCalc = abs((maxVector.y - minVector.y) / 2.0)
-    let crossSection: MAGCrossSection = MAGCrossSection(plane: .X, value: 3000.0 / xyzCalc, greater: false)
+    self.sectionValue = 3000.0
+    let crossSection: MAGCrossSection = MAGCrossSection(plane: .X, value: sectionValue / xyzCalc, greater: false)
     //let crossSection: MAGCrossSection = MAGCrossSection(plane: .Y, value: -4000 / xyzCalc, greater: false)
     
     self.colorGenerator.generateColor(minValue: self.colorGenerator.uFunc(x: Double(minVector.x / xyzCalc), y: Double(minVector.y / xyzCalc), z: Double(minVector.z / xyzCalc)),

@@ -110,7 +110,7 @@ class MAGSectionView: SCNView {
         hexahedron.setColorToSides()
         let points = MAGCrossSectionHelper.getPointsOfIntersectionWith(hexahedron: hexahedron,
                                                                        sectionType: .X,
-                                                                       sectionValue: 3000.0 / self.model.xyzCalc)
+                                                                       sectionValue: self.model.sectionValue / self.model.xyzCalc)
         var normals: [SCNVector3] = []
         var indices: [CInt] = []
         let side = MAGSide(positions: points,
