@@ -129,8 +129,8 @@ class MAGCustomGeometryModel: NSObject
       let hexahedron = MAGHexahedron(positions: positionArray!,
                                      neighbours: elementNeibsArray,
                                      material: nvkatArray[numberOfElement],
-                                     //color:self.colorGenerator.getColorsFor(vertexes: positionArray!))
-                                     color: [self.getColor(material: nvkatArray[numberOfElement])])
+                                     color:self.colorGenerator.getColorsFor(vertexes: positionArray!))
+                                     //color: [self.getColor(material: nvkatArray[numberOfElement])])
       
       hexahedron.generateSides()
       // когда формируем hexahedronы смотрим их видимость

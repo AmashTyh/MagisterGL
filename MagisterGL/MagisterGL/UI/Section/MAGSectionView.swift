@@ -55,12 +55,12 @@ class MAGSectionView: SCNView {
                                      self.model.centerPoint.z + (self.model.maxVector.z - self.model.minVector.z) / 2.0 + 20)
     scene.rootNode.addChildNode(cameraNode)
     
-//    if #available(iOS 11.0, *) {
-//      self.cameraControlConfiguration.allowsTranslation = false
-//      self.cameraControlConfiguration.rotationSensitivity = 0
-//    } else {
-//      // Fallback on earlier versions
-//    }
+    if #available(iOS 11.0, *) {
+      self.cameraControlConfiguration.allowsTranslation = false
+      self.cameraControlConfiguration.rotationSensitivity = 0
+    } else {
+      // Fallback on earlier versions
+    }
     
     
     self.allowsCameraControl = true
@@ -109,19 +109,25 @@ class MAGSectionView: SCNView {
         let points = MAGCrossSectionHelper.getPointsOfIntersectionWith(hexahedron: hexahedron,
                                                                        sectionType: .X,
                                                                        sectionValue: self.model.sectionValue / self.model.xyzCalc)
+        
+        
+        
         var normals: [SCNVector3] = []
         var indices: [CInt] = []
         let side = MAGSide(positions: points,
                            positionType: PositionType.Right,
                            material: hexahedron.material,
                            isVisible: true)
-        hexahedron.setColorToSide(side: side)
+        //hexahedron.setColorToSide(side: side)
+        
+        side.colors = self.model.colorGenerator.getColorsFor(vertexes: points)
+        side.colors.append(side.generateCenterColor())
 //        for side in hexahedron.sidesArray
 //        {
 //          if side.positionType == .Front
 //          {
             let indicesSide = side.indicesArray(addValue: h * 5)
-
+        
             let indexDataSide = Data(bytes: indicesSide,
                                      count: MemoryLayout<CInt>.size * indicesSide.count)
             let elementSide = SCNGeometryElement(data: indexDataSide,
@@ -131,6 +137,13 @@ class MAGSectionView: SCNView {
             globalElements.append(elementSide)
             normals = normals + side.normalsArray()
             indices = indices + indicesSide
+        
+//            var vertexes: [SCNVector3] = []
+//            for position in side.positions {
+//              let vector = SCNVector3(position.y, position.x, position.z)
+//              vertexes.append(vector)
+//            }
+        
             vertexPositions += side.positions
 
             globalColors = globalColors + side.colors
@@ -198,6 +211,11 @@ class MAGSectionView: SCNView {
     let geometry = SCNGeometry(sources: [vertexSource, colors],
                                elements: globalElements)
     let cubeNode = SCNNode(geometry: geometry)
+    if #available(iOS 11.0, *) {
+      cubeNode.look(at: SCNVector3(100, 0, 0))
+    } else {
+      // Fallback on earlier versions
+    }
     cubeNode.scale = SCNVector3(x: zoomValue, y: zoomValue, z: zoomValue)
     self.scene?.rootNode.addChildNode(cubeNode)
   }
