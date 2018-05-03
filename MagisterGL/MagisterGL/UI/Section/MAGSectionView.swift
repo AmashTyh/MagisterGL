@@ -57,12 +57,12 @@ class MAGSectionView: SCNView {
                                      self.model.centerPoint.z + (self.model.maxVector.z - self.model.minVector.z) / 2.0 + 20)
     scene.rootNode.addChildNode(cameraNode)
     
-    if #available(iOS 11.0, *) {
-      self.cameraControlConfiguration.allowsTranslation = false
-      self.cameraControlConfiguration.rotationSensitivity = 0
-    } else {
-      // Fallback on earlier versions
-    }
+//    if #available(iOS 11.0, *) {
+//      self.cameraControlConfiguration.allowsTranslation = false
+//      self.cameraControlConfiguration.rotationSensitivity = 0
+//    } else {
+//      // Fallback on earlier versions
+//    }
     
     
     self.allowsCameraControl = true
@@ -108,14 +108,22 @@ class MAGSectionView: SCNView {
       if hexahedron.visible == .needSection
       {
         hexahedron.setColorToSides()
+        let points = MAGCrossSectionHelper.getPointsOfIntersectionWith(hexahedron: hexahedron,
+                                                                       sectionType: .X,
+                                                                       sectionValue: 3000.0 / self.model.xyzCalc)
         var normals: [SCNVector3] = []
         var indices: [CInt] = []
-        for side in hexahedron.sidesArray
-        {
-          if side.positionType == .Front
-          {
+        let side = MAGSide(positions: points,
+                           positionType: PositionType.Right,
+                           material: hexahedron.material,
+                           isVisible: true)
+        hexahedron.setColorToSide(side: side)
+//        for side in hexahedron.sidesArray
+//        {
+//          if side.positionType == .Front
+//          {
             let indicesSide = side.indicesArray(addValue: h * 5)
-            
+
             let indexDataSide = Data(bytes: indicesSide,
                                      count: MemoryLayout<CInt>.size * indicesSide.count)
             let elementSide = SCNGeometryElement(data: indexDataSide,
@@ -126,11 +134,11 @@ class MAGSectionView: SCNView {
             normals = normals + side.normalsArray()
             indices = indices + indicesSide
             vertexPositions += side.positions
-            
+
             globalColors = globalColors + side.colors
             h += 1
-          }
-        }
+//          }
+//        }
         
         globalPositions = globalPositions + hexahedron.positions
         let normals2 = [

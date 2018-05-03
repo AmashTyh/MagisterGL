@@ -113,14 +113,146 @@ class MAGCrossSectionHelper: NSObject {
   }
   
   /**
+   Третья точка на отрезке с концами с первой и второй
+   */
+  static func isPointAtEdge(first: SCNVector3,
+                            second: SCNVector3,
+                            third: SCNVector3,
+                            sectionType: PlaneType) -> Bool
+  {
+    if (sectionType == .X) {
+      if (first.x <= third.x && second.x >= third.x)
+        || (second.x <= third.x && first.x >= third.x) {
+        return true
+      } else {
+        return false
+      }
+    } else {
+      if (sectionType == .Y) {
+        if (first.y <= third.y && second.y >= third.y)
+          || (second.y <= third.y && first.y >= third.y) {
+          return true
+        } else {
+          return false
+        }
+      }
+      else {
+        if (first.z <= third.z && second.z >= third.z)
+          || (second.z <= third.z && first.z >= third.z) {
+          return true
+        } else {
+          return false
+        }
+      }
+    }
+  }
+  /**
    Функция для поиска точек пересечения плоскости сечения и элемента
    */
   static func getPointsOfIntersectionWith(hexahedron: MAGHexahedron,
                                           sectionType: PlaneType,
                                           sectionValue: Float) -> [SCNVector3]
   {
-     return []
+    var points: [SCNVector3] = []
+    
+    for side in hexahedron.sidesArray
+    {
+      let arrayIndex = [0, 1, 2, 3, 0]
+      
+      for i in 0..<4
+      {
+        if isSectionAtEdge(first: side.positions[arrayIndex[i]],
+                           second: side.positions[arrayIndex[i + 1]],
+                           sectionType: sectionType,
+                           sectionValue: sectionValue)
+        {
+          let intersectionPoint = getIntersectionPointOf(lineFirstPoint: side.positions[arrayIndex[i]],
+                                                         lineSecondPoint: side.positions[arrayIndex[i + 1]],
+                                                         sectionAxis: sectionType,
+                                                         sectionValue: sectionValue)
+          if !checkPoints(points: points,
+                         hasPoint: intersectionPoint.point)
+          {
+            points.append(intersectionPoint.point)
+          }
+        }
+      }
+    }
+    
+    return [points[0], points[1], points[3], points[2]]
   }
+  
+  static func checkPoints(points: [SCNVector3],
+                          hasPoint: SCNVector3) -> Bool
+  {
+    for point in points
+    {
+      if isEqualToFloat(first: point.x, second: hasPoint.x) &&
+      isEqualToFloat(first: point.y, second: hasPoint.y) &&
+      isEqualToFloat(first: point.z, second: hasPoint.z)
+      {
+        return true
+      }
+    }
+    return false
+  }
+  
+  
+  
+  
+
+//  static func getPointsOfXIntersectionWith(hexahedron: MAGHexahedron,
+//                                          sectionValue: Float) -> [SCNVector3]
+//  {
+//    var resultsPoints: [SCNVector3] = []
+//
+//    let interPoint1: (point: SCNVector3, error: Bool) = getIntersectionPointOf(lineFirstPoint: hexahedron.positions[0],
+//                                                                               lineSecondPoint: hexahedron.positions[1],
+//                                                                               sectionAxis: .X,
+//                                                                               sectionValue: sectionValue)
+//    let interPoint2: (point: SCNVector3, error: Bool) = getIntersectionPointOf(lineFirstPoint: hexahedron.positions[0],
+//                                                                               lineSecondPoint: hexahedron.positions[2],
+//                                                                               sectionAxis: .X,
+//                                                                               sectionValue: sectionValue)
+//    let interPoint3: (point: SCNVector3, error: Bool) = getIntersectionPointOf(lineFirstPoint: hexahedron.positions[1],
+//                                                                               lineSecondPoint: hexahedron.positions[3],
+//                                                                               sectionAxis: .X,
+//                                                                               sectionValue: sectionValue)
+//
+//    let interPoint4: (point: SCNVector3, error: Bool) = getIntersectionPointOf(lineFirstPoint: hexahedron.positions[2],
+//                                                                               lineSecondPoint: hexahedron.positions[3],
+//                                                                               sectionAxis: .X,
+//                                                                               sectionValue: sectionValue)
+//
+//    if (interPoint1.error == false) && isPointAtEdge(first: hexahedron.positions[0],
+//                                                     second: hexahedron.positions[1],
+//                                                     third: interPoint1.point,
+//                                                     sectionType: .X) {
+//      resultsPoints.append(interPoint1.point)
+//    }
+//
+//    if (interPoint2.error == false) && isPointAtEdge(first: hexahedron.positions[0],
+//                                                     second: hexahedron.positions[2],
+//                                                     third: interPoint2.point,
+//                                                     sectionType: .X) {
+//      resultsPoints.append(interPoint2.point)
+//    }
+//    if (interPoint3.error == false) && isPointAtEdge(first: hexahedron.positions[1],
+//                                                     second: hexahedron.positions[3],
+//                                                     third: interPoint3.point,
+//                                                     sectionType: .X) {
+//      resultsPoints.append(interPoint3.point)
+//    }
+//    if (interPoint4.error == false) && isPointAtEdge(first: hexahedron.positions[2],
+//                                                     second: hexahedron.positions[3],
+//                                                     third: interPoint4.point,
+//                                                     sectionType: .X) {
+//      resultsPoints.append(interPoint4.point)
+//    }
+//
+//
+//    return resultsPoints
+//  }
   
   
   
