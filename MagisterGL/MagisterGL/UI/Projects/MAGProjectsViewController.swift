@@ -75,6 +75,7 @@ class MAGProjectsViewController: UIViewController,
   
   @IBAction func refresh(_ sender: Any)
   {
+    cellObjects = viewModel.cellObjects()
     self.tableView.reloadData()
   }
 }
