@@ -13,6 +13,7 @@ import SceneKit
 
 class MAGCustomGeometryModel: NSObject
 {
+  //TODO: массив материалов из Sigma, массив выбранных материалов
   let fileManager: MAGFileManager = MAGFileManager()
   
   var isShowMaterials = true

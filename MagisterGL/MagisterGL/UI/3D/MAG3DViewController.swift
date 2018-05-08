@@ -12,7 +12,7 @@ import SceneKit
 import OpenGLES
 
 
-class MAG3DViewController: UIViewController, UIPopoverPresentationControllerDelegate, SCNSceneRendererDelegate, MAGChooseSectionViewControllerDelegate
+class MAG3DViewController: UIViewController, UIPopoverPresentationControllerDelegate, SCNSceneRendererDelegate, MAGChooseSectionViewControllerDelegate, MAGChooseMaterialViewControllerDelegate
 
 {
   
@@ -56,6 +56,13 @@ class MAG3DViewController: UIViewController, UIPopoverPresentationControllerDele
       vc.sectionType = self.customGeometryView.model.sectionType
       vc.sectionValue = self.customGeometryView.model.sectionValue
     }
+    else if segue.destination.isKind(of: MAGChooseMaterialViewController.self)
+    {
+      let vc = segue.destination as! MAGChooseMaterialViewController
+      vc.delegate = self
+      vc.materials = [1, 2, 3]
+      vc.selectedMaterials = [2]
+    }
   }
   
   func popoverPresentationControllerDidDismissPopover(_ popoverPresentationController: UIPopoverPresentationController)
@@ -82,6 +89,13 @@ class MAG3DViewController: UIViewController, UIPopoverPresentationControllerDele
     self.customGeometryView.model.sectionValue = sectionValue
     self.performSegue(withIdentifier: "showSection",
                       sender: self)
+  }
+  
+  // MARK: MAGChooseMaterialViewControllerDelegate
+  
+  func selectedMaterils(selectedMaterials: [Int])
+  {
+    
   }
   
 }
