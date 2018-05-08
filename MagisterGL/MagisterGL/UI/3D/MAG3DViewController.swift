@@ -96,6 +96,7 @@ class MAG3DViewController: UIViewController, UIPopoverPresentationControllerDele
   func selectedMaterials(selectedMaterials: [MAGMaterial])
   {
     self.customGeometryView.model.selectedMaterials = selectedMaterials
+    self.customGeometryView.model.createElementsArray()
     self.customGeometryView.setupScene()
   }
   

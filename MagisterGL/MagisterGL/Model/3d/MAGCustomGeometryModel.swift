@@ -39,23 +39,6 @@ class MAGCustomGeometryModel: NSObject
     nverArray = MAGFileManager.sharedInstance.getNVERArray()
     nvkatArray = MAGFileManager.sharedInstance.getNVKATArray()
     neibArray = MAGFileManager.sharedInstance.getNEIBArray()
-    
-    createElementsArray()
-  }
-  
-  func configure(project: MAGProject)
-  {
-    let documentsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] + "/"
-    xyzArray = self.fileManager.getXYZArray(path: documentsPath + project.xyzFilePath!)
-    nverArray = self.fileManager.getNVERArray(path: documentsPath + project.nverFilePath!)
-    nvkatArray = self.fileManager.getNVKATArray(path: documentsPath + project.nvkatFilePath!)
-    neibArray = self.fileManager.getNEIBArray(path: documentsPath + project.elemNeibFilePath!)
-    
-    createElementsArray()
-  }
-  
-  func createElementsArray ()
-  {
     //TODO: Читать из файла Sigma
     let set = NSMutableSet()
     for nvkat in nvkatArray
@@ -69,6 +52,35 @@ class MAGCustomGeometryModel: NSObject
       self.materials.append(material)
     }
     self.selectedMaterials  = self.materials
+    createElementsArray()
+  }
+  
+  func configure(project: MAGProject)
+  {
+    let documentsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] + "/"
+    xyzArray = self.fileManager.getXYZArray(path: documentsPath + project.xyzFilePath!)
+    nverArray = self.fileManager.getNVERArray(path: documentsPath + project.nverFilePath!)
+    nvkatArray = self.fileManager.getNVKATArray(path: documentsPath + project.nvkatFilePath!)
+    neibArray = self.fileManager.getNEIBArray(path: documentsPath + project.elemNeibFilePath!)
+    //TODO: Читать из файла Sigma
+    let set = NSMutableSet()
+    for nvkat in nvkatArray
+    {
+      set.add(nvkat)
+    }
+    for materialNumber in set
+    {
+      let material = MAGMaterial.init(numberOfMaterial: materialNumber as! Int,
+                                      color: self.getUIColor(material: materialNumber as! Int))
+      self.materials.append(material)
+    }
+    self.selectedMaterials  = self.materials
+    
+    createElementsArray()
+  }
+  
+  func createElementsArray ()
+  {
     
     // TODO: Необходимо просматривать массив xyzArray, очень опасное поведение!
     minVector = xyzArray.first!
@@ -139,15 +151,43 @@ class MAGCustomGeometryModel: NSObject
       j = j + 1
       
       var elementNeibsArray: [[Int]] = []
+      var elementMaterialsNeibsArray: [[Int]] = []
       for numberOfSide in 0..<6
       {
         elementNeibsArray.insert(neibArray[6 * numberOfElement + numberOfSide],
                                  at: numberOfSide)
       }
       
+      /** строка двумерного массива ELEM NEIB содержит:
+       [количество соседей, номера соседей(нумерация соседей с единицы)]
+       
+       elementsMaterialsArray soderzhit:
+       [nomera materialov sosedeyi]
+       nomera materialov sosedeyi berutsya iz NVKAT
+       
+       NVKAT odnomernyi massiv:
+       
+       nvkat[index] - nomer materiala
+       
+       index - nomer soseda nachinaya s nulya
+       */
+      for numberOFside in 0..<6
+      {
+        var materialsArray: [Int] = []
+        for index in 0..<elementNeibsArray[numberOFside][0]
+        {
+          let nvkatIndex = elementNeibsArray[numberOFside][index + 1] - 1
+          //elementMaterialsNeibsArray.append(self.nvkatArray[index])
+          materialsArray.append(self.nvkatArray[nvkatIndex])
+        }
+        elementMaterialsNeibsArray.append(materialsArray)
+      }
+      
+      
       let hexahedron = MAGHexahedron(positions: positionArray!,
                                      neighbours: elementNeibsArray,
                                      material: nvkatArray[numberOfElement],
+                                     neibsMaterials: elementMaterialsNeibsArray,
 //                                     color:self.colorGenerator.getColorsFor(vertexes: positionArray!))
                                      color: [self.getColor(material: nvkatArray[numberOfElement])])
       

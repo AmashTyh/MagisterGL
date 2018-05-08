@@ -27,15 +27,21 @@ class MAGHexahedron: NSObject
   var sidesArray: [MAGSide] = []
   
   var isSideVisibleArray: [Bool] = [true, true, true, true, true, true]
-  var isSideVisibleByMaterialArray: [Bool] = [true, true, true, true, true, true]
+  
+  var isSideVisibleByMaterialArray: [Bool] = [false, false, false, false, false, false]
   /**
    Массив nvkat для элемента
    */
   var neighbours: [[Int]] = []
   /**
+   Массив sosedeyi материалов
+   */
+  var neibsMaterials: [[Int]] = []
+  /**
    Материал - целое число
    */
   var material: Int
+  
   /**
    Видимость - три состояния
    0 - не видим
@@ -49,11 +55,13 @@ class MAGHexahedron: NSObject
   init(positions: [SCNVector3],
        neighbours: [[Int]],
        material: Int,
+       neibsMaterials: [[Int]],
        color: [SCNVector3])
   {
     self.positions = positions
     self.neighbours = neighbours
     self.material = material
+    self.neibsMaterials = neibsMaterials
     self.colors = color
   }
   
@@ -64,10 +72,12 @@ class MAGHexahedron: NSObject
       if (neighbours[i].count == 1)
       {
         isSideVisibleArray[i] = true
+        isSideVisibleByMaterialArray[i] = true
       }
       else
       {
         isSideVisibleArray[i] = false
+        isSideVisibleByMaterialArray[i] = !neibsMaterials[i].contains(self.material)
       }
     }
     
@@ -105,6 +115,7 @@ class MAGHexahedron: NSObject
     ]
     setColorToSides()
   }
+  
   
   func setColorToSides()
   {
