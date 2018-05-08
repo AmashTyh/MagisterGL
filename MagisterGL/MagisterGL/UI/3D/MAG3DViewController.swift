@@ -60,8 +60,8 @@ class MAG3DViewController: UIViewController, UIPopoverPresentationControllerDele
     {
       let vc = segue.destination as! MAGChooseMaterialViewController
       vc.delegate = self
-      vc.materials = [1, 2, 3]
-      vc.selectedMaterials = [2]
+      vc.materials = self.customGeometryView.model.materials
+      vc.selectedMaterials = self.customGeometryView.model.selectedMaterials
     }
   }
   
@@ -93,9 +93,10 @@ class MAG3DViewController: UIViewController, UIPopoverPresentationControllerDele
   
   // MARK: MAGChooseMaterialViewControllerDelegate
   
-  func selectedMaterils(selectedMaterials: [Int])
+  func selectedMaterials(selectedMaterials: [MAGMaterial])
   {
-    
+    self.customGeometryView.model.selectedMaterials = selectedMaterials
+    self.customGeometryView.setupScene()
   }
   
 }

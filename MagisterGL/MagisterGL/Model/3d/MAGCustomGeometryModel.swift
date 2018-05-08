@@ -30,6 +30,8 @@ class MAGCustomGeometryModel: NSObject
   var xyzCalc: Float = 1
   var sectionType: PlaneType = .X
   var sectionValue: Float = 0
+  var materials: [MAGMaterial] = []
+  var selectedMaterials: [MAGMaterial] = []
   
   func runTest()
   {
@@ -54,6 +56,20 @@ class MAGCustomGeometryModel: NSObject
   
   func createElementsArray ()
   {
+    //TODO: Читать из файла Sigma
+    let set = NSMutableSet()
+    for nvkat in nvkatArray
+    {
+      set.add(nvkat)
+    }
+    for materialNumber in set
+    {
+      let material = MAGMaterial.init(numberOfMaterial: materialNumber as! Int,
+                                      color: self.getUIColor(material: materialNumber as! Int))
+      self.materials.append(material)
+    }
+    self.selectedMaterials  = self.materials
+    
     // TODO: Необходимо просматривать массив xyzArray, очень опасное поведение!
     minVector = xyzArray.first!
     maxVector = xyzArray.last!
@@ -123,15 +139,17 @@ class MAGCustomGeometryModel: NSObject
       j = j + 1
       
       var elementNeibsArray: [[Int]] = []
-      for numberOfSide in 0..<6 {
-        elementNeibsArray.insert(neibArray[6 * numberOfElement + numberOfSide], at: numberOfSide)
+      for numberOfSide in 0..<6
+      {
+        elementNeibsArray.insert(neibArray[6 * numberOfElement + numberOfSide],
+                                 at: numberOfSide)
       }
       
       let hexahedron = MAGHexahedron(positions: positionArray!,
                                      neighbours: elementNeibsArray,
                                      material: nvkatArray[numberOfElement],
-                                     color:self.colorGenerator.getColorsFor(vertexes: positionArray!))
-                                     //color: [self.getColor(material: nvkatArray[numberOfElement])])
+//                                     color:self.colorGenerator.getColorsFor(vertexes: positionArray!))
+                                     color: [self.getColor(material: nvkatArray[numberOfElement])])
       
       hexahedron.generateSides()
       // когда формируем hexahedronы смотрим их видимость
@@ -169,6 +187,15 @@ class MAGCustomGeometryModel: NSObject
       return SCNVector3(1, 0, 0)
     }
     return SCNVector3(1, 0, 0.5)
+  }
+  
+  private func getUIColor(material: Int) -> UIColor
+  {
+    let vector = self.getColor(material: material)
+    return UIColor(displayP3Red: CGFloat(vector.x),
+                   green: CGFloat(vector.y),
+                   blue: CGFloat(vector.z),
+                   alpha: 1.0)
   }
 }
 

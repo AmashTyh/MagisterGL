@@ -11,7 +11,7 @@ import UIKit
 
 protocol MAGChooseMaterialViewControllerDelegate
 {
-  func selectedMaterils(selectedMaterials: [Int])
+  func selectedMaterials(selectedMaterials: [MAGMaterial])
 }
 
 
@@ -19,8 +19,8 @@ class MAGChooseMaterialViewController: UIViewController, UITableViewDelegate, UI
 {
   let cellReuseIdentifier = "kMaterialReuseCellID"
   var delegate: MAGChooseMaterialViewControllerDelegate?
-  var materials: [Int]?
-  var selectedMaterials: [Int]?
+  var materials: [MAGMaterial]?
+  var selectedMaterials: [MAGMaterial]?
   
   @IBOutlet weak var tableView: UITableView!
   
@@ -33,7 +33,7 @@ class MAGChooseMaterialViewController: UIViewController, UITableViewDelegate, UI
   
   @IBAction func saveMaterialButtonTapped()
   {
-    self.delegate?.selectedMaterils(selectedMaterials: self.selectedMaterials!)
+    self.delegate?.selectedMaterials(selectedMaterials: self.selectedMaterials!)
     self.dismiss(animated: true,
                  completion: nil)
   }
@@ -51,10 +51,21 @@ class MAGChooseMaterialViewController: UIViewController, UITableViewDelegate, UI
   {
     let cell : UITableViewCell = (self.tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier) as UITableViewCell?)!
     let material = self.materials![indexPath.row]
-    cell.textLabel?.text = String(material)
+    cell.textLabel?.text = String(material.numberOfMaterial)
     let isSelected = (self.selectedMaterials?.contains(material))!
     cell.isSelected = isSelected
+    if isSelected
+    {
+      // работает, не трогай
+      tableView.selectRow(at: indexPath,
+                          animated: false,
+                          scrollPosition: UITableViewScrollPosition.none)
+    }
     cell.accessoryType = isSelected ? .checkmark : .none
+    cell.backgroundColor = material.color
+    let view = UIView()
+    view.backgroundColor = UIColor.clear
+    cell.selectedBackgroundView = view
     return cell
   }
   
@@ -65,7 +76,7 @@ class MAGChooseMaterialViewController: UIViewController, UITableViewDelegate, UI
   {
     let cell = tableView.cellForRow(at: indexPath)
     cell?.accessoryType = .checkmark
-    let material = ((cell?.textLabel?.text! as! NSString).integerValue)
+    let material = self.materials![indexPath.row]
     self.selectedMaterials?.append(material)
   }
   
@@ -73,8 +84,8 @@ class MAGChooseMaterialViewController: UIViewController, UITableViewDelegate, UI
                  didDeselectRowAt indexPath: IndexPath)
   {
     let cell = tableView.cellForRow(at: indexPath)
-    cell?.accessoryType = .checkmark
-    let material = ((cell?.textLabel?.text! as! NSString).integerValue)
+    cell?.accessoryType = .none
+    let material = self.materials![indexPath.row]
     let index = self.selectedMaterials?.index(of: material)
     self.selectedMaterials?.remove(at: index!)
   }
