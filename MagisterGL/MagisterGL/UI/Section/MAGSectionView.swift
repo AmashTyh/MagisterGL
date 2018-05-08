@@ -1,33 +1,18 @@
 //
-//  MAGCustomGeometryView.swift
+//  MAGSectionView.swift
 //  MagisterGL
 //
-//  Created by Хохлова Татьяна on 26.09.17.
-//  Copyright © 2017 Хохлова Татьяна. All rights reserved.
+//  Created by Admin on 27.04.2018.
+//  Copyright © 2018 Хохлова Татьяна. All rights reserved.
 //
-
 
 import UIKit
 import SceneKit
-import OpenGLES
 
+class MAGSectionView: SCNView {
 
-extension SCNNode
-{
-  func cleanup()
-  {
-    for child in childNodes
-    {
-      child.cleanup()
-    }
-    geometry = nil
-  }
-}
-
-
-class MAGCustomGeometryView: SCNView
-{
   var model: MAGCustomGeometryModel = MAGCustomGeometryModel()
+  private var zoomValue: Float = 1.0
   
   deinit
   {
@@ -38,7 +23,6 @@ class MAGCustomGeometryView: SCNView
   public func redraw()
   {
     scene?.rootNode.cleanup()
-    self.model = MAGCustomGeometryModel()
     self.model.runTest()
     setupScene()
   }
@@ -47,7 +31,6 @@ class MAGCustomGeometryView: SCNView
   func configure(project: MAGProject)
   {
     scene?.rootNode.cleanup()
-    self.model = MAGCustomGeometryModel()
     self.model.configure(project: project)
     setupScene()
   }
@@ -72,6 +55,14 @@ class MAGCustomGeometryView: SCNView
                                      self.model.centerPoint.z + (self.model.maxVector.z - self.model.minVector.z) / 2.0 + 20)
     scene.rootNode.addChildNode(cameraNode)
     
+    if #available(iOS 11.0, *) {
+      self.cameraControlConfiguration.allowsTranslation = false
+      self.cameraControlConfiguration.rotationSensitivity = 0
+    } else {
+      // Fallback on earlier versions
+    }
+    
+    
     self.allowsCameraControl = true
     self.showsStatistics = true
     
@@ -87,10 +78,17 @@ class MAGCustomGeometryView: SCNView
                                                      self.model.centerPoint.z)
     
     self.scene = scene
-    createCube()
+    
+    createSection()
   }
   
-  private func createCube()
+  func zoomScene()
+  {
+     zoomValue *= 2.0
+    self.redraw()
+  }
+  
+  private func createSection()
   {
     var h = 0 as Int32
     var j = 0 as Int32
@@ -105,15 +103,31 @@ class MAGCustomGeometryView: SCNView
     
     for hexahedron in self.model.elementsArray
     {
-        //hexahedron.setColorToSides()
+      if hexahedron.visible == .needSection
+      {
+        hexahedron.setColorToSides()
+        let points = MAGCrossSectionHelper.getPointsOfIntersectionWith(hexahedron: hexahedron,
+                                                                       sectionType: .X,
+                                                                       sectionValue: self.model.sectionValue / self.model.xyzCalc)
+        
+        
+        
         var normals: [SCNVector3] = []
         var indices: [CInt] = []
-        for side in hexahedron.sidesArray
-        {
-          if side.isVisible
-          {
+        let side = MAGSide(positions: points,
+                           positionType: PositionType.Right,
+                           material: hexahedron.material,
+                           isVisible: true)
+        //hexahedron.setColorToSide(side: side)
+        
+        side.colors = self.model.colorGenerator.getColorsFor(vertexes: points)
+        side.colors.append(side.generateCenterColor())
+//        for side in hexahedron.sidesArray
+//        {
+//          if side.positionType == .Front
+//          {
             let indicesSide = side.indicesArray(addValue: h * 5)
-            
+        
             let indexDataSide = Data(bytes: indicesSide,
                                      count: MemoryLayout<CInt>.size * indicesSide.count)
             let elementSide = SCNGeometryElement(data: indexDataSide,
@@ -123,12 +137,19 @@ class MAGCustomGeometryView: SCNView
             globalElements.append(elementSide)
             normals = normals + side.normalsArray()
             indices = indices + indicesSide
+        
+//            var vertexes: [SCNVector3] = []
+//            for position in side.positions {
+//              let vector = SCNVector3(position.y, position.x, position.z)
+//              vertexes.append(vector)
+//            }
+        
             vertexPositions += side.positions
-            
+
             globalColors = globalColors + side.colors
             h += 1
-          }
-        }
+//          }
+//        }
         
         globalPositions = globalPositions + hexahedron.positions
         let normals2 = [
@@ -168,6 +189,7 @@ class MAGCustomGeometryView: SCNView
           ] as [CInt]
         globalIndiciesCarcas = globalIndiciesCarcas + indicesCarcas
         j = j + 1
+      }
     }
     
     let positionSource = SCNGeometrySource(vertices: globalPositions)
@@ -189,21 +211,12 @@ class MAGCustomGeometryView: SCNView
     let geometry = SCNGeometry(sources: [vertexSource, colors],
                                elements: globalElements)
     let cubeNode = SCNNode(geometry: geometry)
+    if #available(iOS 11.0, *) {
+      cubeNode.look(at: SCNVector3(100, 0, 0))
+    } else {
+      // Fallback on earlier versions
+    }
+    cubeNode.scale = SCNVector3(x: zoomValue, y: zoomValue, z: zoomValue)
     self.scene?.rootNode.addChildNode(cubeNode)
-    
-    
-    let indexDataCarcas = Data(bytes: globalIndiciesCarcas,
-                               count: MemoryLayout<CInt>.size * globalIndiciesCarcas.count)
-
-
-    let elementBorder = SCNGeometryElement(data: indexDataCarcas,
-                                           primitiveType: .line,
-                                           primitiveCount: globalIndiciesCarcas.count / 2,
-                                           bytesPerIndex: MemoryLayout<CInt>.size)
-    let geometryBorder = SCNGeometry(sources: [positionSource],
-                                     elements: [elementBorder])
-    geometryBorder.firstMaterial?.diffuse.contents = UIColor.white
-    let borderCubeNode = SCNNode(geometry: geometryBorder)
-    self.scene?.rootNode.addChildNode(borderCubeNode)
   }
 }

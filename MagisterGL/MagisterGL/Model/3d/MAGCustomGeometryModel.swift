@@ -26,6 +26,9 @@ class MAGCustomGeometryModel: NSObject
   var nverArray: [[Int]] = []
   var nvkatArray: [Int] = []
   var neibArray: [[Int]] = []
+  var xyzCalc: Float = 1
+  var sectionType: PlaneType = .X
+  var sectionValue: Float = 0
   
   func runTest()
   {
@@ -74,11 +77,14 @@ class MAGCustomGeometryModel: NSObject
       return first.z < second.z
       }!.z
     
-    self.colorGenerator.generateColor(minValue: self.colorGenerator.uFunc(x: Double(minX), y: Double(minY), z: Double(minZ)),
-                                      maxValue: self.colorGenerator.uFunc(x: Double(maxX), y: Double(maxY), z: Double(maxZ)))
+
     
-    let xyzCalc: Float = abs((maxVector.y - minVector.y) / 4.0)
-    let crossSection: MAGCrossSection = MAGCrossSection(plane: .X, value: 3000 / xyzCalc)
+    self.xyzCalc = abs((maxVector.y - minVector.y) / 2.0)
+    let crossSection: MAGCrossSection = MAGCrossSection(plane: .X, value: sectionValue / xyzCalc, greater: false)
+    //let crossSection: MAGCrossSection = MAGCrossSection(plane: .Y, value: -4000 / xyzCalc, greater: false)
+    
+    self.colorGenerator.generateColor(minValue: self.colorGenerator.uFunc(x: Double(minVector.x / xyzCalc), y: Double(minVector.y / xyzCalc), z: Double(minVector.z / xyzCalc)),
+                                      maxValue: self.colorGenerator.uFunc(x: Double(maxVector.x / xyzCalc), y: Double(maxVector.y / xyzCalc), z: Double(maxVector.z / xyzCalc)))
     
     var arrayOfVectors: [SCNVector3]? = []
     for xyz in xyzArray
@@ -96,7 +102,6 @@ class MAGCustomGeometryModel: NSObject
     var numberOfElement : Int = 0
     for nverElementArray in nverArray
     {
-      var sidesFlagsArray: [Bool] = [true, true, true, true, true, true]
       var positionArray : [SCNVector3]? = []
       var materialsArray: [Int] = []
       var i : Int = 0
@@ -116,50 +121,21 @@ class MAGCustomGeometryModel: NSObject
       }
       j = j + 1
       
-      
-      for numberOfSide in 0..<6
-      {
-        sidesFlagsArray[numberOfSide] = (neibArray[6 * numberOfElement + numberOfSide].count == 1)
+      var elementNeibsArray: [[Int]] = []
+      for numberOfSide in 0..<6 {
+        elementNeibsArray.insert(neibArray[6 * numberOfElement + numberOfSide], at: numberOfSide)
       }
       
-      let sidesArray: [MAGSide]? = [
-        MAGSide.init(positions: [positionArray![0], positionArray![2], positionArray![6], positionArray![4]],
-                     positionType: .Left,
-                     material: nvkatArray[numberOfElement],
-                     isVisible: sidesFlagsArray[0]), //левая
-        MAGSide.init(positions: [positionArray![1], positionArray![0], positionArray![4], positionArray![5]],
-                     positionType: .Front,
-                     material: nvkatArray[numberOfElement],
-                     isVisible: sidesFlagsArray[1]), //передняя
-        MAGSide.init(positions: [positionArray![0], positionArray![1], positionArray![3], positionArray![2]],
-                     positionType: .Bottom,
-                     material: nvkatArray[numberOfElement],
-                     isVisible: sidesFlagsArray[2]), //нижняя
-        MAGSide.init(positions: [positionArray![1], positionArray![5], positionArray![7], positionArray![3]],
-                     positionType: .Right,
-                     material: nvkatArray[numberOfElement],
-                     isVisible: sidesFlagsArray[3]), //правая
-        MAGSide.init(positions: [positionArray![2], positionArray![3], positionArray![7], positionArray![6]],
-                     positionType: .Back,
-                     material: nvkatArray[numberOfElement],
-                     isVisible: sidesFlagsArray[4]), //задняя
-        MAGSide.init(positions: [positionArray![5], positionArray![4], positionArray![6], positionArray![7]],
-                     positionType: .Top,
-                     material: nvkatArray[numberOfElement],
-                     isVisible: sidesFlagsArray[5]),  //верхняя
-      ]
-      
       let hexahedron = MAGHexahedron(positions: positionArray!,
-                                     sidesArray: sidesArray!,
+                                     neighbours: elementNeibsArray,
                                      material: nvkatArray[numberOfElement],
-                                     //color:self.colorGenerator.getColorsFor(vertexes: positionArray!)))
-        color: [self.getColor(material: nvkatArray[numberOfElement])])
+                                     color:self.colorGenerator.getColorsFor(vertexes: positionArray!))
+                                     //color: [self.getColor(material: nvkatArray[numberOfElement])])
+      
+      hexahedron.generateSides()
       // когда формируем hexahedronы смотрим их видимость
       hexahedron.visible = crossSection.setVisibleToHexahedron(positions: positionArray!)
-      
       elementsArray.append(hexahedron)
-
-      //color: [self.getColor(material: nvkatArray[numberOfElement])]))
       numberOfElement = numberOfElement + 1
     }
     centerPoint = SCNVector3Make((maxVector.x - minVector.x) / 2.0 + minVector.x,

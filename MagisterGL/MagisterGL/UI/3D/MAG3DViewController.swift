@@ -12,7 +12,7 @@ import SceneKit
 import OpenGLES
 
 
-class MAG3DViewController: UIViewController, UIPopoverPresentationControllerDelegate, SCNSceneRendererDelegate
+class MAG3DViewController: UIViewController, UIPopoverPresentationControllerDelegate, SCNSceneRendererDelegate, MAGChooseSectionViewControllerDelegate
 
 {
   
@@ -36,21 +36,32 @@ class MAG3DViewController: UIViewController, UIPopoverPresentationControllerDele
     }
   }
     
-    override func prepare(for segue: UIStoryboardSegue,
-                          sender: Any?)
+  override func prepare(for segue: UIStoryboardSegue,
+                        sender: Any?)
+  {
+    super.prepare(for: segue,
+                  sender: sender)
+    if segue.destination.isKind(of: MAGChooseFileViewController.self)
     {
-        super.prepare(for: segue,
-                      sender: sender)
-        if segue.destination.isKind(of: MAGChooseFileViewController.self)
-        {
-            segue.destination.popoverPresentationController?.delegate = self;
-        }
+      segue.destination.popoverPresentationController?.delegate = self;
     }
-    
-    func popoverPresentationControllerDidDismissPopover(_ popoverPresentationController: UIPopoverPresentationController)
+    else if segue.destination.isKind(of: MAGChooseSectionViewController.self)
     {
-        self.customGeometryView.redraw()
+      let vc = segue.destination as! MAGChooseSectionViewController
+      vc.delegate = self
     }
+    else if segue.destination.isKind(of: MAGSectionViewController.self)
+    {
+      let vc = segue.destination as! MAGSectionViewController
+      vc.sectionType = self.customGeometryView.model.sectionType
+      vc.sectionValue = self.customGeometryView.model.sectionValue
+    }
+  }
+  
+  func popoverPresentationControllerDidDismissPopover(_ popoverPresentationController: UIPopoverPresentationController)
+  {
+    self.customGeometryView.redraw()
+  }
   
   //MARK: SCNSceneRendererDelegate
   
@@ -59,6 +70,18 @@ class MAG3DViewController: UIViewController, UIPopoverPresentationControllerDele
   }
   
   func renderer(_ renderer: SCNSceneRenderer, willRenderScene scene: SCNScene, atTime time: TimeInterval)
-  {      }
+  {
+    
+  }
+  
+  //MARK: MAGChooseSectionViewControllerDelegate
+  func drawSection(sectionType: PlaneType,
+                   sectionValue: Float)
+  {
+    self.customGeometryView.model.sectionType = sectionType
+    self.customGeometryView.model.sectionValue = sectionValue
+    self.performSegue(withIdentifier: "showSection",
+                      sender: self)
+  }
   
 }
