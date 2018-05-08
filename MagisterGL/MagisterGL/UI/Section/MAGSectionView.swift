@@ -117,11 +117,12 @@ class MAGSectionView: SCNView {
         let side = MAGSide(positions: points,
                            positionType: PositionType.Right,
                            material: hexahedron.material,
-                           isVisible: true)
-        //hexahedron.setColorToSide(side: side)
+                           isVisible: true,
+                           isVisibleByMaterial: true)
+        hexahedron.setColorToSide(side: side)
         
-        side.colors = self.model.colorGenerator.getColorsFor(vertexes: points)
-        side.colors.append(side.generateCenterColor())
+//        side.colors = self.model.colorGenerator.getColorsFor(vertexes: points)
+//        side.colors.append(side.generateCenterColor())
 //        for side in hexahedron.sidesArray
 //        {
 //          if side.positionType == .Front

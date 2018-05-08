@@ -27,14 +27,21 @@ class MAGHexahedron: NSObject
   var sidesArray: [MAGSide] = []
   
   var isSideVisibleArray: [Bool] = [true, true, true, true, true, true]
+  
+  var isSideVisibleByMaterialArray: [Bool] = [false, false, false, false, false, false]
   /**
    Массив nvkat для элемента
    */
   var neighbours: [[Int]] = []
   /**
+   Массив sosedeyi материалов
+   */
+  var neibsMaterials: [[Int]] = []
+  /**
    Материал - целое число
    */
   var material: Int
+  
   /**
    Видимость - три состояния
    0 - не видим
@@ -48,22 +55,29 @@ class MAGHexahedron: NSObject
   init(positions: [SCNVector3],
        neighbours: [[Int]],
        material: Int,
+       neibsMaterials: [[Int]],
        color: [SCNVector3])
   {
     self.positions = positions
     self.neighbours = neighbours
     self.material = material
+    self.neibsMaterials = neibsMaterials
     self.colors = color
   }
   
   func generateSides()
   {
-    for i in 0..<6 {
-      if (neighbours[i].count == 1) {
+    for i in 0..<6
+    {
+      if (neighbours[i].count == 1)
+      {
         isSideVisibleArray[i] = true
+        isSideVisibleByMaterialArray[i] = true
       }
-      else {
+      else
+      {
         isSideVisibleArray[i] = false
+        isSideVisibleByMaterialArray[i] = !neibsMaterials[i].contains(self.material)
       }
     }
     
@@ -71,30 +85,37 @@ class MAGHexahedron: NSObject
       MAGSide.init(positions: [positions[0], positions[2], positions[6], positions[4]],
                    positionType: .Left,
                    material: self.material,
-                   isVisible: isSideVisibleArray[0]), //левая
+                   isVisible: isSideVisibleArray[0],
+                   isVisibleByMaterial: isSideVisibleByMaterialArray[0]), //левая
       MAGSide.init(positions: [positions[1], positions[0], positions[4], positions[5]],
                    positionType: .Front,
                    material: self.material,
-                   isVisible: isSideVisibleArray[1]), //передняя
+                   isVisible: isSideVisibleArray[1],
+                   isVisibleByMaterial: isSideVisibleByMaterialArray[1]), //передняя
       MAGSide.init(positions: [positions[0], positions[1], positions[3], positions[2]],
                    positionType: .Bottom,
                    material: self.material,
-                   isVisible: isSideVisibleArray[2]), //нижняя
+                   isVisible: isSideVisibleArray[2],
+                   isVisibleByMaterial: isSideVisibleByMaterialArray[2]), //нижняя
       MAGSide.init(positions: [positions[1], positions[5], positions[7], positions[3]],
                    positionType: .Right,
                    material: self.material,
-                   isVisible: isSideVisibleArray[3]), //правая
+                   isVisible: isSideVisibleArray[3],
+                   isVisibleByMaterial: isSideVisibleByMaterialArray[3]), //правая
       MAGSide.init(positions: [positions[2], positions[3], positions[7], positions[6]],
                    positionType: .Back,
                    material: self.material,
-                   isVisible: isSideVisibleArray[4]), //задняя
+                   isVisible: isSideVisibleArray[4],
+                   isVisibleByMaterial: isSideVisibleByMaterialArray[4]), //задняя
       MAGSide.init(positions: [positions[5], positions[4], positions[6], positions[7]],
                    positionType: .Top,
                    material: self.material,
-                   isVisible: isSideVisibleArray[5]),  //верхняя
+                   isVisible: isSideVisibleArray[5],
+                   isVisibleByMaterial: isSideVisibleByMaterialArray[5]),  //верхняя
     ]
     setColorToSides()
   }
+  
   
   func setColorToSides()
   {

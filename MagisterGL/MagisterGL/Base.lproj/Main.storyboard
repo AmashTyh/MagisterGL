@@ -431,6 +431,13 @@
                                     </segue>
                                 </connections>
                             </barButtonItem>
+                            <barButtonItem title="Materials" id="KlX-sr-LT4">
+                                <connections>
+                                    <segue destination="gFw-Q2-PGG" kind="popoverPresentation" popoverAnchorBarButtonItem="KlX-sr-LT4" id="C4J-u6-yVH">
+                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                    </segue>
+                                </connections>
+                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
@@ -590,6 +597,56 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rvH-o4-Ofo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2322" y="2268"/>
+        </scene>
+        <!--Choose Material View Controller-->
+        <scene sceneID="WFh-Sb-JLE">
+            <objects>
+                <viewController id="gFw-Q2-PGG" customClass="MAGChooseMaterialViewController" customModule="MagisterGL" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="9Rp-7z-iLM"/>
+                        <viewControllerLayoutGuide type="bottom" id="bo5-rH-tbu"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ZgL-Ss-u8n">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsMultipleSelection="YES" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5rE-bZ-SxL">
+                                <rect key="frame" x="0.0" y="20" width="375" height="583"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="gFw-Q2-PGG" id="sV1-VJ-BYo"/>
+                                    <outlet property="delegate" destination="gFw-Q2-PGG" id="0uK-vu-CFi"/>
+                                </connections>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HOn-7t-AfZ">
+                                <rect key="frame" x="37" y="603" width="300" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="4bp-yO-9xN"/>
+                                    <constraint firstAttribute="height" constant="44" id="Ogd-mU-e74"/>
+                                </constraints>
+                                <state key="normal" title="Done"/>
+                                <connections>
+                                    <action selector="saveMaterialButtonTapped" destination="gFw-Q2-PGG" eventType="touchUpInside" id="hkT-Bu-yWp"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="5rE-bZ-SxL" firstAttribute="leading" secondItem="ZgL-Ss-u8n" secondAttribute="leading" id="51i-sv-3JM"/>
+                            <constraint firstItem="HOn-7t-AfZ" firstAttribute="top" secondItem="5rE-bZ-SxL" secondAttribute="bottom" id="9bF-fs-DtX"/>
+                            <constraint firstAttribute="trailing" secondItem="5rE-bZ-SxL" secondAttribute="trailing" id="Til-lM-vVL"/>
+                            <constraint firstItem="bo5-rH-tbu" firstAttribute="top" secondItem="HOn-7t-AfZ" secondAttribute="bottom" constant="20" id="Udc-HX-sen"/>
+                            <constraint firstItem="HOn-7t-AfZ" firstAttribute="centerX" secondItem="ZgL-Ss-u8n" secondAttribute="centerX" id="cWu-hp-Yvt"/>
+                            <constraint firstItem="5rE-bZ-SxL" firstAttribute="top" secondItem="9Rp-7z-iLM" secondAttribute="bottom" id="vkQ-Nd-a8F"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="5rE-bZ-SxL" id="L3t-St-RyJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3ih-cA-scq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1527" y="2267"/>
         </scene>
         <!--Isoline View Controller-->
         <scene sceneID="RfX-5Q-HxF">

@@ -52,7 +52,7 @@ class MAGCustomGeometryView: SCNView
     setupScene()
   }
   
-  private func setupScene()
+  func setupScene()
   {
     // Configure the Scene View
     self.backgroundColor = .darkGray
@@ -102,15 +102,25 @@ class MAGCustomGeometryView: SCNView
     var globalColors : [SCNVector3] = []
     
     var vertexPositions : [SCNVector3] = []
+    var selectedNumberMaterials: [Int] = []
+    
+    for material in self.model.selectedMaterials
+    {
+      selectedNumberMaterials.append(material.numberOfMaterial)
+    }
     
     for hexahedron in self.model.elementsArray
     {
+      if !selectedNumberMaterials.contains(hexahedron.material)
+      {
+        continue
+      }
         //hexahedron.setColorToSides()
         var normals: [SCNVector3] = []
         var indices: [CInt] = []
         for side in hexahedron.sidesArray
         {
-          if side.isVisible
+          if side.isVisible || side.isVisibleByMaterial
           {
             let indicesSide = side.indicesArray(addValue: h * 5)
             
