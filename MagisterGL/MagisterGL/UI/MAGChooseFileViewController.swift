@@ -12,25 +12,36 @@ import UIKit
 
 class MAGChooseFileViewController: UIViewController, UIPopoverPresentationControllerDelegate
 {
-    @IBAction func test1Tapped(_ sender: UIButton)
-    {
-        MAGFileManager.sharedInstance.testType = 0
-        self.dismissVC()
-    }
-    
-    @IBAction func test2Tapped(_ sender: UIButton)
-    {
-        MAGFileManager.sharedInstance.testType = 1
-        self.dismissVC()
-    }
-    
-    @IBAction func test3Tapped(_ sender: UIButton)
-    {
-        MAGFileManager.sharedInstance.testType = 2
-        self.dismissVC()
-    }
-    
-    private func dismissVC()
+  @IBAction func test1Tapped(_ sender: UIButton)
+  {
+    MAGFileManager.sharedInstance.testType = 0
+    self.dismissVC()
+  }
+  
+  @IBAction func test2Tapped(_ sender: UIButton)
+  {
+    MAGFileManager.sharedInstance.testType = 1
+    self.dismissVC()
+  }
+  
+  @IBAction func test3Tapped(_ sender: UIButton)
+  {
+    MAGFileManager.sharedInstance.testType = 2
+    self.dismissVC()
+  }
+  
+  @IBAction func test4Tapped(_ sender: UIButton)
+  {
+    MAGFileManager.sharedInstance.testType = 3
+    self.dismissVC()
+  }
+  
+  @IBAction func test5Tapped(_ sender: UIButton)
+  {
+    MAGFileManager.sharedInstance.testType = 4
+    self.dismissVC()
+  }
+  private func dismissVC()
     {
         if let pvc = self.presentingViewController
         {
