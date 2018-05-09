@@ -87,15 +87,21 @@ class MAGHexahedron: NSObject
       else
       {
         isSideVisibleArray[i] = false
-        for matNum in neibsMaterials[i]
+        if !neibsMaterials[i].contains(self.material)
         {
-          if !selectedNumberMaterials.contains(matNum)
+          for matNum in neibsMaterials[i]
           {
-            isSideVisibleByMaterialArray[i] = true
+            if !selectedNumberMaterials.contains(matNum)
+            {
+              isSideVisibleByMaterialArray[i] = true
+            }
+            else {
+              isSideVisibleByMaterialArray[i] = false
+            }
           }
-          else {
-            isSideVisibleByMaterialArray[i] = false
-          }
+        }
+        else {
+          isSideVisibleByMaterialArray[i] = false
         }
       }
     }
