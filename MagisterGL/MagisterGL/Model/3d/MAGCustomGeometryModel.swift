@@ -188,6 +188,7 @@ class MAGCustomGeometryModel: NSObject
                                      neighbours: elementNeibsArray,
                                      material: nvkatArray[numberOfElement],
                                      neibsMaterials: elementMaterialsNeibsArray,
+                                     selectedMaterials: selectedMaterials,
 //                                     color:self.colorGenerator.getColorsFor(vertexes: positionArray!))
                                      color: [self.getColor(material: nvkatArray[numberOfElement])])
       
