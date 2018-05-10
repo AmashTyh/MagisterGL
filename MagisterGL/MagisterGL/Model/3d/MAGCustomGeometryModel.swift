@@ -123,7 +123,6 @@ class MAGCustomGeometryModel: NSObject
     for nverElementArray in nverArray
     {
       var positionArray : [SCNVector3]? = []
-      var materialsArray: [Int] = []
       var i : Int = 0
       
       for gridNum in nverElementArray
@@ -132,10 +131,6 @@ class MAGCustomGeometryModel: NSObject
         {
           let vector = xyzArray[gridNum - 1]
           positionArray?.append(vector)
-        }
-        else
-        {
-          materialsArray.append(gridNum)
         }
         i = i + 1
       }
@@ -148,6 +143,8 @@ class MAGCustomGeometryModel: NSObject
         elementNeibsArray.insert(neibArray[6 * numberOfElement + numberOfSide],
                                  at: numberOfSide)
       }
+      
+      let isVisible = isDrawingSectionEnabled ? crossSection.setVisibleToHexahedron(positions: positionArray!) : .isVisible
       
       /** строка двумерного массива ELEM NEIB содержит:
        [количество соседей, номера соседей(нумерация соседей с единицы)]
@@ -174,7 +171,7 @@ class MAGCustomGeometryModel: NSObject
         elementMaterialsNeibsArray.append(materialsArray)
       }
       
-      let isVisible = isDrawingSectionEnabled ? crossSection.setVisibleToHexahedron(positions: positionArray!) : .isVisible
+//      let isVisible = isDrawingSectionEnabled ? crossSection.setVisibleToHexahedron(positions: positionArray!) : .isVisible
       let hexahedron = MAGHexahedron(positions: positionArray!,
                                      neighbours: elementNeibsArray,
                                      material: nvkatArray[numberOfElement],
