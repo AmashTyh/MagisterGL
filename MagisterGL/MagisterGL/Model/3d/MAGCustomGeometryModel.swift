@@ -75,7 +75,7 @@ class MAGCustomGeometryModel: NSObject
   
   func createElementsArray ()
   {
-    
+    elementsArray = []
     // TODO: Необходимо просматривать массив xyzArray, очень опасное поведение!
     minVector = SCNVector3Zero
     maxVector = SCNVector3Zero
@@ -106,9 +106,6 @@ class MAGCustomGeometryModel: NSObject
                                  (maxVector.y - minVector.y) / 2.0 + minVector.y,
                                  (maxVector.z - minVector.z) / 2.0 + minVector.z)
     
-//    centerPoint = SCNVector3Make((maxVector.x - minVector.x) / 2.0 + minVector.x,
-//                                 (maxVector.y - minVector.y) / 2.0 + minVector.y,
-//                                 (maxVector.z - minVector.z) / 2.0 + minVector.z)
     let crossSection: MAGCrossSection = MAGCrossSection(plane: .X,
                                                         value: sectionValue,
                                                         greater: true)
@@ -177,7 +174,7 @@ class MAGCustomGeometryModel: NSObject
         elementMaterialsNeibsArray.append(materialsArray)
       }
       
-      
+      let isVisible = isDrawingSectionEnabled ? crossSection.setVisibleToHexahedron(positions: positionArray!) : .isVisible
       let hexahedron = MAGHexahedron(positions: positionArray!,
                                      neighbours: elementNeibsArray,
                                      material: nvkatArray[numberOfElement],
@@ -188,11 +185,13 @@ class MAGCustomGeometryModel: NSObject
       
       hexahedron.generateSides()
       // когда формируем hexahedronы смотрим их видимость
-      if isDrawingSectionEnabled
+      
+      hexahedron.visible = isVisible
+      
+      if isVisible == .isVisible
       {
-        hexahedron.visible = crossSection.setVisibleToHexahedron(positions: positionArray!)
+        elementsArray.append(hexahedron)
       }
-      elementsArray.append(hexahedron)
       numberOfElement = numberOfElement + 1
     }
   }

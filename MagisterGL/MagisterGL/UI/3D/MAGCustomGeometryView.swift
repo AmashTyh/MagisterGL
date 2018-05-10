@@ -43,6 +43,7 @@ class MAGCustomGeometryView: SCNView
   
   func setupScene()
   {
+    self.scene?.rootNode.cleanup()
     // Configure the Scene View
     self.backgroundColor = .darkGray
     

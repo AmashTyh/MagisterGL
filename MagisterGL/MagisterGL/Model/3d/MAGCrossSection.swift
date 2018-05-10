@@ -35,12 +35,25 @@ class MAGCrossSection: NSObject {
     switch plane
     {
     case .X:
-      for position in positions
+      let minX = positions.min { (first, second) -> Bool in
+        return first.x < second.x
+        }!.x
+      
+      let maxX = positions.max { (first, second) -> Bool in
+        return first.x < second.x
+        }!.x
+      
+      if ((minX <= value) && (value < maxX))
       {
-        if (position.x > value)
+        if (value >= ((maxX - minX) / 2.0) + minX)
         {
-          return .notVisible
+          return .isVisible
         }
+        return .notVisible
+      }
+      else if (maxX > value)
+      {
+        return .notVisible
       }
     case .Y:
       return .isVisible
