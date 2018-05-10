@@ -57,7 +57,7 @@ class MAGCustomGeometryModel: NSObject
   
   func configure(project: MAGProject)
   {
-    let documentsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] + "/"
+    let documentsPath = project.isLocal ? "" : NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] + "/"
     xyzArray = self.fileManager.getXYZArray(path: documentsPath + project.xyzFilePath!)
     nverArray = self.fileManager.getNVERArray(path: documentsPath + project.nverFilePath!)
     nvkatArray = self.fileManager.getNVKATArray(path: documentsPath + project.nvkatFilePath!)

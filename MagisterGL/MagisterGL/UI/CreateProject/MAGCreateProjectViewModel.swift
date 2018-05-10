@@ -37,6 +37,7 @@ class MAGCreateProjectViewModel: NSObject
                               nverPath: self.cellObjects[0].filePath,
                               xyzPath: self.cellObjects[1].filePath,
                               nvkatPath: self.cellObjects[2].filePath,
-                              elemNeibPath: self.cellObjects[3].filePath)
+                              elemNeibPath: self.cellObjects[3].filePath,
+                              isLocal: false)
   }
 }
