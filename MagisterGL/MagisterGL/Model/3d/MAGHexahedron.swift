@@ -37,6 +37,8 @@ class MAGHexahedron: NSObject
    Массив sosedeyi материалов
    */
   var neibsMaterials: [[Int]] = []
+  
+  var selectedMaterials: [MAGMaterial] = []
   /**
    Материал - целое число
    */
@@ -56,28 +58,51 @@ class MAGHexahedron: NSObject
        neighbours: [[Int]],
        material: Int,
        neibsMaterials: [[Int]],
+       selectedMaterials: [MAGMaterial],
        color: [SCNVector3])
   {
     self.positions = positions
     self.neighbours = neighbours
     self.material = material
     self.neibsMaterials = neibsMaterials
+    self.selectedMaterials = selectedMaterials
     self.colors = color
   }
   
   func generateSides()
   {
+    var selectedNumberMaterials: [Int] = []
+    
+    for material in self.selectedMaterials
+    {
+      selectedNumberMaterials.append(material.numberOfMaterial)
+    }
+    
     for i in 0..<6
     {
       if (neighbours[i].count == 1)
       {
         isSideVisibleArray[i] = true
-        isSideVisibleByMaterialArray[i] = true
       }
       else
       {
         isSideVisibleArray[i] = false
-        isSideVisibleByMaterialArray[i] = !neibsMaterials[i].contains(self.material)
+        if !neibsMaterials[i].contains(self.material)
+        {
+          for matNum in neibsMaterials[i]
+          {
+            if !selectedNumberMaterials.contains(matNum)
+            {
+              isSideVisibleByMaterialArray[i] = true
+            }
+            else {
+              isSideVisibleByMaterialArray[i] = false
+            }
+          }
+        }
+        else {
+          isSideVisibleByMaterialArray[i] = false
+        }
       }
     }
     

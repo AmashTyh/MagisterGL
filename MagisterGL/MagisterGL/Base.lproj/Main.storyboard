@@ -577,18 +577,44 @@
                                     <action selector="test3Tapped:" destination="HKY-s1-MDh" eventType="touchUpInside" id="kQ0-0V-Uuo"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Atw-4I-IT6">
+                                <rect key="frame" x="20" y="220" width="335" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="Ytr-Tv-02E"/>
+                                </constraints>
+                                <state key="normal" title="Test 4"/>
+                                <connections>
+                                    <action selector="test4Tapped:" destination="HKY-s1-MDh" eventType="touchUpInside" id="4BX-YG-m6c"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uPV-vB-Rg4">
+                                <rect key="frame" x="20" y="272" width="335" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="CW4-Pd-ktm"/>
+                                </constraints>
+                                <state key="normal" title="Test 5"/>
+                                <connections>
+                                    <action selector="test5Tapped:" destination="HKY-s1-MDh" eventType="touchUpInside" id="ZXO-Yk-QUM"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstItem="60g-Zb-8RA" firstAttribute="centerX" secondItem="e5y-wb-Kaa" secondAttribute="centerX" id="44W-22-Cvo"/>
+                            <constraint firstItem="uPV-vB-Rg4" firstAttribute="top" secondItem="Atw-4I-IT6" secondAttribute="bottom" constant="8" id="5UM-hP-5bi"/>
+                            <constraint firstItem="Atw-4I-IT6" firstAttribute="top" secondItem="60g-Zb-8RA" secondAttribute="bottom" constant="8" id="FVg-oO-w0W"/>
                             <constraint firstItem="60g-Zb-8RA" firstAttribute="leading" secondItem="e5y-wb-Kaa" secondAttribute="leading" constant="20" id="HAl-Ug-Seu"/>
                             <constraint firstItem="kNq-wl-wQa" firstAttribute="top" secondItem="Ydw-Or-1bc" secondAttribute="bottom" constant="44" id="IDx-pb-z0U"/>
+                            <constraint firstItem="uPV-vB-Rg4" firstAttribute="leading" secondItem="e5y-wb-Kaa" secondAttribute="leading" constant="20" id="LaE-bz-y5Y"/>
                             <constraint firstItem="60g-Zb-8RA" firstAttribute="top" secondItem="e7R-K4-GCr" secondAttribute="bottom" constant="8" id="Me7-T7-ub6"/>
                             <constraint firstItem="e7R-K4-GCr" firstAttribute="top" secondItem="kNq-wl-wQa" secondAttribute="bottom" constant="8" id="OG6-Ax-uPk"/>
                             <constraint firstItem="kNq-wl-wQa" firstAttribute="centerX" secondItem="e5y-wb-Kaa" secondAttribute="centerX" id="PlC-HI-ZA6"/>
                             <constraint firstItem="e7R-K4-GCr" firstAttribute="leading" secondItem="e5y-wb-Kaa" secondAttribute="leading" constant="20" id="Vj8-EK-UNb"/>
                             <constraint firstItem="kNq-wl-wQa" firstAttribute="leading" secondItem="e5y-wb-Kaa" secondAttribute="leading" constant="20" id="aD0-i8-kkK"/>
+                            <constraint firstItem="Atw-4I-IT6" firstAttribute="leading" secondItem="e5y-wb-Kaa" secondAttribute="leading" constant="20" id="acC-Iq-g4T"/>
                             <constraint firstItem="e7R-K4-GCr" firstAttribute="centerX" secondItem="e5y-wb-Kaa" secondAttribute="centerX" id="bmb-Ag-mfO"/>
                             <constraint firstAttribute="trailing" secondItem="kNq-wl-wQa" secondAttribute="trailing" constant="20" id="gaT-lz-oYI"/>
+                            <constraint firstAttribute="trailing" secondItem="uPV-vB-Rg4" secondAttribute="trailing" constant="20" id="hFH-ne-sSu"/>
+                            <constraint firstAttribute="trailing" secondItem="Atw-4I-IT6" secondAttribute="trailing" constant="20" id="ht1-bd-QiL"/>
                             <constraint firstAttribute="trailing" secondItem="e7R-K4-GCr" secondAttribute="trailing" constant="20" id="wUB-ef-FgD"/>
                             <constraint firstAttribute="trailing" secondItem="60g-Zb-8RA" secondAttribute="trailing" constant="20" id="yRy-uO-aL4"/>
                         </constraints>

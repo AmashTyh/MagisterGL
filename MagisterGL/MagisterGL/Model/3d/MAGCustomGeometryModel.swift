@@ -188,6 +188,7 @@ class MAGCustomGeometryModel: NSObject
                                      neighbours: elementNeibsArray,
                                      material: nvkatArray[numberOfElement],
                                      neibsMaterials: elementMaterialsNeibsArray,
+                                     selectedMaterials: selectedMaterials,
 //                                     color:self.colorGenerator.getColorsFor(vertexes: positionArray!))
                                      color: [self.getColor(material: nvkatArray[numberOfElement])])
       
@@ -205,28 +206,42 @@ class MAGCustomGeometryModel: NSObject
   // TODO: Надо сделать цвета кастомизируемыми(хотя бы из файла).
   private func getColor(material: Int) -> SCNVector3
   {
-    if material == 0 {
+    switch material {
+    case 0:
       return SCNVector3(0.5, 0, 0)
-    }
-    if material == 1 {
+    case 1:
       return SCNVector3(1, 0, 0)
-    }
-    if material == 2 {
+    case 2:
       return SCNVector3(0, 1, 0)
-    }
-    if material == 3 {
+    case 3:
       return SCNVector3(0, 0, 1)
-    }
-    if material == 4 {
+    case 4:
       return SCNVector3(1, 0, 1)
-    }
-    if material == 5 {
+    case 5:
       return SCNVector3(1, 0.5, 0)
+    case 6:
+      return SCNVector3(0.2, 0.4, 1)
+    case 7:
+      return SCNVector3(0.8, 1, 0)
+    case 8:
+      return SCNVector3(0.4, 0, 1)
+    case 9:
+      return SCNVector3(0.4, 0.4, 0.4)
+    case 10:
+      return SCNVector3(1, 0.4, 0.5)
+    case 11:
+      return SCNVector3(0, 0.5, 0.5)
+    case 12:
+      return SCNVector3(0, 0.3, 0)
+    case 13:
+      return SCNVector3(0, 1, 0.5)
+    case 14:
+      return SCNVector3(1, 1, 0.5)
+    case 15:
+      return SCNVector3(1, 0.5, 0.5)
+    default:
+      return SCNVector3(0.6, 0.6, 0.6)
     }
-    if material == 6 {
-      return SCNVector3(1, 0, 0)
-    }
-    return SCNVector3(1, 0, 0.5)
   }
   
   private func getUIColor(material: Int) -> UIColor

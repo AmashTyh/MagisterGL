@@ -83,19 +83,27 @@ class MAGFileManager: NSObject
     case 0:
       path = Bundle.main.path(forResource: "xyz",
                               ofType: "txt")!
-      break;
+      break
     case 1:
       path = Bundle.main.path(forResource: "xyz2",
                               ofType: "txt")!
-      break;
+      break
     case 2:
       path = Bundle.main.path(forResource: "xyz",
                               ofType: "dat")!
-      break;
+      break
+    case 3:
+      path = Bundle.main.path(forResource: "xyz4",
+                              ofType: "dat")!
+      break
+    case 4:
+      path = Bundle.main.path(forResource: "xyz5",
+                              ofType: "dat")!
+      break
     default:
       path = Bundle.main.path(forResource: "xyz",
                               ofType: "txt")!
-      break;
+      break
     }
     return self.getXYZArray(path: path)
   }
@@ -109,19 +117,27 @@ class MAGFileManager: NSObject
     case 0:
       path = Bundle.main.path(forResource: "nver",
                               ofType: "txt")!
-      break;
+      break
     case 1:
       path = Bundle.main.path(forResource: "nver2",
                               ofType: "txt")!
-      break;
+      break
     case 2:
       path = Bundle.main.path(forResource: "nver",
                               ofType: "dat")!
-      break;
+      break
+    case 3:
+      path = Bundle.main.path(forResource: "nver4",
+                              ofType: "dat")!
+      break
+    case 4:
+      path = Bundle.main.path(forResource: "nver5",
+                              ofType: "dat")!
+      break
     default:
       path = Bundle.main.path(forResource: "nver",
                               ofType: "txt")!
-      break;
+      break
     }
     return self.getNVERArray(path: path)
   }
@@ -182,19 +198,27 @@ class MAGFileManager: NSObject
     case 0:
       path = Bundle.main.path(forResource: "nvkat",
                               ofType: "txt")!
-      break;
+      break
     case 1:
       path = Bundle.main.path(forResource: "nvkat2",
                               ofType: "txt")!
-      break;
+      break
     case 2:
       path = Bundle.main.path(forResource: "nvkat",
                               ofType: "dat")!
-      break;
+      break
+    case 3:
+      path = Bundle.main.path(forResource: "nvkat4",
+                              ofType: "dat")!
+      break
+    case 4:
+      path = Bundle.main.path(forResource: "nvkat5",
+                              ofType: "dat")!
+      break
     default:
       path = Bundle.main.path(forResource: "nvkat",
                               ofType: "txt")!
-      break;
+      break
     }
     return self.getNVKATArray(path: path)
   }
@@ -258,6 +282,14 @@ class MAGFileManager: NSObject
       path = Bundle.main.path(forResource: "elem_neib",
                               ofType: "")!
       break;
+    case 3:
+      path = Bundle.main.path(forResource: "elem_neib4",
+                              ofType: "")!
+      break
+    case 4:
+      path = Bundle.main.path(forResource: "elem_neib5",
+                              ofType: "")!
+      break
     default:
       path = Bundle.main.path(forResource: "elem_neib",
                               ofType: "txt")!
