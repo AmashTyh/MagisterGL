@@ -122,6 +122,9 @@ class MAGCustomGeometryModel: NSObject
     var numberOfElement : Int = 0
     for nverElementArray in nverArray
     {
+      // Вынести в отдельную функцию, как получение позиций по номеру nverArray[number]
+      // По массиву позиций можно проверить сечение соседа (setVisibleToHexahedron)
+      //------------------------
       var positionArray : [SCNVector3]? = []
       var i : Int = 0
       
@@ -135,9 +138,10 @@ class MAGCustomGeometryModel: NSObject
         i = i + 1
       }
       j = j + 1
+      //------------------------
       
       var elementNeibsArray: [[Int]] = []
-      var elementMaterialsNeibsArray: [[Int]] = []
+      var elementMaterialsNeibsArray: [[Int]] = [] // модифицировать elementNeibsArray и удалить elementMaterialsNeibsArray
       for numberOfSide in 0..<6
       {
         elementNeibsArray.insert(neibArray[6 * numberOfElement + numberOfSide],

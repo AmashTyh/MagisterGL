@@ -11,8 +11,8 @@ import Foundation
 import SceneKit
 
 
-enum PositionType {
-   case Left
+enum PositionType : Int {
+   case Left = 0
    case Front
    case Bottom
    case Right
