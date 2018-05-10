@@ -27,7 +27,6 @@
 		843D004F209B521000B824CF /* MAGChooseSectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843D004E209B521000B824CF /* MAGChooseSectionViewController.swift */; };
 		843FFE82208792E700B717D2 /* MAGColorGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843FFE81208792E700B717D2 /* MAGColorGenerator.swift */; };
 		8444971B20A469B300AB8D54 /* MAGBaseProjectsGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8444971A20A469B300AB8D54 /* MAGBaseProjectsGenerator.swift */; };
-		84541B071FB069BD00DC6E43 /* MAGChooseFileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84541B061FB069BD00DC6E43 /* MAGChooseFileViewController.swift */; };
 		84541B0D1FB0AD2300DC6E43 /* elem_neib2.txt in Resources */ = {isa = PBXBuildFile; fileRef = 84541B091FB0AD2300DC6E43 /* elem_neib2.txt */; };
 		84541B0E1FB0AD2300DC6E43 /* xyz2.txt in Resources */ = {isa = PBXBuildFile; fileRef = 84541B0A1FB0AD2300DC6E43 /* xyz2.txt */; };
 		84541B0F1FB0AD2300DC6E43 /* nver2.txt in Resources */ = {isa = PBXBuildFile; fileRef = 84541B0B1FB0AD2300DC6E43 /* nver2.txt */; };
@@ -116,7 +115,6 @@
 		843D004E209B521000B824CF /* MAGChooseSectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAGChooseSectionViewController.swift; sourceTree = "<group>"; };
 		843FFE81208792E700B717D2 /* MAGColorGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAGColorGenerator.swift; sourceTree = "<group>"; };
 		8444971A20A469B300AB8D54 /* MAGBaseProjectsGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAGBaseProjectsGenerator.swift; sourceTree = "<group>"; };
-		84541B061FB069BD00DC6E43 /* MAGChooseFileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAGChooseFileViewController.swift; sourceTree = "<group>"; };
 		84541B091FB0AD2300DC6E43 /* elem_neib2.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = elem_neib2.txt; sourceTree = "<group>"; };
 		84541B0A1FB0AD2300DC6E43 /* xyz2.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = xyz2.txt; sourceTree = "<group>"; };
 		84541B0B1FB0AD2300DC6E43 /* nver2.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = nver2.txt; sourceTree = "<group>"; };
@@ -363,7 +361,6 @@
 				84743BA92084DE6E007049C6 /* GoogleDrive */,
 				9AF322E81F7A7F3A003AE463 /* 3D */,
 				9AF322E71F7A7F0E003AE463 /* 2d */,
-				84541B061FB069BD00DC6E43 /* MAGChooseFileViewController.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -431,11 +428,11 @@
 		9AE6155C1F89FCDC0067893C /* Supporting files */ = {
 			isa = PBXGroup;
 			children = (
-				8437777C20A33177009B1BE0 /* Test5 */,
-				8437777B20A330FD009B1BE0 /* Test4 */,
-				84541B081FB0AB2900DC6E43 /* Test2 */,
 				9AE615711F8A09FB0067893C /* Test1 */,
-				9AE615661F89FD900067893C /* Test0 */,
+				84541B081FB0AB2900DC6E43 /* Test2 */,
+				9AE615661F89FD900067893C /* Test3 */,
+				8437777B20A330FD009B1BE0 /* Test4 */,
+				8437777C20A33177009B1BE0 /* Test5 */,
 			);
 			path = "Supporting files";
 			sourceTree = "<group>";
@@ -461,13 +458,13 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		9AE615661F89FD900067893C /* Test0 */ = {
+		9AE615661F89FD900067893C /* Test3 */ = {
 			isa = PBXGroup;
 			children = (
 				9AE6155D1F89FCE80067893C /* Grid */,
 				9AE615631F89FCE80067893C /* Model */,
 			);
-			path = Test0;
+			path = Test3;
 			sourceTree = "<group>";
 		};
 		9AE615671F8A004C0067893C /* FileManager */ = {
@@ -757,7 +754,6 @@
 				9AB601AE1F7657A7004C50AB /* SKTexture+Gradient.swift in Sources */,
 				84743BB42084E6BF007049C6 /* MAGProjectCellObject.swift in Sources */,
 				9A577D331F03B0AC0017F40F /* Matrix4.swift in Sources */,
-				84541B071FB069BD00DC6E43 /* MAGChooseFileViewController.swift in Sources */,
 				9A577D381F03B0AC0017F40F /* Texture.swift in Sources */,
 				9AE6156E1F8A03B00067893C /* MAGHexahedron.swift in Sources */,
 				84743BB22084E66F007049C6 /* MAGProjectsViewModel.swift in Sources */,

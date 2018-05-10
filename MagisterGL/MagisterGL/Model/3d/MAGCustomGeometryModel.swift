@@ -33,31 +33,9 @@ class MAGCustomGeometryModel: NSObject
   var materials: [MAGMaterial] = []
   var selectedMaterials: [MAGMaterial] = []
   
-  func runTest()
-  {
-    xyzArray = MAGFileManager.sharedInstance.getXYZArray()
-    nverArray = MAGFileManager.sharedInstance.getNVERArray()
-    nvkatArray = MAGFileManager.sharedInstance.getNVKATArray()
-    neibArray = MAGFileManager.sharedInstance.getNEIBArray()
-    //TODO: Читать из файла Sigma
-    let set = NSMutableSet()
-    for nvkat in nvkatArray
-    {
-      set.add(nvkat)
-    }
-    for materialNumber in set
-    {
-      let material = MAGMaterial.init(numberOfMaterial: materialNumber as! Int,
-                                      color: self.getUIColor(material: materialNumber as! Int))
-      self.materials.append(material)
-    }
-    self.selectedMaterials  = self.materials
-    createElementsArray()
-  }
-  
   func configure(project: MAGProject)
   {
-    let documentsPath = project.isLocal ? "" : NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] + "/"
+    let documentsPath = (project.isLocal ? Bundle.main.resourcePath! : NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]) + "/"
     xyzArray = self.fileManager.getXYZArray(path: documentsPath + project.xyzFilePath!)
     nverArray = self.fileManager.getNVERArray(path: documentsPath + project.nverFilePath!)
     nvkatArray = self.fileManager.getNVKATArray(path: documentsPath + project.nvkatFilePath!)
@@ -112,8 +90,12 @@ class MAGCustomGeometryModel: NSObject
     let crossSection: MAGCrossSection = MAGCrossSection(plane: .X, value: sectionValue / xyzCalc, greater: false)
     //let crossSection: MAGCrossSection = MAGCrossSection(plane: .Y, value: -4000 / xyzCalc, greater: false)
     
-    self.colorGenerator.generateColor(minValue: self.colorGenerator.uFunc(x: Double(minVector.x / xyzCalc), y: Double(minVector.y / xyzCalc), z: Double(minVector.z / xyzCalc)),
-                                      maxValue: self.colorGenerator.uFunc(x: Double(maxVector.x / xyzCalc), y: Double(maxVector.y / xyzCalc), z: Double(maxVector.z / xyzCalc)))
+    self.colorGenerator.generateColor(minValue: self.colorGenerator.uFunc(x: Double(minVector.x / xyzCalc),
+                                                                          y: Double(minVector.y / xyzCalc),
+                                                                          z: Double(minVector.z / xyzCalc)),
+                                      maxValue: self.colorGenerator.uFunc(x: Double(maxVector.x / xyzCalc),
+                                                                          y: Double(maxVector.y / xyzCalc),
+                                                                          z: Double(maxVector.z / xyzCalc)))
     
     var arrayOfVectors: [SCNVector3]? = []
     for xyz in xyzArray

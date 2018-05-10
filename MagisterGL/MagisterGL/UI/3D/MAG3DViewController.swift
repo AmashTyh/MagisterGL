@@ -41,11 +41,8 @@ class MAG3DViewController: UIViewController, UIPopoverPresentationControllerDele
   {
     super.prepare(for: segue,
                   sender: sender)
-    if segue.destination.isKind(of: MAGChooseFileViewController.self)
-    {
-      segue.destination.popoverPresentationController?.delegate = self;
-    }
-    else if segue.destination.isKind(of: MAGChooseSectionViewController.self)
+    
+    if segue.destination.isKind(of: MAGChooseSectionViewController.self)
     {
       let vc = segue.destination as! MAGChooseSectionViewController
       vc.delegate = self
@@ -53,8 +50,7 @@ class MAG3DViewController: UIViewController, UIPopoverPresentationControllerDele
     else if segue.destination.isKind(of: MAGSectionViewController.self)
     {
       let vc = segue.destination as! MAGSectionViewController
-      vc.sectionType = self.customGeometryView.model.sectionType
-      vc.sectionValue = self.customGeometryView.model.sectionValue
+      vc.model = self.customGeometryView.model
     }
     else if segue.destination.isKind(of: MAGChooseMaterialViewController.self)
     {
@@ -63,11 +59,6 @@ class MAG3DViewController: UIViewController, UIPopoverPresentationControllerDele
       vc.materials = self.customGeometryView.model.materials
       vc.selectedMaterials = self.customGeometryView.model.selectedMaterials
     }
-  }
-  
-  func popoverPresentationControllerDidDismissPopover(_ popoverPresentationController: UIPopoverPresentationController)
-  {
-    self.customGeometryView.redraw()
   }
   
   //MARK: SCNSceneRendererDelegate

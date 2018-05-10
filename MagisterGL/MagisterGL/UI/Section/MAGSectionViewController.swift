@@ -8,19 +8,19 @@
 
 import UIKit
 
-class MAGSectionViewController: UIViewController {
+class MAGSectionViewController: UIViewController
+{
 
   @IBOutlet weak var customGeometryView: MAGSectionView!
   
-  var sectionType: PlaneType = .X
-  var sectionValue: Float = 0
+  var model: MAGCustomGeometryModel?
   
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewDidLoad()
+    {
+      super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-      self.customGeometryView.model.sectionValue = sectionValue
-      self.customGeometryView.model.sectionType = sectionType
-      self.customGeometryView.redraw()
+      self.customGeometryView.model = model
+      self.customGeometryView.setupScene()
     }
 }

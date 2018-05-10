@@ -13,9 +13,6 @@ import SceneKit
 
 class MAGFileManager: NSObject
 {
-  public var testType: Int = 0
-  static let sharedInstance = MAGFileManager()
-  
   
   func getXYZArray(path: String) -> Array<SCNVector3>
   {
@@ -74,75 +71,6 @@ class MAGFileManager: NSObject
     return []
   }
   
-  
-  func getXYZArray() -> Array<SCNVector3>
-  {
-    var path: String
-    switch testType
-    {
-    case 0:
-      path = Bundle.main.path(forResource: "xyz",
-                              ofType: "txt")!
-      break
-    case 1:
-      path = Bundle.main.path(forResource: "xyz2",
-                              ofType: "txt")!
-      break
-    case 2:
-      path = Bundle.main.path(forResource: "xyz",
-                              ofType: "dat")!
-      break
-    case 3:
-      path = Bundle.main.path(forResource: "xyz4",
-                              ofType: "dat")!
-      break
-    case 4:
-      path = Bundle.main.path(forResource: "xyz5",
-                              ofType: "dat")!
-      break
-    default:
-      path = Bundle.main.path(forResource: "xyz",
-                              ofType: "txt")!
-      break
-    }
-    return self.getXYZArray(path: path)
-  }
-  
-  
-  func getNVERArray() -> [[Int]]
-  {
-    var path: String
-    switch testType
-    {
-    case 0:
-      path = Bundle.main.path(forResource: "nver",
-                              ofType: "txt")!
-      break
-    case 1:
-      path = Bundle.main.path(forResource: "nver2",
-                              ofType: "txt")!
-      break
-    case 2:
-      path = Bundle.main.path(forResource: "nver",
-                              ofType: "dat")!
-      break
-    case 3:
-      path = Bundle.main.path(forResource: "nver4",
-                              ofType: "dat")!
-      break
-    case 4:
-      path = Bundle.main.path(forResource: "nver5",
-                              ofType: "dat")!
-      break
-    default:
-      path = Bundle.main.path(forResource: "nver",
-                              ofType: "txt")!
-      break
-    }
-    return self.getNVERArray(path: path)
-  }
-  
-  
   func getNVERArray(path: String) -> [[Int]]
   {
     do
@@ -190,39 +118,6 @@ class MAGFileManager: NSObject
     return []
   }
   
-  func getNVKATArray() -> Array<Int>
-  {
-    var path: String
-    switch testType
-    {
-    case 0:
-      path = Bundle.main.path(forResource: "nvkat",
-                              ofType: "txt")!
-      break
-    case 1:
-      path = Bundle.main.path(forResource: "nvkat2",
-                              ofType: "txt")!
-      break
-    case 2:
-      path = Bundle.main.path(forResource: "nvkat",
-                              ofType: "dat")!
-      break
-    case 3:
-      path = Bundle.main.path(forResource: "nvkat4",
-                              ofType: "dat")!
-      break
-    case 4:
-      path = Bundle.main.path(forResource: "nvkat5",
-                              ofType: "dat")!
-      break
-    default:
-      path = Bundle.main.path(forResource: "nvkat",
-                              ofType: "txt")!
-      break
-    }
-    return self.getNVKATArray(path: path)
-  }
-  
   func getNVKATArray(path: String) -> Array<Int>
   {
     do
@@ -265,39 +160,6 @@ class MAGFileManager: NSObject
     return []
   }
   
-  func getNEIBArray() -> [[Int]]
-  {
-    var path: String
-    switch testType
-    {
-    case 0:
-      path = Bundle.main.path(forResource: "elem_neib",
-                              ofType: "txt")!
-      break;
-    case 1:
-      path = Bundle.main.path(forResource: "elem_neib2",
-                              ofType: "txt")!
-      break;
-    case 2:
-      path = Bundle.main.path(forResource: "elem_neib",
-                              ofType: "")!
-      break;
-    case 3:
-      path = Bundle.main.path(forResource: "elem_neib4",
-                              ofType: "")!
-      break
-    case 4:
-      path = Bundle.main.path(forResource: "elem_neib5",
-                              ofType: "")!
-      break
-    default:
-      path = Bundle.main.path(forResource: "elem_neib",
-                              ofType: "txt")!
-      break;
-    }
-    return self.getNEIBArray(path: path)
-  }
-  
   func getNEIBArray(path: String) -> [[Int]]
   {
     do
@@ -324,7 +186,7 @@ class MAGFileManager: NSObject
             {
               array?.append(Int(val))
               
-              if array?.count == arrayCount+1
+              if array?.count == arrayCount + 1
               {
                 arrayOfVectors?.append(array!)
                 array = []

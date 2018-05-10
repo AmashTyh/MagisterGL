@@ -179,7 +179,11 @@ class MAGCrossSectionHelper: NSObject {
       }
     }
     
-    return [points[0], points[1], points[3], points[2]]
+    if points.count >= 4
+    {
+      return [points[0], points[1], points[3], points[2]]
+    }
+    return points
   }
   
   static func checkPoints(points: [SCNVector3],
