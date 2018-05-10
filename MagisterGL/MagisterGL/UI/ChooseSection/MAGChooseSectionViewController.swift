@@ -12,6 +12,7 @@ protocol MAGChooseSectionViewControllerDelegate
 {
   func drawSection(sectionType: PlaneType,
                    sectionValue: Float)
+  func deleteSection()
 }
 
 class MAGChooseSectionViewController: UIViewController, UIPopoverPresentationControllerDelegate
@@ -28,5 +29,12 @@ class MAGChooseSectionViewController: UIViewController, UIPopoverPresentationCon
     self.dismiss(animated: true,
                  completion: nil)
   }
-
+  
+  @IBAction func deleteSection()
+  {
+    delegate?.deleteSection()
+    self.dismiss(animated: true,
+                 completion: nil)
+  }
+  
 }

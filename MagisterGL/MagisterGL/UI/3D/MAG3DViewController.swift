@@ -80,8 +80,11 @@ class MAG3DViewController: UIViewController, UIPopoverPresentationControllerDele
   {
     self.customGeometryView.model.sectionType = sectionType
     self.customGeometryView.model.sectionValue = sectionValue
-    self.performSegue(withIdentifier: "showSection",
-                      sender: self)
+  }
+  
+  func deleteSection()
+  {
+    
   }
   
   // MARK: MAGChooseMaterialViewControllerDelegate

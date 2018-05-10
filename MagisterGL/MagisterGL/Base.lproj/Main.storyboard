@@ -493,8 +493,9 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BxM-xQ-I8b">
-                                <rect key="frame" x="37" y="110" width="300" height="30"/>
+                                <rect key="frame" x="37" y="110" width="300" height="44"/>
                                 <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="1qn-Df-Ia2"/>
                                     <constraint firstAttribute="width" constant="300" id="gOM-px-WIf"/>
                                 </constraints>
                                 <state key="normal" title="Draw section"/>
@@ -508,6 +509,17 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dbx-MF-N1c">
+                                <rect key="frame" x="37" y="174" width="300" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="2Rg-0p-Wjg"/>
+                                    <constraint firstAttribute="width" constant="300" id="TB7-kQ-Oyb"/>
+                                </constraints>
+                                <state key="normal" title="Delete section"/>
+                                <connections>
+                                    <action selector="deleteSection" destination="Yia-fo-B5Z" eventType="touchUpInside" id="whx-cq-tvx"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -517,7 +529,9 @@
                             <constraint firstItem="C5N-yv-Q2a" firstAttribute="leading" secondItem="kTA-HI-aEP" secondAttribute="trailing" constant="20" id="WfU-3P-UA3"/>
                             <constraint firstItem="BxM-xQ-I8b" firstAttribute="centerX" secondItem="yXD-bt-t1G" secondAttribute="centerX" id="cKK-Yb-38N"/>
                             <constraint firstItem="kTA-HI-aEP" firstAttribute="top" secondItem="Yya-f5-dRa" secondAttribute="bottom" constant="50" id="dft-WU-ace"/>
+                            <constraint firstItem="Dbx-MF-N1c" firstAttribute="centerX" secondItem="yXD-bt-t1G" secondAttribute="centerX" id="jQw-XM-ICs"/>
                             <constraint firstItem="C5N-yv-Q2a" firstAttribute="top" secondItem="Yya-f5-dRa" secondAttribute="bottom" constant="50" id="syU-Gu-nxK"/>
+                            <constraint firstItem="Dbx-MF-N1c" firstAttribute="top" secondItem="BxM-xQ-I8b" secondAttribute="bottom" constant="20" id="xOG-i7-uz1"/>
                         </constraints>
                     </view>
                     <connections>
