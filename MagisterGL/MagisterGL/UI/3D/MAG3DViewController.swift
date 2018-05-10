@@ -80,11 +80,16 @@ class MAG3DViewController: UIViewController, UIPopoverPresentationControllerDele
   {
     self.customGeometryView.model.sectionType = sectionType
     self.customGeometryView.model.sectionValue = sectionValue
+    self.customGeometryView.model.isDrawingSectionEnabled = true
+    self.customGeometryView.model.createElementsArray()
+    self.customGeometryView.setupScene()
   }
   
   func deleteSection()
   {
-    
+    self.customGeometryView.model.isDrawingSectionEnabled = false
+    self.customGeometryView.model.createElementsArray()
+    self.customGeometryView.setupScene()
   }
   
   // MARK: MAGChooseMaterialViewControllerDelegate

@@ -19,6 +19,8 @@ class MAGCustomGeometryModel: NSObject
   var isShowMaterials = true
   var colorGenerator = MAGColorGenerator()
   
+  var scaleValue : Float = 1.0
+  var isDrawingSectionEnabled: Bool = false
   var elementsArray: [MAGHexahedron] = []
   var centerPoint: SCNVector3 = SCNVector3Zero
   var minVector: SCNVector3 = SCNVector3Zero
@@ -27,7 +29,6 @@ class MAGCustomGeometryModel: NSObject
   var nverArray: [[Int]] = []
   var nvkatArray: [Int] = []
   var neibArray: [[Int]] = []
-  var xyzCalc: Float = 1
   var sectionType: PlaneType = .X
   var sectionValue: Float = 0
   var materials: [MAGMaterial] = []
@@ -76,53 +77,49 @@ class MAGCustomGeometryModel: NSObject
   {
     
     // TODO: Необходимо просматривать массив xyzArray, очень опасное поведение!
-    minVector = xyzArray.first!
-    maxVector = xyzArray.last!
+    minVector = SCNVector3Zero
+    maxVector = SCNVector3Zero
     
     // минимумы и максимумы по осям
-    let minX = xyzArray.min { (first, second) -> Bool in
+    minVector.x = xyzArray.min { (first, second) -> Bool in
       return first.x < second.x
       }!.x
-    let maxX = xyzArray.max { (first, second) -> Bool in
+    maxVector.x = xyzArray.max { (first, second) -> Bool in
       return first.x < second.x
       }!.x
-    let minY = xyzArray.min { (first, second) -> Bool in
+    minVector.y = xyzArray.min { (first, second) -> Bool in
       return first.y < second.y
       }!.y
-    let maxY = xyzArray.max { (first, second) -> Bool in
+    maxVector.y = xyzArray.max { (first, second) -> Bool in
       return first.y < second.y
       }!.y
-    let minZ = xyzArray.min { (first, second) -> Bool in
+    minVector.z = xyzArray.min { (first, second) -> Bool in
       return first.z < second.z
       }!.z
-    let maxZ = xyzArray.max { (first, second) -> Bool in
+    maxVector.z = xyzArray.max { (first, second) -> Bool in
       return first.z < second.z
       }!.z
     
 
+    self.scaleValue = 1.0 / abs((maxVector.y - minVector.y) / 2.0)
+    centerPoint = SCNVector3Make((maxVector.x - minVector.x) / 2.0 + minVector.x,
+                                 (maxVector.y - minVector.y) / 2.0 + minVector.y,
+                                 (maxVector.z - minVector.z) / 2.0 + minVector.z)
     
-    self.xyzCalc = abs((maxVector.y - minVector.y) / 2.0)
-    let crossSection: MAGCrossSection = MAGCrossSection(plane: .X, value: sectionValue / xyzCalc, greater: false)
+//    centerPoint = SCNVector3Make((maxVector.x - minVector.x) / 2.0 + minVector.x,
+//                                 (maxVector.y - minVector.y) / 2.0 + minVector.y,
+//                                 (maxVector.z - minVector.z) / 2.0 + minVector.z)
+    let crossSection: MAGCrossSection = MAGCrossSection(plane: .X,
+                                                        value: sectionValue,
+                                                        greater: true)
     //let crossSection: MAGCrossSection = MAGCrossSection(plane: .Y, value: -4000 / xyzCalc, greater: false)
     
-    self.colorGenerator.generateColor(minValue: self.colorGenerator.uFunc(x: Double(minVector.x / xyzCalc),
-                                                                          y: Double(minVector.y / xyzCalc),
-                                                                          z: Double(minVector.z / xyzCalc)),
-                                      maxValue: self.colorGenerator.uFunc(x: Double(maxVector.x / xyzCalc),
-                                                                          y: Double(maxVector.y / xyzCalc),
-                                                                          z: Double(maxVector.z / xyzCalc)))
-    
-    var arrayOfVectors: [SCNVector3]? = []
-    for xyz in xyzArray
-    {
-      let vector = SCNVector3Make(Float(xyz.x / xyzCalc),
-                                  Float(xyz.y / xyzCalc),
-                                  Float(xyz.z / xyzCalc))
-      arrayOfVectors?.append(vector)
-    }
-    xyzArray = arrayOfVectors!
-    minVector = xyzArray.first!
-    maxVector = xyzArray.last!
+    self.colorGenerator.generateColor(minValue: self.colorGenerator.uFunc(x: Double(minVector.x),
+                                                                          y: Double(minVector.y),
+                                                                          z: Double(minVector.z)),
+                                      maxValue: self.colorGenerator.uFunc(x: Double(maxVector.x),
+                                                                          y: Double(maxVector.y),
+                                                                          z: Double(maxVector.z)))
     
     var j : Int = 0
     var numberOfElement : Int = 0
@@ -191,13 +188,13 @@ class MAGCustomGeometryModel: NSObject
       
       hexahedron.generateSides()
       // когда формируем hexahedronы смотрим их видимость
-      hexahedron.visible = crossSection.setVisibleToHexahedron(positions: positionArray!)
+      if isDrawingSectionEnabled
+      {
+        hexahedron.visible = crossSection.setVisibleToHexahedron(positions: positionArray!)
+      }
       elementsArray.append(hexahedron)
       numberOfElement = numberOfElement + 1
     }
-    centerPoint = SCNVector3Make((maxVector.x - minVector.x) / 2.0 + minVector.x,
-                                 (maxVector.y - minVector.y) / 2.0 + minVector.y,
-                                 (maxVector.z - minVector.z) / 2.0 + minVector.z)
   }
   
   // TODO: Надо сделать цвета кастомизируемыми(хотя бы из файла).
