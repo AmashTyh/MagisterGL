@@ -51,7 +51,8 @@ class MAGProjectsViewModel: NSObject
                   nverPath: String,
                   xyzPath: String,
                   nvkatPath: String,
-                  elemNeibPath: String)
+                  elemNeibPath: String,
+                  isLocal: Bool)
   {
     let newEntity = NSEntityDescription.insertNewObject(forEntityName: "MAGProject",
                                                         into: self.persistentContainer.viewContext) as! MAGProject
@@ -61,6 +62,7 @@ class MAGProjectsViewModel: NSObject
     newEntity.nvkatFilePath = nvkatPath
     newEntity.xyzFilePath = xyzPath
     newEntity.elemNeibFilePath = elemNeibPath
+    newEntity.isLocal = isLocal
     
     do
     {

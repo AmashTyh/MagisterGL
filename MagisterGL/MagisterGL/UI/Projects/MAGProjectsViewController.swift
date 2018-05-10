@@ -16,6 +16,7 @@ class MAGProjectsViewController: UIViewController,
   @IBOutlet weak var tableView: UITableView!
   
   let viewModel: MAGProjectsViewModel = MAGProjectsViewModel()
+  let baseProjectsGenerator: MAGBaseProjectsGenerator = MAGBaseProjectsGenerator()
   var cellObjects: [MAGProjectCellObject] = []
   
   
@@ -24,6 +25,7 @@ class MAGProjectsViewController: UIViewController,
   {
     super.viewDidLoad()
     
+    baseProjectsGenerator.baseProjects()
     cellObjects = viewModel.cellObjects()
     self.tableView.register(UINib.init(nibName: "MAGProjectTableViewCell",
                                        bundle: nil),

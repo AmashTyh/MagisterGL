@@ -32,17 +32,7 @@ class MAGCustomGeometryView: SCNView
   deinit
   {
     scene?.rootNode.cleanup()
-  }
-  
-  
-  public func redraw()
-  {
-    scene?.rootNode.cleanup()
-    self.model = MAGCustomGeometryModel()
-    self.model.runTest()
-    setupScene()
-  }
-  
+  }  
   
   func configure(project: MAGProject)
   {

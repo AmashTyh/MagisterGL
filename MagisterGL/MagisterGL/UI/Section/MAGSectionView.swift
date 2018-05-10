@@ -6,12 +6,15 @@
 //  Copyright © 2018 Хохлова Татьяна. All rights reserved.
 //
 
+
 import UIKit
 import SceneKit
 
-class MAGSectionView: SCNView {
 
-  var model: MAGCustomGeometryModel = MAGCustomGeometryModel()
+class MAGSectionView: SCNView
+{
+
+  var model: MAGCustomGeometryModel!
   private var zoomValue: Float = 1.0
   
   deinit
@@ -19,23 +22,7 @@ class MAGSectionView: SCNView {
     scene?.rootNode.cleanup()
   }
   
-  
-  public func redraw()
-  {
-    scene?.rootNode.cleanup()
-    self.model.runTest()
-    setupScene()
-  }
-  
-  
-  func configure(project: MAGProject)
-  {
-    scene?.rootNode.cleanup()
-    self.model.configure(project: project)
-    setupScene()
-  }
-  
-  private func setupScene()
+  func setupScene()
   {
     // Configure the Scene View
     self.backgroundColor = .darkGray
@@ -85,7 +72,6 @@ class MAGSectionView: SCNView {
   func zoomScene()
   {
      zoomValue *= 2.0
-    self.redraw()
   }
   
   private func createSection()
