@@ -118,37 +118,31 @@ class MAGCustomGeometryModel: NSObject
                                                                           y: Double(maxVector.y),
                                                                           z: Double(maxVector.z)))
     
-    var j : Int = 0
+
     var numberOfElement : Int = 0
-    for nverElementArray in nverArray
+    var positionArray : [SCNVector3] = []
+    for i in 0..<nverArray.count
     {
       // Вынести в отдельную функцию, как получение позиций по номеру nverArray[number]
-      // По массиву позиций можно проверить сечение соседа (setVisibleToHexahedron)
-      //------------------------
-      var positionArray : [SCNVector3]? = []
-      var i : Int = 0
       
-      for gridNum in nverElementArray
+      //------------------------
+      positionArray = getNVERArrayFor(number: i)
+      //------------------------
+      if isDrawingSectionEnabled
       {
-        if i < 8
-        {
-          let vector = xyzArray[gridNum - 1]
-          positionArray?.append(vector)
-        }
-        i = i + 1
+        // По массиву позиций можно проверить сечение соседа (setVisibleToHexahedron)
       }
-      j = j + 1
-      //------------------------
       
-      var elementNeibsArray: [[Int]] = []
+      var elementNeibsArray: [[Int]] = generateNeibsElementArray(number: i)
       var elementMaterialsNeibsArray: [[Int]] = [] // модифицировать elementNeibsArray и удалить elementMaterialsNeibsArray
-      for numberOfSide in 0..<6
-      {
-        elementNeibsArray.insert(neibArray[6 * numberOfElement + numberOfSide],
-                                 at: numberOfSide)
-      }
+//      for numberOfSide in 0..<6
+//      {
+//        elementNeibsArray.insert(neibArray[6 * numberOfElement + numberOfSide],
+//                                 at: numberOfSide)
+//      }
       
-      let isVisible = isDrawingSectionEnabled ? crossSection.setVisibleToHexahedron(positions: positionArray!) : .isVisible
+      
+      let isVisible = isDrawingSectionEnabled ? crossSection.setVisibleToHexahedron(positions: positionArray) : .isVisible
       
       /** строка двумерного массива ELEM NEIB содержит:
        [количество соседей, номера соседей(нумерация соседей с единицы)]
@@ -176,7 +170,7 @@ class MAGCustomGeometryModel: NSObject
       }
       
 //      let isVisible = isDrawingSectionEnabled ? crossSection.setVisibleToHexahedron(positions: positionArray!) : .isVisible
-      let hexahedron = MAGHexahedron(positions: positionArray!,
+      let hexahedron = MAGHexahedron(positions: positionArray,
                                      neighbours: elementNeibsArray,
                                      material: nvkatArray[numberOfElement],
                                      neibsMaterials: elementMaterialsNeibsArray,
@@ -197,6 +191,65 @@ class MAGCustomGeometryModel: NSObject
     }
   }
   
+  
+  private func getNVERArrayFor(number: Int) -> [SCNVector3]
+  {
+    var positionArray : [SCNVector3] = []
+    var i : Int = 0
+    
+    for gridNum in nverArray[number]
+    {
+      if i < 8
+      {
+        let vector = xyzArray[gridNum - 1]
+        positionArray.append(vector)
+      }
+      i = i + 1
+    }
+    return positionArray
+  }
+  
+  private func generateNeibsElementArray(number: Int) -> [[Int]]
+  {
+    var elementNeibsArray: [[Int]] = []
+    for numberOfSide in 0..<6 {
+      var neibs: [Int] = neibArray[6 * number + numberOfSide]
+      var resNeibs: [Int] = []
+      if (neibs.count >= 1) && (neibs[0] == 0) {
+        resNeibs.append(0)
+      }
+      else {
+        var neibsNumbers: [Int] = []
+        for i in 0..<neibs[0] {
+          // если материал соседа выключен, мы должны это учесть
+         let index = self.nvkatArray[neibs[i + 1] - 1]
+          if (!self.findInSelectedMaterials(numberOfMaterial: index)) {
+            //resNeibs.append(0)
+            break
+          } else {
+            neibsNumbers.append(neibs[i + 1])
+          }
+        }
+        resNeibs.append(neibsNumbers.count)
+        resNeibs += neibsNumbers
+      }
+
+      elementNeibsArray.insert(resNeibs,
+                               at: numberOfSide)
+    }
+    
+    return elementNeibsArray
+  }
+  
+  private func findInSelectedMaterials(numberOfMaterial: Int) -> Bool
+  {
+    for selectedMaterial in self.selectedMaterials {
+      if (numberOfMaterial == selectedMaterial.numberOfMaterial) {
+        return true
+      }
+    }
+    return false
+  }
   // TODO: Надо сделать цвета кастомизируемыми(хотя бы из файла).
   private func getColor(material: Int) -> SCNVector3
   {
