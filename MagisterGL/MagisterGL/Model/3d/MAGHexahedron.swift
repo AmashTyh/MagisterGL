@@ -57,15 +57,11 @@ class MAGHexahedron: NSObject
   init(positions: [SCNVector3],
        neighbours: [[Int]],
        material: Int,
-       neibsMaterials: [[Int]],
-       selectedMaterials: [MAGMaterial],
        color: [SCNVector3])
   {
     self.positions = positions
     self.neighbours = neighbours
     self.material = material
-    self.neibsMaterials = neibsMaterials
-    self.selectedMaterials = selectedMaterials
     self.colors = color
   }
   
@@ -80,31 +76,13 @@ class MAGHexahedron: NSObject
     
     for i in 0..<6
     {
-      if (neighbours[i].count == 1)
+      if (neighbours[i].count >= 1) && (neighbours[i][0] == 0)
       {
         isSideVisibleArray[i] = true
       }
       else
       {
         isSideVisibleArray[i] = false
-        if !neibsMaterials[i].contains(self.material)
-        {
-          for matNum in neibsMaterials[i]
-          {
-            if !selectedNumberMaterials.contains(matNum)
-            {
-              isSideVisibleByMaterialArray[i] = true
-            }
-            else
-            {
-              isSideVisibleByMaterialArray[i] = false
-            }
-          }
-        }
-        else
-        {
-          isSideVisibleByMaterialArray[i] = false
-        }
       }
     }
     

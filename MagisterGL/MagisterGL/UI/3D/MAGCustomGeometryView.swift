@@ -114,7 +114,7 @@ class MAGCustomGeometryView: SCNView
         var indices: [CInt] = []
         for side in hexahedron.sidesArray
         {
-          if side.isVisible //|| side.isVisibleByMaterial
+          if side.isVisible
           {
             let indicesSide = side.indicesArray(addValue: h * 5)
             

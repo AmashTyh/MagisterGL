@@ -123,59 +123,16 @@ class MAGCustomGeometryModel: NSObject
     var positionArray : [SCNVector3] = []
     for i in 0..<nverArray.count
     {
-      // Вынести в отдельную функцию, как получение позиций по номеру nverArray[number]
-      
-      //------------------------
       positionArray = getNVERArrayFor(number: i)
-      //------------------------
-      if isDrawingSectionEnabled
-      {
-        // По массиву позиций можно проверить сечение соседа (setVisibleToHexahedron)
-      }
-      
-      var elementNeibsArray: [[Int]] = generateNeibsElementArray(number: i)
-      var elementMaterialsNeibsArray: [[Int]] = [] // модифицировать elementNeibsArray и удалить elementMaterialsNeibsArray
-//      for numberOfSide in 0..<6
-//      {
-//        elementNeibsArray.insert(neibArray[6 * numberOfElement + numberOfSide],
-//                                 at: numberOfSide)
-//      }
-      
-      
       let isVisible = isDrawingSectionEnabled ? crossSection.setVisibleToHexahedron(positions: positionArray) : .isVisible
       
-      /** строка двумерного массива ELEM NEIB содержит:
-       [количество соседей, номера соседей(нумерация соседей с единицы)]
-       
-       elementsMaterialsArray soderzhit:
-       [nomera materialov sosedeyi]
-       nomera materialov sosedeyi berutsya iz NVKAT
-       
-       NVKAT odnomernyi massiv:
-       
-       nvkat[index] - nomer materiala
-       
-       index - nomer soseda nachinaya s nulya
-       */
-      for numberOFside in 0..<6
-      {
-        var materialsArray: [Int] = []
-        for index in 0..<elementNeibsArray[numberOFside][0]
-        {
-          let nvkatIndex = elementNeibsArray[numberOFside][index + 1] - 1
-          //elementMaterialsNeibsArray.append(self.nvkatArray[index])
-          materialsArray.append(self.nvkatArray[nvkatIndex])
-        }
-        elementMaterialsNeibsArray.append(materialsArray)
-      }
+      let elementNeibsArray: [[Int]] = generateNeibsElementArray(number: i)
       
-//      let isVisible = isDrawingSectionEnabled ? crossSection.setVisibleToHexahedron(positions: positionArray!) : .isVisible
+      
       let hexahedron = MAGHexahedron(positions: positionArray,
                                      neighbours: elementNeibsArray,
                                      material: nvkatArray[numberOfElement],
-                                     neibsMaterials: elementMaterialsNeibsArray,
-                                     selectedMaterials: selectedMaterials,
-//                                     color:self.colorGenerator.getColorsFor(vertexes: positionArray!))
+                                     //                                     color:self.colorGenerator.getColorsFor(vertexes: positionArray!))
                                      color: [self.getColor(material: nvkatArray[numberOfElement])])
       
       hexahedron.generateSides()
@@ -222,6 +179,19 @@ class MAGCustomGeometryModel: NSObject
         var neibsNumbers: [Int] = []
         for i in 0..<neibs[0] {
           // если материал соседа выключен, мы должны это учесть
+          /** строка двумерного массива ELEM NEIB содержит:
+           [количество соседей, номера соседей(нумерация соседей с единицы)]
+           
+           elementsMaterialsArray soderzhit:
+           [nomera materialov sosedeyi]
+           nomera materialov sosedeyi berutsya iz NVKAT
+           
+           NVKAT odnomernyi massiv:
+           
+           nvkat[index] - nomer materiala
+           
+           index - nomer soseda nachinaya s nulya
+           */
          let index = self.nvkatArray[neibs[i + 1] - 1]
           if (!self.findInSelectedMaterials(numberOfMaterial: index)) {
             //resNeibs.append(0)
@@ -250,6 +220,7 @@ class MAGCustomGeometryModel: NSObject
     }
     return false
   }
+  
   // TODO: Надо сделать цвета кастомизируемыми(хотя бы из файла).
   private func getColor(material: Int) -> SCNVector3
   {
