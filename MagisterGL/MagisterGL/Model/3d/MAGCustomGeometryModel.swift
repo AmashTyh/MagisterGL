@@ -47,12 +47,26 @@ class MAGCustomGeometryModel: NSObject
     let sig3dArray = self.fileManager.getSig3dArray(path: documentsPath + project.sigma3dPath!)
     if sig3dArray.count > 0
     {
+      let min = sig3dArray.min { (first, second) -> Bool in
+        return first[1] < second[1]
+        }![1]
+      let max = sig3dArray.max { (first, second) -> Bool in
+        return first[1] < second[1]
+        }![1]
+      let colorGenerator = MAGColorGenerator()
+      colorGenerator.generateColor(minValue: min,
+                                   maxValue: max)
       for i in 0..<sig3dArray.count
       {
         //TODO: Генерировать цвет в зависимости от сигма
         let materialNumber = Int(sig3dArray[i][0])
+        let vector = colorGenerator.getColorForU(u: sig3dArray[i][1])
+        let color = UIColor(displayP3Red: CGFloat(vector.x),
+                            green: CGFloat(vector.y),
+                            blue: CGFloat(vector.z),
+                            alpha: 1.0)
         let material = MAGMaterial.init(numberOfMaterial: materialNumber,
-                                        color: self.getUIColor(material: materialNumber))
+                                        color: color)
         self.materials.append(material)
       }
     }
