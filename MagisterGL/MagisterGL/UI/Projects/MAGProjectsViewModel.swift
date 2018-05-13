@@ -52,6 +52,7 @@ class MAGProjectsViewModel: NSObject
                   xyzPath: String,
                   nvkatPath: String,
                   elemNeibPath: String,
+                  sigma3dPath: String,
                   isLocal: Bool)
   {
     let newEntity = NSEntityDescription.insertNewObject(forEntityName: "MAGProject",
@@ -62,6 +63,7 @@ class MAGProjectsViewModel: NSObject
     newEntity.nvkatFilePath = nvkatPath
     newEntity.xyzFilePath = xyzPath
     newEntity.elemNeibFilePath = elemNeibPath
+    newEntity.sigma3dPath = sigma3dPath
     newEntity.isLocal = isLocal
     
     do

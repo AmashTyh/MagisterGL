@@ -240,4 +240,37 @@ class MAGFileManager: NSObject
     }
     return []
   }
+  
+  func getSig3dArray(path: String) -> [[Double]]
+  {
+    do
+    {
+      let data = try String(contentsOfFile: path,
+                            encoding: String.Encoding.ascii)
+      var arrayOfSig3d: [[Double]]? = []
+      for string in data.components(separatedBy: "\n")
+      {
+        if string != ""
+        {
+          var sig3dArray = [Double]()
+          let array = string.components(separatedBy: "\r")[0].trimmingCharacters(in: .whitespaces).components(separatedBy: " ")
+          for elem in array
+          {
+            if elem != ""
+            {
+              sig3dArray.append(Double(elem)!)
+            }
+          }
+          arrayOfSig3d?.append(sig3dArray)
+        }
+      }
+      return arrayOfSig3d!
+    }
+    catch let err as NSError
+    {
+      // do something with Error
+      print(err)
+    }
+    return []
+  }
 }

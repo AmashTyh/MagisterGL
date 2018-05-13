@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14133" systemVersion="17E202" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13241" systemVersion="" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="MAGProject" representedClassName="MAGProject" syncable="YES" codeGenerationType="class">
         <attribute name="elemNeibFilePath" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="isLocal" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
         <attribute name="nverFilePath" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="nvkatFilePath" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sigma3dPath" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="xyzFilePath" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="MAGProject" positionX="-63" positionY="-18" width="128" height="135"/>
+        <element name="MAGProject" positionX="-63" positionY="-18" width="128" height="150"/>
     </elements>
 </model>
