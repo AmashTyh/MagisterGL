@@ -40,17 +40,32 @@ class MAGCustomGeometryModel: NSObject
     nverArray = self.fileManager.getNVERArray(path: documentsPath + project.nverFilePath!)
     nvkatArray = self.fileManager.getNVKATArray(path: documentsPath + project.nvkatFilePath!)
     neibArray = self.fileManager.getNEIBArray(path: documentsPath + project.elemNeibFilePath!)
-    //TODO: Читать из файла Sigma
-    let set = NSMutableSet()
-    for nvkat in nvkatArray
+    let sig3dArray = self.fileManager.getSig3dArray(path: documentsPath + project.sigma3dPath!)
+    if sig3dArray.count > 0
     {
-      set.add(nvkat)
+      for i in 0..<sig3dArray.count
+      {
+        //TODO: Генерировать цвет в зависимости от сигма
+        let materialNumber = Int(sig3dArray[i][0])
+        let material = MAGMaterial.init(numberOfMaterial: materialNumber,
+                                        color: self.getUIColor(material: materialNumber))
+        self.materials.append(material)
+      }
     }
-    for materialNumber in set
+    else
     {
-      let material = MAGMaterial.init(numberOfMaterial: materialNumber as! Int,
-                                      color: self.getUIColor(material: materialNumber as! Int))
-      self.materials.append(material)
+      //TODO: Добавить всем тестам файл Sig3d
+      let set = NSMutableSet()
+      for nvkat in nvkatArray
+      {
+        set.add(nvkat)
+      }
+      for materialNumber in set
+      {
+        let material = MAGMaterial.init(numberOfMaterial: materialNumber as! Int,
+                                        color: self.getUIColor(material: materialNumber as! Int))
+        self.materials.append(material)
+      }
     }
     self.selectedMaterials  = self.materials
     
