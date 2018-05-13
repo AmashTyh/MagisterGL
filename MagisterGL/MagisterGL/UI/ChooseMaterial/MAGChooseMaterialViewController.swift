@@ -15,7 +15,7 @@ protocol MAGChooseMaterialViewControllerDelegate
 }
 
 
-class MAGChooseMaterialViewController: UIViewController, UITableViewDelegate, UITableViewDataSource
+class MAGChooseMaterialViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPopoverPresentationControllerDelegate
 {
   let cellReuseIdentifier = "kMaterialReuseCellID"
   var delegate: MAGChooseMaterialViewControllerDelegate?

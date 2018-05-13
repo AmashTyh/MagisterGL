@@ -14,7 +14,7 @@ protocol MAGChooseSectionViewControllerDelegate
                    sectionValue: Float)
 }
 
-class MAGChooseSectionViewController: UIViewController
+class MAGChooseSectionViewController: UIViewController, UIPopoverPresentationControllerDelegate
 {
   var delegate: MAGChooseSectionViewControllerDelegate?
   

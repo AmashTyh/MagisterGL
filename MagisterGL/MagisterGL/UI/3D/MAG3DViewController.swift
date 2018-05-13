@@ -46,6 +46,7 @@ class MAG3DViewController: UIViewController, UIPopoverPresentationControllerDele
     {
       let vc = segue.destination as! MAGChooseSectionViewController
       vc.delegate = self
+      vc.popoverPresentationController?.delegate = self
     }
     else if segue.destination.isKind(of: MAGSectionViewController.self)
     {
@@ -58,6 +59,7 @@ class MAG3DViewController: UIViewController, UIPopoverPresentationControllerDele
       vc.delegate = self
       vc.materials = self.customGeometryView.model.materials
       vc.selectedMaterials = self.customGeometryView.model.selectedMaterials
+      vc.popoverPresentationController?.delegate = self
     }
   }
   
@@ -89,6 +91,19 @@ class MAG3DViewController: UIViewController, UIPopoverPresentationControllerDele
     self.customGeometryView.model.selectedMaterials = selectedMaterials
     self.customGeometryView.model.createElementsArray()
     self.customGeometryView.setupScene()
+  }
+  
+  //MARK: UIPopoverPresentationControllerDelegate
+  
+  func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle
+  {
+    return .none
+  }
+  
+  func adaptivePresentationStyle(for controller: UIPresentationController,
+                                 traitCollection: UITraitCollection) -> UIModalPresentationStyle
+  {
+    return .none
   }
   
 }
