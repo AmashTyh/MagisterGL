@@ -106,7 +106,7 @@ class MAGCustomGeometryModel: NSObject
                                  (maxVector.y - minVector.y) / 2.0 + minVector.y,
                                  (maxVector.z - minVector.z) / 2.0 + minVector.z)
     
-    let crossSection: MAGCrossSection = MAGCrossSection(plane: .X,
+    let crossSection: MAGCrossSection = MAGCrossSection(plane: sectionType,
                                                         value: sectionValue,
                                                         greater: true)
     //let crossSection: MAGCrossSection = MAGCrossSection(plane: .Y, value: -4000 / xyzCalc, greater: false)

@@ -15,7 +15,8 @@ enum PlaneType : Int{
    case Z
 }
 
-class MAGCrossSection: NSObject {
+class MAGCrossSection: NSObject
+{
    
   var plane: PlaneType
   var value: Float
@@ -29,36 +30,66 @@ class MAGCrossSection: NSObject {
     self.value = value
     self.greater = greater
   }
+  
+  func isVisible(value: Float,
+                 minValue: Float,
+                 maxValue: Float) -> HexahedronVisible
+  {
+    if ((minValue <= value) && (value < maxValue))
+    {
+      if (value >= ((maxValue - minValue) / 2.0) + minValue)
+      {
+        return .isVisible
+      }
+      return .notVisible
+    }
+    else if (maxValue > value)
+    {
+      return .notVisible
+    }
+    return .isVisible
+  }
    
-  func setVisibleToHexahedron(positions:[SCNVector3]) -> HexahedronVisible
+  func setVisibleToHexahedron(positions: [SCNVector3]) -> HexahedronVisible
   {
     switch plane
     {
     case .X:
-      let minX = positions.min { (first, second) -> Bool in
+      let minValue = positions.min { (first, second) -> Bool in
         return first.x < second.x
         }!.x
       
-      let maxX = positions.max { (first, second) -> Bool in
+      let maxValue = positions.max { (first, second) -> Bool in
         return first.x < second.x
         }!.x
       
-      if ((minX <= value) && (value < maxX))
-      {
-        if (value >= ((maxX - minX) / 2.0) + minX)
-        {
-          return .isVisible
-        }
-        return .notVisible
-      }
-      else if (maxX > value)
-      {
-        return .notVisible
-      }
+      return self.isVisible(value: value,
+                            minValue: minValue,
+                            maxValue: maxValue)
     case .Y:
-      return .isVisible
+      let minValue = positions.min { (first, second) -> Bool in
+        return first.x < second.x
+        }!.y
+      
+      let maxValue = positions.max { (first, second) -> Bool in
+        return first.x < second.x
+        }!.y
+      
+      return self.isVisible(value: value,
+                            minValue: minValue,
+                            maxValue: maxValue)
     case .Z:
-      return .isVisible
+      let minValue = positions.min { (first, second) -> Bool in
+        return first.x < second.x
+        }!.z
+      
+      let maxValue = positions.max { (first, second) -> Bool in
+        return first.x < second.x
+        }!.z
+      
+      return self.isVisible(value: value,
+                            minValue: minValue,
+                            maxValue: maxValue)
     }
 //    switch plane
 //    {
@@ -102,7 +133,7 @@ class MAGCrossSection: NSObject {
 //        return HexahedronVisible.needSection
 //      }
 //    }
-    return HexahedronVisible.isVisible
+    return .isVisible
   }
   
   static func isPointBetweenPoints(point: SCNVector3, firstPoint: SCNVector3, secondPoint: SCNVector3) -> Bool
