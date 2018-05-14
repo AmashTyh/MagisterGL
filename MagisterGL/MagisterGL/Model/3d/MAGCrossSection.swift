@@ -9,8 +9,8 @@
 import UIKit
 import SceneKit
 
-enum PlaneType {
-   case X
+enum PlaneType : Int{
+   case X = 0
    case Y
    case Z
 }

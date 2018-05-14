@@ -69,16 +69,28 @@ class MAG3DViewController: UIViewController,
   
   //MARK: SCNSceneRendererDelegate
   
-  func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval)
+  func renderer(_ renderer: SCNSceneRenderer,
+                updateAtTime time: TimeInterval)
   {
+    
   }
   
-  func renderer(_ renderer: SCNSceneRenderer, willRenderScene scene: SCNScene, atTime time: TimeInterval)
+  func renderer(_ renderer: SCNSceneRenderer,
+                willRenderScene scene: SCNScene,
+                atTime time: TimeInterval)
+  {
+    
+  }
+  
+  func renderer(_ renderer: SCNSceneRenderer,
+                didRenderScene scene: SCNScene,
+                atTime time: TimeInterval)
   {
     
   }
   
   //MARK: MAGChooseSectionViewControllerDelegate
+  
   func drawSection(sectionType: PlaneType,
                    sectionValue: Float)
   {

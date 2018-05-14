@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Ksh-TJ-avS">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Ksh-TJ-avS">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
@@ -109,7 +109,7 @@
             <objects>
                 <navigationController id="Ksh-TJ-avS" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="lQv-yQ-uVQ">
-                        <rect key="frame" x="0.0" y="20" width="375" height="48"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -133,7 +133,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pLb-T7-t2i">
-                                <rect key="frame" x="0.0" y="68" width="375" height="599"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="dataSource" destination="iTe-ep-ynG" id="NLv-FH-4aI"/>
@@ -309,7 +309,7 @@
             <objects>
                 <navigationController id="a9V-BR-1rW" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="01H-GD-W2d">
-                        <rect key="frame" x="0.0" y="20" width="375" height="48"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -380,7 +380,7 @@
             <objects>
                 <navigationController id="4eP-Fj-frX" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="KY8-Et-Bod">
-                        <rect key="frame" x="0.0" y="20" width="375" height="48"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -404,7 +404,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <sceneKitView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" autoenablesDefaultLighting="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Lyg-Da-mv5" customClass="MAGCustomGeometryView" customModule="MagisterGL" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="68" width="375" height="599"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                             </sceneKitView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -455,7 +455,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <sceneKitView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FM4-c8-eM8" customClass="MAGSectionView" customModule="MagisterGL" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="68" width="375" height="599"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                             </sceneKitView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -486,31 +486,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Section X" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kTA-HI-aEP">
-                                <rect key="frame" x="30" y="70" width="73.5" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BxM-xQ-I8b">
-                                <rect key="frame" x="37" y="110" width="300" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="1qn-Df-Ia2"/>
-                                    <constraint firstAttribute="width" constant="300" id="gOM-px-WIf"/>
-                                </constraints>
-                                <state key="normal" title="Draw section"/>
-                                <connections>
-                                    <action selector="drawSectionButtonTapped" destination="Yia-fo-B5Z" eventType="touchUpInside" id="kWu-Ff-rz8"/>
-                                </connections>
-                            </button>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Section value" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="C5N-yv-Q2a">
-                                <rect key="frame" x="123.5" y="70" width="215.5" height="30"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Section value" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="C5N-yv-Q2a">
+                                <rect key="frame" x="170" y="70" width="169" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" keyboardAppearance="alert"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dbx-MF-N1c">
-                                <rect key="frame" x="37" y="174" width="300" height="44"/>
+                                <rect key="frame" x="37.5" y="267" width="300" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="2Rg-0p-Wjg"/>
                                     <constraint firstAttribute="width" constant="300" id="TB7-kQ-Oyb"/>
@@ -520,27 +503,49 @@
                                     <action selector="deleteSection" destination="Yia-fo-B5Z" eventType="touchUpInside" id="whx-cq-tvx"/>
                                 </connections>
                             </button>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4xD-5T-eNi">
+                                <rect key="frame" x="10" y="-23" width="150" height="216"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="trC-0B-AlP"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="dataSource" destination="Yia-fo-B5Z" id="ojd-YF-F0N"/>
+                                    <outlet property="delegate" destination="Yia-fo-B5Z" id="UVc-kC-3il"/>
+                                </connections>
+                            </pickerView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BxM-xQ-I8b">
+                                <rect key="frame" x="37.5" y="203" width="300" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="1qn-Df-Ia2"/>
+                                    <constraint firstAttribute="width" constant="300" id="gOM-px-WIf"/>
+                                </constraints>
+                                <state key="normal" title="Draw section"/>
+                                <connections>
+                                    <action selector="drawSectionButtonTapped" destination="Yia-fo-B5Z" eventType="touchUpInside" id="kWu-Ff-rz8"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="4xD-5T-eNi" firstAttribute="centerY" secondItem="C5N-yv-Q2a" secondAttribute="centerY" id="D8z-xX-IaY"/>
                             <constraint firstAttribute="trailingMargin" secondItem="C5N-yv-Q2a" secondAttribute="trailing" constant="20" id="DsV-Wk-bmZ"/>
-                            <constraint firstItem="BxM-xQ-I8b" firstAttribute="top" secondItem="C5N-yv-Q2a" secondAttribute="bottom" constant="10" id="Irx-Qw-bE2"/>
-                            <constraint firstItem="kTA-HI-aEP" firstAttribute="leading" secondItem="yXD-bt-t1G" secondAttribute="leading" constant="30" id="Okm-27-e13"/>
-                            <constraint firstItem="C5N-yv-Q2a" firstAttribute="leading" secondItem="kTA-HI-aEP" secondAttribute="trailing" constant="20" id="WfU-3P-UA3"/>
+                            <constraint firstItem="4xD-5T-eNi" firstAttribute="leading" secondItem="yXD-bt-t1G" secondAttribute="leading" constant="10" id="NkB-Xk-wjx"/>
                             <constraint firstItem="BxM-xQ-I8b" firstAttribute="centerX" secondItem="yXD-bt-t1G" secondAttribute="centerX" id="cKK-Yb-38N"/>
-                            <constraint firstItem="kTA-HI-aEP" firstAttribute="top" secondItem="Yya-f5-dRa" secondAttribute="bottom" constant="50" id="dft-WU-ace"/>
+                            <constraint firstItem="BxM-xQ-I8b" firstAttribute="top" secondItem="4xD-5T-eNi" secondAttribute="bottom" constant="10" id="i0l-9K-NYh"/>
+                            <constraint firstItem="C5N-yv-Q2a" firstAttribute="leading" secondItem="4xD-5T-eNi" secondAttribute="trailing" constant="10" id="iUY-tv-Iow"/>
                             <constraint firstItem="Dbx-MF-N1c" firstAttribute="centerX" secondItem="yXD-bt-t1G" secondAttribute="centerX" id="jQw-XM-ICs"/>
                             <constraint firstItem="C5N-yv-Q2a" firstAttribute="top" secondItem="Yya-f5-dRa" secondAttribute="bottom" constant="50" id="syU-Gu-nxK"/>
                             <constraint firstItem="Dbx-MF-N1c" firstAttribute="top" secondItem="BxM-xQ-I8b" secondAttribute="bottom" constant="20" id="xOG-i7-uz1"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="sectionTypePicker" destination="4xD-5T-eNi" id="oRO-g8-Ke4"/>
                         <outlet property="sectionXTextField" destination="C5N-yv-Q2a" id="1fu-hg-HSw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FhZ-SY-XXy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3102" y="2267"/>
+            <point key="canvasLocation" x="-3103.1999999999998" y="2266.4167916041979"/>
         </scene>
         <!--Choose Material View Controller-->
         <scene sceneID="WFh-Sb-JLE">
@@ -627,7 +632,7 @@
                                 </constraints>
                             </view>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xsl-2I-dJw">
-                                <rect key="frame" x="0.0" y="20" width="375" height="48"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                 <items>
                                     <navigationItem title="Google Drive" id="KqK-Zp-4sF">
                                         <rightBarButtonItems>
@@ -646,7 +651,7 @@
                                 </items>
                             </navigationBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="jMW-0n-kGR">
-                                <rect key="frame" x="0.0" y="68" width="375" height="599"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="dataSource" destination="mbA-9e-HUH" id="M0d-gf-ddY"/>
@@ -686,7 +691,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wpd-wC-aPp">
-                                <rect key="frame" x="0.0" y="68" width="375" height="599"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="dataSource" destination="aNO-hp-bjU" id="bIq-Tr-pyH"/>
