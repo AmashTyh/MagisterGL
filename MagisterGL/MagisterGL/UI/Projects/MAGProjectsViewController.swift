@@ -57,10 +57,14 @@ class MAGProjectsViewController: UIViewController,
   {
     let storyboard = UIStoryboard(name: "Main",
                                   bundle: nil)
-    let geometryVC = storyboard.instantiateViewController(withIdentifier: "MAG3DViewController") as! MAG3DViewController    
-    geometryVC.configure(project: cellObjects[indexPath.row].project)
+    let geometryVC = storyboard.instantiateViewController(withIdentifier: "MAG3DViewController") as! MAG3DViewController
+    let project = cellObjects[indexPath.row].project
+    geometryVC.title = project.name
+    geometryVC.configure(project: project)
     self.navigationController?.pushViewController(geometryVC,
                                                   animated: true)
+    tableView.deselectRow(at: indexPath,
+                          animated: false)
   }
     
 
