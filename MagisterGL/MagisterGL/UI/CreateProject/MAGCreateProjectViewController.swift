@@ -33,26 +33,6 @@ class MAGCreateProjectViewController: UIViewController,
     
   }
   
-  /*Возможно стоит переделать в таблицу
-   
-   создать фабрику создания ячеек
-   
-   Передавать отсюда новый проект
-   Добавить проверки на валидность
-   Добавить кнопку сохранить и сохранить все в коре дату(сохранять во вью модел)
- */
-  @IBAction func addNVERTapped()
-  {
-    /*
-     Открывается выбор файла и сохраняется этот файл в папку документс
-     А сюда возвращается путь, который мы сохраняем в коре дату
-     Открывать контроллер - инит с комплишином
-     Можно для этого создать объект роутер(пожелание)
-     */
-    self.performSegue(withIdentifier: "showGoogleDrive",
-                      sender: nil)
-  }
-  
   @IBAction func cancelCreateProject()
   {
     self.dismiss(animated: true,
@@ -99,7 +79,7 @@ class MAGCreateProjectViewController: UIViewController,
       self.tableView.reloadData()
       /*
        Сохранить файл в документах
- */
+       */
     }
     self.present(googleDriceVC,
                  animated: true,
