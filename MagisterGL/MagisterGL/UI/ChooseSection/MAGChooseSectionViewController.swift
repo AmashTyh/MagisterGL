@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol MAGChooseSectionViewControllerDelegate
+protocol MAGChooseSectionViewControllerDelegate : class
 {
   func drawSection(sectionType: PlaneType,
                    sectionValue: Float)
@@ -17,7 +17,7 @@ protocol MAGChooseSectionViewControllerDelegate
 
 class MAGChooseSectionViewController: UIViewController, UIPopoverPresentationControllerDelegate
 {
-  var delegate: MAGChooseSectionViewControllerDelegate?
+  weak var delegate: MAGChooseSectionViewControllerDelegate?
   
   @IBOutlet weak var sectionXTextField: UITextField!
   

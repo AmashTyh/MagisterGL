@@ -9,7 +9,7 @@
 
 import UIKit
 
-protocol MAGProjectFileAddTableViewCellDelegate
+protocol MAGProjectFileAddTableViewCellDelegate : class
 {
   func showGoogleDrive(cellObject: MAGProjectFileAddTableViewCellObject)
 }
@@ -17,7 +17,7 @@ protocol MAGProjectFileAddTableViewCellDelegate
 class MAGProjectFileAddTableViewCell: UITableViewCell
 {
 
-  var delegate: MAGProjectFileAddTableViewCellDelegate?
+  weak var delegate: MAGProjectFileAddTableViewCellDelegate?
   var cellObject: MAGProjectFileAddTableViewCellObject?
   
   @IBOutlet weak var titleLabel: UILabel!

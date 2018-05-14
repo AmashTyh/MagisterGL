@@ -9,7 +9,7 @@
 
 import UIKit
 
-protocol MAGChooseMaterialViewControllerDelegate
+protocol MAGChooseMaterialViewControllerDelegate : class
 {
   func selectedMaterials(selectedMaterials: [MAGMaterial])
 }
@@ -18,11 +18,12 @@ protocol MAGChooseMaterialViewControllerDelegate
 class MAGChooseMaterialViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPopoverPresentationControllerDelegate
 {
   let cellReuseIdentifier = "kMaterialReuseCellID"
-  var delegate: MAGChooseMaterialViewControllerDelegate?
+  weak var delegate: MAGChooseMaterialViewControllerDelegate?
   var materials: [MAGMaterial]?
   var selectedMaterials: [MAGMaterial]?
   
   @IBOutlet weak var tableView: UITableView!
+
   
   override func viewDidLoad()
   {
@@ -49,7 +50,7 @@ class MAGChooseMaterialViewController: UIViewController, UITableViewDelegate, UI
   func tableView(_ tableView: UITableView,
                  cellForRowAt indexPath: IndexPath) -> UITableViewCell
   {
-    let cell : UITableViewCell = (self.tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier) as UITableViewCell?)!
+    let cell : UITableViewCell = (tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier) as UITableViewCell?)!
     let material = self.materials![indexPath.row]
     cell.textLabel?.text = String(material.numberOfMaterial)
     let isSelected = (self.selectedMaterials?.contains(material))!

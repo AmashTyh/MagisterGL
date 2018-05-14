@@ -12,7 +12,11 @@ import SceneKit
 import OpenGLES
 
 
-class MAG3DViewController: UIViewController, UIPopoverPresentationControllerDelegate, SCNSceneRendererDelegate, MAGChooseSectionViewControllerDelegate, MAGChooseMaterialViewControllerDelegate
+class MAG3DViewController: UIViewController,
+                           UIPopoverPresentationControllerDelegate,
+                           SCNSceneRendererDelegate,
+                           MAGChooseSectionViewControllerDelegate,
+                           MAGChooseMaterialViewControllerDelegate
 
 {
   
