@@ -37,13 +37,13 @@ class MAGCustomGeometryView: SCNView
   func configure(project: MAGProject)
   {
     scene?.rootNode.cleanup()
-    self.model = MAGCustomGeometryModel()
     self.model.configure(project: project)
     setupScene()
   }
   
   func setupScene()
   {
+    self.scene?.rootNode.cleanup()
     // Configure the Scene View
     self.backgroundColor = .darkGray
     
@@ -57,9 +57,9 @@ class MAGCustomGeometryView: SCNView
     
     let cameraNode = SCNNode()
     cameraNode.camera = camera
-    cameraNode.position = SCNVector3(self.model.centerPoint.x,
-                                     self.model.centerPoint.y,
-                                     self.model.centerPoint.z + (self.model.maxVector.z - self.model.minVector.z) / 2.0 + 20)
+    cameraNode.position = SCNVector3(self.model.centerPoint.x * self.model.scaleValue,
+                                     self.model.centerPoint.y * self.model.scaleValue,
+                                     self.model.centerPoint.z * self.model.scaleValue + (self.model.maxVector.z * self.model.scaleValue - self.model.minVector.z * self.model.scaleValue) / 2.0 + 20)
     scene.rootNode.addChildNode(cameraNode)
     
     self.allowsCameraControl = true
@@ -72,9 +72,9 @@ class MAGCustomGeometryView: SCNView
     //ambientLightNode.light?.color = UIColor.white
     scene.rootNode.addChildNode(ambientLightNode)
     
-    scene.rootNode.pivot = SCNMatrix4MakeTranslation(self.model.centerPoint.x,
-                                                     self.model.centerPoint.y,
-                                                     self.model.centerPoint.z)
+    scene.rootNode.pivot = SCNMatrix4MakeTranslation(self.model.centerPoint.x * self.model.scaleValue,
+                                                     self.model.centerPoint.y * self.model.scaleValue,
+                                                     self.model.centerPoint.z * self.model.scaleValue)
     
     self.scene = scene
     createCube()
@@ -101,6 +101,10 @@ class MAGCustomGeometryView: SCNView
     
     for hexahedron in self.model.elementsArray
     {
+      if hexahedron.visible != .isVisible
+      {
+        continue
+      }
       if !selectedNumberMaterials.contains(hexahedron.material)
       {
         continue
@@ -110,7 +114,7 @@ class MAGCustomGeometryView: SCNView
         var indices: [CInt] = []
         for side in hexahedron.sidesArray
         {
-          if side.isVisible || side.isVisibleByMaterial
+          if side.isVisible
           {
             let indicesSide = side.indicesArray(addValue: h * 5)
             
@@ -189,6 +193,8 @@ class MAGCustomGeometryView: SCNView
     let geometry = SCNGeometry(sources: [vertexSource, colors],
                                elements: globalElements)
     let cubeNode = SCNNode(geometry: geometry)
+    let scaleVector = SCNVector3(self.model.scaleValue, self.model.scaleValue, self.model.scaleValue)
+    cubeNode.scale = scaleVector
     self.scene?.rootNode.addChildNode(cubeNode)
     
     
@@ -204,6 +210,7 @@ class MAGCustomGeometryView: SCNView
                                      elements: [elementBorder])
     geometryBorder.firstMaterial?.diffuse.contents = UIColor.white
     let borderCubeNode = SCNNode(geometry: geometryBorder)
+    borderCubeNode.scale = scaleVector
     self.scene?.rootNode.addChildNode(borderCubeNode)
   }
 }

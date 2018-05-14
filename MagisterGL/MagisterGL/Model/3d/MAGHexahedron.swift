@@ -57,15 +57,11 @@ class MAGHexahedron: NSObject
   init(positions: [SCNVector3],
        neighbours: [[Int]],
        material: Int,
-       neibsMaterials: [[Int]],
-       selectedMaterials: [MAGMaterial],
        color: [SCNVector3])
   {
     self.positions = positions
     self.neighbours = neighbours
     self.material = material
-    self.neibsMaterials = neibsMaterials
-    self.selectedMaterials = selectedMaterials
     self.colors = color
   }
   
@@ -80,29 +76,13 @@ class MAGHexahedron: NSObject
     
     for i in 0..<6
     {
-      if (neighbours[i].count == 1)
+      if (neighbours[i].count >= 1) && (neighbours[i][0] == 0)
       {
         isSideVisibleArray[i] = true
       }
       else
       {
         isSideVisibleArray[i] = false
-        if !neibsMaterials[i].contains(self.material)
-        {
-          for matNum in neibsMaterials[i]
-          {
-            if !selectedNumberMaterials.contains(matNum)
-            {
-              isSideVisibleByMaterialArray[i] = true
-            }
-            else {
-              isSideVisibleByMaterialArray[i] = false
-            }
-          }
-        }
-        else {
-          isSideVisibleByMaterialArray[i] = false
-        }
       }
     }
     
@@ -144,8 +124,10 @@ class MAGHexahedron: NSObject
   
   func setColorToSides()
   {
-    if (self.colors.count > 1) {
-      for side in sidesArray {
+    if (self.colors.count > 1)
+    {
+      for side in sidesArray
+      {
         //            side.colors.append(SCNVector3(1, 0, 0))
         //            side.colors.append(SCNVector3(0, 0, 1))
         //            side.colors.append(SCNVector3(1, 1, 0))
@@ -223,8 +205,11 @@ class MAGHexahedron: NSObject
 //          side.colors.append(side.generateAverageColor(first: self.colors[6], second: self.colors[7]))
         }
       }
-    } else {
-      for side in sidesArray {
+    }
+    else
+    {
+      for side in sidesArray
+      {
         for _ in 0..<5
         {
           side.colors.append(self.colors[0])
@@ -235,7 +220,8 @@ class MAGHexahedron: NSObject
   
   public func setColorToSide(side: MAGSide)
   {
-    if (self.colors.count > 1) {
+    if (self.colors.count > 1)
+    {
         //            side.colors.append(SCNVector3(1, 0, 0))
         //            side.colors.append(SCNVector3(0, 0, 1))
         //            side.colors.append(SCNVector3(1, 1, 0))
@@ -312,11 +298,13 @@ class MAGHexahedron: NSObject
           //          side.colors.append(side.generateAverageColor(first: self.colors[4], second: self.colors[6]))
           //          side.colors.append(side.generateAverageColor(first: self.colors[6], second: self.colors[7]))
         }
-    } else {
-        for _ in 0..<5
-        {
-          side.colors.append(self.colors[0])
-        }
+    }
+    else
+    {
+      for _ in 0..<5
+      {
+        side.colors.append(self.colors[0])
+      }
     }
   }
   

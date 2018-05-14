@@ -19,6 +19,8 @@ class MAGCustomGeometryModel: NSObject
   var isShowMaterials = true
   var colorGenerator = MAGColorGenerator()
   
+  var scaleValue : Float = 1.0
+  var isDrawingSectionEnabled: Bool = false
   var elementsArray: [MAGHexahedron] = []
   var centerPoint: SCNVector3 = SCNVector3Zero
   var minVector: SCNVector3 = SCNVector3Zero
@@ -27,7 +29,6 @@ class MAGCustomGeometryModel: NSObject
   var nverArray: [[Int]] = []
   var nvkatArray: [Int] = []
   var neibArray: [[Int]] = []
-  var xyzCalc: Float = 1
   var sectionType: PlaneType = .X
   var sectionValue: Float = 0
   var materials: [MAGMaterial] = []
@@ -74,130 +75,158 @@ class MAGCustomGeometryModel: NSObject
   
   func createElementsArray ()
   {
-    
+    elementsArray = []
     // TODO: Необходимо просматривать массив xyzArray, очень опасное поведение!
-    minVector = xyzArray.first!
-    maxVector = xyzArray.last!
+    minVector = SCNVector3Zero
+    maxVector = SCNVector3Zero
     
     // минимумы и максимумы по осям
-    let minX = xyzArray.min { (first, second) -> Bool in
+    minVector.x = xyzArray.min { (first, second) -> Bool in
       return first.x < second.x
       }!.x
-    let maxX = xyzArray.max { (first, second) -> Bool in
+    maxVector.x = xyzArray.max { (first, second) -> Bool in
       return first.x < second.x
       }!.x
-    let minY = xyzArray.min { (first, second) -> Bool in
+    minVector.y = xyzArray.min { (first, second) -> Bool in
       return first.y < second.y
       }!.y
-    let maxY = xyzArray.max { (first, second) -> Bool in
+    maxVector.y = xyzArray.max { (first, second) -> Bool in
       return first.y < second.y
       }!.y
-    let minZ = xyzArray.min { (first, second) -> Bool in
+    minVector.z = xyzArray.min { (first, second) -> Bool in
       return first.z < second.z
       }!.z
-    let maxZ = xyzArray.max { (first, second) -> Bool in
+    maxVector.z = xyzArray.max { (first, second) -> Bool in
       return first.z < second.z
       }!.z
     
 
+    self.scaleValue = 1.0 / abs((maxVector.y - minVector.y) / 2.0)
+    centerPoint = SCNVector3Make((maxVector.x - minVector.x) / 2.0 + minVector.x,
+                                 (maxVector.y - minVector.y) / 2.0 + minVector.y,
+                                 (maxVector.z - minVector.z) / 2.0 + minVector.z)
     
-    self.xyzCalc = abs((maxVector.y - minVector.y) / 2.0)
-    let crossSection: MAGCrossSection = MAGCrossSection(plane: .X, value: sectionValue / xyzCalc, greater: false)
+    let crossSection: MAGCrossSection = MAGCrossSection(plane: sectionType,
+                                                        value: sectionValue,
+                                                        greater: true)
     //let crossSection: MAGCrossSection = MAGCrossSection(plane: .Y, value: -4000 / xyzCalc, greater: false)
     
-    self.colorGenerator.generateColor(minValue: self.colorGenerator.uFunc(x: Double(minVector.x / xyzCalc),
-                                                                          y: Double(minVector.y / xyzCalc),
-                                                                          z: Double(minVector.z / xyzCalc)),
-                                      maxValue: self.colorGenerator.uFunc(x: Double(maxVector.x / xyzCalc),
-                                                                          y: Double(maxVector.y / xyzCalc),
-                                                                          z: Double(maxVector.z / xyzCalc)))
+    self.colorGenerator.generateColor(minValue: self.colorGenerator.uFunc(x: Double(minVector.x),
+                                                                          y: Double(minVector.y),
+                                                                          z: Double(minVector.z)),
+                                      maxValue: self.colorGenerator.uFunc(x: Double(maxVector.x),
+                                                                          y: Double(maxVector.y),
+                                                                          z: Double(maxVector.z)))
     
-    var arrayOfVectors: [SCNVector3]? = []
-    for xyz in xyzArray
-    {
-      let vector = SCNVector3Make(Float(xyz.x / xyzCalc),
-                                  Float(xyz.y / xyzCalc),
-                                  Float(xyz.z / xyzCalc))
-      arrayOfVectors?.append(vector)
-    }
-    xyzArray = arrayOfVectors!
-    minVector = xyzArray.first!
-    maxVector = xyzArray.last!
-    
-    var j : Int = 0
+
     var numberOfElement : Int = 0
-    for nverElementArray in nverArray
+    for i in 0..<nverArray.count
     {
-      var positionArray : [SCNVector3]? = []
-      var materialsArray: [Int] = []
-      var i : Int = 0
+      let positionArray = getNVERArrayFor(number: i)
+      let isVisible = isDrawingSectionEnabled ? crossSection.setVisibleToHexahedron(positions: positionArray) : .isVisible
       
-      for gridNum in nverElementArray
-      {
-        if i < 8
-        {
-          let vector = xyzArray[gridNum - 1]
-          positionArray?.append(vector)
-        }
-        else
-        {
-          materialsArray.append(gridNum)
-        }
-        i = i + 1
-      }
-      j = j + 1
-      
-      var elementNeibsArray: [[Int]] = []
-      var elementMaterialsNeibsArray: [[Int]] = []
-      for numberOfSide in 0..<6
-      {
-        elementNeibsArray.insert(neibArray[6 * numberOfElement + numberOfSide],
-                                 at: numberOfSide)
-      }
-      
-      /** строка двумерного массива ELEM NEIB содержит:
-       [количество соседей, номера соседей(нумерация соседей с единицы)]
-       
-       elementsMaterialsArray soderzhit:
-       [nomera materialov sosedeyi]
-       nomera materialov sosedeyi berutsya iz NVKAT
-       
-       NVKAT odnomernyi massiv:
-       
-       nvkat[index] - nomer materiala
-       
-       index - nomer soseda nachinaya s nulya
-       */
-      for numberOFside in 0..<6
-      {
-        var materialsArray: [Int] = []
-        for index in 0..<elementNeibsArray[numberOFside][0]
-        {
-          let nvkatIndex = elementNeibsArray[numberOFside][index + 1] - 1
-          //elementMaterialsNeibsArray.append(self.nvkatArray[index])
-          materialsArray.append(self.nvkatArray[nvkatIndex])
-        }
-        elementMaterialsNeibsArray.append(materialsArray)
-      }
+      let elementNeibsArray: [[Int]] = generateNeibsElementArray(number: i)
       
       
-      let hexahedron = MAGHexahedron(positions: positionArray!,
+      let hexahedron = MAGHexahedron(positions: positionArray,
                                      neighbours: elementNeibsArray,
                                      material: nvkatArray[numberOfElement],
-                                     neibsMaterials: elementMaterialsNeibsArray,
-                                     selectedMaterials: selectedMaterials,
-//                                     color:self.colorGenerator.getColorsFor(vertexes: positionArray!))
+                                     //                                     color:self.colorGenerator.getColorsFor(vertexes: positionArray!))
                                      color: [self.getColor(material: nvkatArray[numberOfElement])])
       
       hexahedron.generateSides()
       // когда формируем hexahedronы смотрим их видимость
-      hexahedron.visible = crossSection.setVisibleToHexahedron(positions: positionArray!)
-      elementsArray.append(hexahedron)
+      
+      hexahedron.visible = isVisible
+      
+      if isVisible == .isVisible
+      {
+        elementsArray.append(hexahedron)
+      }
       numberOfElement = numberOfElement + 1
     }
-    centerPoint = SCNVector3Make((maxVector.x - minVector.x) / 2.0 + minVector.x,
-                                 (maxVector.y - minVector.y) / 2.0 + minVector.y,
-                                 (maxVector.z - minVector.z) / 2.0 + minVector.z)
+  }
+  
+  
+  private func getNVERArrayFor(number: Int) -> [SCNVector3]
+  {
+    var positionArray : [SCNVector3] = []
+    var i : Int = 0
+    
+    for gridNum in nverArray[number]
+    {
+      if i < 8
+      {
+        let vector = xyzArray[gridNum - 1]
+        positionArray.append(vector)
+      }
+      i = i + 1
+    }
+    return positionArray
+  }
+  
+  private func generateNeibsElementArray(number: Int) -> [[Int]]
+  {
+    var elementNeibsArray: [[Int]] = []
+    for numberOfSide in 0..<6
+    {
+      var neibs: [Int] = neibArray[6 * number + numberOfSide]
+      var resNeibs: [Int] = []
+      if (neibs.count >= 1) && (neibs[0] == 0)
+      {
+        resNeibs.append(0)
+      }
+      else
+      {
+        var neibsNumbers: [Int] = []
+        for i in 0..<neibs[0]
+        {
+          // если материал соседа выключен, мы должны это учесть
+          /** строка двумерного массива ELEM NEIB содержит:
+           [количество соседей, номера соседей(нумерация соседей с единицы)]
+           
+           elementsMaterialsArray содержит:
+           [номера материалов соседей]
+           номера материалов соседей берутся из NVKAT
+           
+           NVKAT одномерный массив:
+           
+           nvkat[index] - номер материала
+           
+           index - номер соседа начиная с нуля
+           */
+          let index = self.nvkatArray[neibs[i + 1] - 1]
+          if (!self.findInSelectedMaterials(numberOfMaterial: index))
+          {
+            //resNeibs.append(0)
+            break
+          }
+          else
+          {
+            neibsNumbers.append(neibs[i + 1])
+          }
+        }
+        resNeibs.append(neibsNumbers.count)
+        resNeibs += neibsNumbers
+      }
+      
+      elementNeibsArray.insert(resNeibs,
+                               at: numberOfSide)
+    }
+    
+    return elementNeibsArray
+  }
+  
+  private func findInSelectedMaterials(numberOfMaterial: Int) -> Bool
+  {
+    for selectedMaterial in self.selectedMaterials
+    {
+      if (numberOfMaterial == selectedMaterial.numberOfMaterial)
+      {
+        return true
+      }
+    }
+    return false
   }
   
   // TODO: Надо сделать цвета кастомизируемыми(хотя бы из файла).

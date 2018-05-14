@@ -12,7 +12,11 @@ import SceneKit
 import OpenGLES
 
 
-class MAG3DViewController: UIViewController, UIPopoverPresentationControllerDelegate, SCNSceneRendererDelegate, MAGChooseSectionViewControllerDelegate, MAGChooseMaterialViewControllerDelegate
+class MAG3DViewController: UIViewController,
+                           UIPopoverPresentationControllerDelegate,
+                           SCNSceneRendererDelegate,
+                           MAGChooseSectionViewControllerDelegate,
+                           MAGChooseMaterialViewControllerDelegate
 
 {
   
@@ -65,23 +69,43 @@ class MAG3DViewController: UIViewController, UIPopoverPresentationControllerDele
   
   //MARK: SCNSceneRendererDelegate
   
-  func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval)
+  func renderer(_ renderer: SCNSceneRenderer,
+                updateAtTime time: TimeInterval)
   {
+    
   }
   
-  func renderer(_ renderer: SCNSceneRenderer, willRenderScene scene: SCNScene, atTime time: TimeInterval)
+  func renderer(_ renderer: SCNSceneRenderer,
+                willRenderScene scene: SCNScene,
+                atTime time: TimeInterval)
+  {
+    
+  }
+  
+  func renderer(_ renderer: SCNSceneRenderer,
+                didRenderScene scene: SCNScene,
+                atTime time: TimeInterval)
   {
     
   }
   
   //MARK: MAGChooseSectionViewControllerDelegate
+  
   func drawSection(sectionType: PlaneType,
                    sectionValue: Float)
   {
     self.customGeometryView.model.sectionType = sectionType
     self.customGeometryView.model.sectionValue = sectionValue
-    self.performSegue(withIdentifier: "showSection",
-                      sender: self)
+    self.customGeometryView.model.isDrawingSectionEnabled = true
+    self.customGeometryView.model.createElementsArray()
+    self.customGeometryView.setupScene()
+  }
+  
+  func deleteSection()
+  {
+    self.customGeometryView.model.isDrawingSectionEnabled = false
+    self.customGeometryView.model.createElementsArray()
+    self.customGeometryView.setupScene()
   }
   
   // MARK: MAGChooseMaterialViewControllerDelegate
