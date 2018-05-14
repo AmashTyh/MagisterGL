@@ -7,9 +7,10 @@
         <attribute name="nverFilePath" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="nvkatFilePath" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="sigma3dPath" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="xyz0FilePath" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="xyzFilePath" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="MAGProject" positionX="-63" positionY="-18" width="128" height="150"/>
+        <element name="MAGProject" positionX="-63" positionY="-18" width="128" height="165"/>
     </elements>
 </model>

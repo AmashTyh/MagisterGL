@@ -24,6 +24,8 @@ class MAGCreateProjectViewModel: NSObject
                                                       filePath: ""))
     array.append(MAGProjectFileAddTableViewCellObject(name: "xyz",
                                                       filePath: ""))
+    array.append(MAGProjectFileAddTableViewCellObject(name: "xyz0",
+                                                      filePath: ""))
     array.append(MAGProjectFileAddTableViewCellObject(name: "nvkat",
                                                       filePath: ""))
     array.append(MAGProjectFileAddTableViewCellObject(name: "elem_neib",
@@ -38,9 +40,10 @@ class MAGCreateProjectViewModel: NSObject
     coreDataHelper.addProject(name: self.name!,
                               nverPath: self.cellObjects[0].filePath,
                               xyzPath: self.cellObjects[1].filePath,
-                              nvkatPath: self.cellObjects[2].filePath,
-                              elemNeibPath: self.cellObjects[3].filePath,
-                              sigma3dPath: self.cellObjects[4].filePath,
+                              xyz0FilePath: self.cellObjects[2].filePath,
+                              nvkatPath: self.cellObjects[3].filePath,
+                              elemNeibPath: self.cellObjects[4].filePath,
+                              sigma3dPath: self.cellObjects[5].filePath,
                               isLocal: false)
   }
 }
