@@ -120,10 +120,9 @@ class MAGCustomGeometryModel: NSObject
     
 
     var numberOfElement : Int = 0
-    var positionArray : [SCNVector3] = []
     for i in 0..<nverArray.count
     {
-      positionArray = getNVERArrayFor(number: i)
+      let positionArray = getNVERArrayFor(number: i)
       let isVisible = isDrawingSectionEnabled ? crossSection.setVisibleToHexahedron(positions: positionArray) : .isVisible
       
       let elementNeibsArray: [[Int]] = generateNeibsElementArray(number: i)
@@ -169,41 +168,48 @@ class MAGCustomGeometryModel: NSObject
   private func generateNeibsElementArray(number: Int) -> [[Int]]
   {
     var elementNeibsArray: [[Int]] = []
-    for numberOfSide in 0..<6 {
+    for numberOfSide in 0..<6
+    {
       var neibs: [Int] = neibArray[6 * number + numberOfSide]
       var resNeibs: [Int] = []
-      if (neibs.count >= 1) && (neibs[0] == 0) {
+      if (neibs.count >= 1) && (neibs[0] == 0)
+      {
         resNeibs.append(0)
       }
-      else {
+      else
+      {
         var neibsNumbers: [Int] = []
-        for i in 0..<neibs[0] {
+        for i in 0..<neibs[0]
+        {
           // если материал соседа выключен, мы должны это учесть
           /** строка двумерного массива ELEM NEIB содержит:
            [количество соседей, номера соседей(нумерация соседей с единицы)]
            
-           elementsMaterialsArray soderzhit:
-           [nomera materialov sosedeyi]
-           nomera materialov sosedeyi berutsya iz NVKAT
+           elementsMaterialsArray содержит:
+           [номера материалов соседей]
+           номера материалов соседей берутся из NVKAT
            
-           NVKAT odnomernyi massiv:
+           NVKAT одномерный массив:
            
-           nvkat[index] - nomer materiala
+           nvkat[index] - номер материала
            
-           index - nomer soseda nachinaya s nulya
+           index - номер соседа начиная с нуля
            */
-         let index = self.nvkatArray[neibs[i + 1] - 1]
-          if (!self.findInSelectedMaterials(numberOfMaterial: index)) {
+          let index = self.nvkatArray[neibs[i + 1] - 1]
+          if (!self.findInSelectedMaterials(numberOfMaterial: index))
+          {
             //resNeibs.append(0)
             break
-          } else {
+          }
+          else
+          {
             neibsNumbers.append(neibs[i + 1])
           }
         }
         resNeibs.append(neibsNumbers.count)
         resNeibs += neibsNumbers
       }
-
+      
       elementNeibsArray.insert(resNeibs,
                                at: numberOfSide)
     }
@@ -213,8 +219,10 @@ class MAGCustomGeometryModel: NSObject
   
   private func findInSelectedMaterials(numberOfMaterial: Int) -> Bool
   {
-    for selectedMaterial in self.selectedMaterials {
-      if (numberOfMaterial == selectedMaterial.numberOfMaterial) {
+    for selectedMaterial in self.selectedMaterials
+    {
+      if (numberOfMaterial == selectedMaterial.numberOfMaterial)
+      {
         return true
       }
     }
