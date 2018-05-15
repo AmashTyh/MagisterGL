@@ -8,15 +8,16 @@
 
 
 import UIKit
+import SceneKit
 
 
 class MAGMaterial: NSObject
 {
   let numberOfMaterial: Int
-  let color: UIColor
+  let color: SCNVector3
   
   init(numberOfMaterial: Int,
-       color: UIColor)
+       color: SCNVector3)
   {
     self.numberOfMaterial = numberOfMaterial
     self.color = color

@@ -17,7 +17,7 @@ class MAGCustomGeometryModel: NSObject
   let fileManager: MAGFileManager = MAGFileManager()
   
   var isShowMaterials = true
-  var colorGenerator = MAGColorGenerator()
+  var colorGenerator: MAGColorGenerator?
   
   var scaleValue : Float = 1.0
   var isDrawingSectionEnabled: Bool = false
@@ -35,6 +35,7 @@ class MAGCustomGeometryModel: NSObject
   var materials: [MAGMaterial] = []
   var selectedMaterials: [MAGMaterial] = []
   var crossSection: MAGCrossSection?
+  var sig3dArray: [[Double]] = []
   
   func configure(project: MAGProject)
   {
@@ -44,15 +45,26 @@ class MAGCustomGeometryModel: NSObject
     nverArray = self.fileManager.getNVERArray(path: documentsPath + project.nverFilePath!)
     nvkatArray = self.fileManager.getNVKATArray(path: documentsPath + project.nvkatFilePath!)
     neibArray = self.fileManager.getNEIBArray(path: documentsPath + project.elemNeibFilePath!)
-    let sig3dArray = self.fileManager.getSig3dArray(path: documentsPath + project.sigma3dPath!)
+    sig3dArray = self.fileManager.getSig3dArray(path: documentsPath + project.sigma3dPath!)
     if sig3dArray.count > 0
     {
+      let min = sig3dArray.min { (first, second) -> Bool in
+        return first[1] < second[1]
+        }![1]
+      let max = sig3dArray.max { (first, second) -> Bool in
+        return first[1] < second[1]
+        }![1]
+      let colorGenerator = MAGColorGenerator()
+      colorGenerator.generateColor(minValue: min,
+                                   maxValue: max)
+      self.colorGenerator = colorGenerator
       for i in 0..<sig3dArray.count
       {
         //TODO: Генерировать цвет в зависимости от сигма
         let materialNumber = Int(sig3dArray[i][0])
+        let vector = colorGenerator.getColorForU(u: sig3dArray[i][1])
         let material = MAGMaterial.init(numberOfMaterial: materialNumber,
-                                        color: self.getUIColor(material: materialNumber))
+                                        color: vector)
         self.materials.append(material)
       }
     }
@@ -67,7 +79,7 @@ class MAGCustomGeometryModel: NSObject
       for materialNumber in set
       {
         let material = MAGMaterial.init(numberOfMaterial: materialNumber as! Int,
-                                        color: self.getUIColor(material: materialNumber as! Int))
+                                        color: self.getColor(material: materialNumber as! Int))
         self.materials.append(material)
       }
     }
@@ -115,12 +127,12 @@ class MAGCustomGeometryModel: NSObject
     //let crossSection: MAGCrossSection = MAGCrossSection(plane: .Y, value: -4000 / xyzCalc, greater: false)
     self.crossSection = crossSection
     
-    self.colorGenerator.generateColor(minValue: self.colorGenerator.uFunc(x: Double(minVector.x),
-                                                                          y: Double(minVector.y),
-                                                                          z: Double(minVector.z)),
-                                      maxValue: self.colorGenerator.uFunc(x: Double(maxVector.x),
-                                                                          y: Double(maxVector.y),
-                                                                          z: Double(maxVector.z)))
+//    self.colorGenerator.generateColor(minValue: self.colorGenerator.uFunc(x: Double(minVector.x),
+//                                                                          y: Double(minVector.y),
+//                                                                          z: Double(minVector.z)),
+//                                      maxValue: self.colorGenerator.uFunc(x: Double(maxVector.x),
+//                                                                          y: Double(maxVector.y),
+//                                                                          z: Double(maxVector.z)))
     
 
     var numberOfElement : Int = 0
@@ -132,11 +144,32 @@ class MAGCustomGeometryModel: NSObject
       
       let elementNeibsArray: [[Int]] = generateNeibsElementArray(number: i)
       
-      let hexahedron = MAGHexahedron(positions: positionArray,
-                                     neighbours: elementNeibsArray,
-                                     material: nvkatArray[numberOfElement],
-                                     //                                     color:self.colorGenerator.getColorsFor(vertexes: positionArray!))
-                                     color: [self.getColor(material: nvkatArray[numberOfElement])])
+      var hexahedron: MAGHexahedron
+      let material = nvkatArray[numberOfElement]
+      
+      if sig3dArray.count == 0
+      {
+        hexahedron = MAGHexahedron(positions: positionArray,
+                                   neighbours: elementNeibsArray,
+                                   material: material,
+                                   color: [self.getColor(material: nvkatArray[numberOfElement])])
+      }
+      else
+      {
+        var uValue = 0.0
+        for materialSig3d in sig3dArray
+        {
+          if material == Int(materialSig3d[0])
+          {
+            uValue = materialSig3d[1]
+          }
+        }
+        hexahedron = MAGHexahedron(positions: positionArray,
+                                   neighbours: elementNeibsArray,
+                                   material: material,
+                                   color: [(self.colorGenerator?.getColorForU(u: uValue))!])
+        
+      }
       
       hexahedron.generateSides()
       // когда формируем hexahedronы смотрим их видимость
@@ -301,13 +334,5 @@ class MAGCustomGeometryModel: NSObject
     }
   }
   
-  private func getUIColor(material: Int) -> UIColor
-  {
-    let vector = self.getColor(material: material)
-    return UIColor(displayP3Red: CGFloat(vector.x),
-                   green: CGFloat(vector.y),
-                   blue: CGFloat(vector.z),
-                   alpha: 1.0)
-  }
 }
 

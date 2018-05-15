@@ -63,7 +63,11 @@ class MAGChooseMaterialViewController: UIViewController, UITableViewDelegate, UI
                           scrollPosition: UITableViewScrollPosition.none)
     }
     cell.accessoryType = isSelected ? .checkmark : .none
-    cell.backgroundColor = material.color
+    let color = UIColor(displayP3Red: CGFloat(material.color.x),
+                        green: CGFloat(material.color.y),
+                        blue: CGFloat(material.color.z),
+                        alpha: 1.0)
+    cell.backgroundColor = color
     let view = UIView()
     view.backgroundColor = UIColor.clear
     cell.selectedBackgroundView = view
