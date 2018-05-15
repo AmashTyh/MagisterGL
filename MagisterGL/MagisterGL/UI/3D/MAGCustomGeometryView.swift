@@ -175,7 +175,7 @@ class MAGCustomGeometryView: SCNView
                                      count: MemoryLayout<CInt>.size * indicesSide.count)
             let elementSide = SCNGeometryElement(data: indexDataSide,
                                                  primitiveType: .polygon,
-                                                 primitiveCount: indicesSide.count / 4,
+                                                 primitiveCount: indicesSide.count / 5,
                                                  bytesPerIndex: MemoryLayout<CInt>.size)
             globalElements.append(elementSide)
             normals = normals + side.normalsArray()
