@@ -49,6 +49,16 @@ class MAGCustomGeometryModel: NSObject
     neibArray = self.fileManager.getNEIBArray(path: documentsPath + project.elemNeibFilePath!)
     sig3dArray = self.fileManager.getSig3dArray(path: documentsPath + project.sigma3dPath!)
     profileArray = self.fileManager.getProfileArray(path: documentsPath + project.profilePath!)
+    profileArray = profileArray.sorted(by: { (v1, v2) -> Bool in
+      if v1.y != v2.y
+      {
+        return v1.y < v2.y
+      }
+      else
+      {
+        return v1.x < v2.x
+      }
+    })
     if sig3dArray.count > 0
     {
       let min = sig3dArray.min { (first, second) -> Bool in
