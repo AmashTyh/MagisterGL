@@ -32,6 +32,8 @@ class MAGCreateProjectViewModel: NSObject
                                                       filePath: ""))
     array.append(MAGProjectFileAddTableViewCellObject(name: "sig3d",
                                                       filePath: ""))
+    array.append(MAGProjectFileAddTableViewCellObject(name: "profile",
+                                                      filePath: ""))
     cellObjects = array
   }
   
@@ -44,6 +46,7 @@ class MAGCreateProjectViewModel: NSObject
                               nvkatPath: self.cellObjects[3].filePath,
                               elemNeibPath: self.cellObjects[4].filePath,
                               sigma3dPath: self.cellObjects[5].filePath,
+                              profilePath: self.cellObjects[6].filePath,
                               isLocal: false)
   }
 }

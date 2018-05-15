@@ -273,4 +273,37 @@ class MAGFileManager: NSObject
     }
     return []
   }
+  
+  
+  func getProfileArray(path: String) -> [SCNVector3]
+  {
+    do
+    {
+      let data = try String(contentsOfFile: path,
+                            encoding: String.Encoding.ascii)
+      var arrayOfVectors: [SCNVector3]? = []
+      for string in data.components(separatedBy: "\n")
+      {
+        if string != ""
+        {
+          let array = string.components(separatedBy: "\t")
+          if array.count == 4
+          {
+            let vector = SCNVector3Make(Float(array[1])!,
+                                        Float(array[2])!,
+                                        Float(array[3].components(separatedBy: "\r")[0])!)
+            arrayOfVectors?.append(vector)
+          }
+        }
+      }
+      return arrayOfVectors!
+      
+    }
+    catch let err as NSError
+    {
+      // do something with Error
+      print(err)
+    }
+    return []
+  }
 }

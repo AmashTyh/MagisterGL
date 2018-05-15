@@ -37,6 +37,7 @@ class MAGCustomGeometryModel: NSObject
   var selectedMaterials: [MAGMaterial] = []
   var crossSection: MAGCrossSection?
   var sig3dArray: [[Double]] = []
+  var profileArray: [SCNVector3] = []
   
   func configure(project: MAGProject)
   {
@@ -47,6 +48,17 @@ class MAGCustomGeometryModel: NSObject
     nvkatArray = self.fileManager.getNVKATArray(path: documentsPath + project.nvkatFilePath!)
     neibArray = self.fileManager.getNEIBArray(path: documentsPath + project.elemNeibFilePath!)
     sig3dArray = self.fileManager.getSig3dArray(path: documentsPath + project.sigma3dPath!)
+    profileArray = self.fileManager.getProfileArray(path: documentsPath + project.profilePath!)
+    profileArray = profileArray.sorted(by: { (v1, v2) -> Bool in
+      if v1.y != v2.y
+      {
+        return v1.y < v2.y
+      }
+      else
+      {
+        return v1.x < v2.x
+      }
+    })
     if sig3dArray.count > 0
     {
       let min = sig3dArray.min { (first, second) -> Bool in
@@ -117,7 +129,7 @@ class MAGCustomGeometryModel: NSObject
       }!.z
     
 
-    self.scaleValue = 1.0 / abs((maxVector.y - minVector.y) / 2.0)
+    self.scaleValue = 1.0 / abs((maxVector.y - minVector.y) / 8.0)
     centerPoint = SCNVector3Make((maxVector.x - minVector.x) / 2.0 + minVector.x,
                                  (maxVector.y - minVector.y) / 2.0 + minVector.y,
                                  (maxVector.z - minVector.z) / 2.0 + minVector.z)

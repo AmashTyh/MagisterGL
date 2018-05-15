@@ -30,6 +30,7 @@ class MAGBaseProjectsGenerator: NSObject
                          nvkatPath: "nvkat.txt",
                          elemNeibPath: "elem_neib.txt",
                          sigma3dPath: "",
+                         profilePath: "",
                          isLocal: true)
     viewModel.addProject(name: "Test 2",
                          nverPath: "nver2.txt",
@@ -38,6 +39,7 @@ class MAGBaseProjectsGenerator: NSObject
                          nvkatPath: "nvkat2.txt",
                          elemNeibPath: "elem_neib2.txt",
                          sigma3dPath: "",
+                         profilePath: "",
                          isLocal: true)
     viewModel.addProject(name: "Test 3",
                          nverPath: "nver.dat",
@@ -46,6 +48,7 @@ class MAGBaseProjectsGenerator: NSObject
                          nvkatPath: "nvkat.dat",
                          elemNeibPath: "elem_neib",
                          sigma3dPath: "",
+                         profilePath: "",
                          isLocal: true)
     viewModel.addProject(name: "Test 4",
                          nverPath: "nver4.dat",
@@ -54,6 +57,7 @@ class MAGBaseProjectsGenerator: NSObject
                          nvkatPath: "nvkat4.dat",
                          elemNeibPath: "elem_neib4",
                          sigma3dPath: "Sig3d4",
+                         profilePath: "profile4",
                          isLocal: true)
     viewModel.addProject(name: "Test 5",
                          nverPath: "nver5.dat",
@@ -62,6 +66,7 @@ class MAGBaseProjectsGenerator: NSObject
                          nvkatPath: "nvkat5.dat",
                          elemNeibPath: "elem_neib5",
                          sigma3dPath: "Sig3d5",
+                         profilePath: "profile5",
                          isLocal: true)
     UserDefaults.standard.set("true",
                               forKey: baseProjectsGeneratedKey)
