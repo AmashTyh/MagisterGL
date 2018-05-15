@@ -34,6 +34,7 @@ class MAGCustomGeometryModel: NSObject
   var sectionValue: Float = 0
   var materials: [MAGMaterial] = []
   var selectedMaterials: [MAGMaterial] = []
+  var crossSection: MAGCrossSection?
   
   func configure(project: MAGProject)
   {
@@ -112,6 +113,7 @@ class MAGCustomGeometryModel: NSObject
                                                         value: sectionValue,
                                                         greater: true)
     //let crossSection: MAGCrossSection = MAGCrossSection(plane: .Y, value: -4000 / xyzCalc, greater: false)
+    self.crossSection = crossSection
     
     self.colorGenerator.generateColor(minValue: self.colorGenerator.uFunc(x: Double(minVector.x),
                                                                           y: Double(minVector.y),
@@ -125,10 +127,10 @@ class MAGCustomGeometryModel: NSObject
     for i in 0..<nverArray.count
     {
       let positionArray = getNVERArrayFor(number: i)
+
       let isVisible = isDrawingSectionEnabled ? crossSection.setVisibleToHexahedron(positions: positionArray) : .isVisible
       
       let elementNeibsArray: [[Int]] = generateNeibsElementArray(number: i)
-      
       
       let hexahedron = MAGHexahedron(positions: positionArray,
                                      neighbours: elementNeibsArray,
@@ -200,12 +202,23 @@ class MAGCustomGeometryModel: NSObject
           let index = self.nvkatArray[neibs[i + 1] - 1]
           if (!self.findInSelectedMaterials(numberOfMaterial: index))
           {
-            //resNeibs.append(0)
             break
           }
           else
           {
-            neibsNumbers.append(neibs[i + 1])
+            if (!self.isDrawingSectionEnabled)
+            {
+               neibsNumbers.append(neibs[i + 1])
+            }
+            else
+            {
+              if isElementVisible(numberOfElement: neibs[i + 1] - 1) {
+                neibsNumbers.append(neibs[i + 1])
+              }
+              else {
+                neibsNumbers = []
+              }
+            }
           }
         }
         resNeibs.append(neibsNumbers.count)
@@ -217,6 +230,21 @@ class MAGCustomGeometryModel: NSObject
     }
     
     return elementNeibsArray
+  }
+  
+  private func isElementVisible(numberOfElement: Int) -> Bool
+  {
+    let positionArray: [SCNVector3] = getNVERArrayFor(number: numberOfElement)
+    
+    if positionArray.count > 0
+    {
+      if (self.crossSection != nil) {
+        return (self.crossSection!.setVisibleToHexahedron(positions: positionArray) == .isVisible)
+      } else {
+        return true
+      }
+    }
+    return false
   }
   
   private func findInSelectedMaterials(numberOfMaterial: Int) -> Bool
@@ -231,6 +259,7 @@ class MAGCustomGeometryModel: NSObject
     return false
   }
   
+
   // TODO: Надо сделать цвета кастомизируемыми(хотя бы из файла).
   private func getColor(material: Int) -> SCNVector3
   {
