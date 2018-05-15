@@ -11,7 +11,8 @@ import UIKit
 protocol MAGChooseSectionViewControllerDelegate : class
 {
   func drawSection(sectionType: PlaneType,
-                   sectionValue: Float)
+                   sectionValue: Float,
+                   greater: Bool)
   func deleteSection()
 }
 
@@ -25,6 +26,7 @@ class MAGChooseSectionViewController: UIViewController,
   
   @IBOutlet weak var sectionXTextField: UITextField!
   @IBOutlet weak var sectionTypePicker: UIPickerView!
+  @IBOutlet weak var sectionGreater: UISwitch!
   
   let pickerData = ["X", "Y", "Z"]
   
@@ -32,7 +34,8 @@ class MAGChooseSectionViewController: UIViewController,
   @IBAction func drawSectionButtonTapped()
   {
     delegate?.drawSection(sectionType: PlaneType(rawValue: self.sectionTypePicker.selectedRow(inComponent: 0))!,
-                          sectionValue: (self.sectionXTextField.text! as NSString).floatValue)
+                          sectionValue: (self.sectionXTextField.text! as NSString).floatValue,
+                          greater: self.sectionGreater.isOn)
     self.dismiss(animated: true,
                  completion: nil)
   }

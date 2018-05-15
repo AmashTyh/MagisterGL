@@ -32,6 +32,7 @@ class MAGCustomGeometryModel: NSObject
   var neibArray: [[Int]] = []
   var sectionType: PlaneType = .X
   var sectionValue: Float = 0
+  var greater: Bool = true
   var materials: [MAGMaterial] = []
   var selectedMaterials: [MAGMaterial] = []
   var crossSection: MAGCrossSection?
@@ -121,11 +122,15 @@ class MAGCustomGeometryModel: NSObject
                                  (maxVector.y - minVector.y) / 2.0 + minVector.y,
                                  (maxVector.z - minVector.z) / 2.0 + minVector.z)
     
-    let crossSection: MAGCrossSection = MAGCrossSection(plane: sectionType,
-                                                        value: sectionValue,
-                                                        greater: true)
+    if isDrawingSectionEnabled {
+      let crossSection: MAGCrossSection = MAGCrossSection(plane: sectionType,
+                                                          value: sectionValue,
+                                                          greater: self.greater)
+      self.crossSection = crossSection
+    }
+
     //let crossSection: MAGCrossSection = MAGCrossSection(plane: .Y, value: -4000 / xyzCalc, greater: false)
-    self.crossSection = crossSection
+   
     
 //    self.colorGenerator.generateColor(minValue: self.colorGenerator.uFunc(x: Double(minVector.x),
 //                                                                          y: Double(minVector.y),
@@ -140,8 +145,10 @@ class MAGCustomGeometryModel: NSObject
     {
       let positionArray = getNVERArrayFor(number: i)
 
-      let isVisible = isDrawingSectionEnabled ? crossSection.setVisibleToHexahedron(positions: positionArray) : .isVisible
-      
+
+      let isVisible = isDrawingSectionEnabled ? self.crossSection?.setVisibleToHexahedron(positions: positionArray) : .isVisible
+
+    
       let elementNeibsArray: [[Int]] = generateNeibsElementArray(number: i)
       
       var hexahedron: MAGHexahedron
@@ -174,7 +181,7 @@ class MAGCustomGeometryModel: NSObject
       hexahedron.generateSides()
       // когда формируем hexahedronы смотрим их видимость
       
-      hexahedron.visible = isVisible
+      hexahedron.visible = isVisible!
       
       if isVisible == .isVisible
       {

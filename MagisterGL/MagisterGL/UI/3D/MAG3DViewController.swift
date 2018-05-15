@@ -92,11 +92,13 @@ class MAG3DViewController: UIViewController,
   //MARK: MAGChooseSectionViewControllerDelegate
   
   func drawSection(sectionType: PlaneType,
-                   sectionValue: Float)
+                   sectionValue: Float,
+                   greater: Bool)
   {
     self.customGeometryView.model.sectionType = sectionType
     self.customGeometryView.model.sectionValue = sectionValue
     self.customGeometryView.model.isDrawingSectionEnabled = true
+    self.customGeometryView.model.greater = greater
     self.customGeometryView.model.createElementsArray()
     self.customGeometryView.setupScene()
   }

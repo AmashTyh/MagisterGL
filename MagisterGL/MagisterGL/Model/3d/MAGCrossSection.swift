@@ -35,19 +35,39 @@ class MAGCrossSection: NSObject
                  minValue: Float,
                  maxValue: Float) -> HexahedronVisible
   {
-    if ((minValue <= value) && (value < maxValue))
+    if (greater)
     {
-      if (value >= ((maxValue - minValue) / 2.0) + minValue)
+      if ((minValue <= value) && (value < maxValue))
       {
-        return .isVisible
+        if (value >= ((maxValue - minValue) / 2.0) + minValue)
+        {
+          return .isVisible
+        }
+        return .notVisible
       }
-      return .notVisible
+      else if (maxValue > value)
+      {
+        return .notVisible
+      }
+      return .isVisible
     }
-    else if (maxValue > value)
+    else
     {
-      return .notVisible
+      if ((minValue <= value) && (value < maxValue))
+      {
+        if (value < ((maxValue - minValue) / 2.0) + minValue)
+        {
+          return .isVisible
+        }
+        return .notVisible
+      }
+      else if (maxValue < value)
+      {
+        return .notVisible
+      }
+      return .isVisible
     }
-    return .isVisible
+
   }
    
   func setVisibleToHexahedron(positions: [SCNVector3]) -> HexahedronVisible

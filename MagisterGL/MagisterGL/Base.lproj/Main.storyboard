@@ -524,21 +524,47 @@
                                     <action selector="drawSectionButtonTapped" destination="Yia-fo-B5Z" eventType="touchUpInside" id="kWu-Ff-rz8"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mvL-MC-aqw">
+                                <rect key="frame" x="170" y="105" width="185" height="45"/>
+                                <subviews>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PId-Qn-Wza">
+                                        <rect key="frame" x="8" y="7" width="51" height="31"/>
+                                    </switch>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Greater" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u8F-Qb-4WE">
+                                        <rect key="frame" x="77" y="12" width="58" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="PId-Qn-Wza" firstAttribute="leading" secondItem="mvL-MC-aqw" secondAttribute="leading" constant="8" id="D26-yW-On7"/>
+                                    <constraint firstItem="PId-Qn-Wza" firstAttribute="centerY" secondItem="mvL-MC-aqw" secondAttribute="centerY" id="FcM-tW-mlV"/>
+                                    <constraint firstItem="u8F-Qb-4WE" firstAttribute="leading" secondItem="PId-Qn-Wza" secondAttribute="trailing" constant="20" id="Fuk-E1-64t"/>
+                                    <constraint firstItem="u8F-Qb-4WE" firstAttribute="centerY" secondItem="mvL-MC-aqw" secondAttribute="centerY" id="aZC-n3-eFD"/>
+                                    <constraint firstAttribute="height" constant="45" id="bmT-l7-h9K"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="mvL-MC-aqw" firstAttribute="leading" secondItem="4xD-5T-eNi" secondAttribute="trailing" constant="10" id="8H2-L6-xwZ"/>
                             <constraint firstItem="4xD-5T-eNi" firstAttribute="centerY" secondItem="C5N-yv-Q2a" secondAttribute="centerY" id="D8z-xX-IaY"/>
                             <constraint firstAttribute="trailingMargin" secondItem="C5N-yv-Q2a" secondAttribute="trailing" constant="20" id="DsV-Wk-bmZ"/>
                             <constraint firstItem="4xD-5T-eNi" firstAttribute="leading" secondItem="yXD-bt-t1G" secondAttribute="leading" constant="10" id="NkB-Xk-wjx"/>
                             <constraint firstItem="BxM-xQ-I8b" firstAttribute="centerX" secondItem="yXD-bt-t1G" secondAttribute="centerX" id="cKK-Yb-38N"/>
+                            <constraint firstItem="mvL-MC-aqw" firstAttribute="top" secondItem="C5N-yv-Q2a" secondAttribute="bottom" constant="5" id="dcM-sa-c5f"/>
                             <constraint firstItem="BxM-xQ-I8b" firstAttribute="top" secondItem="4xD-5T-eNi" secondAttribute="bottom" constant="10" id="i0l-9K-NYh"/>
                             <constraint firstItem="C5N-yv-Q2a" firstAttribute="leading" secondItem="4xD-5T-eNi" secondAttribute="trailing" constant="10" id="iUY-tv-Iow"/>
                             <constraint firstItem="Dbx-MF-N1c" firstAttribute="centerX" secondItem="yXD-bt-t1G" secondAttribute="centerX" id="jQw-XM-ICs"/>
+                            <constraint firstAttribute="trailing" secondItem="mvL-MC-aqw" secondAttribute="trailing" constant="20" id="ju2-qn-cIc"/>
                             <constraint firstItem="C5N-yv-Q2a" firstAttribute="top" secondItem="Yya-f5-dRa" secondAttribute="bottom" constant="50" id="syU-Gu-nxK"/>
                             <constraint firstItem="Dbx-MF-N1c" firstAttribute="top" secondItem="BxM-xQ-I8b" secondAttribute="bottom" constant="20" id="xOG-i7-uz1"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="sectionGreater" destination="PId-Qn-Wza" id="0dA-yN-mve"/>
                         <outlet property="sectionTypePicker" destination="4xD-5T-eNi" id="oRO-g8-Ke4"/>
                         <outlet property="sectionXTextField" destination="C5N-yv-Q2a" id="1fu-hg-HSw"/>
                     </connections>
