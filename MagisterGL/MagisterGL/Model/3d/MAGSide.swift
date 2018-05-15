@@ -48,7 +48,7 @@ class MAGSide: NSObject
     self.isVisible = isVisible
     self.isVisibleByMaterial = isVisibleByMaterial
     
-    self.positions.append(MAGSide.getCenterFor(first: positions[0], second: positions[2]))
+//    self.positions.append(MAGSide.getCenterFor(first: positions[0], second: positions[2]))
     
 //    self.positions.append(MAGSide.getCenterFor(first: positions[0], second: positions[1]))
 //    self.positions.append(MAGSide.getCenterFor(first: positions[0], second: positions[3]))
@@ -126,13 +126,17 @@ class MAGSide: NSObject
 //            3 + addValue, 2 + addValue, 1 + addValue]
 //  }
   
-   func indicesArray(addValue: Int32) -> [Int32]
-   {
-      return [0 + addValue, 3 + addValue, 4 + addValue,
-              3 + addValue, 2 + addValue, 4 + addValue,
-              2 + addValue, 1 + addValue, 4 + addValue,
-              1 + addValue, 0 + addValue, 4 + addValue]
-   }
+  func indicesArray(addValue: Int32) -> [Int32]
+  {
+    return [0 + addValue, 1 + addValue, 2 + addValue, 3 + addValue]
+  }
+//   func indicesArray(addValue: Int32) -> [Int32]
+//   {
+//      return [0 + addValue, 3 + addValue, 4 + addValue,
+//              3 + addValue, 2 + addValue, 4 + addValue,
+//              2 + addValue, 1 + addValue, 4 + addValue,
+//              1 + addValue, 0 + addValue, 4 + addValue]
+//   }
   
    func generateCenterColor() -> SCNVector3
    {

@@ -87,32 +87,32 @@ class MAGHexahedron: NSObject
     }
     
     sidesArray = [
-      MAGSide.init(positions: [positions[0], positions[2], positions[6], positions[4]],
+      MAGSide.init(positions: [positions[4], positions[6], positions[2], positions[0]],
                    positionType: .Left,
                    material: self.material,
                    isVisible: isSideVisibleArray[0],
                    isVisibleByMaterial: isSideVisibleByMaterialArray[0]), //левая
-      MAGSide.init(positions: [positions[1], positions[0], positions[4], positions[5]],
+      MAGSide.init(positions: [positions[5], positions[4], positions[0], positions[1]],
                    positionType: .Front,
                    material: self.material,
                    isVisible: isSideVisibleArray[1],
                    isVisibleByMaterial: isSideVisibleByMaterialArray[1]), //передняя
-      MAGSide.init(positions: [positions[0], positions[1], positions[3], positions[2]],
+      MAGSide.init(positions: [positions[2], positions[3], positions[1], positions[0]],
                    positionType: .Bottom,
                    material: self.material,
                    isVisible: isSideVisibleArray[2],
                    isVisibleByMaterial: isSideVisibleByMaterialArray[2]), //нижняя
-      MAGSide.init(positions: [positions[1], positions[5], positions[7], positions[3]],
+      MAGSide.init(positions: [positions[3], positions[7], positions[5], positions[1]],
                    positionType: .Right,
                    material: self.material,
                    isVisible: isSideVisibleArray[3],
                    isVisibleByMaterial: isSideVisibleByMaterialArray[3]), //правая
-      MAGSide.init(positions: [positions[2], positions[3], positions[7], positions[6]],
+      MAGSide.init(positions: [positions[6], positions[7], positions[3], positions[2]],
                    positionType: .Back,
                    material: self.material,
                    isVisible: isSideVisibleArray[4],
                    isVisibleByMaterial: isSideVisibleByMaterialArray[4]), //задняя
-      MAGSide.init(positions: [positions[5], positions[4], positions[6], positions[7]],
+      MAGSide.init(positions: [positions[7], positions[6], positions[4], positions[5]],
                    positionType: .Top,
                    material: self.material,
                    isVisible: isSideVisibleArray[5],
@@ -136,11 +136,11 @@ class MAGHexahedron: NSObject
         
         switch side.positionType {
         case .Left:
-          side.colors.append(self.colors[0])
-          side.colors.append(self.colors[2])
-          side.colors.append(self.colors[6])
           side.colors.append(self.colors[4])
-          side.colors.append(side.generateCenterColor())
+          side.colors.append(self.colors[6])
+          side.colors.append(self.colors[2])
+          side.colors.append(self.colors[0])
+          //side.colors.append(side.generateCenterColor())
           
 //          side.colors.append(side.generateAverageColor(first: self.colors[0], second: self.colors[2]))
 //          side.colors.append(side.generateAverageColor(first: self.colors[0], second: self.colors[4]))
@@ -148,11 +148,11 @@ class MAGHexahedron: NSObject
 //          side.colors.append(side.generateAverageColor(first: self.colors[4], second: self.colors[6]))
           
         case .Front:
-          side.colors.append(self.colors[1])
-          side.colors.append(self.colors[0])
-          side.colors.append(self.colors[4])
           side.colors.append(self.colors[5])
-          side.colors.append(side.generateCenterColor())
+          side.colors.append(self.colors[4])
+          side.colors.append(self.colors[0])
+          side.colors.append(self.colors[1])
+          //side.colors.append(side.generateCenterColor())
           
 //          side.colors.append(side.generateAverageColor(first: self.colors[0], second: self.colors[1]))
 //          side.colors.append(side.generateAverageColor(first: self.colors[1], second: self.colors[5]))
@@ -160,44 +160,44 @@ class MAGHexahedron: NSObject
 //          side.colors.append(side.generateAverageColor(first: self.colors[4], second: self.colors[5]))
           
         case .Bottom:
-          side.colors.append(self.colors[0])
-          side.colors.append(self.colors[1])
-          side.colors.append(self.colors[3])
           side.colors.append(self.colors[2])
-          side.colors.append(side.generateCenterColor())
+          side.colors.append(self.colors[3])
+          side.colors.append(self.colors[1])
+          side.colors.append(self.colors[0])
+          //side.colors.append(side.generateCenterColor())
           
 //          side.colors.append(side.generateAverageColor(first: self.colors[0], second: self.colors[1]))
 //          side.colors.append(side.generateAverageColor(first: self.colors[0], second: self.colors[2]))
 //          side.colors.append(side.generateAverageColor(first: self.colors[1], second: self.colors[3]))
 //          side.colors.append(side.generateAverageColor(first: self.colors[2], second: self.colors[3]))
         case .Right:
-          side.colors.append(self.colors[1])
-          side.colors.append(self.colors[5])
-          side.colors.append(self.colors[7])
           side.colors.append(self.colors[3])
-          side.colors.append(side.generateCenterColor())
+          side.colors.append(self.colors[7])
+          side.colors.append(self.colors[5])
+          side.colors.append(self.colors[1])
+          //side.colors.append(side.generateCenterColor())
           
 //          side.colors.append(side.generateAverageColor(first: self.colors[1], second: self.colors[3]))
 //          side.colors.append(side.generateAverageColor(first: self.colors[1], second: self.colors[5]))
 //          side.colors.append(side.generateAverageColor(first: self.colors[3], second: self.colors[7]))
 //          side.colors.append(side.generateAverageColor(first: self.colors[5], second: self.colors[7]))
         case .Back:
-          side.colors.append(self.colors[2])
-          side.colors.append(self.colors[3])
-          side.colors.append(self.colors[7])
           side.colors.append(self.colors[6])
-          side.colors.append(side.generateCenterColor())
+          side.colors.append(self.colors[7])
+          side.colors.append(self.colors[3])
+          side.colors.append(self.colors[2])
+          //side.colors.append(side.generateCenterColor())
           
 //          side.colors.append(side.generateAverageColor(first: self.colors[2], second: self.colors[3]))
 //          side.colors.append(side.generateAverageColor(first: self.colors[2], second: self.colors[6]))
 //          side.colors.append(side.generateAverageColor(first: self.colors[3], second: self.colors[7]))
 //          side.colors.append(side.generateAverageColor(first: self.colors[6], second: self.colors[7]))
         case .Top:
-          side.colors.append(self.colors[5])
-          side.colors.append(self.colors[4])
-          side.colors.append(self.colors[6])
           side.colors.append(self.colors[7])
-          side.colors.append(side.generateCenterColor())
+          side.colors.append(self.colors[6])
+          side.colors.append(self.colors[4])
+          side.colors.append(self.colors[5])
+         // side.colors.append(side.generateCenterColor())
           
 //          side.colors.append(side.generateAverageColor(first: self.colors[4], second: self.colors[5]))
 //          side.colors.append(side.generateAverageColor(first: self.colors[5], second: self.colors[7]))
@@ -210,7 +210,7 @@ class MAGHexahedron: NSObject
     {
       for side in sidesArray
       {
-        for _ in 0..<5
+        for _ in 0..<4
         {
           side.colors.append(self.colors[0])
         }
@@ -218,94 +218,5 @@ class MAGHexahedron: NSObject
     }
   }
   
-  public func setColorToSide(side: MAGSide)
-  {
-    if (self.colors.count > 1)
-    {
-        //            side.colors.append(SCNVector3(1, 0, 0))
-        //            side.colors.append(SCNVector3(0, 0, 1))
-        //            side.colors.append(SCNVector3(1, 1, 0))
-        //            side.colors.append(SCNVector3(0, 1, 0))
-        //            side.generateCenterColor()
-        
-        switch side.positionType {
-        case .Left:
-          side.colors.append(self.colors[0])
-          side.colors.append(self.colors[2])
-          side.colors.append(self.colors[6])
-          side.colors.append(self.colors[4])
-          side.colors.append(side.generateCenterColor())
-          
-          //          side.colors.append(side.generateAverageColor(first: self.colors[0], second: self.colors[2]))
-          //          side.colors.append(side.generateAverageColor(first: self.colors[0], second: self.colors[4]))
-          //          side.colors.append(side.generateAverageColor(first: self.colors[2], second: self.colors[6]))
-          //          side.colors.append(side.generateAverageColor(first: self.colors[4], second: self.colors[6]))
-          
-        case .Front:
-          side.colors.append(self.colors[1])
-          side.colors.append(self.colors[0])
-          side.colors.append(self.colors[4])
-          side.colors.append(self.colors[5])
-          side.colors.append(side.generateCenterColor())
-          
-          //          side.colors.append(side.generateAverageColor(first: self.colors[0], second: self.colors[1]))
-          //          side.colors.append(side.generateAverageColor(first: self.colors[1], second: self.colors[5]))
-          //          side.colors.append(side.generateAverageColor(first: self.colors[0], second: self.colors[4]))
-          //          side.colors.append(side.generateAverageColor(first: self.colors[4], second: self.colors[5]))
-          
-        case .Bottom:
-          side.colors.append(self.colors[0])
-          side.colors.append(self.colors[1])
-          side.colors.append(self.colors[3])
-          side.colors.append(self.colors[2])
-          side.colors.append(side.generateCenterColor())
-          
-          //          side.colors.append(side.generateAverageColor(first: self.colors[0], second: self.colors[1]))
-          //          side.colors.append(side.generateAverageColor(first: self.colors[0], second: self.colors[2]))
-          //          side.colors.append(side.generateAverageColor(first: self.colors[1], second: self.colors[3]))
-        //          side.colors.append(side.generateAverageColor(first: self.colors[2], second: self.colors[3]))
-        case .Right:
-          side.colors.append(self.colors[1])
-          side.colors.append(self.colors[5])
-          side.colors.append(self.colors[7])
-          side.colors.append(self.colors[3])
-          side.colors.append(side.generateCenterColor())
-          
-          //          side.colors.append(side.generateAverageColor(first: self.colors[1], second: self.colors[3]))
-          //          side.colors.append(side.generateAverageColor(first: self.colors[1], second: self.colors[5]))
-          //          side.colors.append(side.generateAverageColor(first: self.colors[3], second: self.colors[7]))
-        //          side.colors.append(side.generateAverageColor(first: self.colors[5], second: self.colors[7]))
-        case .Back:
-          side.colors.append(self.colors[2])
-          side.colors.append(self.colors[3])
-          side.colors.append(self.colors[7])
-          side.colors.append(self.colors[6])
-          side.colors.append(side.generateCenterColor())
-          
-          //          side.colors.append(side.generateAverageColor(first: self.colors[2], second: self.colors[3]))
-          //          side.colors.append(side.generateAverageColor(first: self.colors[2], second: self.colors[6]))
-          //          side.colors.append(side.generateAverageColor(first: self.colors[3], second: self.colors[7]))
-        //          side.colors.append(side.generateAverageColor(first: self.colors[6], second: self.colors[7]))
-        case .Top:
-          side.colors.append(self.colors[5])
-          side.colors.append(self.colors[4])
-          side.colors.append(self.colors[6])
-          side.colors.append(self.colors[7])
-          side.colors.append(side.generateCenterColor())
-          
-          //          side.colors.append(side.generateAverageColor(first: self.colors[4], second: self.colors[5]))
-          //          side.colors.append(side.generateAverageColor(first: self.colors[5], second: self.colors[7]))
-          //          side.colors.append(side.generateAverageColor(first: self.colors[4], second: self.colors[6]))
-          //          side.colors.append(side.generateAverageColor(first: self.colors[6], second: self.colors[7]))
-        }
-    }
-    else
-    {
-      for _ in 0..<5
-      {
-        side.colors.append(self.colors[0])
-      }
-    }
-  }
   
 }

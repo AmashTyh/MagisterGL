@@ -17,7 +17,7 @@ class MAGCustomGeometryModel: NSObject
   let fileManager: MAGFileManager = MAGFileManager()
   
   var isShowMaterials = true
-  var colorGenerator: MAGColorGenerator?
+  var colorGenerator: MAGColorGenerator = MAGColorGenerator()
   
   var scaleValue : Float = 1.0
   var isDrawingSectionEnabled: Bool = false
@@ -140,16 +140,13 @@ class MAGCustomGeometryModel: NSObject
                                                           greater: self.greater)
       self.crossSection = crossSection
     }
-
-    //let crossSection: MAGCrossSection = MAGCrossSection(plane: .Y, value: -4000 / xyzCalc, greater: false)
    
-    
-//    self.colorGenerator.generateColor(minValue: self.colorGenerator.uFunc(x: Double(minVector.x),
-//                                                                          y: Double(minVector.y),
-//                                                                          z: Double(minVector.z)),
-//                                      maxValue: self.colorGenerator.uFunc(x: Double(maxVector.x),
-//                                                                          y: Double(maxVector.y),
-//                                                                          z: Double(maxVector.z)))
+    self.colorGenerator.generateColor(minValue: self.colorGenerator.uFunc(x: Double(minVector.x),
+                                                                          y: Double(minVector.y),
+                                                                          z: Double(minVector.z)),
+                                      maxValue: self.colorGenerator.uFunc(x: Double(maxVector.x),
+                                                                          y: Double(maxVector.y),
+                                                                          z: Double(maxVector.z)))
     
 
     var numberOfElement : Int = 0
@@ -171,7 +168,8 @@ class MAGCustomGeometryModel: NSObject
         hexahedron = MAGHexahedron(positions: positionArray,
                                    neighbours: elementNeibsArray,
                                    material: material,
-                                   color: [self.getColor(material: nvkatArray[numberOfElement])])
+                                   //color: [self.getColor(material: nvkatArray[numberOfElement])])
+          color: (self.colorGenerator.getColorsFor(vertexes: positionArray)))
       }
       else
       {
@@ -186,8 +184,8 @@ class MAGCustomGeometryModel: NSObject
         hexahedron = MAGHexahedron(positions: positionArray,
                                    neighbours: elementNeibsArray,
                                    material: material,
-                                   color: [(self.colorGenerator?.getColorForU(u: uValue))!])
-        
+                                  // color: [(self.colorGenerator.getColorForU(u: uValue))])
+        color: (self.colorGenerator.getColorsFor(vertexes: positionArray)))
       }
       
       hexahedron.generateSides()

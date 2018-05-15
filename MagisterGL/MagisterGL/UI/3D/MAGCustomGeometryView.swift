@@ -112,6 +112,29 @@ class MAGCustomGeometryView: SCNView
   
   private func createCube()
   {
+//    var verts : [SCNVector3] = [SCNVector3Make(0, 0, 0),
+//                                SCNVector3Make(2, 0, 0),
+//                                SCNVector3Make(0, 2, 0),
+//                                SCNVector3Make(2, 2, 0)]
+//    let src = SCNGeometrySource(vertices: verts)
+//    let indexes: [CInt] = [4, 0, 1, 3, 2] // Changed to CInt
+//
+//    let dat  = Data(
+//      bytes: indexes,
+//      count: MemoryLayout<CInt>.size * indexes.count // Changed to size of CInt * count
+//    )
+//    let ele = SCNGeometryElement(
+//      data: dat,
+//      primitiveType: .polygon,
+//      primitiveCount: 1,
+//      bytesPerIndex: MemoryLayout<CInt>.size // Changed to CInt
+//    )
+//    let geo = SCNGeometry(sources: [src], elements: [ele])
+//
+//    let nd = SCNNode(geometry: geo)
+//    self.scene?.rootNode.addChildNode(nd)
+//    return
+    
     var h = 0 as Int32
     var j = 0 as Int32
     var globalPositions : [SCNVector3] = []
@@ -120,15 +143,15 @@ class MAGCustomGeometryView: SCNView
     var globalIndiciesCarcas : [CInt] = []
     var globalElements : [SCNGeometryElement] = []
     var globalColors : [SCNVector3] = []
-    
+
     var vertexPositions : [SCNVector3] = []
     var selectedNumberMaterials: [Int] = []
-    
+
     for material in self.model.selectedMaterials
     {
       selectedNumberMaterials.append(material.numberOfMaterial)
     }
-    
+
     for hexahedron in self.model.elementsArray
     {
       if hexahedron.visible != .isVisible
@@ -146,24 +169,24 @@ class MAGCustomGeometryView: SCNView
         {
           if side.isVisible
           {
-            let indicesSide = side.indicesArray(addValue: h * 5)
-            
+            let indicesSide = [4] + side.indicesArray(addValue: h * 4)
+
             let indexDataSide = Data(bytes: indicesSide,
                                      count: MemoryLayout<CInt>.size * indicesSide.count)
             let elementSide = SCNGeometryElement(data: indexDataSide,
-                                                 primitiveType: .triangles,
-                                                 primitiveCount: indicesSide.count / 3,
+                                                 primitiveType: .polygon,
+                                                 primitiveCount: indicesSide.count / 4,
                                                  bytesPerIndex: MemoryLayout<CInt>.size)
             globalElements.append(elementSide)
             normals = normals + side.normalsArray()
             indices = indices + indicesSide
             vertexPositions += side.positions
-            
+
             globalColors = globalColors + side.colors
             h += 1
           }
         }
-        
+
         globalPositions = globalPositions + hexahedron.positions
         let normals2 = [
           SCNVector3Make( 1, 1, 1),
@@ -182,7 +205,7 @@ class MAGCustomGeometryView: SCNView
           SCNVector3Make( 1, 1, 1),
           SCNVector3Make( 1, 1, 1),
           ]
-        
+
         globalNormals = globalNormals + normals2
         let addValue = j * 8
         globalIndicies = globalIndicies + indices
@@ -203,11 +226,11 @@ class MAGCustomGeometryView: SCNView
         globalIndiciesCarcas = globalIndiciesCarcas + indicesCarcas
         j = j + 1
     }
-    
+
     let positionSource = SCNGeometrySource(vertices: globalPositions)
     let vertexSource = SCNGeometrySource(vertices: vertexPositions)
     let normalSource = SCNGeometrySource(normals: globalNormals)
-    
+
     let dataColor = NSData(bytes: globalColors,
                            length: MemoryLayout<SCNVector3>.size * globalColors.count) as Data
     let colors = SCNGeometrySource(data: dataColor,
@@ -218,7 +241,7 @@ class MAGCustomGeometryView: SCNView
                                    bytesPerComponent: MemoryLayout<Float>.size,
                                    dataOffset: 0,
                                    dataStride: MemoryLayout<SCNVector3>.stride)
-    
+
     // let geometry = SCNGeometry(sources: [vertexSource, normalSource, colors],
     let geometry = SCNGeometry(sources: [vertexSource, colors],
                                elements: globalElements)
@@ -226,8 +249,8 @@ class MAGCustomGeometryView: SCNView
     let scaleVector = SCNVector3(self.model.scaleValue, self.model.scaleValue, self.model.scaleValue)
     cubeNode.scale = scaleVector
     self.scene?.rootNode.addChildNode(cubeNode)
-    
-    
+
+
     let indexDataCarcas = Data(bytes: globalIndiciesCarcas,
                                count: MemoryLayout<CInt>.size * globalIndiciesCarcas.count)
     let elementBorder = SCNGeometryElement(data: indexDataCarcas,

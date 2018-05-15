@@ -105,7 +105,7 @@ class MAGSectionView: SCNView
                            material: hexahedron.material,
                            isVisible: true,
                            isVisibleByMaterial: true)
-        hexahedron.setColorToSide(side: side)
+        //hexahedron.setColorToSide(side: side)
         
 //        side.colors = self.model.colorGenerator.getColorsFor(vertexes: points)
 //        side.colors.append(side.generateCenterColor())
