@@ -287,7 +287,6 @@ class MAGFileManager: NSObject
         if string != ""
         {
           let array = string.components(separatedBy: "\t")
-          print(array)
           if array.count == 4
           {
             let vector = SCNVector3Make(Float(array[1])!,

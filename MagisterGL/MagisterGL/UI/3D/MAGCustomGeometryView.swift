@@ -77,7 +77,37 @@ class MAGCustomGeometryView: SCNView
                                                      self.model.centerPoint.z * self.model.scaleValue)
     
     self.scene = scene
+    
+    drawProfile()
     createCube()
+  }
+  
+  private func drawProfile()
+  {
+    var globalIndicies : [CInt] = []
+    for i in 0..<self.model.profileArray.count
+    {
+      globalIndicies.append(CInt(i))
+    }
+    let globalPositions : [SCNVector3] = self.model.profileArray
+    let positionSource = SCNGeometrySource(vertices: globalPositions)
+    let indexDataCarcas = Data(bytes: globalIndicies,
+                               count: MemoryLayout<CInt>.size * globalIndicies.count)
+    let elementBorder = SCNGeometryElement(data: indexDataCarcas,
+                                           primitiveType: .point,
+                                           primitiveCount: globalIndicies.count,
+                                           bytesPerIndex: MemoryLayout<CInt>.size)
+    let pointSize: CGFloat = 5.0
+    elementBorder.pointSize = pointSize
+    elementBorder.minimumPointScreenSpaceRadius = pointSize
+    elementBorder.maximumPointScreenSpaceRadius = pointSize
+    let geometryBorder = SCNGeometry(sources: [positionSource],
+                                     elements: [elementBorder])
+    geometryBorder.firstMaterial?.diffuse.contents = UIColor.red
+    let borderCubeNode = SCNNode(geometry: geometryBorder)
+    let scaleVector = SCNVector3(self.model.scaleValue, self.model.scaleValue, self.model.scaleValue)
+    borderCubeNode.scale = scaleVector
+    self.scene?.rootNode.addChildNode(borderCubeNode)
   }
   
   private func createCube()
@@ -200,8 +230,6 @@ class MAGCustomGeometryView: SCNView
     
     let indexDataCarcas = Data(bytes: globalIndiciesCarcas,
                                count: MemoryLayout<CInt>.size * globalIndiciesCarcas.count)
-
-
     let elementBorder = SCNGeometryElement(data: indexDataCarcas,
                                            primitiveType: .line,
                                            primitiveCount: globalIndiciesCarcas.count / 2,

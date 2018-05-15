@@ -119,7 +119,7 @@ class MAGCustomGeometryModel: NSObject
       }!.z
     
 
-    self.scaleValue = 1.0 / abs((maxVector.y - minVector.y) / 2.0)
+    self.scaleValue = 1.0 / abs((maxVector.y - minVector.y) / 8.0)
     centerPoint = SCNVector3Make((maxVector.x - minVector.x) / 2.0 + minVector.x,
                                  (maxVector.y - minVector.y) / 2.0 + minVector.y,
                                  (maxVector.z - minVector.z) / 2.0 + minVector.z)
