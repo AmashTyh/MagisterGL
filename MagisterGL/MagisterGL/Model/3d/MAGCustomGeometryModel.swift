@@ -17,6 +17,7 @@ class MAGCustomGeometryModel: NSObject
   let fileManager: MAGFileManager = MAGFileManager()
   
   var isShowMaterials = true
+  var showFieldNumber = 0
   var colorGenerator: MAGColorGenerator?
   
   var scaleValue : Float = 1.0
@@ -60,6 +61,33 @@ class MAGCustomGeometryModel: NSObject
         return v1.x < v2.x
       }
     })
+    
+    //v3 array
+    let decodedArray = NSKeyedUnarchiver.unarchiveObject(with: project.v3FilePathsArray!) as? [String]
+    for v3FilePath in decodedArray!
+    {
+      let XYZValuesArray = self.fileManager.getXYZValuesArray(path: documentsPath + v3FilePath)
+      if XYZValuesArray.count > 0
+      {
+        self.fieldsArray.append(XYZValuesArray)
+      }
+    }
+    
+    if showFieldNumber != -1
+    {
+      let XYZValuesArray = self.fieldsArray[showFieldNumber]
+      let min = XYZValuesArray.min { (first, second) -> Bool in
+        return first < second
+        }!
+      let max = XYZValuesArray.max { (first, second) -> Bool in
+        return first < second
+        }!
+      let colorGenerator = MAGColorGenerator()
+      colorGenerator.generateColor(minValue: min,
+                                   maxValue: max)
+      self.colorGenerator = colorGenerator
+    }
+    
     if sig3dArray.count > 0
     {
       let min = sig3dArray.min { (first, second) -> Bool in
@@ -98,17 +126,6 @@ class MAGCustomGeometryModel: NSObject
       }
     }
     self.selectedMaterials  = self.materials
-    
-    //v3 array
-    let decodedArray = NSKeyedUnarchiver.unarchiveObject(with: project.v3FilePathsArray!) as? [String]
-    for v3FilePath in decodedArray!
-    {
-      let XYZValuesArray = self.fileManager.getXYZValuesArray(path: documentsPath + v3FilePath)
-      if XYZValuesArray.count > 0
-      {
-        self.fieldsArray.append(XYZValuesArray)
-      }
-    }
     createElementsArray()
   }
   
@@ -145,7 +162,8 @@ class MAGCustomGeometryModel: NSObject
                                  (maxVector.y - minVector.y) / 2.0 + minVector.y,
                                  (maxVector.z - minVector.z) / 2.0 + minVector.z)
     
-    if isDrawingSectionEnabled {
+    if isDrawingSectionEnabled
+    {
       let crossSection: MAGCrossSection = MAGCrossSection(plane: sectionType,
                                                           value: sectionValue,
                                                           greater: self.greater)
@@ -177,7 +195,28 @@ class MAGCustomGeometryModel: NSObject
       var hexahedron: MAGHexahedron
       let material = nvkatArray[numberOfElement]
       
-      if sig3dArray.count == 0
+      if showFieldNumber != -1
+      {
+        var colors: [SCNVector3] = []
+        var j : Int = 0
+        for number in self.nverArray[i]
+        {
+          if j < 8
+          {
+            colors.append((self.colorGenerator?.getColorForU(u: self.fieldsArray[showFieldNumber][number - 1]))!)
+          }
+          else
+          {
+            break
+          }
+          j = j + 1
+        }
+        hexahedron = MAGHexahedron(positions: positionArray,
+                                   neighbours: elementNeibsArray,
+                                   material: material,
+                                   color: colors)
+      }
+      else if sig3dArray.count == 0
       {
         hexahedron = MAGHexahedron(positions: positionArray,
                                    neighbours: elementNeibsArray,
