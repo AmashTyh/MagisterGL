@@ -31,7 +31,7 @@ class MAGBaseProjectsGenerator: NSObject
                          elemNeibPath: "elem_neib.txt",
                          sigma3dPath: "",
                          profilePath: "",
-                         v3FilePathsArray: NSKeyedArchiver.archivedData(withRootObject: ["v3.t1.txt"]),
+                         v3FilePathsArray: NSKeyedArchiver.archivedData(withRootObject: ["v3.t1.txt", "v3.t2.txt"]),
                          isLocal: true)
     viewModel.addProject(name: "Test 2",
                          nverPath: "nver2.txt",

@@ -16,9 +16,11 @@ class MAG3DViewController: UIViewController,
                            UIPopoverPresentationControllerDelegate,
                            SCNSceneRendererDelegate,
                            MAGChooseSectionViewControllerDelegate,
-                           MAGChooseMaterialViewControllerDelegate
+                           MAGChooseMaterialViewControllerDelegate,
+                           MAGChooseFieldViewControllerDelegate
 
 {
+  
   
   @IBOutlet weak var customGeometryView: MAGCustomGeometryView!
   
@@ -64,6 +66,14 @@ class MAG3DViewController: UIViewController,
       vc.materials = self.customGeometryView.model.materials
       vc.selectedMaterials = self.customGeometryView.model.selectedMaterials
       vc.popoverPresentationController?.delegate = self
+    }
+    else if segue.destination.isKind(of: MAGChooseFieldViewController.self)
+    {
+      let vc = segue.destination as! MAGChooseFieldViewController
+      vc.delegate = self
+      vc.showFieldNumber = self.customGeometryView.model.showFieldNumber
+      let decodedArray = NSKeyedUnarchiver.unarchiveObject(with: (self.customGeometryView.model.project?.v3FilePathsArray!)!) as? [String]
+      vc.availableFields = decodedArray!
     }
   }
   
@@ -115,6 +125,15 @@ class MAG3DViewController: UIViewController,
   func selectedMaterials(selectedMaterials: [MAGMaterial])
   {
     self.customGeometryView.model.selectedMaterials = selectedMaterials
+    self.customGeometryView.model.createElementsArray()
+    self.customGeometryView.setupScene()
+  }
+  
+  //MARK: MAGChooseFieldViewControllerDelegate
+  
+  func chooseFieldNumber(fieldNumber: Int)
+  {
+    self.customGeometryView.model.showFieldNumber = fieldNumber
     self.customGeometryView.model.createElementsArray()
     self.customGeometryView.setupScene()
   }

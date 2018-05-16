@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -431,6 +430,13 @@
                                     </segue>
                                 </connections>
                             </barButtonItem>
+                            <barButtonItem title="Field" id="pt8-xa-xQj">
+                                <connections>
+                                    <segue destination="nuP-kb-1X9" kind="popoverPresentation" popoverAnchorBarButtonItem="pt8-xa-xQj" id="iRN-f4-brt">
+                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                    </segue>
+                                </connections>
+                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
@@ -572,6 +578,56 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FhZ-SY-XXy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-3103.1999999999998" y="2266.4167916041979"/>
+        </scene>
+        <!--Choose Field View Controller-->
+        <scene sceneID="KsT-X3-BJl">
+            <objects>
+                <viewController id="nuP-kb-1X9" customClass="MAGChooseFieldViewController" customModule="MagisterGL" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="rx1-Fu-E8o"/>
+                        <viewControllerLayoutGuide type="bottom" id="at1-32-Zld"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Dqw-dv-IjM">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fv2-go-kDe">
+                                <rect key="frame" x="37.5" y="40" width="300" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="0YD-d3-cjh"/>
+                                    <constraint firstAttribute="width" constant="300" id="TPp-Pa-5sZ"/>
+                                </constraints>
+                                <state key="normal" title="Not show"/>
+                                <connections>
+                                    <action selector="notShowField" destination="nuP-kb-1X9" eventType="touchUpInside" id="u7j-5O-9Cp"/>
+                                </connections>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="b6t-Ro-cYe">
+                                <rect key="frame" x="0.0" y="104" width="375" height="563"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="nuP-kb-1X9" id="Gl2-om-XBV"/>
+                                    <outlet property="delegate" destination="nuP-kb-1X9" id="5wG-p4-ZAc"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="at1-32-Zld" firstAttribute="top" secondItem="b6t-Ro-cYe" secondAttribute="bottom" id="3mk-YM-dg6"/>
+                            <constraint firstItem="b6t-Ro-cYe" firstAttribute="leading" secondItem="Dqw-dv-IjM" secondAttribute="leading" id="DVg-9B-upb"/>
+                            <constraint firstItem="b6t-Ro-cYe" firstAttribute="top" secondItem="Fv2-go-kDe" secondAttribute="bottom" constant="20" id="DkS-Hw-0Gv"/>
+                            <constraint firstItem="Fv2-go-kDe" firstAttribute="top" secondItem="rx1-Fu-E8o" secondAttribute="bottom" constant="20" id="kzP-ef-ori"/>
+                            <constraint firstItem="Fv2-go-kDe" firstAttribute="centerX" secondItem="Dqw-dv-IjM" secondAttribute="centerX" id="lK1-TH-233"/>
+                            <constraint firstAttribute="trailing" secondItem="b6t-Ro-cYe" secondAttribute="trailing" id="yv7-pA-Shk"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="b6t-Ro-cYe" id="HwR-DQ-Wwe"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0nC-Ob-YZN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2334" y="2266"/>
         </scene>
         <!--Choose Material View Controller-->
         <scene sceneID="WFh-Sb-JLE">
