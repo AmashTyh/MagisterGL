@@ -76,11 +76,6 @@ class MAGCustomGeometryModel: NSObject
       }
     }
     
-    if showFieldNumber != -1
-    {
-      let XYZValuesArray = self.fieldsArray[showFieldNumber]
-    }
-    
     if sig3dArray.count > 0
     {
       let min = sig3dArray.min { (first, second) -> Bool in
