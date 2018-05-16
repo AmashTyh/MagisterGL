@@ -16,7 +16,8 @@ protocol MAGChooseFieldViewControllerDelegate: class
 
 class MAGChooseFieldViewController: UIViewController,
                                     UITableViewDelegate,
-                                    UITableViewDataSource
+                                    UITableViewDataSource,
+                                    UIPopoverPresentationControllerDelegate
 {
   
   weak var delegate: MAGChooseFieldViewControllerDelegate?
@@ -54,7 +55,12 @@ class MAGChooseFieldViewController: UIViewController,
   {
     let cell : UITableViewCell = (tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier) as UITableViewCell?)!
     cell.textLabel?.text = self.availableFields[indexPath.row]
-    cell.isSelected = self.showFieldNumber == indexPath.row
+    if (self.showFieldNumber == indexPath.row)
+    {
+      tableView.selectRow(at: indexPath,
+                          animated: false,
+                          scrollPosition: .none)
+    }
     return cell
   }
   
@@ -66,4 +72,5 @@ class MAGChooseFieldViewController: UIViewController,
     self.dismiss(animated: true,
                  completion: nil)
   }
+
 }

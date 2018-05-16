@@ -56,7 +56,6 @@ class MAGFileManager: NSObject
                                           array[1],
                                           array[2])
               arrayOfVectors?.append(vector)
-              print(vector.x * vector.x + vector.y * vector.y)
             }
           }
         }

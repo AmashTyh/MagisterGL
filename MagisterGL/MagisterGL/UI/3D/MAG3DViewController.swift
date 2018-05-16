@@ -74,6 +74,7 @@ class MAG3DViewController: UIViewController,
       vc.showFieldNumber = self.customGeometryView.model.showFieldNumber
       let decodedArray = NSKeyedUnarchiver.unarchiveObject(with: (self.customGeometryView.model.project?.v3FilePathsArray!)!) as? [String]
       vc.availableFields = decodedArray!
+      vc.popoverPresentationController?.delegate = self
     }
   }
   
