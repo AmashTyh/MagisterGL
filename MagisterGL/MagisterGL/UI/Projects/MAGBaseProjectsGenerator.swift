@@ -31,6 +31,7 @@ class MAGBaseProjectsGenerator: NSObject
                          elemNeibPath: "elem_neib.txt",
                          sigma3dPath: "",
                          profilePath: "",
+                         v3FilePathsArray: NSKeyedArchiver.archivedData(withRootObject: ["v3.t1.txt"]),
                          isLocal: true)
     viewModel.addProject(name: "Test 2",
                          nverPath: "nver2.txt",
@@ -40,6 +41,7 @@ class MAGBaseProjectsGenerator: NSObject
                          elemNeibPath: "elem_neib2.txt",
                          sigma3dPath: "",
                          profilePath: "",
+                         v3FilePathsArray: NSKeyedArchiver.archivedData(withRootObject: [""]),
                          isLocal: true)
     viewModel.addProject(name: "Test 3",
                          nverPath: "nver.dat",
@@ -49,6 +51,7 @@ class MAGBaseProjectsGenerator: NSObject
                          elemNeibPath: "elem_neib",
                          sigma3dPath: "",
                          profilePath: "",
+                         v3FilePathsArray: NSKeyedArchiver.archivedData(withRootObject: [""]),
                          isLocal: true)
     viewModel.addProject(name: "Test 4",
                          nverPath: "nver4.dat",
@@ -58,6 +61,7 @@ class MAGBaseProjectsGenerator: NSObject
                          elemNeibPath: "elem_neib4",
                          sigma3dPath: "Sig3d4",
                          profilePath: "profile4",
+                         v3FilePathsArray: NSKeyedArchiver.archivedData(withRootObject: [""]),
                          isLocal: true)
     viewModel.addProject(name: "Test 5",
                          nverPath: "nver5.dat",
@@ -67,6 +71,7 @@ class MAGBaseProjectsGenerator: NSObject
                          elemNeibPath: "elem_neib5",
                          sigma3dPath: "Sig3d5",
                          profilePath: "profile5",
+                         v3FilePathsArray: NSKeyedArchiver.archivedData(withRootObject: [""]),
                          isLocal: true)
     UserDefaults.standard.set("true",
                               forKey: baseProjectsGeneratedKey)

@@ -26,6 +26,7 @@ class MAGCustomGeometryModel: NSObject
   var minVector: SCNVector3 = SCNVector3Zero
   var maxVector: SCNVector3 = SCNVector3Zero
   var xyzArray: [SCNVector3] = []
+  var fieldsArray: [[Double]] = []
   var xyz0Array: [SCNVector3] = []
   var nverArray: [[Int]] = []
   var nvkatArray: [Int] = []
@@ -98,6 +99,16 @@ class MAGCustomGeometryModel: NSObject
     }
     self.selectedMaterials  = self.materials
     
+    //v3 array
+    let decodedArray = NSKeyedUnarchiver.unarchiveObject(with: project.v3FilePathsArray!) as? [String]
+    for v3FilePath in decodedArray!
+    {
+      let XYZValuesArray = self.fileManager.getXYZValuesArray(path: documentsPath + v3FilePath)
+      if XYZValuesArray.count > 0
+      {
+        self.fieldsArray.append(XYZValuesArray)
+      }
+    }
     createElementsArray()
   }
   

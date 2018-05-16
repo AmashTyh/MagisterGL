@@ -71,6 +71,46 @@ class MAGFileManager: NSObject
     return []
   }
   
+  func getXYZValuesArray(path: String) -> [Double]
+  {
+    do
+    {
+      let fileExtension = URL(fileURLWithPath: path).pathExtension
+      if  fileExtension == "dat"
+      {
+        let scaner = try MAGBinaryDataScanner(data: NSData(contentsOfFile: path),
+                                              littleEndian: true,
+                                              encoding: String.Encoding.ascii)
+        var array: [Double]? = []
+        while let value = scaner.readDouble()
+        {
+          array?.append(value)
+        }
+        return array!
+      }
+      else
+      {
+        let data = try String(contentsOfFile: path,
+                              encoding: String.Encoding.ascii)
+        var array: [Double] = []
+        for obj in data.components(separatedBy: "\n")
+        {
+          if obj != ""
+          {
+            array.append(Double(obj)!)
+          }
+        }
+        return array
+      }
+    }
+    catch let err as NSError
+    {
+      // do something with Error
+      print(err)
+    }
+    return []
+  }
+  
   func getNVERArray(path: String) -> [[Int]]
   {
     do
