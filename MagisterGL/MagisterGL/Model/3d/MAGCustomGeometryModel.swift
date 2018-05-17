@@ -42,6 +42,8 @@ class MAGCustomGeometryModel: NSObject
   var sig3dArray: [[Double]] = []
   var profileArray: [SCNVector3] = []
   
+  var receiversSurface: [MAGTriangleElement] = []
+  
   func configure(project: MAGProject)
   {
     self.project = project
@@ -54,16 +56,6 @@ class MAGCustomGeometryModel: NSObject
     neibArray = self.fileManager.getNEIBArray(path: documentsPath + project.elemNeibFilePath!)
     sig3dArray = self.fileManager.getSig3dArray(path: documentsPath + project.sigma3dPath!)
     profileArray = self.fileManager.getProfileArray(path: documentsPath + project.profilePath!)
-    profileArray = profileArray.sorted(by: { (v1, v2) -> Bool in
-      if v1.y != v2.y
-      {
-        return v1.y < v2.y
-      }
-      else
-      {
-        return v1.x < v2.x
-      }
-    })
     
     //v3 array
     let decodedArray = NSKeyedUnarchiver.unarchiveObject(with: project.v3FilePathsArray!) as? [String]
@@ -115,6 +107,102 @@ class MAGCustomGeometryModel: NSObject
     }
     self.selectedMaterials  = self.materials
     createElementsArray()
+    createReceiverSurface()
+  }
+  
+  func createReceiverSurface() {
+    
+//    var array: [SCNVector3] = []
+//    array.append(SCNVector3Make(0, 0, 0))
+//    array.append(SCNVector3Make(2, 1, 0))
+//    array.append(SCNVector3Make(4, 0, 0))
+//    array.append(SCNVector3Make(5, 2, 0))
+//    array.append(SCNVector3Make(0, 3, 0))
+//    array.append(SCNVector3Make(2, 2, 0))
+//    array.append(SCNVector3Make(4, 4, 0))
+    
+//    array.append(SCNVector3Make(3, 2, 0))
+//    array.append(SCNVector3Make(1, 1, 0))
+//    array.append(SCNVector3Make(5, 2, 0))
+//    array.append(SCNVector3Make(2, 1, 0))
+//    array.append(SCNVector3Make(4, 1, 0))
+//    array.append(SCNVector3Make(2, 2, 0))
+//    array.append(SCNVector3Make(5, 1, 0))
+//    array.append(SCNVector3Make(4, 2, 0))
+//    array.append(SCNVector3Make(3, 1, 0))
+//    array.append(SCNVector3Make(1, 2, 0))
+//
+//    var sortedArray = array.sorted(by: { (v1, v2) -> Bool in
+//      if v1.y != v2.y
+//      {
+//        return v1.y < v2.y
+//      }
+//      else
+//      {
+//        return v1.x < v2.x
+//      }
+//    })
+    
+    
+    
+    var receiversArraySortedByXY = profileArray.sorted(by: { (v1, v2) -> Bool in
+      if v1.y != v2.y
+      {
+        return v1.y < v2.y
+      }
+      else
+      {
+        return v1.x < v2.x
+      }
+    })
+
+    var receivers: [[SCNVector3]] = []
+    var lineArray: [SCNVector3] = []
+    for i in 0..<receiversArraySortedByXY.count - 1
+    {
+      if (receiversArraySortedByXY[i].x < receiversArraySortedByXY[i + 1].x) {
+        lineArray.append(receiversArraySortedByXY[i])
+      }
+      else {
+        lineArray.append(receiversArraySortedByXY[i])
+        receivers.append(lineArray)
+        lineArray = []
+      }
+    }
+    lineArray.append(receiversArraySortedByXY[receiversArraySortedByXY.count - 1])
+    receivers.append(lineArray)
+    
+    var trinaglesArray: [MAGTriangleElement] = []
+    for i in 0..<receivers.count - 1
+    {
+      var isEndFirst: Bool = false
+      var isEndSecond: Bool = false
+      
+      var j: Int = 0
+      while !(isEndFirst && isEndSecond) {
+        if (j + 1 >= receivers[i].count)
+        {
+          isEndFirst = true
+        }
+        if (j + 1 >= receivers[i + 1].count)
+        {
+          isEndSecond = true
+        }
+        
+        if !(isEndFirst && isEndSecond) // изменить условие
+        {
+          trinaglesArray.append(MAGTriangleElement(positions: [receivers[i][j], receivers[i][j + 1], receivers[i + 1][j]],
+                                                   colors: [SCNVector3Make(0, 0, 1), SCNVector3Make(0, 0, 1), SCNVector3Make(0, 0, 1)]))
+          trinaglesArray.append(MAGTriangleElement(positions: [receivers[i][j + 1], receivers[i + 1][j + 1], receivers[i + 1][j]],
+                                                   colors: [SCNVector3Make(0, 0, 1), SCNVector3Make(0, 0, 1), SCNVector3Make(0, 0, 1)]))
+        }
+
+        
+        j = j + 1
+      }
+    }
+  
+    self.receiversSurface = trinaglesArray
   }
   
   func createElementsArray ()

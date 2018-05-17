@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8432FC3220AC8C7D00930CB9 /* MAGTriangleElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8432FC3120AC8C7D00930CB9 /* MAGTriangleElement.swift */; };
+		8432FC3420AC922600930CB9 /* MAGPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8432FC3320AC922600930CB9 /* MAGPoint.swift */; };
 		8437778520A331C5009B1BE0 /* xyz04.dat in Resources */ = {isa = PBXBuildFile; fileRef = 8437777D20A331C4009B1BE0 /* xyz04.dat */; };
 		8437778620A331C5009B1BE0 /* xyz4.dat in Resources */ = {isa = PBXBuildFile; fileRef = 8437777E20A331C5009B1BE0 /* xyz4.dat */; };
 		8437778720A331C5009B1BE0 /* nvkat4.dat in Resources */ = {isa = PBXBuildFile; fileRef = 8437777F20A331C5009B1BE0 /* nvkat4.dat */; };
@@ -98,6 +100,8 @@
 
 /* Begin PBXFileReference section */
 		6DA4F8BFD9D8D310D40705BF /* Pods_MagisterGL.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MagisterGL.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8432FC3120AC8C7D00930CB9 /* MAGTriangleElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAGTriangleElement.swift; sourceTree = "<group>"; };
+		8432FC3320AC922600930CB9 /* MAGPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAGPoint.swift; sourceTree = "<group>"; };
 		8437777D20A331C4009B1BE0 /* xyz04.dat */ = {isa = PBXFileReference; lastKnownFileType = file; path = xyz04.dat; sourceTree = "<group>"; };
 		8437777E20A331C5009B1BE0 /* xyz4.dat */ = {isa = PBXFileReference; lastKnownFileType = file; path = xyz4.dat; sourceTree = "<group>"; };
 		8437777F20A331C5009B1BE0 /* nvkat4.dat */ = {isa = PBXFileReference; lastKnownFileType = file; path = nvkat4.dat; sourceTree = "<group>"; };
@@ -222,6 +226,15 @@
 				8CAFC11BF7FD19D8CB4C5EF8 /* Pods-MagisterGL.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		8432FC3020AC8BFA00930CB9 /* ReceiversSurface */ = {
+			isa = PBXGroup;
+			children = (
+				8432FC3120AC8C7D00930CB9 /* MAGTriangleElement.swift */,
+				8432FC3320AC922600930CB9 /* MAGPoint.swift */,
+			);
+			path = ReceiversSurface;
 			sourceTree = "<group>";
 		};
 		8437777B20A330FD009B1BE0 /* Test4 */ = {
@@ -383,6 +396,7 @@
 		9AB601AA1F762DAE004C50AB /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				8432FC3020AC8BFA00930CB9 /* ReceiversSurface */,
 				9AE6156C1F8A01910067893C /* 3d */,
 				9AE6156B1F8A018C0067893C /* 2d */,
 			);
@@ -769,9 +783,11 @@
 				84743BA72084DD3B007049C6 /* MAGLocalFileManager.m in Sources */,
 				8444971B20A469B300AB8D54 /* MAGBaseProjectsGenerator.swift in Sources */,
 				9AE615701F8A07250067893C /* MAGCustomGeometryModel.swift in Sources */,
+				8432FC3220AC8C7D00930CB9 /* MAGTriangleElement.swift in Sources */,
 				84743BB02084E572007049C6 /* MAGProjectsViewController.swift in Sources */,
 				9AB601AE1F7657A7004C50AB /* SKTexture+Gradient.swift in Sources */,
 				84743BB42084E6BF007049C6 /* MAGProjectCellObject.swift in Sources */,
+				8432FC3420AC922600930CB9 /* MAGPoint.swift in Sources */,
 				9A577D331F03B0AC0017F40F /* Matrix4.swift in Sources */,
 				9A577D381F03B0AC0017F40F /* Texture.swift in Sources */,
 				9A05AA3D20AC4C9800F44AE5 /* MAGChooseFieldViewController.swift in Sources */,
