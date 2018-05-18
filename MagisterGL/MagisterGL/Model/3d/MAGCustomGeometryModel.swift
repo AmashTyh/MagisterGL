@@ -176,7 +176,8 @@ class MAGCustomGeometryModel: NSObject
                                                                 z: Double(maxVector.z)))
     
     var receiversArraySortedByXY = profileArray.sorted(by: { (v1, v2) -> Bool in
-      if v1.y != v2.y
+      //if v1.y != v2.y
+      if fabs(v1.y - v2.y)>=5
       {
         return v1.y < v2.y
       }
@@ -203,36 +204,86 @@ class MAGCustomGeometryModel: NSObject
     receivers.append(lineArray)
     
     var trinaglesArray: [MAGTriangleElement] = []
-    for i in 0..<receivers.count - 1
-    {
-      var isEndFirst: Bool = false
-      var isEndSecond: Bool = false
-      
+//    for i in 0..<receivers.count - 1
+//    {
+//      var isEndFirst: Bool = false
+//      var isEndSecond: Bool = false
+//
+//      var j: Int = 0
+//      while !(isEndFirst && isEndSecond) {
+//        if (j + 1 >= receivers[i].count)
+//        {
+//          isEndFirst = true
+//        }
+//        if (j + 1 >= receivers[i + 1].count)
+//        {
+//          isEndSecond = true
+//        }
+//
+//        if !(isEndFirst && isEndSecond) // изменить условие
+//        {
+//          trinaglesArray.append(MAGTriangleElement(positions: [receivers[i][j], receivers[i][j + 1], receivers[i + 1][j]],
+//                                                   //colors: [SCNVector3Make(0, 0, 1), SCNVector3Make(0, 0, 1), SCNVector3Make(0, 0, 1)]))
+//            colors: colorGenerator.getColorsFor(vertexes: [receivers[i][j], receivers[i][j + 1], receivers[i + 1][j]])))
+//          trinaglesArray.append(MAGTriangleElement(positions: [receivers[i][j + 1], receivers[i + 1][j + 1], receivers[i + 1][j]],
+//                                                   //colors: [SCNVector3Make(0, 0, 1), SCNVector3Make(0, 0, 1), SCNVector3Make(0, 0, 1)]))
+//          colors: colorGenerator.getColorsFor(vertexes: [receivers[i][j + 1], receivers[i + 1][j + 1], receivers[i + 1][j]])))
+//        }
+//
+//
+//        j = j + 1
+//      }
+//    }
+    for i in 0..<receivers.count - 1 {
       var j: Int = 0
-      while !(isEndFirst && isEndSecond) {
-        if (j + 1 >= receivers[i].count)
-        {
-          isEndFirst = true
+      if (receivers[i].count <= receivers[i + 1].count) {
+        while (j < receivers[i + 1].count - 1) {
+          if (j < receivers[i].count - 1) {
+            trinaglesArray.append(MAGTriangleElement(positions: [receivers[i][j], receivers[i][j + 1], receivers[i + 1][j]],
+                                                     colors: colorGenerator.getColorsFor(vertexes: [receivers[i][j],
+                                                                                                    receivers[i][j + 1],
+                                                                                                    receivers[i + 1][j]])))
+            trinaglesArray.append(MAGTriangleElement(positions: [receivers[i][j + 1], receivers[i + 1][j + 1], receivers[i + 1][j]],
+                                                     colors: colorGenerator.getColorsFor(vertexes: [receivers[i][j + 1],
+                                                                                                    receivers[i + 1][j + 1],
+                                                                                                    receivers[i + 1][j]])))
+          }
+          else {
+            trinaglesArray.append(MAGTriangleElement(positions: [receivers[i][receivers[i].count - 1],
+                                                                 receivers[i + 1][j + 1],
+                                                                 receivers[i + 1][j]],
+                                                     colors: colorGenerator.getColorsFor(vertexes: [receivers[i][receivers[i].count - 1],
+                                                                                                    receivers[i + 1][j + 1],
+                                                                                                    receivers[i + 1][j]])))
+          }
+          j += 1
         }
-        if (j + 1 >= receivers[i + 1].count)
-        {
-          isEndSecond = true
+      }
+      else {
+        while (j < receivers[i].count - 1) {
+          if (j < receivers[i + 1].count - 1) {
+            trinaglesArray.append(MAGTriangleElement(positions: [receivers[i][j], receivers[i][j + 1], receivers[i + 1][j]],
+                                                     colors: colorGenerator.getColorsFor(vertexes: [receivers[i][j],
+                                                                                                    receivers[i][j + 1],
+                                                                                                    receivers[i + 1][j]])))
+            trinaglesArray.append(MAGTriangleElement(positions: [receivers[i][j + 1], receivers[i + 1][j + 1], receivers[i + 1][j]],
+                                                     colors: colorGenerator.getColorsFor(vertexes: [receivers[i][j + 1],
+                                                                                                    receivers[i + 1][j + 1],
+                                                                                                    receivers[i + 1][j]])))
+          }
+          else {
+            trinaglesArray.append(MAGTriangleElement(positions: [receivers[i][j],
+                                                                 receivers[i][j + 1],
+                                                                 receivers[i + 1][receivers[i + 1].count - 1]],
+                                                     colors: colorGenerator.getColorsFor(vertexes: [receivers[i][j],
+                                                                                                    receivers[i][j + 1],
+                                                                                                    receivers[i + 1][receivers[i + 1].count - 1]])))
+          }
+          j += 1
         }
-        
-        if !(isEndFirst && isEndSecond) // изменить условие
-        {
-          trinaglesArray.append(MAGTriangleElement(positions: [receivers[i][j], receivers[i][j + 1], receivers[i + 1][j]],
-                                                   //colors: [SCNVector3Make(0, 0, 1), SCNVector3Make(0, 0, 1), SCNVector3Make(0, 0, 1)]))
-            colors: colorGenerator.getColorsFor(vertexes: [receivers[i][j], receivers[i][j + 1], receivers[i + 1][j]])))
-          trinaglesArray.append(MAGTriangleElement(positions: [receivers[i][j + 1], receivers[i + 1][j + 1], receivers[i + 1][j]],
-                                                   //colors: [SCNVector3Make(0, 0, 1), SCNVector3Make(0, 0, 1), SCNVector3Make(0, 0, 1)]))
-          colors: colorGenerator.getColorsFor(vertexes: [receivers[i][j + 1], receivers[i + 1][j + 1], receivers[i + 1][j]])))
-        }
-
-        
-        j = j + 1
       }
     }
+    
   
     self.receiversSurface = trinaglesArray
   }
