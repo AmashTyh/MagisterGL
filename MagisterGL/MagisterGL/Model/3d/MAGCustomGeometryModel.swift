@@ -143,7 +143,37 @@ class MAGCustomGeometryModel: NSObject
 //      }
 //    })
     
+    let colorGenerator = MAGColorGenerator()
     
+    var minVector: SCNVector3 = SCNVector3Zero
+    var maxVector: SCNVector3 = SCNVector3Zero
+    // минимумы и максимумы по осям
+    minVector.x = profileArray.min { (first, second) -> Bool in
+      return first.x < second.x
+      }!.x
+    maxVector.x = profileArray.max { (first, second) -> Bool in
+      return first.x < second.x
+      }!.x
+    minVector.y = profileArray.min { (first, second) -> Bool in
+      return first.y < second.y
+      }!.y
+    maxVector.y = profileArray.max { (first, second) -> Bool in
+      return first.y < second.y
+      }!.y
+    minVector.z = profileArray.min { (first, second) -> Bool in
+      return first.z < second.z
+      }!.z
+    maxVector.z = profileArray.max { (first, second) -> Bool in
+      return first.z < second.z
+      }!.z
+    
+    
+    colorGenerator.generateColor(minValue: colorGenerator.uFunc(x: Double(minVector.x),
+                                                                y: Double(minVector.y),
+                                                                z: Double(minVector.z)),
+                                 maxValue: colorGenerator.uFunc(x: Double(maxVector.x),
+                                                                y: Double(maxVector.y),
+                                                                z: Double(maxVector.z)))
     
     var receiversArraySortedByXY = profileArray.sorted(by: { (v1, v2) -> Bool in
       if v1.y != v2.y
@@ -192,9 +222,11 @@ class MAGCustomGeometryModel: NSObject
         if !(isEndFirst && isEndSecond) // изменить условие
         {
           trinaglesArray.append(MAGTriangleElement(positions: [receivers[i][j], receivers[i][j + 1], receivers[i + 1][j]],
-                                                   colors: [SCNVector3Make(0, 0, 1), SCNVector3Make(0, 0, 1), SCNVector3Make(0, 0, 1)]))
+                                                   //colors: [SCNVector3Make(0, 0, 1), SCNVector3Make(0, 0, 1), SCNVector3Make(0, 0, 1)]))
+            colors: colorGenerator.getColorsFor(vertexes: [receivers[i][j], receivers[i][j + 1], receivers[i + 1][j]])))
           trinaglesArray.append(MAGTriangleElement(positions: [receivers[i][j + 1], receivers[i + 1][j + 1], receivers[i + 1][j]],
-                                                   colors: [SCNVector3Make(0, 0, 1), SCNVector3Make(0, 0, 1), SCNVector3Make(0, 0, 1)]))
+                                                   //colors: [SCNVector3Make(0, 0, 1), SCNVector3Make(0, 0, 1), SCNVector3Make(0, 0, 1)]))
+          colors: colorGenerator.getColorsFor(vertexes: [receivers[i][j + 1], receivers[i + 1][j + 1], receivers[i + 1][j]])))
         }
 
         
