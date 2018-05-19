@@ -110,71 +110,8 @@ class MAGCustomGeometryModel: NSObject
     createReceiverSurface()
   }
   
-  func createReceiverSurface() {
-    
-//    var array: [SCNVector3] = []
-//    array.append(SCNVector3Make(0, 0, 0))
-//    array.append(SCNVector3Make(2, 1, 0))
-//    array.append(SCNVector3Make(4, 0, 0))
-//    array.append(SCNVector3Make(5, 2, 0))
-//    array.append(SCNVector3Make(0, 3, 0))
-//    array.append(SCNVector3Make(2, 2, 0))
-//    array.append(SCNVector3Make(4, 4, 0))
-    
-//    array.append(SCNVector3Make(3, 2, 0))
-//    array.append(SCNVector3Make(1, 1, 0))
-//    array.append(SCNVector3Make(5, 2, 0))
-//    array.append(SCNVector3Make(2, 1, 0))
-//    array.append(SCNVector3Make(4, 1, 0))
-//    array.append(SCNVector3Make(2, 2, 0))
-//    array.append(SCNVector3Make(5, 1, 0))
-//    array.append(SCNVector3Make(4, 2, 0))
-//    array.append(SCNVector3Make(3, 1, 0))
-//    array.append(SCNVector3Make(1, 2, 0))
-//
-//    var sortedArray = array.sorted(by: { (v1, v2) -> Bool in
-//      if v1.y != v2.y
-//      {
-//        return v1.y < v2.y
-//      }
-//      else
-//      {
-//        return v1.x < v2.x
-//      }
-//    })
-    
-    let colorGenerator = MAGColorGenerator()
-    
-    var minVector: SCNVector3 = SCNVector3Zero
-    var maxVector: SCNVector3 = SCNVector3Zero
-    // минимумы и максимумы по осям
-    minVector.x = profileArray.min { (first, second) -> Bool in
-      return first.x < second.x
-      }!.x
-    maxVector.x = profileArray.max { (first, second) -> Bool in
-      return first.x < second.x
-      }!.x
-    minVector.y = profileArray.min { (first, second) -> Bool in
-      return first.y < second.y
-      }!.y
-    maxVector.y = profileArray.max { (first, second) -> Bool in
-      return first.y < second.y
-      }!.y
-    minVector.z = profileArray.min { (first, second) -> Bool in
-      return first.z < second.z
-      }!.z
-    maxVector.z = profileArray.max { (first, second) -> Bool in
-      return first.z < second.z
-      }!.z
-    
-    
-    colorGenerator.generateColor(minValue: colorGenerator.uFunc(x: Double(minVector.x),
-                                                                y: Double(minVector.y),
-                                                                z: Double(minVector.z)),
-                                 maxValue: colorGenerator.uFunc(x: Double(maxVector.x),
-                                                                y: Double(maxVector.y),
-                                                                z: Double(maxVector.z)))
-    
+  func createReceiverSurface()
+  {
     var receiversArraySortedByXY = profileArray.sorted(by: { (v1, v2) -> Bool in
       //if v1.y != v2.y
       if fabs(v1.y - v2.y)>=5
@@ -186,6 +123,22 @@ class MAGCustomGeometryModel: NSObject
         return v1.x < v2.x
       }
     })
+    
+    let colorGenerator = MAGColorGenerator()
+    var uValueArray: [Float] = []
+    for vector in receiversArraySortedByXY {
+      uValueArray.append(Float(colorGenerator.uFunc(x: Double(vector.x),
+                                                    y: Double(vector.y),
+                                                    z: Double(vector.z))))
+    }
+    let minValue = uValueArray.min { (first, second) -> Bool in
+      return first < second
+      }!
+    let maxValue = uValueArray.max { (first, second) -> Bool in
+      return first < second
+      }!
+    colorGenerator.generateColor(minValue: Double(minValue),
+                                 maxValue: Double(maxValue))
 
     var receivers: [[SCNVector3]] = []
     var lineArray: [SCNVector3] = []
@@ -204,36 +157,7 @@ class MAGCustomGeometryModel: NSObject
     receivers.append(lineArray)
     
     var trinaglesArray: [MAGTriangleElement] = []
-//    for i in 0..<receivers.count - 1
-//    {
-//      var isEndFirst: Bool = false
-//      var isEndSecond: Bool = false
-//
-//      var j: Int = 0
-//      while !(isEndFirst && isEndSecond) {
-//        if (j + 1 >= receivers[i].count)
-//        {
-//          isEndFirst = true
-//        }
-//        if (j + 1 >= receivers[i + 1].count)
-//        {
-//          isEndSecond = true
-//        }
-//
-//        if !(isEndFirst && isEndSecond) // изменить условие
-//        {
-//          trinaglesArray.append(MAGTriangleElement(positions: [receivers[i][j], receivers[i][j + 1], receivers[i + 1][j]],
-//                                                   //colors: [SCNVector3Make(0, 0, 1), SCNVector3Make(0, 0, 1), SCNVector3Make(0, 0, 1)]))
-//            colors: colorGenerator.getColorsFor(vertexes: [receivers[i][j], receivers[i][j + 1], receivers[i + 1][j]])))
-//          trinaglesArray.append(MAGTriangleElement(positions: [receivers[i][j + 1], receivers[i + 1][j + 1], receivers[i + 1][j]],
-//                                                   //colors: [SCNVector3Make(0, 0, 1), SCNVector3Make(0, 0, 1), SCNVector3Make(0, 0, 1)]))
-//          colors: colorGenerator.getColorsFor(vertexes: [receivers[i][j + 1], receivers[i + 1][j + 1], receivers[i + 1][j]])))
-//        }
-//
-//
-//        j = j + 1
-//      }
-//    }
+ 
     for i in 0..<receivers.count - 1 {
       var j: Int = 0
       if (receivers[i].count <= receivers[i + 1].count) {
@@ -572,6 +496,5 @@ class MAGCustomGeometryModel: NSObject
       return SCNVector3(0.6, 0.6, 0.6)
     }
   }
-  
 }
 
