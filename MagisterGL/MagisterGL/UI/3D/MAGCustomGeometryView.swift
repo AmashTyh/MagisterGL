@@ -81,6 +81,8 @@ class MAGCustomGeometryView: SCNView
     drawReceivers()
     drawModel()
     drawReceiversSurface()
+
+    drawReceiversCharts()
   }
   
   private func drawReceivers()
@@ -290,6 +292,45 @@ class MAGCustomGeometryView: SCNView
     surfaceNode.scale = scaleVector
     self.scene?.rootNode.addChildNode(surfaceNode)
   }
+  
+  private func drawReceiversCharts()
+  {
+    var globalPositions : [SCNVector3] = []
+    var globalIndicies : [CInt] = []
+    var globalElements : [SCNGeometryElement] = []
+ 
+    var h: Int = 0
+    for vectorsArray in self.model.chartsData {
+      for vector in vectorsArray {
+        globalPositions.append(vector)
+      }
+      for i in 0..<vectorsArray.count - 1 {
+        globalIndicies.append(CInt(i + h))
+        globalIndicies.append(CInt(i + h + 1))
+      }
+      h += vectorsArray.count
+    }
+    
+    
+    
+    let positionSource = SCNGeometrySource(vertices: globalPositions)
+    
+    let indexData = Data(bytes: globalIndicies,
+                         count: MemoryLayout<CInt>.size * globalIndicies.count)
+    let linesElement = SCNGeometryElement(data: indexData,
+                                          primitiveType: .line,
+                                          primitiveCount: globalIndicies.count / 2,
+                                          bytesPerIndex: MemoryLayout<CInt>.size)
+    
+    let geometryLines = SCNGeometry(sources: [positionSource],
+                                     elements: [linesElement])
+    geometryLines.firstMaterial?.diffuse.contents = UIColor.red
+    let chartsNode = SCNNode(geometry: geometryLines)
+    let scaleVector = SCNVector3(self.model.scaleValue, self.model.scaleValue, self.model.scaleValue)
+    chartsNode.scale = scaleVector
+    self.scene?.rootNode.addChildNode(chartsNode)
+  }
+  
   
   // использовать только для тестирования чего-либо
   private func drawPlayground()

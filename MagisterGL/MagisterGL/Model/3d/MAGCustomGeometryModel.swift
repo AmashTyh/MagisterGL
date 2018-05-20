@@ -41,8 +41,10 @@ class MAGCustomGeometryModel: NSObject
   var crossSection: MAGCrossSection?
   var sig3dArray: [[Double]] = []
   var profileArray: [SCNVector3] = []
+  var chartsData: [[SCNVector3]] = []
   
   var receiversSurface: [MAGTriangleElement] = []
+  
   
   func configure(project: MAGProject)
   {
@@ -108,6 +110,7 @@ class MAGCustomGeometryModel: NSObject
     self.selectedMaterials  = self.materials
     createElementsArray()
     createReceiverSurface()
+    createChartsData()
   }
   
   func createReceiverSurface()
@@ -207,12 +210,31 @@ class MAGCustomGeometryModel: NSObject
         }
       }
     }
-    
-  
     self.receiversSurface = trinaglesArray
+    self.chartsData = receivers
   }
   
-  func createElementsArray ()
+  func createChartsData()
+  {
+    var resultChartsPoints: [[SCNVector3]] = []
+    var tempPoints: [SCNVector3] = []
+
+    let colorGenerator = MAGColorGenerator()
+    for chartsLine in chartsData {
+      tempPoints = []
+      for vector in chartsLine {
+        tempPoints.append(SCNVector3Make(vector.x,
+                                         vector.y,
+                                         Float(colorGenerator.uFunc(x: Double(vector.x),
+                                                                    y: Double(vector.y),
+                                                                    z: Double(vector.z)))))
+      }
+      resultChartsPoints.append(tempPoints)
+    }
+    self.chartsData = resultChartsPoints
+  }
+  
+  func createElementsArray()
   {
     elementsArray = []
     // TODO: Необходимо просматривать массив xyzArray, очень опасное поведение!
