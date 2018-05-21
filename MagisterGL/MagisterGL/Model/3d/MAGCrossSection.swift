@@ -112,9 +112,4 @@ class MAGCrossSection: NSObject
                             maxValue: maxValue)
     }
   }
-  
-  static func isPointBetweenPoints(point: SCNVector3, firstPoint: SCNVector3, secondPoint: SCNVector3) -> Bool
-  {
-    return true
-  }
 }

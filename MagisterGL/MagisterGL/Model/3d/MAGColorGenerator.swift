@@ -15,8 +15,8 @@ class MAGColorGenerator: NSObject
    var rainbow: [Color] = []
   
    
-   func generateColor(minValue: Double, maxValue: Double) {
-      
+   func generateColor(minValue: Double, maxValue: Double)
+   {
       let hValues: Double = (maxValue - minValue) / Double(MAGColorGenerator.kCountOfColorAreas - 1)
       for i in 0..<MAGColorGenerator.kCountOfColorAreas
       {
