@@ -53,7 +53,6 @@ class MAGProjectsViewModel: NSObject
   func addProject(name: String,
                   nverPath: String,
                   xyzPath: String,
-                  xyz0FilePath: String,
                   nvkatPath: String,
                   elemNeibPath: String,
                   sigma3dPath: String,
@@ -68,7 +67,6 @@ class MAGProjectsViewModel: NSObject
     newEntity.nverFilePath = nverPath
     newEntity.nvkatFilePath = nvkatPath
     newEntity.xyzFilePath = xyzPath
-    newEntity.xyz0FilePath = xyz0FilePath
     newEntity.elemNeibFilePath = elemNeibPath
     newEntity.sigma3dPath = sigma3dPath
     newEntity.profilePath = profilePath

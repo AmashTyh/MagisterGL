@@ -10,7 +10,6 @@
 		840D4EA120B2F6A500E9DF5C /* v3_3.t1.txt in Resources */ = {isa = PBXBuildFile; fileRef = 840D4EA020B2F6A400E9DF5C /* v3_3.t1.txt */; };
 		840D4EA320B2FC6900E9DF5C /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840D4EA220B2FC6900E9DF5C /* Color.swift */; };
 		8432FC3220AC8C7D00930CB9 /* MAGTriangleElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8432FC3120AC8C7D00930CB9 /* MAGTriangleElement.swift */; };
-		8437778520A331C5009B1BE0 /* xyz04.dat in Resources */ = {isa = PBXBuildFile; fileRef = 8437777D20A331C4009B1BE0 /* xyz04.dat */; };
 		8437778620A331C5009B1BE0 /* xyz4.dat in Resources */ = {isa = PBXBuildFile; fileRef = 8437777E20A331C5009B1BE0 /* xyz4.dat */; };
 		8437778720A331C5009B1BE0 /* nvkat4.dat in Resources */ = {isa = PBXBuildFile; fileRef = 8437777F20A331C5009B1BE0 /* nvkat4.dat */; };
 		8437778820A331C5009B1BE0 /* Sig3d4 in Resources */ = {isa = PBXBuildFile; fileRef = 8437778020A331C5009B1BE0 /* Sig3d4 */; };
@@ -25,7 +24,6 @@
 		843777A920A334E0009B1BE0 /* profile5 in Resources */ = {isa = PBXBuildFile; fileRef = 843777A120A334DF009B1BE0 /* profile5 */; };
 		843777AA20A334E0009B1BE0 /* nvkat5.dat in Resources */ = {isa = PBXBuildFile; fileRef = 843777A220A334DF009B1BE0 /* nvkat5.dat */; };
 		843777AB20A334E0009B1BE0 /* Sig3d5 in Resources */ = {isa = PBXBuildFile; fileRef = 843777A320A334DF009B1BE0 /* Sig3d5 */; };
-		843777AC20A334E0009B1BE0 /* xyz05.dat in Resources */ = {isa = PBXBuildFile; fileRef = 843777A420A334E0009B1BE0 /* xyz05.dat */; };
 		843BE691208A43C300A25448 /* MAGCrossSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843BE690208A43C300A25448 /* MAGCrossSection.swift */; };
 		843D004F209B521000B824CF /* MAGChooseSectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843D004E209B521000B824CF /* MAGChooseSectionViewController.swift */; };
 		843FFE82208792E700B717D2 /* MAGColorGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843FFE81208792E700B717D2 /* MAGColorGenerator.swift */; };
@@ -82,7 +80,6 @@
 		840D4EA020B2F6A400E9DF5C /* v3_3.t1.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = v3_3.t1.txt; sourceTree = "<group>"; };
 		840D4EA220B2FC6900E9DF5C /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		8432FC3120AC8C7D00930CB9 /* MAGTriangleElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAGTriangleElement.swift; sourceTree = "<group>"; };
-		8437777D20A331C4009B1BE0 /* xyz04.dat */ = {isa = PBXFileReference; lastKnownFileType = file; path = xyz04.dat; sourceTree = "<group>"; };
 		8437777E20A331C5009B1BE0 /* xyz4.dat */ = {isa = PBXFileReference; lastKnownFileType = file; path = xyz4.dat; sourceTree = "<group>"; };
 		8437777F20A331C5009B1BE0 /* nvkat4.dat */ = {isa = PBXFileReference; lastKnownFileType = file; path = nvkat4.dat; sourceTree = "<group>"; };
 		8437778020A331C5009B1BE0 /* Sig3d4 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Sig3d4; sourceTree = "<group>"; };
@@ -97,7 +94,6 @@
 		843777A120A334DF009B1BE0 /* profile5 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = profile5; sourceTree = "<group>"; };
 		843777A220A334DF009B1BE0 /* nvkat5.dat */ = {isa = PBXFileReference; lastKnownFileType = file; path = nvkat5.dat; sourceTree = "<group>"; };
 		843777A320A334DF009B1BE0 /* Sig3d5 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Sig3d5; sourceTree = "<group>"; };
-		843777A420A334E0009B1BE0 /* xyz05.dat */ = {isa = PBXFileReference; lastKnownFileType = file; path = xyz05.dat; sourceTree = "<group>"; };
 		843BE690208A43C300A25448 /* MAGCrossSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAGCrossSection.swift; sourceTree = "<group>"; };
 		843D004E209B521000B824CF /* MAGChooseSectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAGChooseSectionViewController.swift; sourceTree = "<group>"; };
 		843FFE81208792E700B717D2 /* MAGColorGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAGColorGenerator.swift; sourceTree = "<group>"; };
@@ -204,7 +200,6 @@
 				8437778420A331C5009B1BE0 /* profile4 */,
 				8437778020A331C5009B1BE0 /* Sig3d4 */,
 				8437777E20A331C5009B1BE0 /* xyz4.dat */,
-				8437777D20A331C4009B1BE0 /* xyz04.dat */,
 			);
 			path = Test4;
 			sourceTree = "<group>";
@@ -219,7 +214,6 @@
 				843777A120A334DF009B1BE0 /* profile5 */,
 				843777A320A334DF009B1BE0 /* Sig3d5 */,
 				843777A020A334DF009B1BE0 /* xyz5.dat */,
-				843777A420A334E0009B1BE0 /* xyz05.dat */,
 			);
 			path = Test5;
 			sourceTree = "<group>";
@@ -547,7 +541,6 @@
 				8437778720A331C5009B1BE0 /* nvkat4.dat in Resources */,
 				9AE615761F8A10FF0067893C /* elem_neib.txt in Resources */,
 				9AE615771F8A10FF0067893C /* nver.txt in Resources */,
-				843777AC20A334E0009B1BE0 /* xyz05.dat in Resources */,
 				8437778820A331C5009B1BE0 /* Sig3d4 in Resources */,
 				9AE615781F8A10FF0067893C /* nvkat.txt in Resources */,
 				9AF5853D2086053000A90D2D /* MAGProjectFileAddTableViewCell.xib in Resources */,
@@ -568,7 +561,6 @@
 				843777A720A334E0009B1BE0 /* nver5.dat in Resources */,
 				8437778C20A331C5009B1BE0 /* profile4 in Resources */,
 				84743BB82084E6E4007049C6 /* MAGProjectTableViewCell.xib in Resources */,
-				8437778520A331C5009B1BE0 /* xyz04.dat in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -29,7 +29,6 @@ class MAGCustomGeometryModel: NSObject
   var maxVector: SCNVector3 = SCNVector3Zero
   var xyzArray: [SCNVector3] = []
   var fieldsArray: [[Double]] = []
-  var xyz0Array: [SCNVector3] = []
   var nverArray: [[Int]] = []
   var nvkatArray: [Int] = []
   var neibArray: [[Int]] = []
@@ -52,7 +51,6 @@ class MAGCustomGeometryModel: NSObject
     
     let documentsPath = (project.isLocal ? Bundle.main.resourcePath! : NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]) + "/"
     xyzArray = self.fileManager.getXYZArray(path: documentsPath + project.xyzFilePath!)
-    xyz0Array = self.fileManager.getXYZArray(path: documentsPath + project.xyz0FilePath!)
     nverArray = self.fileManager.getNVERArray(path: documentsPath + project.nverFilePath!)
     nvkatArray = self.fileManager.getNVKATArray(path: documentsPath + project.nvkatFilePath!)
     neibArray = self.fileManager.getNEIBArray(path: documentsPath + project.elemNeibFilePath!)
