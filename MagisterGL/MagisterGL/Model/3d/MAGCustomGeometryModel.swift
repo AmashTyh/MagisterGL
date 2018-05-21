@@ -41,6 +41,10 @@ class MAGCustomGeometryModel: NSObject
   var crossSection: MAGCrossSection?
   var sig3dArray: [[Double]] = []
   var profileArray: [SCNVector3] = []
+  var chartsData: [[SCNVector3]] = []
+  
+  var receiversSurface: [MAGTriangleElement] = []
+  
   
   func configure(project: MAGProject)
   {
@@ -54,16 +58,6 @@ class MAGCustomGeometryModel: NSObject
     neibArray = self.fileManager.getNEIBArray(path: documentsPath + project.elemNeibFilePath!)
     sig3dArray = self.fileManager.getSig3dArray(path: documentsPath + project.sigma3dPath!)
     profileArray = self.fileManager.getProfileArray(path: documentsPath + project.profilePath!)
-    profileArray = profileArray.sorted(by: { (v1, v2) -> Bool in
-      if v1.y != v2.y
-      {
-        return v1.y < v2.y
-      }
-      else
-      {
-        return v1.x < v2.x
-      }
-    })
     
     //v3 array
     let decodedArray = NSKeyedUnarchiver.unarchiveObject(with: project.v3FilePathsArray!) as? [String]
@@ -115,9 +109,135 @@ class MAGCustomGeometryModel: NSObject
     }
     self.selectedMaterials  = self.materials
     createElementsArray()
+    if profileArray.count > 0
+    {
+      createReceiverSurface()
+      createChartsData()
+    }
   }
   
-  func createElementsArray ()
+  func createReceiverSurface()
+  {
+    var receiversArraySortedByXY = profileArray.sorted(by: { (v1, v2) -> Bool in
+      //if v1.y != v2.y
+      if fabs(v1.y - v2.y)>=5
+      {
+        return v1.y < v2.y
+      }
+      else
+      {
+        return v1.x < v2.x
+      }
+    })
+    
+    let colorGenerator = MAGColorGenerator()
+    var uValueArray: [Float] = []
+    for vector in receiversArraySortedByXY {
+      uValueArray.append(Float(colorGenerator.uFunc(x: Double(vector.x),
+                                                    y: Double(vector.y),
+                                                    z: Double(vector.z))))
+    }
+    let minValue = uValueArray.min { (first, second) -> Bool in
+      return first < second
+      }!
+    let maxValue = uValueArray.max { (first, second) -> Bool in
+      return first < second
+      }!
+    colorGenerator.generateColor(minValue: Double(minValue),
+                                 maxValue: Double(maxValue))
+
+    var receivers: [[SCNVector3]] = []
+    var lineArray: [SCNVector3] = []
+    for i in 0..<receiversArraySortedByXY.count - 1
+    {
+      if (receiversArraySortedByXY[i].x < receiversArraySortedByXY[i + 1].x) {
+        lineArray.append(receiversArraySortedByXY[i])
+      }
+      else {
+        lineArray.append(receiversArraySortedByXY[i])
+        receivers.append(lineArray)
+        lineArray = []
+      }
+    }
+    lineArray.append(receiversArraySortedByXY[receiversArraySortedByXY.count - 1])
+    receivers.append(lineArray)
+    
+    var trinaglesArray: [MAGTriangleElement] = []
+ 
+    for i in 0..<receivers.count - 1 {
+      var j: Int = 0
+      if (receivers[i].count <= receivers[i + 1].count) {
+        while (j < receivers[i + 1].count - 1) {
+          if (j < receivers[i].count - 1) {
+            trinaglesArray.append(MAGTriangleElement(positions: [receivers[i][j], receivers[i][j + 1], receivers[i + 1][j]],
+                                                     colors: colorGenerator.getColorsFor(vertexes: [receivers[i][j],
+                                                                                                    receivers[i][j + 1],
+                                                                                                    receivers[i + 1][j]])))
+            trinaglesArray.append(MAGTriangleElement(positions: [receivers[i][j + 1], receivers[i + 1][j + 1], receivers[i + 1][j]],
+                                                     colors: colorGenerator.getColorsFor(vertexes: [receivers[i][j + 1],
+                                                                                                    receivers[i + 1][j + 1],
+                                                                                                    receivers[i + 1][j]])))
+          }
+          else {
+            trinaglesArray.append(MAGTriangleElement(positions: [receivers[i][receivers[i].count - 1],
+                                                                 receivers[i + 1][j + 1],
+                                                                 receivers[i + 1][j]],
+                                                     colors: colorGenerator.getColorsFor(vertexes: [receivers[i][receivers[i].count - 1],
+                                                                                                    receivers[i + 1][j + 1],
+                                                                                                    receivers[i + 1][j]])))
+          }
+          j += 1
+        }
+      }
+      else {
+        while (j < receivers[i].count - 1) {
+          if (j < receivers[i + 1].count - 1) {
+            trinaglesArray.append(MAGTriangleElement(positions: [receivers[i][j], receivers[i][j + 1], receivers[i + 1][j]],
+                                                     colors: colorGenerator.getColorsFor(vertexes: [receivers[i][j],
+                                                                                                    receivers[i][j + 1],
+                                                                                                    receivers[i + 1][j]])))
+            trinaglesArray.append(MAGTriangleElement(positions: [receivers[i][j + 1], receivers[i + 1][j + 1], receivers[i + 1][j]],
+                                                     colors: colorGenerator.getColorsFor(vertexes: [receivers[i][j + 1],
+                                                                                                    receivers[i + 1][j + 1],
+                                                                                                    receivers[i + 1][j]])))
+          }
+          else {
+            trinaglesArray.append(MAGTriangleElement(positions: [receivers[i][j],
+                                                                 receivers[i][j + 1],
+                                                                 receivers[i + 1][receivers[i + 1].count - 1]],
+                                                     colors: colorGenerator.getColorsFor(vertexes: [receivers[i][j],
+                                                                                                    receivers[i][j + 1],
+                                                                                                    receivers[i + 1][receivers[i + 1].count - 1]])))
+          }
+          j += 1
+        }
+      }
+    }
+    self.receiversSurface = trinaglesArray
+    self.chartsData = receivers
+  }
+  
+  func createChartsData()
+  {
+    var resultChartsPoints: [[SCNVector3]] = []
+    var tempPoints: [SCNVector3] = []
+
+    let colorGenerator = MAGColorGenerator()
+    for chartsLine in chartsData {
+      tempPoints = []
+      for vector in chartsLine {
+        tempPoints.append(SCNVector3Make(vector.x,
+                                         vector.y,
+                                         Float(colorGenerator.uFunc(x: Double(vector.x),
+                                                                    y: Double(vector.y),
+                                                                    z: Double(vector.z)))))
+      }
+      resultChartsPoints.append(tempPoints)
+    }
+    self.chartsData = resultChartsPoints
+  }
+  
+  func createElementsArray()
   {
     elementsArray = []
     // TODO: Необходимо просматривать массив xyzArray, очень опасное поведение!
@@ -401,6 +521,5 @@ class MAGCustomGeometryModel: NSObject
       return SCNVector3(0.6, 0.6, 0.6)
     }
   }
-  
 }
 
