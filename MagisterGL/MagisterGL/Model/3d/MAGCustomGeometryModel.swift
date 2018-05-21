@@ -23,6 +23,7 @@ class MAGCustomGeometryModel: NSObject
   var scaleValue : Float = 1.0
   var isDrawingSectionEnabled: Bool = false
   var elementsArray: [MAGHexahedron] = []
+  //TODO: NSValue *value = [NSValue valueWithSCNVector3:vector]
   var centerPoint: SCNVector3 = SCNVector3Zero
   var minVector: SCNVector3 = SCNVector3Zero
   var maxVector: SCNVector3 = SCNVector3Zero
@@ -71,6 +72,7 @@ class MAGCustomGeometryModel: NSObject
     
     if sig3dArray.count > 0
     {
+      //TODO: http://nshipster.com/kvc-collection-operators/
       let min = sig3dArray.min { (first, second) -> Bool in
         return first[1] < second[1]
         }![1]
@@ -248,7 +250,6 @@ class MAGCustomGeometryModel: NSObject
   func createElementsArray()
   {
     elementsArray = []
-    // TODO: Необходимо просматривать массив xyzArray, очень опасное поведение!
     minVector = SCNVector3Zero
     maxVector = SCNVector3Zero
     
@@ -484,7 +485,6 @@ class MAGCustomGeometryModel: NSObject
   }
   
 
-  // TODO: Надо сделать цвета кастомизируемыми(хотя бы из файла).
   private func getColor(material: Int) -> SCNVector3
   {
     switch material

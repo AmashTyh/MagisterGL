@@ -65,7 +65,6 @@ class MAGFileManager: NSObject
     }
     catch let err as NSError
     {
-      // do something with Error
       print(err)
     }
     return []
@@ -105,7 +104,6 @@ class MAGFileManager: NSObject
     }
     catch let err as NSError
     {
-      // do something with Error
       print(err)
     }
     return []
@@ -152,7 +150,6 @@ class MAGFileManager: NSObject
     }
     catch let err as NSError
     {
-      // do something with Error
       print(err)
     }
     return []
@@ -194,7 +191,6 @@ class MAGFileManager: NSObject
     }
     catch let err as NSError
     {
-      // do something with Error
       print(err)
     }
     return []
@@ -275,7 +271,6 @@ class MAGFileManager: NSObject
     }
     catch let err as NSError
     {
-      // do something with Error
       print(err)
     }
     return []
@@ -308,7 +303,6 @@ class MAGFileManager: NSObject
     }
     catch let err as NSError
     {
-      // do something with Error
       print(err)
     }
     return []
@@ -341,7 +335,6 @@ class MAGFileManager: NSObject
     }
     catch let err as NSError
     {
-      // do something with Error
       print(err)
     }
     return []

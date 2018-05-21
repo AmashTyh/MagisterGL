@@ -14,7 +14,7 @@ class MAGProjectsViewModel: NSObject
 {
   // MARK: - Core Data stack
   
-  //https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/CoreData/InitializingtheCoreDataStack.html#//apple_ref/doc/uid/TP40001075-CH4-SW1
+  //TODO: https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/CoreData/InitializingtheCoreDataStack.html#//apple_ref/doc/uid/TP40001075-CH4-SW1
   lazy var persistentContainer: NSPersistentContainer = {
     
     let container = NSPersistentContainer(name: "MAGProjectsModels")
@@ -31,7 +31,7 @@ class MAGProjectsViewModel: NSObject
   {
     var array: [MAGProjectCellObject] = []
     
-    //https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/CoreData/FetchingObjects.html#//apple_ref/doc/uid/TP40001075-CH6-SW1
+    //TODO: https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/CoreData/FetchingObjects.html#//apple_ref/doc/uid/TP40001075-CH6-SW1
     let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "MAGProject")
     do
     {
