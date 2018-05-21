@@ -13,7 +13,6 @@ import SceneKit
 
 class MAGCustomGeometryModel: NSObject
 {
-  //TODO: массив материалов из Sigma, массив выбранных материалов
   let fileManager: MAGFileManager = MAGFileManager()
   
   var isShowMaterials = true
@@ -84,7 +83,6 @@ class MAGCustomGeometryModel: NSObject
       self.colorGenerator = colorGenerator
       for i in 0..<sig3dArray.count
       {
-        //TODO: Генерировать цвет в зависимости от сигма
         let materialNumber = Int(sig3dArray[i][0])
         let vector = colorGenerator.getColorForU(u: sig3dArray[i][1])
         let material = MAGMaterial.init(numberOfMaterial: materialNumber,
@@ -94,7 +92,6 @@ class MAGCustomGeometryModel: NSObject
     }
     else
     {
-      //TODO: Добавить всем тестам файл Sig3d
       let set = NSMutableSet()
       for nvkat in nvkatArray
       {
@@ -119,7 +116,6 @@ class MAGCustomGeometryModel: NSObject
   func createReceiverSurface()
   {
     var receiversArraySortedByXY = profileArray.sorted(by: { (v1, v2) -> Bool in
-      //if v1.y != v2.y
       if fabs(v1.y - v2.y)>=5
       {
         return v1.y < v2.y
@@ -132,7 +128,8 @@ class MAGCustomGeometryModel: NSObject
     
     let colorGenerator = MAGColorGenerator()
     var uValueArray: [Float] = []
-    for vector in receiversArraySortedByXY {
+    for vector in receiversArraySortedByXY
+    {
       uValueArray.append(Float(colorGenerator.uFunc(x: Double(vector.x),
                                                     y: Double(vector.y),
                                                     z: Double(vector.z))))
@@ -150,10 +147,12 @@ class MAGCustomGeometryModel: NSObject
     var lineArray: [SCNVector3] = []
     for i in 0..<receiversArraySortedByXY.count - 1
     {
-      if (receiversArraySortedByXY[i].x < receiversArraySortedByXY[i + 1].x) {
+      if (receiversArraySortedByXY[i].x < receiversArraySortedByXY[i + 1].x)
+      {
         lineArray.append(receiversArraySortedByXY[i])
       }
-      else {
+      else
+      {
         lineArray.append(receiversArraySortedByXY[i])
         receivers.append(lineArray)
         lineArray = []
@@ -166,9 +165,12 @@ class MAGCustomGeometryModel: NSObject
  
     for i in 0..<receivers.count - 1 {
       var j: Int = 0
-      if (receivers[i].count <= receivers[i + 1].count) {
-        while (j < receivers[i + 1].count - 1) {
-          if (j < receivers[i].count - 1) {
+      if (receivers[i].count <= receivers[i + 1].count)
+      {
+        while (j < receivers[i + 1].count - 1)
+        {
+          if (j < receivers[i].count - 1)
+          {
             trinaglesArray.append(MAGTriangleElement(positions: [receivers[i][j], receivers[i][j + 1], receivers[i + 1][j]],
                                                      colors: colorGenerator.getColorsFor(vertexes: [receivers[i][j],
                                                                                                     receivers[i][j + 1],
@@ -178,7 +180,8 @@ class MAGCustomGeometryModel: NSObject
                                                                                                     receivers[i + 1][j + 1],
                                                                                                     receivers[i + 1][j]])))
           }
-          else {
+          else
+          {
             trinaglesArray.append(MAGTriangleElement(positions: [receivers[i][receivers[i].count - 1],
                                                                  receivers[i + 1][j + 1],
                                                                  receivers[i + 1][j]],
@@ -190,8 +193,10 @@ class MAGCustomGeometryModel: NSObject
         }
       }
       else {
-        while (j < receivers[i].count - 1) {
-          if (j < receivers[i + 1].count - 1) {
+        while (j < receivers[i].count - 1)
+        {
+          if (j < receivers[i + 1].count - 1)
+          {
             trinaglesArray.append(MAGTriangleElement(positions: [receivers[i][j], receivers[i][j + 1], receivers[i + 1][j]],
                                                      colors: colorGenerator.getColorsFor(vertexes: [receivers[i][j],
                                                                                                     receivers[i][j + 1],
@@ -201,7 +206,8 @@ class MAGCustomGeometryModel: NSObject
                                                                                                     receivers[i + 1][j + 1],
                                                                                                     receivers[i + 1][j]])))
           }
-          else {
+          else
+          {
             trinaglesArray.append(MAGTriangleElement(positions: [receivers[i][j],
                                                                  receivers[i][j + 1],
                                                                  receivers[i + 1][receivers[i + 1].count - 1]],
@@ -223,9 +229,11 @@ class MAGCustomGeometryModel: NSObject
     var tempPoints: [SCNVector3] = []
 
     let colorGenerator = MAGColorGenerator()
-    for chartsLine in chartsData {
+    for chartsLine in chartsData
+    {
       tempPoints = []
-      for vector in chartsLine {
+      for vector in chartsLine
+      {
         tempPoints.append(SCNVector3Make(vector.x,
                                          vector.y,
                                          Float(colorGenerator.uFunc(x: Double(vector.x),

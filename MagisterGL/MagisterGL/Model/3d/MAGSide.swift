@@ -61,8 +61,10 @@ class MAGSide: NSObject
    func generateCenterColor() -> SCNVector3
    {
       var resColor: SCNVector3 = SCNVector3Zero
-      if (colors.count > 1) {
-         for color in colors {
+      if (colors.count > 1)
+      {
+         for color in colors
+         {
             resColor.x += color.x
             resColor.y += color.y
             resColor.z += color.z
@@ -73,15 +75,4 @@ class MAGSide: NSObject
       }
       return resColor
    }
-  
-  func generateAverageColor(first: SCNVector3, second: SCNVector3) -> SCNVector3
-  {
-    var resColor: SCNVector3 = SCNVector3Zero
-    
-    resColor.x = (first.x + second.x) / 2
-    resColor.y = (first.y + second.y) / 2
-    resColor.z = (first.z + second.z) / 2
-    
-    return resColor
-  }
 }
