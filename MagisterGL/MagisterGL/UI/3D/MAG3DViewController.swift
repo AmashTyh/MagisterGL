@@ -54,11 +54,6 @@ class MAG3DViewController: UIViewController,
       vc.delegate = self
       vc.popoverPresentationController?.delegate = self
     }
-    else if segue.destination.isKind(of: MAGSectionViewController.self)
-    {
-      let vc = segue.destination as! MAGSectionViewController
-      vc.model = self.customGeometryView.model
-    }
     else if segue.destination.isKind(of: MAGChooseMaterialViewController.self)
     {
       let vc = segue.destination as! MAGChooseMaterialViewController
