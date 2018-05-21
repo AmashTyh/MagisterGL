@@ -287,7 +287,21 @@ class MAGCustomGeometryModel: NSObject
 //                                      maxValue: self.colorGenerator.uFunc(x: Double(maxVector.x),
 //                                                                          y: Double(maxVector.y),
 //                                                                          z: Double(maxVector.z)))
-    
+    var XYZValuesArray: [Double] = []
+    if showFieldNumber != -1
+    {
+      XYZValuesArray = self.fieldsArray[showFieldNumber]
+      let min = XYZValuesArray.min { (first, second) -> Bool in
+        return first < second
+        }!
+      let max = XYZValuesArray.max { (first, second) -> Bool in
+        return first < second
+        }!
+      let colorGenerator = MAGColorGenerator()
+      colorGenerator.generateColor(minValue: min,
+                                   maxValue: max)
+      self.colorGenerator = colorGenerator
+    }
 
     var numberOfElement : Int = 0
     for i in 0..<nverArray.count
@@ -305,17 +319,6 @@ class MAGCustomGeometryModel: NSObject
       
       if showFieldNumber != -1
       {
-        let XYZValuesArray = self.fieldsArray[showFieldNumber]
-        let min = XYZValuesArray.min { (first, second) -> Bool in
-          return first < second
-          }!
-        let max = XYZValuesArray.max { (first, second) -> Bool in
-          return first < second
-          }!
-        let colorGenerator = MAGColorGenerator()
-        colorGenerator.generateColor(minValue: min,
-                                     maxValue: max)
-        self.colorGenerator = colorGenerator
         var colors: [SCNVector3] = []
         var j : Int = 0
         for number in self.nverArray[i]
