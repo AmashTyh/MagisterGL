@@ -16,16 +16,6 @@
 
 @implementation MAGGoogleDriveProvider
 
-//+ (GoogleDriveProvider*)sharedInstance
-//{
-//    if (sharedInstance_ == nil) {
-//        sharedInstance_ = [[GoogleDriveProvider alloc] init];
-//        sharedInstance_.service = [[GTLRDriveService alloc] init];
-//        sharedInstance_.filesDictionary = [NSDictionary dictionary];
-//    }
-//    return sharedInstance_;
-//}
-
 - (instancetype) init
 {
   self = [super init];

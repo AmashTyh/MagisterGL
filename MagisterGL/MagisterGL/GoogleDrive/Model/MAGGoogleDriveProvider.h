@@ -18,8 +18,6 @@
 @property (nonnull, nonatomic, strong) GTLRDriveService *service;
 @property (nonnull, nonatomic, strong) NSDictionary<NSString *, NSString *> *filesDictionary;
 
-//+ (GoogleDriveProvider*)sharedInstance;
-
 - (void) listFilesWithCompletionBlock:(void (^_Nullable)(BOOL success))completion;
 - (void) downloadFileWithFileID: (nonnull NSString *) fileID
                        fileName: (nonnull NSString *) fileName
