@@ -109,8 +109,11 @@ class MAGCustomGeometryModel: NSObject
     }
     self.selectedMaterials  = self.materials
     createElementsArray()
-    createReceiverSurface()
-    createChartsData()
+    if profileArray.count > 0
+    {
+      createReceiverSurface()
+      createChartsData()
+    }
   }
   
   func createReceiverSurface()
