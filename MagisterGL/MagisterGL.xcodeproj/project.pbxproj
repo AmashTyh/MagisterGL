@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		840D4EA120B2F6A500E9DF5C /* v3_3.t1.txt in Resources */ = {isa = PBXBuildFile; fileRef = 840D4EA020B2F6A400E9DF5C /* v3_3.t1.txt */; };
+		840D4EA320B2FC6900E9DF5C /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840D4EA220B2FC6900E9DF5C /* Color.swift */; };
 		8432FC3220AC8C7D00930CB9 /* MAGTriangleElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8432FC3120AC8C7D00930CB9 /* MAGTriangleElement.swift */; };
 		8437778520A331C5009B1BE0 /* xyz04.dat in Resources */ = {isa = PBXBuildFile; fileRef = 8437777D20A331C4009B1BE0 /* xyz04.dat */; };
 		8437778620A331C5009B1BE0 /* xyz4.dat in Resources */ = {isa = PBXBuildFile; fileRef = 8437777E20A331C5009B1BE0 /* xyz4.dat */; };
@@ -52,30 +53,11 @@
 		9A05AA3D20AC4C9800F44AE5 /* MAGChooseFieldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A05AA3C20AC4C9800F44AE5 /* MAGChooseFieldViewController.swift */; };
 		9A05AA3F20AC508F00F44AE5 /* v3.t2.txt in Resources */ = {isa = PBXBuildFile; fileRef = 9A05AA3E20AC508F00F44AE5 /* v3.t2.txt */; };
 		9A4B279D1F91EA8900068550 /* MAGBinaryDataScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A4B279C1F91EA8900068550 /* MAGBinaryDataScanner.swift */; };
-		9A577D311F03B0AC0017F40F /* Cube.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A577D291F03B0AC0017F40F /* Cube.swift */; };
-		9A577D321F03B0AC0017F40F /* Cylinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A577D2A1F03B0AC0017F40F /* Cylinder.swift */; };
-		9A577D331F03B0AC0017F40F /* Matrix4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A577D2B1F03B0AC0017F40F /* Matrix4.swift */; };
-		9A577D341F03B0AC0017F40F /* normalmap.png in Resources */ = {isa = PBXBuildFile; fileRef = 9A577D2C1F03B0AC0017F40F /* normalmap.png */; };
-		9A577D351F03B0AC0017F40F /* Renderable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A577D2D1F03B0AC0017F40F /* Renderable.swift */; };
-		9A577D361F03B0AC0017F40F /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A577D2E1F03B0AC0017F40F /* Scene.swift */; };
-		9A577D371F03B0AC0017F40F /* ShaderProgram.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A577D2F1F03B0AC0017F40F /* ShaderProgram.swift */; };
-		9A577D381F03B0AC0017F40F /* Texture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A577D301F03B0AC0017F40F /* Texture.swift */; };
 		9A889F0F204D606000CA6069 /* MAGSide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A889F0E204D606000CA6069 /* MAGSide.swift */; };
-		9AB601A61F762993004C50AB /* MAGIsolineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB601A51F762993004C50AB /* MAGIsolineViewController.swift */; };
-		9AB601A91F762BF2004C50AB /* MAGScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB601A81F762BF2004C50AB /* MAGScene.swift */; };
-		9AB601AC1F762F19004C50AB /* MAGSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB601AB1F762F19004C50AB /* MAGSource.swift */; };
-		9AB601AE1F7657A7004C50AB /* SKTexture+Gradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AB601AD1F7657A7004C50AB /* SKTexture+Gradient.swift */; };
 		9ADE1EBC1EED062B006D409E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ADE1EBB1EED062B006D409E /* AppDelegate.swift */; };
 		9ADE1EC11EED062B006D409E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9ADE1EBF1EED062B006D409E /* Main.storyboard */; };
 		9ADE1EC31EED062B006D409E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9ADE1EC21EED062B006D409E /* Assets.xcassets */; };
 		9ADE1EC61EED062B006D409E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9ADE1EC41EED062B006D409E /* LaunchScreen.storyboard */; };
-		9ADE1ED01EED07F0006D409E /* MyGLKViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ADE1ECD1EED07F0006D409E /* MyGLKViewController.swift */; };
-		9ADE1ED11EED07F0006D409E /* shader.fs in Resources */ = {isa = PBXBuildFile; fileRef = 9ADE1ECE1EED07F0006D409E /* shader.fs */; };
-		9ADE1ED21EED07F0006D409E /* shader.vs in Resources */ = {isa = PBXBuildFile; fileRef = 9ADE1ECF1EED07F0006D409E /* shader.vs */; };
-		9ADE1F281EED1BFD006D409E /* IsolineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ADE1F271EED1BFD006D409E /* IsolineViewController.swift */; };
-		9ADE1F2A1EED1C36006D409E /* IsolineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ADE1F291EED1C36006D409E /* IsolineView.swift */; };
-		9ADE1F2C1EED22F5006D409E /* RectangleElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ADE1F2B1EED22F5006D409E /* RectangleElement.swift */; };
-		9ADE29421EEE9751000F21C9 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ADE29411EEE9751000F21C9 /* Color.swift */; };
 		9AE615691F8A009D0067893C /* MAGFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AE615681F8A009D0067893C /* MAGFileManager.swift */; };
 		9AE6156E1F8A03B00067893C /* MAGHexahedron.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AE6156D1F8A03B00067893C /* MAGHexahedron.swift */; };
 		9AE615701F8A07250067893C /* MAGCustomGeometryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AE6156F1F8A07250067893C /* MAGCustomGeometryModel.swift */; };
@@ -99,6 +81,7 @@
 /* Begin PBXFileReference section */
 		6DA4F8BFD9D8D310D40705BF /* Pods_MagisterGL.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MagisterGL.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		840D4EA020B2F6A400E9DF5C /* v3_3.t1.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = v3_3.t1.txt; sourceTree = "<group>"; };
+		840D4EA220B2FC6900E9DF5C /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		8432FC3120AC8C7D00930CB9 /* MAGTriangleElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAGTriangleElement.swift; sourceTree = "<group>"; };
 		8437777D20A331C4009B1BE0 /* xyz04.dat */ = {isa = PBXFileReference; lastKnownFileType = file; path = xyz04.dat; sourceTree = "<group>"; };
 		8437777E20A331C5009B1BE0 /* xyz4.dat */ = {isa = PBXFileReference; lastKnownFileType = file; path = xyz4.dat; sourceTree = "<group>"; };
@@ -146,32 +129,13 @@
 		9A05AA3C20AC4C9800F44AE5 /* MAGChooseFieldViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAGChooseFieldViewController.swift; sourceTree = "<group>"; };
 		9A05AA3E20AC508F00F44AE5 /* v3.t2.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = v3.t2.txt; sourceTree = "<group>"; };
 		9A4B279C1F91EA8900068550 /* MAGBinaryDataScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAGBinaryDataScanner.swift; sourceTree = "<group>"; };
-		9A577D291F03B0AC0017F40F /* Cube.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cube.swift; sourceTree = "<group>"; };
-		9A577D2A1F03B0AC0017F40F /* Cylinder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cylinder.swift; sourceTree = "<group>"; };
-		9A577D2B1F03B0AC0017F40F /* Matrix4.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Matrix4.swift; sourceTree = "<group>"; };
-		9A577D2C1F03B0AC0017F40F /* normalmap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = normalmap.png; sourceTree = "<group>"; };
-		9A577D2D1F03B0AC0017F40F /* Renderable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Renderable.swift; sourceTree = "<group>"; };
-		9A577D2E1F03B0AC0017F40F /* Scene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scene.swift; sourceTree = "<group>"; };
-		9A577D2F1F03B0AC0017F40F /* ShaderProgram.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShaderProgram.swift; sourceTree = "<group>"; };
-		9A577D301F03B0AC0017F40F /* Texture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Texture.swift; sourceTree = "<group>"; };
 		9A889F0E204D606000CA6069 /* MAGSide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAGSide.swift; sourceTree = "<group>"; };
-		9AB601A51F762993004C50AB /* MAGIsolineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAGIsolineViewController.swift; sourceTree = "<group>"; };
-		9AB601A81F762BF2004C50AB /* MAGScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAGScene.swift; sourceTree = "<group>"; };
-		9AB601AB1F762F19004C50AB /* MAGSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAGSource.swift; sourceTree = "<group>"; };
-		9AB601AD1F7657A7004C50AB /* SKTexture+Gradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SKTexture+Gradient.swift"; sourceTree = "<group>"; };
 		9ADE1EB81EED062B006D409E /* MagisterGL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MagisterGL.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9ADE1EBB1EED062B006D409E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9ADE1EC01EED062B006D409E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9ADE1EC21EED062B006D409E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9ADE1EC51EED062B006D409E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9ADE1EC71EED062B006D409E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9ADE1ECD1EED07F0006D409E /* MyGLKViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyGLKViewController.swift; sourceTree = "<group>"; };
-		9ADE1ECE1EED07F0006D409E /* shader.fs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = shader.fs; sourceTree = "<group>"; };
-		9ADE1ECF1EED07F0006D409E /* shader.vs */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = shader.vs; sourceTree = "<group>"; };
-		9ADE1F271EED1BFD006D409E /* IsolineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IsolineViewController.swift; sourceTree = "<group>"; };
-		9ADE1F291EED1C36006D409E /* IsolineView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IsolineView.swift; sourceTree = "<group>"; };
-		9ADE1F2B1EED22F5006D409E /* RectangleElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RectangleElement.swift; sourceTree = "<group>"; };
-		9ADE29411EEE9751000F21C9 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		9AE6155E1F89FCE80067893C /* elem_neib */ = {isa = PBXFileReference; lastKnownFileType = file; path = elem_neib; sourceTree = "<group>"; };
 		9AE6155F1F89FCE80067893C /* inftry.dat */ = {isa = PBXFileReference; lastKnownFileType = text; path = inftry.dat; sourceTree = "<group>"; };
 		9AE615601F89FCE80067893C /* nver.dat */ = {isa = PBXFileReference; lastKnownFileType = file; path = nver.dat; sourceTree = "<group>"; };
@@ -348,21 +312,6 @@
 			path = ChooseField;
 			sourceTree = "<group>";
 		};
-		9A577D281F03B0AC0017F40F /* Common */ = {
-			isa = PBXGroup;
-			children = (
-				9A577D291F03B0AC0017F40F /* Cube.swift */,
-				9A577D2A1F03B0AC0017F40F /* Cylinder.swift */,
-				9A577D2B1F03B0AC0017F40F /* Matrix4.swift */,
-				9A577D2C1F03B0AC0017F40F /* normalmap.png */,
-				9A577D2D1F03B0AC0017F40F /* Renderable.swift */,
-				9A577D2E1F03B0AC0017F40F /* Scene.swift */,
-				9A577D2F1F03B0AC0017F40F /* ShaderProgram.swift */,
-				9A577D301F03B0AC0017F40F /* Texture.swift */,
-			);
-			path = Common;
-			sourceTree = "<group>";
-		};
 		9AB601A71F762998004C50AB /* UI */ = {
 			isa = PBXGroup;
 			children = (
@@ -373,7 +322,6 @@
 				84743BAE2084E55D007049C6 /* Projects */,
 				84743BA92084DE6E007049C6 /* GoogleDrive */,
 				9AF322E81F7A7F3A003AE463 /* 3D */,
-				9AF322E71F7A7F0E003AE463 /* 2d */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -383,17 +331,8 @@
 			children = (
 				8432FC3020AC8BFA00930CB9 /* ReceiversSurface */,
 				9AE6156C1F8A01910067893C /* 3d */,
-				9AE6156B1F8A018C0067893C /* 2d */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		9AB601AF1F7657AB004C50AB /* Ext */ = {
-			isa = PBXGroup;
-			children = (
-				9AB601AD1F7657A7004C50AB /* SKTexture+Gradient.swift */,
-			);
-			path = Ext;
 			sourceTree = "<group>";
 		};
 		9ADE1EAF1EED062B006D409E = {
@@ -417,22 +356,15 @@
 		9ADE1EBA1EED062B006D409E /* MagisterGL */ = {
 			isa = PBXGroup;
 			children = (
+				840D4EA220B2FC6900E9DF5C /* Color.swift */,
 				84743B9F2084DBF1007049C6 /* GoogleDrive */,
 				9AE615671F8A004C0067893C /* FileManager */,
 				9ADE1EBB1EED062B006D409E /* AppDelegate.swift */,
 				9ADE1EC21EED062B006D409E /* Assets.xcassets */,
-				9ADE29411EEE9751000F21C9 /* Color.swift */,
-				9A577D281F03B0AC0017F40F /* Common */,
-				9AB601AF1F7657AB004C50AB /* Ext */,
 				9ADE1EC71EED062B006D409E /* Info.plist */,
-				9ADE1F291EED1C36006D409E /* IsolineView.swift */,
-				9ADE1F271EED1BFD006D409E /* IsolineViewController.swift */,
 				9ADE1EC41EED062B006D409E /* LaunchScreen.storyboard */,
 				9ADE1EBF1EED062B006D409E /* Main.storyboard */,
 				9AB601AA1F762DAE004C50AB /* Model */,
-				9ADE1ECD1EED07F0006D409E /* MyGLKViewController.swift */,
-				9ADE1ECE1EED07F0006D409E /* shader.fs */,
-				9ADE1ECF1EED07F0006D409E /* shader.vs */,
 				9AE6155C1F89FCDC0067893C /* Supporting files */,
 				9AB601A71F762998004C50AB /* UI */,
 			);
@@ -491,15 +423,6 @@
 			path = FileManager;
 			sourceTree = "<group>";
 		};
-		9AE6156B1F8A018C0067893C /* 2d */ = {
-			isa = PBXGroup;
-			children = (
-				9AB601AB1F762F19004C50AB /* MAGSource.swift */,
-				9ADE1F2B1EED22F5006D409E /* RectangleElement.swift */,
-			);
-			path = 2d;
-			sourceTree = "<group>";
-		};
 		9AE6156C1F8A01910067893C /* 3d */ = {
 			isa = PBXGroup;
 			children = (
@@ -525,15 +448,6 @@
 				9A05AA3E20AC508F00F44AE5 /* v3.t2.txt */,
 			);
 			path = Test1;
-			sourceTree = "<group>";
-		};
-		9AF322E71F7A7F0E003AE463 /* 2d */ = {
-			isa = PBXGroup;
-			children = (
-				9AB601A81F762BF2004C50AB /* MAGScene.swift */,
-				9AB601A51F762993004C50AB /* MAGIsolineViewController.swift */,
-			);
-			path = 2d;
 			sourceTree = "<group>";
 		};
 		9AF322E81F7A7F3A003AE463 /* 3D */ = {
@@ -647,15 +561,12 @@
 				840D4EA120B2F6A500E9DF5C /* v3_3.t1.txt in Resources */,
 				9A05AA3F20AC508F00F44AE5 /* v3.t2.txt in Resources */,
 				9ADE1EC61EED062B006D409E /* LaunchScreen.storyboard in Resources */,
-				9ADE1ED21EED07F0006D409E /* shader.vs in Resources */,
 				9ADE1EC31EED062B006D409E /* Assets.xcassets in Resources */,
 				8437778B20A331C5009B1BE0 /* inftry4.dat in Resources */,
-				9A577D341F03B0AC0017F40F /* normalmap.png in Resources */,
 				9ADE1EC11EED062B006D409E /* Main.storyboard in Resources */,
 				843777A620A334E0009B1BE0 /* elem_neib5 in Resources */,
 				84541B101FB0AD2300DC6E43 /* nvkat2.txt in Resources */,
 				84541B0D1FB0AD2300DC6E43 /* elem_neib2.txt in Resources */,
-				9ADE1ED11EED07F0006D409E /* shader.fs in Resources */,
 				9A05AA3A20AC3A2500F44AE5 /* v3.t1.txt in Resources */,
 				843777A720A334E0009B1BE0 /* nver5.dat in Resources */,
 				8437778C20A331C5009B1BE0 /* profile4 in Resources */,
@@ -737,9 +648,7 @@
 				84743BBE2084F455007049C6 /* MAGProjectsModels.xcdatamodeld in Sources */,
 				843D004F209B521000B824CF /* MAGChooseSectionViewController.swift in Sources */,
 				846C260D20A1BF9C0049A6B6 /* MAGMaterial.swift in Sources */,
-				9AB601AC1F762F19004C50AB /* MAGSource.swift in Sources */,
 				9AF322EA1F7A7FE4003AE463 /* MAG3DViewController.swift in Sources */,
-				9AB601A91F762BF2004C50AB /* MAGScene.swift in Sources */,
 				843FFE82208792E700B717D2 /* MAGColorGenerator.swift in Sources */,
 				9A4B279D1F91EA8900068550 /* MAGBinaryDataScanner.swift in Sources */,
 				84743BA42084DC7F007049C6 /* MAGGoogleDriveProvider.m in Sources */,
@@ -747,38 +656,25 @@
 				84743BAD2084DEB6007049C6 /* MAGLocalViewController.swift in Sources */,
 				9AE615691F8A009D0067893C /* MAGFileManager.swift in Sources */,
 				9AF585412086069E00A90D2D /* MAGProjectFileAddTableViewCellObject.swift in Sources */,
-				9ADE1F2C1EED22F5006D409E /* RectangleElement.swift in Sources */,
-				9A577D371F03B0AC0017F40F /* ShaderProgram.swift in Sources */,
 				9ADE1EBC1EED062B006D409E /* AppDelegate.swift in Sources */,
-				9ADE29421EEE9751000F21C9 /* Color.swift in Sources */,
-				9AB601A61F762993004C50AB /* MAGIsolineViewController.swift in Sources */,
-				9A577D351F03B0AC0017F40F /* Renderable.swift in Sources */,
-				9A577D321F03B0AC0017F40F /* Cylinder.swift in Sources */,
 				84743BBA2084EB16007049C6 /* MAGCreateProjectViewController.swift in Sources */,
-				9ADE1ED01EED07F0006D409E /* MyGLKViewController.swift in Sources */,
-				9ADE1F281EED1BFD006D409E /* IsolineViewController.swift in Sources */,
 				846C260B20A1B7400049A6B6 /* MAGChooseMaterialViewController.swift in Sources */,
-				9A577D311F03B0AC0017F40F /* Cube.swift in Sources */,
 				9AF5853F2086067000A90D2D /* MAGCreateProjectViewModel.swift in Sources */,
 				9AF322EC1F7A8054003AE463 /* MAGCustomGeometryView.swift in Sources */,
-				9ADE1F2A1EED1C36006D409E /* IsolineView.swift in Sources */,
 				84743BB72084E6E4007049C6 /* MAGProjectTableViewCell.swift in Sources */,
 				84743BAB2084DE9C007049C6 /* MAGGoogleTableViewController.swift in Sources */,
 				9AF5853C2086053000A90D2D /* MAGProjectFileAddTableViewCell.swift in Sources */,
+				840D4EA320B2FC6900E9DF5C /* Color.swift in Sources */,
 				84743BA72084DD3B007049C6 /* MAGLocalFileManager.m in Sources */,
 				8444971B20A469B300AB8D54 /* MAGBaseProjectsGenerator.swift in Sources */,
 				9AE615701F8A07250067893C /* MAGCustomGeometryModel.swift in Sources */,
 				8432FC3220AC8C7D00930CB9 /* MAGTriangleElement.swift in Sources */,
 				84743BB02084E572007049C6 /* MAGProjectsViewController.swift in Sources */,
-				9AB601AE1F7657A7004C50AB /* SKTexture+Gradient.swift in Sources */,
 				84743BB42084E6BF007049C6 /* MAGProjectCellObject.swift in Sources */,
-				9A577D331F03B0AC0017F40F /* Matrix4.swift in Sources */,
-				9A577D381F03B0AC0017F40F /* Texture.swift in Sources */,
 				9A05AA3D20AC4C9800F44AE5 /* MAGChooseFieldViewController.swift in Sources */,
 				9AE6156E1F8A03B00067893C /* MAGHexahedron.swift in Sources */,
 				84743BB22084E66F007049C6 /* MAGProjectsViewModel.swift in Sources */,
 				9A889F0F204D606000CA6069 /* MAGSide.swift in Sources */,
-				9A577D361F03B0AC0017F40F /* Scene.swift in Sources */,
 				843BE691208A43C300A25448 /* MAGCrossSection.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -12,97 +12,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="MMD-kN-fcg">
-            <objects>
-                <viewController id="uBJ-RP-nfx" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="D6r-Me-uRi"/>
-                        <viewControllerLayoutGuide type="bottom" id="N66-tK-9fw"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="ThC-U8-ezt">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6hh-Uw-tZf">
-                                <rect key="frame" x="37.5" y="311.5" width="300" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="300" id="Pwq-V8-38w"/>
-                                    <constraint firstAttribute="height" constant="44" id="dTc-4r-2aV"/>
-                                </constraints>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <segue destination="BYZ-38-t0r" kind="show" id="3cH-Wk-oqs"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h1W-TQ-p5K">
-                                <rect key="frame" x="37.5" y="375.5" width="300" height="44"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <segue destination="m7l-ZR-Ljp" kind="show" id="e0a-Yb-lh6"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PlZ-xa-Jtc">
-                                <rect key="frame" x="37.5" y="439.5" width="300" height="44"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <segue destination="Suq-Gg-DZ5" kind="show" id="bVI-r1-YAM"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zga-fc-SN5">
-                                <rect key="frame" x="37.5" y="493.5" width="300" height="44"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <segue destination="fc5-rN-1wo" kind="show" id="GIL-dq-iV4"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SJg-XX-hCh">
-                                <rect key="frame" x="37.5" y="183.5" width="300" height="44"/>
-                                <state key="normal" title="Google drive"/>
-                                <connections>
-                                    <segue destination="mbA-9e-HUH" kind="presentation" modalPresentationStyle="pageSheet" id="Phd-aj-wHF"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SbA-G0-T3c">
-                                <rect key="frame" x="37.5" y="247.5" width="300" height="44"/>
-                                <state key="normal" title="Local"/>
-                                <connections>
-                                    <segue destination="aNO-hp-bjU" kind="show" id="XWM-7k-E8F"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="SbA-G0-T3c" firstAttribute="width" secondItem="6hh-Uw-tZf" secondAttribute="width" id="2C3-WP-RFG"/>
-                            <constraint firstItem="SbA-G0-T3c" firstAttribute="centerX" secondItem="ThC-U8-ezt" secondAttribute="centerX" id="4yH-K3-MaQ"/>
-                            <constraint firstItem="PlZ-xa-Jtc" firstAttribute="top" secondItem="h1W-TQ-p5K" secondAttribute="bottom" constant="20" id="7co-VP-GIZ"/>
-                            <constraint firstItem="Zga-fc-SN5" firstAttribute="height" secondItem="PlZ-xa-Jtc" secondAttribute="height" id="HIv-cu-WeV"/>
-                            <constraint firstItem="h1W-TQ-p5K" firstAttribute="top" secondItem="6hh-Uw-tZf" secondAttribute="bottom" constant="20" id="HJ0-Ke-r4E"/>
-                            <constraint firstItem="Zga-fc-SN5" firstAttribute="top" secondItem="PlZ-xa-Jtc" secondAttribute="bottom" constant="10" id="I98-Nh-1YL"/>
-                            <constraint firstItem="PlZ-xa-Jtc" firstAttribute="height" secondItem="h1W-TQ-p5K" secondAttribute="height" id="Iai-JS-Bn6"/>
-                            <constraint firstItem="PlZ-xa-Jtc" firstAttribute="centerX" secondItem="ThC-U8-ezt" secondAttribute="centerX" id="NXS-GH-nPK"/>
-                            <constraint firstItem="SJg-XX-hCh" firstAttribute="height" secondItem="6hh-Uw-tZf" secondAttribute="height" id="OCQ-0M-Srm"/>
-                            <constraint firstItem="Zga-fc-SN5" firstAttribute="width" secondItem="PlZ-xa-Jtc" secondAttribute="width" id="Qpa-iT-DXg"/>
-                            <constraint firstItem="h1W-TQ-p5K" firstAttribute="centerX" secondItem="ThC-U8-ezt" secondAttribute="centerX" id="R8H-5X-BQz"/>
-                            <constraint firstItem="h1W-TQ-p5K" firstAttribute="height" secondItem="6hh-Uw-tZf" secondAttribute="height" id="SdA-Jn-lRu"/>
-                            <constraint firstItem="SJg-XX-hCh" firstAttribute="width" secondItem="6hh-Uw-tZf" secondAttribute="width" id="Usq-Fc-PG7"/>
-                            <constraint firstItem="SJg-XX-hCh" firstAttribute="centerX" secondItem="ThC-U8-ezt" secondAttribute="centerX" id="WBw-z9-3op"/>
-                            <constraint firstItem="6hh-Uw-tZf" firstAttribute="centerY" secondItem="ThC-U8-ezt" secondAttribute="centerY" id="XcC-DW-XYx"/>
-                            <constraint firstItem="h1W-TQ-p5K" firstAttribute="width" secondItem="6hh-Uw-tZf" secondAttribute="width" id="bKM-g2-7Yp"/>
-                            <constraint firstItem="Zga-fc-SN5" firstAttribute="centerX" secondItem="ThC-U8-ezt" secondAttribute="centerX" id="bS5-kp-enL"/>
-                            <constraint firstItem="SbA-G0-T3c" firstAttribute="height" secondItem="6hh-Uw-tZf" secondAttribute="height" id="fMQ-wD-PUe"/>
-                            <constraint firstItem="SbA-G0-T3c" firstAttribute="top" secondItem="SJg-XX-hCh" secondAttribute="bottom" constant="20" id="hMK-nF-qFB"/>
-                            <constraint firstItem="6hh-Uw-tZf" firstAttribute="centerX" secondItem="ThC-U8-ezt" secondAttribute="centerX" id="hgi-wX-oBQ"/>
-                            <constraint firstItem="6hh-Uw-tZf" firstAttribute="top" secondItem="SbA-G0-T3c" secondAttribute="bottom" constant="20" id="pi5-84-EQ6"/>
-                            <constraint firstItem="PlZ-xa-Jtc" firstAttribute="width" secondItem="h1W-TQ-p5K" secondAttribute="width" id="zSv-nq-NOS"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="68j-8y-vUC"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Ep5-Ia-a56" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-2378" y="627"/>
-        </scene>
         <!--Navigation Controller-->
         <scene sceneID="4gI-8k-yZk">
             <objects>
@@ -149,18 +58,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Projects" id="Dx4-Iv-p7s">
-                        <leftBarButtonItems>
-                            <barButtonItem systemItem="organize" id="CRD-wt-iDx">
-                                <connections>
-                                    <segue destination="aNO-hp-bjU" kind="show" id="71c-yL-HRo"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem systemItem="rewind" id="BGo-3Q-5mU">
-                                <connections>
-                                    <segue destination="uBJ-RP-nfx" kind="show" id="VMv-cl-oTN"/>
-                                </connections>
-                            </barButtonItem>
-                        </leftBarButtonItems>
+                        <barButtonItem key="leftBarButtonItem" systemItem="organize" id="CRD-wt-iDx">
+                            <connections>
+                                <segue destination="aNO-hp-bjU" kind="show" id="71c-yL-HRo"/>
+                            </connections>
+                        </barButtonItem>
                         <rightBarButtonItems>
                             <barButtonItem systemItem="add" id="Dfo-RU-tPW">
                                 <connections>
@@ -302,77 +204,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jav-UB-b91" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-3828" y="-44.527736131934034"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="Z3s-IV-Wsa">
-            <objects>
-                <navigationController id="a9V-BR-1rW" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="01H-GD-W2d">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="uBJ-RP-nfx" kind="relationship" relationship="rootViewController" id="bd5-du-BrE"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="B4K-q5-NIX" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-3130" y="627"/>
-        </scene>
-        <!--MyGLK View Controller-->
-        <scene sceneID="tne-QT-ifu">
-            <objects>
-                <viewController id="BYZ-38-t0r" customClass="MyGLKViewController" customModule="MagisterGL" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC" customClass="GLKView">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="m0q-tK-HJf"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-422" y="47"/>
-        </scene>
-        <!--Isoline View Controller-->
-        <scene sceneID="8Y9-Vc-eqw">
-            <objects>
-                <viewController id="m7l-ZR-Ljp" customClass="IsolineViewController" customModule="MagisterGL" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="oyx-Vq-ijq"/>
-                        <viewControllerLayoutGuide type="bottom" id="PT1-WG-FmD"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="X7M-N3-W5V">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="InP-8N-r3k" customClass="IsolineView" customModule="MagisterGL" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="PT1-WG-FmD" firstAttribute="top" secondItem="InP-8N-r3k" secondAttribute="bottom" id="7E5-yw-EGc"/>
-                            <constraint firstItem="InP-8N-r3k" firstAttribute="top" secondItem="oyx-Vq-ijq" secondAttribute="bottom" id="lQ5-mf-LBa"/>
-                            <constraint firstItem="InP-8N-r3k" firstAttribute="leading" secondItem="X7M-N3-W5V" secondAttribute="leading" id="vbv-21-j0Q"/>
-                            <constraint firstAttribute="trailing" secondItem="InP-8N-r3k" secondAttribute="trailing" id="y1O-Ad-EhQ"/>
-                        </constraints>
-                    </view>
-                    <nil key="simulatedStatusBarMetrics"/>
-                    <nil key="simulatedTopBarMetrics"/>
-                    <nil key="simulatedBottomBarMetrics"/>
-                    <connections>
-                        <outlet property="isolineView" destination="InP-8N-r3k" id="iN2-JD-f8y"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="btf-kk-I7h" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-423" y="940"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="txZ-Fp-wAU">
@@ -646,24 +477,6 @@
             </objects>
             <point key="canvasLocation" x="-1527" y="2267"/>
         </scene>
-        <!--Isoline View Controller-->
-        <scene sceneID="RfX-5Q-HxF">
-            <objects>
-                <viewController id="Suq-Gg-DZ5" customClass="MAGIsolineViewController" customModule="MagisterGL" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="vhq-Sj-LAs"/>
-                        <viewControllerLayoutGuide type="bottom" id="7KO-f2-31Q"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="H9e-C6-Ocr" customClass="SKView">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Grf-WK-2CD" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1081" y="1492"/>
-        </scene>
         <!--GoogleTableVC-->
         <scene sceneID="ufs-6q-peo">
             <objects>
@@ -767,10 +580,4 @@
             <point key="canvasLocation" x="-1329" y="-65"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="71c-yL-HRo"/>
-        <segue reference="zKT-4M-LcO"/>
-        <segue reference="GIL-dq-iV4"/>
-        <segue reference="VMv-cl-oTN"/>
-    </inferredMetricsTieBreakers>
 </document>
