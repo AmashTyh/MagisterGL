@@ -29,17 +29,14 @@ class MAGSide: NSObject
    var positions: [SCNVector3] = []
    var positionType: PositionType
    var isVisible: Bool
-   var material: Int
    var colors: [SCNVector3] = []
    
    init(positions: [SCNVector3],
         positionType: PositionType,
-        material: Int,
         isVisible: Bool)
    {
     self.positions = positions
     self.positionType = positionType
-    self.material = material
     self.isVisible = isVisible
     
     self.positions.append(MAGSide.getCenterFor(first: positions[0], second: positions[2]))

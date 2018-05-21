@@ -31,12 +31,7 @@ class MAGHexahedron: NSObject
    Массив nvkat для элемента
    */
   var neighbours: [[Int]] = []
-  /**
-   Массив sosedeyi материалов
-   */
-  var neibsMaterials: [[Int]] = []
   
-  var selectedMaterials: [MAGMaterial] = []
   /**
    Материал - целое число
    */
@@ -64,13 +59,6 @@ class MAGHexahedron: NSObject
   
   func generateSides()
   {
-    var selectedNumberMaterials: [Int] = []
-    
-    for material in self.selectedMaterials
-    {
-      selectedNumberMaterials.append(material.numberOfMaterial)
-    }
-    
     for i in 0..<6
     {
       if (neighbours[i].count >= 1) && (neighbours[i][0] == 0)
@@ -86,27 +74,21 @@ class MAGHexahedron: NSObject
     sidesArray = [
       MAGSide.init(positions: [positions[0], positions[2], positions[6], positions[4]],
                    positionType: .Left,
-                   material: self.material,
                    isVisible: isSideVisibleArray[0]), //левая
       MAGSide.init(positions: [positions[1], positions[0], positions[4], positions[5]],
                    positionType: .Front,
-                   material: self.material,
                    isVisible: isSideVisibleArray[1]), //передняя
       MAGSide.init(positions: [positions[0], positions[1], positions[3], positions[2]],
                    positionType: .Bottom,
-                   material: self.material,
                    isVisible: isSideVisibleArray[2]), //нижняя
       MAGSide.init(positions: [positions[1], positions[5], positions[7], positions[3]],
                    positionType: .Right,
-                   material: self.material,
                    isVisible: isSideVisibleArray[3]), //правая
       MAGSide.init(positions: [positions[2], positions[3], positions[7], positions[6]],
                    positionType: .Back,
-                   material: self.material,
                    isVisible: isSideVisibleArray[4]), //задняя
       MAGSide.init(positions: [positions[5], positions[4], positions[6], positions[7]],
                    positionType: .Top,
-                   material: self.material,
                    isVisible: isSideVisibleArray[5]),  //верхняя
     ]
     setColorToSides()
@@ -119,7 +101,8 @@ class MAGHexahedron: NSObject
     {
       for side in sidesArray
       {
-        switch side.positionType {
+        switch side.positionType
+        {
         case .Left:
           side.colors.append(self.colors[0])
           side.colors.append(self.colors[2])

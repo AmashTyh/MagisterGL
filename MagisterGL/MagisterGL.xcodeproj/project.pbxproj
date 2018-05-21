@@ -356,7 +356,6 @@
 		9ADE1EBA1EED062B006D409E /* MagisterGL */ = {
 			isa = PBXGroup;
 			children = (
-				840D4EA220B2FC6900E9DF5C /* Color.swift */,
 				84743B9F2084DBF1007049C6 /* GoogleDrive */,
 				9AE615671F8A004C0067893C /* FileManager */,
 				9ADE1EBB1EED062B006D409E /* AppDelegate.swift */,
@@ -426,6 +425,7 @@
 		9AE6156C1F8A01910067893C /* 3d */ = {
 			isa = PBXGroup;
 			children = (
+				840D4EA220B2FC6900E9DF5C /* Color.swift */,
 				9AE6156D1F8A03B00067893C /* MAGHexahedron.swift */,
 				9AE6156F1F8A07250067893C /* MAGCustomGeometryModel.swift */,
 				9A889F0E204D606000CA6069 /* MAGSide.swift */,

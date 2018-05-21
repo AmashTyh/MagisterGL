@@ -430,7 +430,8 @@ class MAGCustomGeometryModel: NSObject
               if isElementVisible(numberOfElement: neibs[i + 1] - 1) {
                 neibsNumbers.append(neibs[i + 1])
               }
-              else {
+              else
+              {
                 neibsNumbers = []
               }
             }
