@@ -118,7 +118,6 @@ class MAGCustomGeometryView: SCNView
     var h = 0 as Int32
     var j = 0 as Int32
     var globalPositions : [SCNVector3] = []
-    var globalNormals : [SCNVector3] = []
     var globalIndicies : [CInt] = []
     var globalIndiciesCarcas : [CInt] = []
     var globalElements : [SCNGeometryElement] = []
@@ -142,74 +141,52 @@ class MAGCustomGeometryView: SCNView
       {
         continue
       }
-        //hexahedron.setColorToSides()
-        var normals: [SCNVector3] = []
-        var indices: [CInt] = []
-        for side in hexahedron.sidesArray
+      var indices: [CInt] = []
+      for side in hexahedron.sidesArray
+      {
+        if side.isVisible
         {
-          if side.isVisible
-          {
-            let indicesSide = side.indicesArray(addValue: h * 5)
-
-            let indexDataSide = Data(bytes: indicesSide,
-                                     count: MemoryLayout<CInt>.size * indicesSide.count)
-            let elementSide = SCNGeometryElement(data: indexDataSide,
-                                                 primitiveType: .triangles,
-                                                 primitiveCount: indicesSide.count / 3,
-                                                 bytesPerIndex: MemoryLayout<CInt>.size)
-            globalElements.append(elementSide)
-            normals = normals + side.normalsArray()
-            indices = indices + indicesSide
-            vertexPositions += side.positions
-
-            globalColors = globalColors + side.colors
-            h += 1
-          }
+          let indicesSide = side.indicesArray(addValue: h * 5)
+          
+          let indexDataSide = Data(bytes: indicesSide,
+                                   count: MemoryLayout<CInt>.size * indicesSide.count)
+          let elementSide = SCNGeometryElement(data: indexDataSide,
+                                               primitiveType: .triangles,
+                                               primitiveCount: indicesSide.count / 3,
+                                               bytesPerIndex: MemoryLayout<CInt>.size)
+          globalElements.append(elementSide)
+          indices = indices + indicesSide
+          vertexPositions += side.positions
+          
+          globalColors = globalColors + side.colors
+          h += 1
         }
-
-        globalPositions = globalPositions + hexahedron.positions
-        let normals2 = [
-          SCNVector3Make( 1, 1, 1),
-          SCNVector3Make( 1, 1, 1),
-          SCNVector3Make( 1, 1, 1),
-          SCNVector3Make( 1, 1, 1),
-          SCNVector3Make( 1, 1, 1),
-          SCNVector3Make( 1, 1, 1),
-          SCNVector3Make( 1, 1, 1),
-          SCNVector3Make( 1, 1, 1),
-          //
-          SCNVector3Make( 1, 1, 1),
-          SCNVector3Make( 1, 1, 1),
-          SCNVector3Make( 1, 1, 1),
-          SCNVector3Make( 1, 1, 1),
-          SCNVector3Make( 1, 1, 1),
-          SCNVector3Make( 1, 1, 1),
-          ]
-
-        globalNormals = globalNormals + normals2
-        let addValue = j * 8
-        globalIndicies = globalIndicies + indices
-        let indicesCarcas = [
-          0 + addValue, 1 + addValue,
-          0 + addValue, 2 + addValue,
-          0 + addValue, 4 + addValue,
-          1 + addValue, 3 + addValue,
-          2 + addValue, 3 + addValue,
-          1 + addValue, 5 + addValue,
-          4 + addValue, 5 + addValue,
-          2 + addValue, 6 + addValue,
-          4 + addValue, 6 + addValue,
-          6 + addValue, 7 + addValue,
-          3 + addValue, 7 + addValue,
-          5 + addValue, 7 + addValue,
-          ] as [CInt]
-        globalIndiciesCarcas = globalIndiciesCarcas + indicesCarcas
-        j = j + 1
+      }
+      
+      globalPositions = globalPositions + hexahedron.positions
+      
+      let addValue = j * 8
+      globalIndicies = globalIndicies + indices
+      let indicesCarcas = [
+        0 + addValue, 1 + addValue,
+        0 + addValue, 2 + addValue,
+        0 + addValue, 4 + addValue,
+        1 + addValue, 3 + addValue,
+        2 + addValue, 3 + addValue,
+        1 + addValue, 5 + addValue,
+        4 + addValue, 5 + addValue,
+        2 + addValue, 6 + addValue,
+        4 + addValue, 6 + addValue,
+        6 + addValue, 7 + addValue,
+        3 + addValue, 7 + addValue,
+        5 + addValue, 7 + addValue,
+        ] as [CInt]
+      globalIndiciesCarcas = globalIndiciesCarcas + indicesCarcas
+      j = j + 1
     }
 
     let positionSource = SCNGeometrySource(vertices: globalPositions)
     let vertexSource = SCNGeometrySource(vertices: vertexPositions)
-    let normalSource = SCNGeometrySource(normals: globalNormals)
 
     let dataColor = NSData(bytes: globalColors,
                            length: MemoryLayout<SCNVector3>.size * globalColors.count) as Data
@@ -222,7 +199,6 @@ class MAGCustomGeometryView: SCNView
                                    dataOffset: 0,
                                    dataStride: MemoryLayout<SCNVector3>.stride)
 
-    // let geometry = SCNGeometry(sources: [vertexSource, normalSource, colors],
     let geometry = SCNGeometry(sources: [vertexSource, colors],
                                elements: globalElements)
     let cubeNode = SCNNode(geometry: geometry)
@@ -297,7 +273,6 @@ class MAGCustomGeometryView: SCNView
   {
     var globalPositions : [SCNVector3] = []
     var globalIndicies : [CInt] = []
-    var globalElements : [SCNGeometryElement] = []
  
     var h: Int = 0
     for vectorsArray in self.model.chartsData {
@@ -335,9 +310,7 @@ class MAGCustomGeometryView: SCNView
   // использовать только для тестирования чего-либо
   private func drawPlayground()
   {
-    var globalPositions: [SCNVector3] = []
     var globalElements: [SCNGeometryElement] = []
-    var globalIndices: [CInt] = []
     var globalColors: [SCNVector3] = []
     
     var vertexPositions: [SCNVector3] = []

@@ -49,12 +49,6 @@ class MAGSide: NSObject
     self.isVisibleByMaterial = isVisibleByMaterial
     
     self.positions.append(MAGSide.getCenterFor(first: positions[0], second: positions[2]))
-    
-//    self.positions.append(MAGSide.getCenterFor(first: positions[0], second: positions[1]))
-//    self.positions.append(MAGSide.getCenterFor(first: positions[0], second: positions[3]))
-//    self.positions.append(MAGSide.getCenterFor(first: positions[1], second: positions[2]))
-//    self.positions.append(MAGSide.getCenterFor(first: positions[2], second: positions[3]))
-    
    }
    
    static func getCenterFor(first: SCNVector3, second: SCNVector3) -> SCNVector3
@@ -64,67 +58,6 @@ class MAGSide: NSObject
       let z: Float = (first.z + second.z) / 2
       return SCNVector3Make(x, y, z)
    }
-   
-   func normalsArray() -> [SCNVector3]
-   {
-      switch positionType
-      {
-      case .Left:
-         return [SCNVector3Make(-1, 0, 0),
-                 SCNVector3Make(-1, 0, 0),
-                 SCNVector3Make(-1, 0, 0),
-                 SCNVector3Make(-1, 0, 0)]
-         
-      case .Front:
-         return [SCNVector3Make(0, 1, 0),
-                 SCNVector3Make(0, 1, 0),
-                 SCNVector3Make(0, 1, 0),
-                 SCNVector3Make(0, 1, 0)]
-         
-      case .Bottom:
-         return [SCNVector3Make( 0, 0, -1),
-                 SCNVector3Make( 0, 0, -1),
-                 SCNVector3Make( 0, 0, -1),
-                 SCNVector3Make( 0, 0, -1)]
-         
-      case .Right:
-         return [SCNVector3Make( 1, 0, 0),
-                 SCNVector3Make( 1, 0, 0),
-                 SCNVector3Make( 1, 0, 0),
-                 SCNVector3Make( 1, 0, 0)]
-         
-      case .Back:
-         return [SCNVector3Make( 0, -1, 0),
-                 SCNVector3Make( 0, -1, 0),
-                 SCNVector3Make( 0, -1, 0),
-                 SCNVector3Make( 0, -1, 0)]
-         
-      case .Top:
-         return [SCNVector3Make( 0, 0, 1),
-                 SCNVector3Make( 0, 0, 1),
-                 SCNVector3Make( 0, 0, 1),
-                 SCNVector3Make( 0, 0, 1)]
-      }
-   }
-  
-  
-//  func indicesArray(addValue: Int32) -> [Int32]
-//  {
-//    return [0 + addValue, 6 + addValue, 5 + addValue,
-//            6 + addValue, 4 + addValue, 5 + addValue,
-//            5 + addValue, 4 + addValue, 1 + addValue,
-//            4 + addValue, 7 + addValue, 1 + addValue,
-//            6 + addValue, 3 + addValue, 4 + addValue,
-//            3 + addValue, 8 + addValue, 4 + addValue,
-//            4 + addValue, 8 + addValue, 7 + addValue,
-//            8 + addValue, 2 + addValue, 7 + addValue]
-//  }
-  
-//  func indicesArray(addValue: Int32) -> [Int32]
-//  {
-//    return [0 + addValue, 3 + addValue, 1 + addValue,
-//            3 + addValue, 2 + addValue, 1 + addValue]
-//  }
   
    func indicesArray(addValue: Int32) -> [Int32]
    {

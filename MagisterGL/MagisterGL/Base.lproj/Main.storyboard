@@ -79,6 +79,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="pLb-T7-t2i" id="88x-Hj-C7m"/>
+                        <segue destination="4eP-Fj-frX" kind="show" identifier="fu" id="9vN-QK-JAt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J9m-tx-Ybg" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -208,6 +209,7 @@
         <!--Navigation Controller-->
         <scene sceneID="txZ-Fp-wAU">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="neh-R0-Ljn" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController id="4eP-Fj-frX" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="KY8-Et-Bod">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -217,9 +219,8 @@
                         <segue destination="fc5-rN-1wo" kind="relationship" relationship="rootViewController" id="qhX-bz-NlY"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="neh-R0-Ljn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4128" y="1355"/>
+            <point key="canvasLocation" x="-3829" y="1492"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="BAt-HF-GMA">
@@ -375,7 +376,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FhZ-SY-XXy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3103.1999999999998" y="2266.4167916041979"/>
+            <point key="canvasLocation" x="-3164" y="2318"/>
         </scene>
         <!--Choose Field View Controller-->
         <scene sceneID="KsT-X3-BJl">
@@ -425,7 +426,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0nC-Ob-YZN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2334" y="2266"/>
+            <point key="canvasLocation" x="-2711" y="2318"/>
         </scene>
         <!--Choose Material View Controller-->
         <scene sceneID="WFh-Sb-JLE">
@@ -475,7 +476,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3ih-cA-scq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1527" y="2267"/>
+            <point key="canvasLocation" x="-2260" y="2318"/>
         </scene>
         <!--GoogleTableVC-->
         <scene sceneID="ufs-6q-peo">

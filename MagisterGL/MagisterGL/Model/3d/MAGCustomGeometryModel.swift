@@ -278,15 +278,6 @@ class MAGCustomGeometryModel: NSObject
       self.crossSection = crossSection
     }
 
-    //let crossSection: MAGCrossSection = MAGCrossSection(plane: .Y, value: -4000 / xyzCalc, greater: false)
-   
-    
-//    self.colorGenerator.generateColor(minValue: self.colorGenerator.uFunc(x: Double(minVector.x),
-//                                                                          y: Double(minVector.y),
-//                                                                          z: Double(minVector.z)),
-//                                      maxValue: self.colorGenerator.uFunc(x: Double(maxVector.x),
-//                                                                          y: Double(maxVector.y),
-//                                                                          z: Double(maxVector.z)))
     var XYZValuesArray: [Double] = []
     if showFieldNumber != -1
     {
@@ -487,7 +478,8 @@ class MAGCustomGeometryModel: NSObject
   // TODO: Надо сделать цвета кастомизируемыми(хотя бы из файла).
   private func getColor(material: Int) -> SCNVector3
   {
-    switch material {
+    switch material
+    {
     case 0:
       return SCNVector3(0.5, 0, 0)
     case 1:
