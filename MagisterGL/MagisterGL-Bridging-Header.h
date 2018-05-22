@@ -3,3 +3,5 @@
 //
 #import "MAGGoogleDriveProvider.h"
 #import "MAGLocalFileManager.h"
+
+#import "MAGcFileManager.h"

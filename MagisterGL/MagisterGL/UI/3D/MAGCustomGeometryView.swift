@@ -111,6 +111,10 @@ class MAGCustomGeometryView: SCNView
     let scaleVector = SCNVector3(self.model.scaleValue, self.model.scaleValue, self.model.scaleValue)
     borderCubeNode.scale = scaleVector
     self.scene?.rootNode.addChildNode(borderCubeNode)
+    
+    
+    var fm = MAGcFileManager()
+    fm.test()
   }
   
   private func drawModel()

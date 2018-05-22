@@ -47,6 +47,7 @@
 		84743BBE2084F455007049C6 /* MAGProjectsModels.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 84743BBC2084F455007049C6 /* MAGProjectsModels.xcdatamodeld */; };
 		84792E6220B47A7E00885EEC /* MAGChartsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84792E6120B47A7E00885EEC /* MAGChartsData.swift */; };
 		84792E6420B47F3C00885EEC /* MAGRecieversFuncGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84792E6320B47F3C00885EEC /* MAGRecieversFuncGenerator.swift */; };
+		84792E6920B4913600885EEC /* MAGcFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84792E6820B4913600885EEC /* MAGcFileManager.m */; };
 		992685A973168ED57CDB8564 /* Pods_MagisterGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DA4F8BFD9D8D310D40705BF /* Pods_MagisterGL.framework */; };
 		9A05AA3A20AC3A2500F44AE5 /* v3.t1.txt in Resources */ = {isa = PBXBuildFile; fileRef = 9A05AA3920AC3A2500F44AE5 /* v3.t1.txt */; };
 		9A05AA3D20AC4C9800F44AE5 /* MAGChooseFieldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A05AA3C20AC4C9800F44AE5 /* MAGChooseFieldViewController.swift */; };
@@ -122,6 +123,8 @@
 		84743BBD2084F455007049C6 /* MAGProjectsModels.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MAGProjectsModels.xcdatamodel; sourceTree = "<group>"; };
 		84792E6120B47A7E00885EEC /* MAGChartsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAGChartsData.swift; sourceTree = "<group>"; };
 		84792E6320B47F3C00885EEC /* MAGRecieversFuncGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAGRecieversFuncGenerator.swift; sourceTree = "<group>"; };
+		84792E6720B4913600885EEC /* MAGcFileManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MAGcFileManager.h; sourceTree = "<group>"; };
+		84792E6820B4913600885EEC /* MAGcFileManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MAGcFileManager.m; sourceTree = "<group>"; };
 		8CAFC11BF7FD19D8CB4C5EF8 /* Pods-MagisterGL.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MagisterGL.release.xcconfig"; path = "Pods/Target Support Files/Pods-MagisterGL/Pods-MagisterGL.release.xcconfig"; sourceTree = "<group>"; };
 		9A05AA3920AC3A2500F44AE5 /* v3.t1.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = v3.t1.txt; sourceTree = "<group>"; };
 		9A05AA3C20AC4C9800F44AE5 /* MAGChooseFieldViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAGChooseFieldViewController.swift; sourceTree = "<group>"; };
@@ -304,8 +307,18 @@
 		84792E6520B48F2300885EEC /* MagisterSceneObjC */ = {
 			isa = PBXGroup;
 			children = (
+				84792E6620B4911C00885EEC /* FileManager */,
 			);
 			path = MagisterSceneObjC;
+			sourceTree = "<group>";
+		};
+		84792E6620B4911C00885EEC /* FileManager */ = {
+			isa = PBXGroup;
+			children = (
+				84792E6720B4913600885EEC /* MAGcFileManager.h */,
+				84792E6820B4913600885EEC /* MAGcFileManager.m */,
+			);
+			path = FileManager;
 			sourceTree = "<group>";
 		};
 		9A05AA3B20AC4C1000F44AE5 /* ChooseField */ = {
@@ -651,6 +664,7 @@
 				84743BBE2084F455007049C6 /* MAGProjectsModels.xcdatamodeld in Sources */,
 				843D004F209B521000B824CF /* MAGChooseSectionViewController.swift in Sources */,
 				846C260D20A1BF9C0049A6B6 /* MAGMaterial.swift in Sources */,
+				84792E6920B4913600885EEC /* MAGcFileManager.m in Sources */,
 				9AF322EA1F7A7FE4003AE463 /* MAG3DViewController.swift in Sources */,
 				843FFE82208792E700B717D2 /* MAGColorGenerator.swift in Sources */,
 				9A4B279D1F91EA8900068550 /* MAGBinaryDataScanner.swift in Sources */,
