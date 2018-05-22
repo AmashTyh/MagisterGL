@@ -275,7 +275,7 @@ class MAGCustomGeometryView: SCNView
     var globalIndicies : [CInt] = []
  
     var h: Int = 0
-    for vectorsArray in self.model.chartsData {
+    for vectorsArray in self.model.chartsData.chartsValues {
       for vector in vectorsArray {
         globalPositions.append(vector)
       }

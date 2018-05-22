@@ -40,7 +40,7 @@ class MAGCustomGeometryModel: NSObject
   var crossSection: MAGCrossSection?
   var sig3dArray: [[Double]] = []
   var profileArray: [SCNVector3] = []
-  var chartsData: [[SCNVector3]] = []
+  var chartsData: MAGChartsData = MAGChartsData()
   
   var receiversSurface: [MAGTriangleElement] = []
   
@@ -109,7 +109,6 @@ class MAGCustomGeometryModel: NSObject
     if profileArray.count > 0
     {
       createReceiverSurface()
-      createChartsData()
     }
   }
   
@@ -130,10 +129,11 @@ class MAGCustomGeometryModel: NSObject
     var uValueArray: [Float] = []
     for vector in receiversArraySortedByXY
     {
-      uValueArray.append(Float(colorGenerator.uFunc(x: Double(vector.x),
-                                                    y: Double(vector.y),
-                                                    z: Double(vector.z))))
+      uValueArray.append(Float(MAGRecieversFuncGenerator.uFunc(x: Double(vector.x),
+                                                               y: Double(vector.y),
+                                                               z: Double(vector.z))))
     }
+    
     let minValue = uValueArray.min { (first, second) -> Bool in
       return first < second
       }!
@@ -220,29 +220,14 @@ class MAGCustomGeometryModel: NSObject
       }
     }
     self.receiversSurface = trinaglesArray
-    self.chartsData = receivers
-  }
-  
-  func createChartsData()
-  {
-    var resultChartsPoints: [[SCNVector3]] = []
-    var tempPoints: [SCNVector3] = []
-
-    let colorGenerator = MAGColorGenerator()
-    for chartsLine in chartsData
-    {
-      tempPoints = []
-      for vector in chartsLine
-      {
-        tempPoints.append(SCNVector3Make(vector.x,
-                                         vector.y,
-                                         Float(colorGenerator.uFunc(x: Double(vector.x),
-                                                                    y: Double(vector.y),
-                                                                    z: Double(vector.z)))))
-      }
-      resultChartsPoints.append(tempPoints)
-    }
-    self.chartsData = resultChartsPoints
+ 
+    
+    self.chartsData.minZValue = profileArray.min { (first, second) -> Bool in
+      return first.z < second.z
+      }!.z
+    self.chartsData.minUValue = minValue
+    self.chartsData.maxUValue = maxValue
+    self.chartsData.updateZValueChartsData(sortedReceivers: receivers)
   }
   
   func createElementsArray()

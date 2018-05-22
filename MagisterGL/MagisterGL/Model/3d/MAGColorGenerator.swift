@@ -48,13 +48,13 @@ class MAGColorGenerator: NSObject
       }
    }
    
-   func uFunc(x: Double,
-              y: Double,
-              z: Double) -> Double
-   {
-      return (x + y) / 10
-   }
-   
+//   func uFunc(x: Double,
+//              y: Double,
+//              z: Double) -> Double
+//   {
+//      return (x + y) / 10
+//   }
+  
    func getColorForU(u: Double) -> SCNVector3
    {
       var i = 0
@@ -71,7 +71,7 @@ class MAGColorGenerator: NSObject
       for vertex in vertexes {
          var i = 0
          while i < MAGColorGenerator.kCountOfColorAreas - 1
-            && self.uFunc(x: Double(vertex.x), y: Double(vertex.y), z: Double(vertex.z)) >= rainbow[i + 1].value
+            && MAGRecieversFuncGenerator.uFunc(x: Double(vertex.x), y: Double(vertex.y), z: Double(vertex.z)) >= rainbow[i + 1].value
          {
             i += 1
          }

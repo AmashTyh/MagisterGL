@@ -45,6 +45,8 @@
 		84743BB82084E6E4007049C6 /* MAGProjectTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84743BB62084E6E4007049C6 /* MAGProjectTableViewCell.xib */; };
 		84743BBA2084EB16007049C6 /* MAGCreateProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84743BB92084EB16007049C6 /* MAGCreateProjectViewController.swift */; };
 		84743BBE2084F455007049C6 /* MAGProjectsModels.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 84743BBC2084F455007049C6 /* MAGProjectsModels.xcdatamodeld */; };
+		84792E6220B47A7E00885EEC /* MAGChartsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84792E6120B47A7E00885EEC /* MAGChartsData.swift */; };
+		84792E6420B47F3C00885EEC /* MAGRecieversFuncGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84792E6320B47F3C00885EEC /* MAGRecieversFuncGenerator.swift */; };
 		992685A973168ED57CDB8564 /* Pods_MagisterGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DA4F8BFD9D8D310D40705BF /* Pods_MagisterGL.framework */; };
 		9A05AA3A20AC3A2500F44AE5 /* v3.t1.txt in Resources */ = {isa = PBXBuildFile; fileRef = 9A05AA3920AC3A2500F44AE5 /* v3.t1.txt */; };
 		9A05AA3D20AC4C9800F44AE5 /* MAGChooseFieldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A05AA3C20AC4C9800F44AE5 /* MAGChooseFieldViewController.swift */; };
@@ -118,6 +120,8 @@
 		84743BB62084E6E4007049C6 /* MAGProjectTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MAGProjectTableViewCell.xib; sourceTree = "<group>"; };
 		84743BB92084EB16007049C6 /* MAGCreateProjectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAGCreateProjectViewController.swift; sourceTree = "<group>"; };
 		84743BBD2084F455007049C6 /* MAGProjectsModels.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MAGProjectsModels.xcdatamodel; sourceTree = "<group>"; };
+		84792E6120B47A7E00885EEC /* MAGChartsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAGChartsData.swift; sourceTree = "<group>"; };
+		84792E6320B47F3C00885EEC /* MAGRecieversFuncGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAGRecieversFuncGenerator.swift; sourceTree = "<group>"; };
 		8CAFC11BF7FD19D8CB4C5EF8 /* Pods-MagisterGL.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MagisterGL.release.xcconfig"; path = "Pods/Target Support Files/Pods-MagisterGL/Pods-MagisterGL.release.xcconfig"; sourceTree = "<group>"; };
 		9A05AA3920AC3A2500F44AE5 /* v3.t1.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = v3.t1.txt; sourceTree = "<group>"; };
 		9A05AA3C20AC4C9800F44AE5 /* MAGChooseFieldViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAGChooseFieldViewController.swift; sourceTree = "<group>"; };
@@ -186,6 +190,8 @@
 			isa = PBXGroup;
 			children = (
 				8432FC3120AC8C7D00930CB9 /* MAGTriangleElement.swift */,
+				84792E6320B47F3C00885EEC /* MAGRecieversFuncGenerator.swift */,
+				84792E6120B47A7E00885EEC /* MAGChartsData.swift */,
 			);
 			path = ReceiversSurface;
 			sourceTree = "<group>";
@@ -644,6 +650,7 @@
 				84743BAD2084DEB6007049C6 /* MAGLocalViewController.swift in Sources */,
 				9AE615691F8A009D0067893C /* MAGFileManager.swift in Sources */,
 				9AF585412086069E00A90D2D /* MAGProjectFileAddTableViewCellObject.swift in Sources */,
+				84792E6420B47F3C00885EEC /* MAGRecieversFuncGenerator.swift in Sources */,
 				9ADE1EBC1EED062B006D409E /* AppDelegate.swift in Sources */,
 				84743BBA2084EB16007049C6 /* MAGCreateProjectViewController.swift in Sources */,
 				846C260B20A1B7400049A6B6 /* MAGChooseMaterialViewController.swift in Sources */,
@@ -658,6 +665,7 @@
 				9AE615701F8A07250067893C /* MAGCustomGeometryModel.swift in Sources */,
 				8432FC3220AC8C7D00930CB9 /* MAGTriangleElement.swift in Sources */,
 				84743BB02084E572007049C6 /* MAGProjectsViewController.swift in Sources */,
+				84792E6220B47A7E00885EEC /* MAGChartsData.swift in Sources */,
 				84743BB42084E6BF007049C6 /* MAGProjectCellObject.swift in Sources */,
 				9A05AA3D20AC4C9800F44AE5 /* MAGChooseFieldViewController.swift in Sources */,
 				9AE6156E1F8A03B00067893C /* MAGHexahedron.swift in Sources */,
@@ -814,6 +822,7 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -832,6 +841,7 @@
 				SWIFT_OBJC_BRIDGING_HEADER = "MagisterGL/GoogleDrive/Model/MagisterGL-Bridging-Header.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
