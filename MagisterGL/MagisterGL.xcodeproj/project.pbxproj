@@ -265,7 +265,6 @@
 			children = (
 				84743BA22084DC7F007049C6 /* MAGGoogleDriveProvider.h */,
 				84743BA32084DC7F007049C6 /* MAGGoogleDriveProvider.m */,
-				84743BA12084DC7F007049C6 /* MagisterGL-Bridging-Header.h */,
 				84743BA52084DD3B007049C6 /* MAGLocalFileManager.h */,
 				84743BA62084DD3B007049C6 /* MAGLocalFileManager.m */,
 			);
@@ -302,6 +301,13 @@
 			path = CoreData;
 			sourceTree = "<group>";
 		};
+		84792E6520B48F2300885EEC /* MagisterSceneObjC */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = MagisterSceneObjC;
+			sourceTree = "<group>";
+		};
 		9A05AA3B20AC4C1000F44AE5 /* ChooseField */ = {
 			isa = PBXGroup;
 			children = (
@@ -336,6 +342,8 @@
 		9ADE1EAF1EED062B006D409E = {
 			isa = PBXGroup;
 			children = (
+				84743BA12084DC7F007049C6 /* MagisterGL-Bridging-Header.h */,
+				84792E6520B48F2300885EEC /* MagisterSceneObjC */,
 				9ADE1EBA1EED062B006D409E /* MagisterGL */,
 				9ADE1EB91EED062B006D409E /* Products */,
 				2854FD8E6A50C2C39CFD0B70 /* Pods */,
@@ -818,7 +826,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = taa.MagisterGL;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "MagisterGL/GoogleDrive/Model/MagisterGL-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "MagisterGL-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
@@ -838,7 +846,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = taa.MagisterGL;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "MagisterGL/GoogleDrive/Model/MagisterGL-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "MagisterGL-Bridging-Header.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
