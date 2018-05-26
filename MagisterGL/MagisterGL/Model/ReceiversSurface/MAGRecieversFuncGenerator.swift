@@ -14,7 +14,7 @@ class MAGRecieversFuncGenerator: NSObject
                     y: Double,
                     z: Double) -> Double
   {
-    return x + y
+    return x*x + y*y
   }
   
   // написать функцию для чтения значений из файла

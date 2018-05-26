@@ -222,11 +222,15 @@ class MAGCustomGeometryModel: NSObject
     self.receiversSurface = trinaglesArray
  
     
-    self.chartsData.minZValue = profileArray.min { (first, second) -> Bool in
+    self.chartsData.maxZValue = profileArray.max { (first, second) -> Bool in
       return first.z < second.z
       }!.z
     self.chartsData.minUValue = minValue
     self.chartsData.maxUValue = maxValue
+    self.chartsData.maxZModel = xyzArray.max { (first, second) -> Bool in
+      return first.z < second.z
+      }!.z
+
     self.chartsData.updateZValueChartsData(sortedReceivers: receivers)
   }
   

@@ -5,11 +5,15 @@ class MAGChartsData: NSObject
 {
   var minUValue: Float = 0.0
   var maxUValue: Float = 0.0
+  
+  var maxZModel: Float = 0.0
+  
   var receivers: [[SCNVector3]] = []
   var chartsValues: [[SCNVector3]] = []
   
-  var minZValue: Float = 0.0
-  private var delta: Float = 0.0
+  var maxZValue: Float = 0.0
+ 
+  var delta: Float = 0.0
   
   
   func updateZValueChartsData(sortedReceivers: [[SCNVector3]])
@@ -19,9 +23,12 @@ class MAGChartsData: NSObject
     var resultChartsPoints: [[SCNVector3]] = []
     var tempPoints: [SCNVector3] = []
     
-    if (minZValue > minUValue) {
-      delta = fabsf(minUValue) + fabsf(minZValue)
+    if (maxZValue > minUValue) {
+      delta = fabsf(minUValue) + fabsf(maxZValue)
     }
+//    else {
+//      delta = minUValue - minZValue
+//    }
     
     for chartsLine in receivers
     {
@@ -32,16 +39,15 @@ class MAGChartsData: NSObject
                                          vector.y,
                                          Float(MAGRecieversFuncGenerator.uFunc(x: Double(vector.x),
                                                                                y: Double(vector.y),
-                                                                               z: Double(vector.z))) + delta))
+                                                                               z: Double(vector.z)))))
       }
       resultChartsPoints.append(tempPoints)
     }
-    
-
-    
-    
-    
-    
     chartsValues = resultChartsPoints
+  }
+  
+  func generateScaleParameter() -> Float
+  {
+    return (maxZModel - maxZValue) / (maxUValue - minUValue)
   }
 }

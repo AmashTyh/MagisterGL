@@ -54,6 +54,7 @@ class MAGCustomGeometryView: SCNView
     let camera = SCNCamera()
     //camera.xFov = 10
     //camera.yFov = 45
+    //camera.usesOrthographicProjection = true
     
     let cameraNode = SCNNode()
     cameraNode.camera = camera
@@ -83,6 +84,7 @@ class MAGCustomGeometryView: SCNView
     drawReceiversSurface()
 
     drawReceiversCharts()
+    //drawReceiversChartsAxis()
   }
   
   private func drawReceivers()
@@ -275,8 +277,16 @@ class MAGCustomGeometryView: SCNView
     var globalIndicies : [CInt] = []
  
     var h: Int = 0
+    let scaleCharts = self.model.chartsData.generateScaleParameter()
+    let delta = self.model.chartsData.minUValue*scaleCharts - self.model.chartsData.maxZValue
     for vectorsArray in self.model.chartsData.chartsValues {
-      for vector in vectorsArray {
+      for var vector in vectorsArray {
+        if (scaleCharts < 1) {
+          vector.z = vector.z * scaleCharts - delta
+        }
+        else {
+          vector.z = vector.z + self.model.chartsData.delta
+        }
         globalPositions.append(vector)
       }
       for i in 0..<vectorsArray.count - 1 {
@@ -285,7 +295,6 @@ class MAGCustomGeometryView: SCNView
       }
       h += vectorsArray.count
     }
-    
     
     
     let positionSource = SCNGeometrySource(vertices: globalPositions)
@@ -299,13 +308,63 @@ class MAGCustomGeometryView: SCNView
     
     let geometryLines = SCNGeometry(sources: [positionSource],
                                      elements: [linesElement])
-    geometryLines.firstMaterial?.diffuse.contents = UIColor.red
+    geometryLines.firstMaterial?.diffuse.contents = UIColor.magenta
     let chartsNode = SCNNode(geometry: geometryLines)
     let scaleVector = SCNVector3(self.model.scaleValue, self.model.scaleValue, self.model.scaleValue)
     chartsNode.scale = scaleVector
     self.scene?.rootNode.addChildNode(chartsNode)
   }
   
+  private func drawReceiversChartsAxis()
+  {
+    var globalPositions : [SCNVector3] = []
+    var globalIndicies : [CInt] = []
+    
+    var h: Int = 0
+
+    for vectorsArray in self.model.chartsData.chartsValues {
+      for var vector in vectorsArray {
+        vector.z = self.model.chartsData.maxZValue
+        globalPositions.append(vector)
+      }
+      for i in 0..<vectorsArray.count - 1 {
+        globalIndicies.append(CInt(i + h))
+        globalIndicies.append(CInt(i + h + 1))
+      }
+      h += vectorsArray.count
+    }
+    
+    
+    let positionSource = SCNGeometrySource(vertices: globalPositions)
+    
+    let indexData = Data(bytes: globalIndicies,
+                         count: MemoryLayout<CInt>.size * globalIndicies.count)
+    let linesElement = SCNGeometryElement(data: indexData,
+                                          primitiveType: .line,
+                                          primitiveCount: globalIndicies.count / 2,
+                                          bytesPerIndex: MemoryLayout<CInt>.size)
+    
+    let geometryLines = SCNGeometry(sources: [positionSource],
+                                    elements: [linesElement])
+    geometryLines.firstMaterial?.diffuse.contents = UIColor.white
+    let chartsNode = SCNNode(geometry: geometryLines)
+    let scaleVector = SCNVector3(self.model.scaleValue, self.model.scaleValue, self.model.scaleValue)
+    chartsNode.scale = scaleVector
+    self.scene?.rootNode.addChildNode(chartsNode)
+    
+    
+//    if (!self.model.profileArray.isEmpty) {
+//      let text = SCNText(string: String(MAGRecieversFuncGenerator.uFunc(x: Double(globalPositions.first!.x), y: Double(globalPositions.first!.y), z: Double(globalPositions.first!.z))), extrusionDepth: 0.2)
+//      text.font = UIFont.systemFont(ofSize: 204)
+//
+//      let textNode = SCNNode(geometry: text)
+//      textNode.position = globalPositions.first!
+//      textNode.scale = scaleVector
+//
+//      textNode.rotation = SCNVector4Make(-1, 0, 0, Float.pi/2)
+//      self.scene?.rootNode.addChildNode(textNode)
+//    }
+  }
   
   // использовать только для тестирования чего-либо
   private func drawPlayground()
