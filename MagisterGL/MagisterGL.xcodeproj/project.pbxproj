@@ -47,6 +47,8 @@
 		84743BBE2084F455007049C6 /* MAGProjectsModels.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 84743BBC2084F455007049C6 /* MAGProjectsModels.xcdatamodeld */; };
 		84792E6220B47A7E00885EEC /* MAGChartsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84792E6120B47A7E00885EEC /* MAGChartsData.swift */; };
 		84792E6420B47F3C00885EEC /* MAGRecieversFuncGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84792E6320B47F3C00885EEC /* MAGRecieversFuncGenerator.swift */; };
+		84F6C0FE20BC7E6B00793BEE /* profile.txt in Resources */ = {isa = PBXBuildFile; fileRef = 84F6C0FC20BC7E6A00793BEE /* profile.txt */; };
+		84F6C0FF20BC7E6B00793BEE /* sig3d.txt in Resources */ = {isa = PBXBuildFile; fileRef = 84F6C0FD20BC7E6B00793BEE /* sig3d.txt */; };
 		992685A973168ED57CDB8564 /* Pods_MagisterGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DA4F8BFD9D8D310D40705BF /* Pods_MagisterGL.framework */; };
 		9A05AA3A20AC3A2500F44AE5 /* v3.t1.txt in Resources */ = {isa = PBXBuildFile; fileRef = 9A05AA3920AC3A2500F44AE5 /* v3.t1.txt */; };
 		9A05AA3D20AC4C9800F44AE5 /* MAGChooseFieldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A05AA3C20AC4C9800F44AE5 /* MAGChooseFieldViewController.swift */; };
@@ -122,6 +124,8 @@
 		84743BBD2084F455007049C6 /* MAGProjectsModels.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MAGProjectsModels.xcdatamodel; sourceTree = "<group>"; };
 		84792E6120B47A7E00885EEC /* MAGChartsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAGChartsData.swift; sourceTree = "<group>"; };
 		84792E6320B47F3C00885EEC /* MAGRecieversFuncGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAGRecieversFuncGenerator.swift; sourceTree = "<group>"; };
+		84F6C0FC20BC7E6A00793BEE /* profile.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = profile.txt; sourceTree = "<group>"; };
+		84F6C0FD20BC7E6B00793BEE /* sig3d.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = sig3d.txt; sourceTree = "<group>"; };
 		8CAFC11BF7FD19D8CB4C5EF8 /* Pods-MagisterGL.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MagisterGL.release.xcconfig"; path = "Pods/Target Support Files/Pods-MagisterGL/Pods-MagisterGL.release.xcconfig"; sourceTree = "<group>"; };
 		9A05AA3920AC3A2500F44AE5 /* v3.t1.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = v3.t1.txt; sourceTree = "<group>"; };
 		9A05AA3C20AC4C9800F44AE5 /* MAGChooseFieldViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAGChooseFieldViewController.swift; sourceTree = "<group>"; };
@@ -437,6 +441,8 @@
 		9AE615711F8A09FB0067893C /* Test1 */ = {
 			isa = PBXGroup;
 			children = (
+				84F6C0FC20BC7E6A00793BEE /* profile.txt */,
+				84F6C0FD20BC7E6B00793BEE /* sig3d.txt */,
 				9AE615721F8A0A0D0067893C /* elem_neib.txt */,
 				9AE615741F8A0A0E0067893C /* nver.txt */,
 				9AE615751F8A0A0E0067893C /* nvkat.txt */,
@@ -542,6 +548,7 @@
 				9AE6157C1F8A1A920067893C /* nver.dat in Resources */,
 				843777A820A334E0009B1BE0 /* xyz5.dat in Resources */,
 				843777A920A334E0009B1BE0 /* profile5 in Resources */,
+				84F6C0FE20BC7E6B00793BEE /* profile.txt in Resources */,
 				9AE6157D1F8A1A920067893C /* nvkat.dat in Resources */,
 				9AE6157E1F8A1A920067893C /* xyz.dat in Resources */,
 				8437778720A331C5009B1BE0 /* nvkat4.dat in Resources */,
@@ -562,6 +569,7 @@
 				9ADE1EC11EED062B006D409E /* Main.storyboard in Resources */,
 				843777A620A334E0009B1BE0 /* elem_neib5 in Resources */,
 				84541B101FB0AD2300DC6E43 /* nvkat2.txt in Resources */,
+				84F6C0FF20BC7E6B00793BEE /* sig3d.txt in Resources */,
 				84541B0D1FB0AD2300DC6E43 /* elem_neib2.txt in Resources */,
 				9A05AA3A20AC3A2500F44AE5 /* v3.t1.txt in Resources */,
 				843777A720A334E0009B1BE0 /* nver5.dat in Resources */,
