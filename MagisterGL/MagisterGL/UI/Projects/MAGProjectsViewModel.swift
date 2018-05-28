@@ -19,7 +19,8 @@ class MAGProjectsViewModel: NSObject
     
     let container = NSPersistentContainer(name: "MAGProjectsModels")
     container.loadPersistentStores(completionHandler: { (storeDescription, error) in
-      if let error = error as NSError? {
+      if let error = error as NSError?
+      {
       }
     })
     return container
@@ -57,7 +58,12 @@ class MAGProjectsViewModel: NSObject
                   elemNeibPath: String,
                   sigma3dPath: String,
                   profilePath: String,
-                  v3FilePathsArray: Data,
+                  bxFilePathsArray: Data,
+                  byFilePathsArray: Data,
+                  bzFilePathsArray: Data,
+                  jxFilePathsArray: Data,
+                  jyFilePathsArray: Data,
+                  jzFilePathsArray: Data,
                   isLocal: Bool)
   {
     let newEntity = NSEntityDescription.insertNewObject(forEntityName: "MAGProject",
@@ -71,7 +77,14 @@ class MAGProjectsViewModel: NSObject
     newEntity.sigma3dPath = sigma3dPath
     newEntity.profilePath = profilePath
     newEntity.isLocal = isLocal
-    newEntity.v3FilePathsArray = v3FilePathsArray
+    
+    newEntity.bxFilePathsArray = bxFilePathsArray
+    newEntity.byFilePathsArray = byFilePathsArray
+    newEntity.bzFilePathsArray = bzFilePathsArray
+
+    newEntity.jxFilePathsArray = jxFilePathsArray
+    newEntity.jyFilePathsArray = jyFilePathsArray
+    newEntity.jzFilePathsArray = jzFilePathsArray
     
     do
     {
@@ -80,6 +93,6 @@ class MAGProjectsViewModel: NSObject
     catch
     {
     }
-  }
 
+  }
 }
