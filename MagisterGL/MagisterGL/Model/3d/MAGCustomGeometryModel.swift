@@ -41,6 +41,9 @@ class MAGCustomGeometryModel: NSObject
   var sig3dArray: [[Double]] = []
   var profileArray: [SCNVector3] = []
   var chartsData: MAGChartsData = MAGChartsData()
+  var edsallArray: [[Float: Float]] = []
+  
+  var timeSlices: [Float] = []
   
   var receiversSurface: [MAGTriangleElement] = []
   
@@ -56,6 +59,19 @@ class MAGCustomGeometryModel: NSObject
     neibArray = self.fileManager.getNEIBArray(path: documentsPath + project.elemNeibFilePath!)
     sig3dArray = self.fileManager.getSig3dArray(path: documentsPath + project.sigma3dPath!)
     profileArray = self.fileManager.getProfileArray(path: documentsPath + project.profilePath!)
+    
+    let edsallPath = Bundle.main.path(forResource: "edsall05",
+                                      ofType: "")!
+    edsallArray = self.fileManager.getEdsallArray(path: edsallPath)
+    for key in edsallArray[0].keys {
+      timeSlices.append(key)
+    }
+    timeSlices.sort { (v1, v2) -> Bool in
+      if v1 < v2 {
+        return true
+      }
+      return false
+    }
     
     //v3 array
     let decodedArray = NSKeyedUnarchiver.unarchiveObject(with: project.v3FilePathsArray!) as? [String]

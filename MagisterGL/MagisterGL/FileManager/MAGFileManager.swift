@@ -339,4 +339,40 @@ class MAGFileManager: NSObject
     }
     return []
   }
+  
+  func getEdsallArray(path: String) -> [[Float: Float]]
+  {
+    var num: Int = 0
+    var result: [[Float: Float]] = []
+    do {
+      let data = try String(contentsOfFile: path,
+                            encoding: String.Encoding.ascii)
+      //var arrayOfVectors: [SCNVector3]? = []
+      var dictionaryOfReceiver: [Float: Float] = [:]
+      for string in data.components(separatedBy: "\n") {
+        if string != "" {
+          let array = string.components(separatedBy: "\t")
+          if array.count == 4 {
+            dictionaryOfReceiver[Float(array[0])!] = Float(array[3].components(separatedBy: "\r")[0])!
+          }
+          else {
+            if string.contains("element") {
+              if (num != 0) {
+                result.append(dictionaryOfReceiver)
+              }   
+              num += 1
+            }
+          }
+        }
+      }
+      result.append(dictionaryOfReceiver)
+      return result
+      
+    }
+    catch let err as NSError
+    {
+      print(err)
+    }
+    return []
+  }
 }

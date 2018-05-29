@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		840D4EA120B2F6A500E9DF5C /* v3_3.t1.txt in Resources */ = {isa = PBXBuildFile; fileRef = 840D4EA020B2F6A400E9DF5C /* v3_3.t1.txt */; };
 		840D4EA320B2FC6900E9DF5C /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840D4EA220B2FC6900E9DF5C /* Color.swift */; };
+		841C358F20BDBB2D0046E4AC /* edsall05 in Resources */ = {isa = PBXBuildFile; fileRef = 841C358E20BDBB2C0046E4AC /* edsall05 */; };
 		8432FC3220AC8C7D00930CB9 /* MAGTriangleElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8432FC3120AC8C7D00930CB9 /* MAGTriangleElement.swift */; };
 		8437778620A331C5009B1BE0 /* xyz4.dat in Resources */ = {isa = PBXBuildFile; fileRef = 8437777E20A331C5009B1BE0 /* xyz4.dat */; };
 		8437778720A331C5009B1BE0 /* nvkat4.dat in Resources */ = {isa = PBXBuildFile; fileRef = 8437777F20A331C5009B1BE0 /* nvkat4.dat */; };
@@ -83,6 +84,7 @@
 		6DA4F8BFD9D8D310D40705BF /* Pods_MagisterGL.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MagisterGL.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		840D4EA020B2F6A400E9DF5C /* v3_3.t1.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = v3_3.t1.txt; sourceTree = "<group>"; };
 		840D4EA220B2FC6900E9DF5C /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		841C358E20BDBB2C0046E4AC /* edsall05 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = edsall05; sourceTree = "<group>"; };
 		8432FC3120AC8C7D00930CB9 /* MAGTriangleElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAGTriangleElement.swift; sourceTree = "<group>"; };
 		8437777E20A331C5009B1BE0 /* xyz4.dat */ = {isa = PBXFileReference; lastKnownFileType = file; path = xyz4.dat; sourceTree = "<group>"; };
 		8437777F20A331C5009B1BE0 /* nvkat4.dat */ = {isa = PBXFileReference; lastKnownFileType = file; path = nvkat4.dat; sourceTree = "<group>"; };
@@ -217,6 +219,7 @@
 		8437777C20A33177009B1BE0 /* Test5 */ = {
 			isa = PBXGroup;
 			children = (
+				841C358E20BDBB2C0046E4AC /* edsall05 */,
 				8437779E20A334DF009B1BE0 /* elem_neib5 */,
 				8437779D20A334DF009B1BE0 /* inftry5.dat */,
 				8437779F20A334DF009B1BE0 /* nver5.dat */,
@@ -558,6 +561,7 @@
 				9AE615781F8A10FF0067893C /* nvkat.txt in Resources */,
 				9AF5853D2086053000A90D2D /* MAGProjectFileAddTableViewCell.xib in Resources */,
 				8437778920A331C5009B1BE0 /* nver4.dat in Resources */,
+				841C358F20BDBB2D0046E4AC /* edsall05 in Resources */,
 				84541B0E1FB0AD2300DC6E43 /* xyz2.txt in Resources */,
 				843777AA20A334E0009B1BE0 /* nvkat5.dat in Resources */,
 				9AE615791F8A10FF0067893C /* xyz.txt in Resources */,
