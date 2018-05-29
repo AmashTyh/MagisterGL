@@ -64,6 +64,7 @@ class MAGColorGenerator: NSObject
       }
       return rainbow[i].colorVector;
    }
+  
    
    func getColorsFor(vertexes: [SCNVector3]) -> [SCNVector3]
    {
@@ -79,4 +80,19 @@ class MAGColorGenerator: NSObject
       }
       return colors
    }
+  
+  func getColorsFor(values: [Float]) -> [SCNVector3]
+  {
+    var colors: [SCNVector3] = []
+    for u in values {
+      var i = 0
+      while i < MAGColorGenerator.kCountOfColorAreas - 1
+        && Double(u) >= rainbow[i + 1].value
+      {
+        i += 1
+      }
+      colors.append(rainbow[i].colorVector)
+    }
+    return colors
+  }
 }

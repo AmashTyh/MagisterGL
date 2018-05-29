@@ -81,36 +81,39 @@ class MAGCustomGeometryView: SCNView
     drawReceivers()
     drawModel()
     drawReceiversSurface()
-
     drawReceiversCharts()
   }
   
   private func drawReceivers()
   {
-    var globalIndicies : [CInt] = []
-    for i in 0..<self.model.profileArray.count
-    {
-      globalIndicies.append(CInt(i))
+    if (self.model.profileArray.count != 0) {
+    
+      
+      
+      var globalIndicies : [CInt] = []
+      for i in 0..<self.model.profileArray.count {
+        globalIndicies.append(CInt(i))
+      }
+      let globalPositions : [SCNVector3] = self.model.profileArray
+      let positionSource = SCNGeometrySource(vertices: globalPositions)
+      let indexDataCarcas = Data(bytes: globalIndicies,
+                                 count: MemoryLayout<CInt>.size * globalIndicies.count)
+      let elementBorder = SCNGeometryElement(data: indexDataCarcas,
+                                             primitiveType: .point,
+                                             primitiveCount: globalIndicies.count,
+                                             bytesPerIndex: MemoryLayout<CInt>.size)
+      let pointSize: CGFloat = 5.0
+      elementBorder.pointSize = pointSize
+      elementBorder.minimumPointScreenSpaceRadius = pointSize
+      elementBorder.maximumPointScreenSpaceRadius = pointSize
+      let geometryBorder = SCNGeometry(sources: [positionSource],
+                                       elements: [elementBorder])
+      geometryBorder.firstMaterial?.diffuse.contents = UIColor.red
+      let borderCubeNode = SCNNode(geometry: geometryBorder)
+      let scaleVector = SCNVector3(self.model.scaleValue, self.model.scaleValue, self.model.scaleValue)
+      borderCubeNode.scale = scaleVector
+      self.scene?.rootNode.addChildNode(borderCubeNode)
     }
-    let globalPositions : [SCNVector3] = self.model.profileArray
-    let positionSource = SCNGeometrySource(vertices: globalPositions)
-    let indexDataCarcas = Data(bytes: globalIndicies,
-                               count: MemoryLayout<CInt>.size * globalIndicies.count)
-    let elementBorder = SCNGeometryElement(data: indexDataCarcas,
-                                           primitiveType: .point,
-                                           primitiveCount: globalIndicies.count,
-                                           bytesPerIndex: MemoryLayout<CInt>.size)
-    let pointSize: CGFloat = 5.0
-    elementBorder.pointSize = pointSize
-    elementBorder.minimumPointScreenSpaceRadius = pointSize
-    elementBorder.maximumPointScreenSpaceRadius = pointSize
-    let geometryBorder = SCNGeometry(sources: [positionSource],
-                                     elements: [elementBorder])
-    geometryBorder.firstMaterial?.diffuse.contents = UIColor.red
-    let borderCubeNode = SCNNode(geometry: geometryBorder)
-    let scaleVector = SCNVector3(self.model.scaleValue, self.model.scaleValue, self.model.scaleValue)
-    borderCubeNode.scale = scaleVector
-    self.scene?.rootNode.addChildNode(borderCubeNode)
   }
   
   private func drawModel()
