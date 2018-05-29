@@ -195,7 +195,7 @@ class MAGCustomGeometryModel: NSObject
     var h = 0
     for i in 0..<receivers.count {
       for j in 0..<receivers[i].count {
-        lineNumArray.append(h)
+        lineNumArray.append(self.profileArray.count - 1 - h)
         h += 1
       }
       numberArray.append(lineNumArray)
