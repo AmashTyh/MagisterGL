@@ -75,7 +75,7 @@ class MAGCreateProjectViewController: UIViewController,
     let googleDriceVC = storyboard.instantiateViewController(withIdentifier: "MAGGoogleTableViewController") as! MAGGoogleTableViewController
     googleDriceVC.completion = {
       obj in
-      cellObject.filePath = obj
+      cellObject.filePathArray.append(obj)
       self.tableView.reloadData()
       /*
        Сохранить файл в документах
