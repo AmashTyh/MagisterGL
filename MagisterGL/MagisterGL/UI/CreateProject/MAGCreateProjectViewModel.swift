@@ -21,30 +21,30 @@ class MAGCreateProjectViewModel: NSObject
   {    
     var array: [MAGProjectFileAddTableViewCellObject] = []
     array.append(MAGProjectFileAddTableViewCellObject(name: "nver",
-                                                      filePath: ""))
+                                                      filePathArray: []))
     array.append(MAGProjectFileAddTableViewCellObject(name: "xyz",
-                                                      filePath: ""))
+                                                      filePathArray: []))
     array.append(MAGProjectFileAddTableViewCellObject(name: "nvkat",
-                                                      filePath: ""))
+                                                      filePathArray: []))
     array.append(MAGProjectFileAddTableViewCellObject(name: "elem_neib",
-                                                      filePath: ""))
+                                                      filePathArray: []))
     array.append(MAGProjectFileAddTableViewCellObject(name: "sig3d",
-                                                      filePath: ""))
-    array.append(MAGProjectFileAddTableViewCellObject(name: "profile",
-                                                      filePath: ""))
+                                                      filePathArray: []))
+    array.append(MAGProjectFileAddTableViewCellObject(name: "fileds",
+                                                      filePathArray: []))
     cellObjects = array
   }
   
   func createProject()
   {
     coreDataHelper.addProject(name: self.name!,
-                              nverPath: self.cellObjects[0].filePath,
-                              xyzPath: self.cellObjects[1].filePath,
-                              nvkatPath: self.cellObjects[2].filePath,
-                              elemNeibPath: self.cellObjects[3].filePath,
-                              sigma3dPath: self.cellObjects[4].filePath,
-                              profilePath: self.cellObjects[5].filePath,
-                              v3FilePathsArray: NSKeyedArchiver.archivedData(withRootObject: [""]),
+                              nverPath: self.cellObjects[0].filePathArray.first!,
+                              xyzPath: self.cellObjects[1].filePathArray.first!,
+                              nvkatPath: self.cellObjects[2].filePathArray.first!,
+                              elemNeibPath: self.cellObjects[3].filePathArray.first!,
+                              sigma3dPath: self.cellObjects[4].filePathArray.first!,
+                              profilePath: "",
+                              v3FilePathsArray: NSKeyedArchiver.archivedData(withRootObject: self.cellObjects[5].filePathArray),
                               isLocal: false)
   }
 }
