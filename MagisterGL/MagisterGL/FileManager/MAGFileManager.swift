@@ -75,19 +75,7 @@ class MAGFileManager: NSObject
     do
     {
       let fileExtension = URL(fileURLWithPath: path).pathExtension
-      if  fileExtension == "dat"
-      {
-        let scaner = try MAGBinaryDataScanner(data: NSData(contentsOfFile: path),
-                                              littleEndian: true,
-                                              encoding: String.Encoding.ascii)
-        var array: [Double]? = []
-        while let value = scaner.readDouble()
-        {
-          array?.append(value)
-        }
-        return array!
-      }
-      else
+      if  fileExtension == "txt"
       {
         let data = try String(contentsOfFile: path,
                               encoding: String.Encoding.ascii)
@@ -100,6 +88,18 @@ class MAGFileManager: NSObject
           }
         }
         return array
+      }
+      else
+      {
+        let scaner = try MAGBinaryDataScanner(data: NSData(contentsOfFile: path),
+                                              littleEndian: true,
+                                              encoding: String.Encoding.ascii)
+        var array: [Double]? = []
+        while let value = scaner.readDouble()
+        {
+          array?.append(value)
+        }
+        return array!
       }
     }
     catch let err as NSError
