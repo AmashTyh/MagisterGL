@@ -83,6 +83,7 @@ class MAGCustomGeometryView: SCNView
     drawReceiversSurface()
 
     drawReceiversCharts()
+    drawAsix()
   }
   
   private func drawReceivers()
@@ -219,6 +220,45 @@ class MAGCustomGeometryView: SCNView
     let borderCubeNode = SCNNode(geometry: geometryBorder)
     borderCubeNode.scale = scaleVector
     self.scene?.rootNode.addChildNode(borderCubeNode)
+  }
+  
+  //MARK: Draw asix
+  
+  func drawAsix()
+  {
+    drawAsixX()
+    drawAsixY()
+    drawAsixZ()
+  }
+  
+  func drawAsixX()
+  {
+    let geometry = SCNGeometry.lineFrom(vector: SCNVector3Make(0, 0, 0), toVector: SCNVector3Make(self.model.maxVector.x * 1.3, 0, 0))
+    let modelNode = SCNNode(geometry: geometry)
+    geometry.firstMaterial?.diffuse.contents = UIColor.red
+    let scaleVector = SCNVector3(self.model.scaleValue, self.model.scaleValue, self.model.scaleValue)
+    modelNode.scale = scaleVector
+    self.scene?.rootNode.addChildNode(modelNode)
+  }
+  
+  func drawAsixY()
+  {
+    let geometry = SCNGeometry.lineFrom(vector: SCNVector3Make(0, 0, 0), toVector: SCNVector3Make(0, self.model.maxVector.y * 1.3, 0))
+    let modelNode = SCNNode(geometry: geometry)
+    geometry.firstMaterial?.diffuse.contents = UIColor.green
+    let scaleVector = SCNVector3(self.model.scaleValue, self.model.scaleValue, self.model.scaleValue)
+    modelNode.scale = scaleVector
+    self.scene?.rootNode.addChildNode(modelNode)
+  }
+  
+  func drawAsixZ()
+  {
+    let geometry = SCNGeometry.lineFrom(vector: SCNVector3Make(0, 0, 0), toVector: SCNVector3Make(0, 0, self.model.maxVector.z * 1.3))
+    let modelNode = SCNNode(geometry: geometry)
+    geometry.firstMaterial?.diffuse.contents = UIColor.blue
+    let scaleVector = SCNVector3(self.model.scaleValue, self.model.scaleValue, self.model.scaleValue)
+    modelNode.scale = scaleVector
+    self.scene?.rootNode.addChildNode(modelNode)
   }
   
   private func drawReceiversSurface()
@@ -368,5 +408,22 @@ class MAGCustomGeometryView: SCNView
                                elements: globalElements)
     let modelNode = SCNNode(geometry: geometry)
     self.scene?.rootNode.addChildNode(modelNode)
+  }
+}
+
+extension SCNGeometry
+{
+  class func lineFrom(vector vector1: SCNVector3, toVector vector2: SCNVector3) -> SCNGeometry
+  {
+    let indices: [Int32] = [0, 1]
+    
+    let source = SCNGeometrySource(vertices: [vector1,
+                                              vector2])
+    let element = SCNGeometryElement(indices: indices,
+                                     primitiveType: .line)
+    let geometry = SCNGeometry(sources: [source],
+                               elements: [element])
+    geometry.firstMaterial?.lightingModel = SCNMaterial.LightingModel.constant
+    return geometry
   }
 }
