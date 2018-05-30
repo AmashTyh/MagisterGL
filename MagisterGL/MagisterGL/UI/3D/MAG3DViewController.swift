@@ -62,15 +62,15 @@ class MAG3DViewController: UIViewController,
       vc.selectedMaterials = self.customGeometryView.model.selectedMaterials
       vc.popoverPresentationController?.delegate = self
     }
-    else if segue.destination.isKind(of: MAGChooseFieldViewController.self)
-    {
-      let vc = segue.destination as! MAGChooseFieldViewController
-      vc.delegate = self
-      vc.showFieldNumber = self.customGeometryView.model.showFieldNumber
-      let decodedArray = NSKeyedUnarchiver.unarchiveObject(with: (self.customGeometryView.model.project?.v3FilePathsArray!)!) as? [String]
-      vc.availableFields = decodedArray!
-      vc.popoverPresentationController?.delegate = self
-    }
+//    else if segue.destination.isKind(of: MAGChooseFieldViewController.self)
+//    {
+//      let vc = segue.destination as! MAGChooseFieldViewController
+//      vc.delegate = self
+//      vc.showFieldNumber = self.customGeometryView.model.showFieldNumber
+//      let decodedArray = NSKeyedUnarchiver.unarchiveObject(with: (self.customGeometryView.model.project?.v3FilePathsArray!)!) as? [String]
+//      vc.availableFields = decodedArray!
+//      vc.popoverPresentationController?.delegate = self
+//    }
   }
   
   //MARK: SCNSceneRendererDelegate

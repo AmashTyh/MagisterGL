@@ -80,17 +80,14 @@ class MAGCustomGeometryModel: NSObject
                                   ofType: "")!
     rnArray = self.fileManager.getRnArray(path: rnPath)
     
-    //v3 array
-    let decodedArray = NSKeyedUnarchiver.unarchiveObject(with: project.v3FilePathsArray!) as? [String]
-    for v3FilePath in decodedArray!
+    //Rn array
+    let decodedArray = NSKeyedUnarchiver.unarchiveObject(with: project.rnArrayPathsArray!) as? [String]
+    for rnArrayFilePath in decodedArray!
     {
-      let XYZValuesArray = self.fileManager.getXYZValuesArray(path: documentsPath + v3FilePath)
-      if XYZValuesArray.count > 0
-      {
-        self.fieldsArray.append(XYZValuesArray)
-      }
+      let rnArrayTmp = self.fileManager.getRnArray(path: documentsPath + rnArrayFilePath)
+      
     }
-    
+  
     if sig3dArray.count > 0
     {
       //TODO: http://nshipster.com/kvc-collection-operators/

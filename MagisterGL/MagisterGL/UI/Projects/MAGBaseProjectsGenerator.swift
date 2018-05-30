@@ -30,7 +30,7 @@ class MAGBaseProjectsGenerator: NSObject
                          elemNeibPath: "elem_neib.txt",
                          sigma3dPath: "sig3d.txt",
                          profilePath: "profile.txt",
-                         v3FilePathsArray: NSKeyedArchiver.archivedData(withRootObject: ["v3.t1.txt", "v3.t2.txt"]),
+                         rnArrayPathsArray: NSKeyedArchiver.archivedData(withRootObject: []),
                          isLocal: true)
     viewModel.addProject(name: "Test 2",
                          nverPath: "nver2.txt",
@@ -39,7 +39,7 @@ class MAGBaseProjectsGenerator: NSObject
                          elemNeibPath: "elem_neib2.txt",
                          sigma3dPath: "",
                          profilePath: "",
-                         v3FilePathsArray: NSKeyedArchiver.archivedData(withRootObject: [""]),
+                         rnArrayPathsArray: NSKeyedArchiver.archivedData(withRootObject: []),
                          isLocal: true)
     viewModel.addProject(name: "Test 3",
                          nverPath: "nver.dat",
@@ -48,7 +48,7 @@ class MAGBaseProjectsGenerator: NSObject
                          elemNeibPath: "elem_neib",
                          sigma3dPath: "",
                          profilePath: "",
-                         v3FilePathsArray: NSKeyedArchiver.archivedData(withRootObject: ["v3_3.t1.txt"]),
+                         rnArrayPathsArray: NSKeyedArchiver.archivedData(withRootObject: []),
                          isLocal: true)
     viewModel.addProject(name: "Test 4",
                          nverPath: "nver4.dat",
@@ -57,7 +57,7 @@ class MAGBaseProjectsGenerator: NSObject
                          elemNeibPath: "elem_neib4",
                          sigma3dPath: "Sig3d4",
                          profilePath: "profile4",
-                         v3FilePathsArray: NSKeyedArchiver.archivedData(withRootObject: [""]),
+                         rnArrayPathsArray: NSKeyedArchiver.archivedData(withRootObject: []),
                          isLocal: true)
     viewModel.addProject(name: "Test 5",
                          nverPath: "nver5.dat",
@@ -66,7 +66,11 @@ class MAGBaseProjectsGenerator: NSObject
                          elemNeibPath: "elem_neib5",
                          sigma3dPath: "Sig3d5",
                          profilePath: "profile5",
-                         v3FilePathsArray: NSKeyedArchiver.archivedData(withRootObject: [""]),
+                         rnArrayPathsArray: NSKeyedArchiver.archivedData(withRootObject: ["1.Rn.5",
+                                                                                          "2.Rn.5",
+                                                                                          "3.Rn.5",
+                                                                                          "4.Rn.5",
+                                                                                          "5.Rn.5"]),
                          isLocal: true)
     UserDefaults.standard.set("true",
                               forKey: baseProjectsGeneratedKey)
