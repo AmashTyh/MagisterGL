@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		840D4EA120B2F6A500E9DF5C /* v3_3.t1.txt in Resources */ = {isa = PBXBuildFile; fileRef = 840D4EA020B2F6A400E9DF5C /* v3_3.t1.txt */; };
 		840D4EA320B2FC6900E9DF5C /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840D4EA220B2FC6900E9DF5C /* Color.swift */; };
+		8416C38B20BE906D00295F91 /* 5.Rn.5 in Resources */ = {isa = PBXBuildFile; fileRef = 8416C38620BE906C00295F91 /* 5.Rn.5 */; };
+		8416C38C20BE906D00295F91 /* 1.Rn.5 in Resources */ = {isa = PBXBuildFile; fileRef = 8416C38720BE906C00295F91 /* 1.Rn.5 */; };
+		8416C38D20BE906D00295F91 /* 4.Rn.5 in Resources */ = {isa = PBXBuildFile; fileRef = 8416C38820BE906C00295F91 /* 4.Rn.5 */; };
+		8416C38E20BE906D00295F91 /* 2.Rn.5 in Resources */ = {isa = PBXBuildFile; fileRef = 8416C38920BE906D00295F91 /* 2.Rn.5 */; };
+		8416C38F20BE906D00295F91 /* 3.Rn.5 in Resources */ = {isa = PBXBuildFile; fileRef = 8416C38A20BE906D00295F91 /* 3.Rn.5 */; };
 		841C358F20BDBB2D0046E4AC /* edsall05 in Resources */ = {isa = PBXBuildFile; fileRef = 841C358E20BDBB2C0046E4AC /* edsall05 */; };
 		8432FC3220AC8C7D00930CB9 /* MAGTriangleElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8432FC3120AC8C7D00930CB9 /* MAGTriangleElement.swift */; };
 		8437778620A331C5009B1BE0 /* xyz4.dat in Resources */ = {isa = PBXBuildFile; fileRef = 8437777E20A331C5009B1BE0 /* xyz4.dat */; };
@@ -84,6 +89,11 @@
 		6DA4F8BFD9D8D310D40705BF /* Pods_MagisterGL.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MagisterGL.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		840D4EA020B2F6A400E9DF5C /* v3_3.t1.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = v3_3.t1.txt; sourceTree = "<group>"; };
 		840D4EA220B2FC6900E9DF5C /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		8416C38620BE906C00295F91 /* 5.Rn.5 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 5.Rn.5; sourceTree = "<group>"; };
+		8416C38720BE906C00295F91 /* 1.Rn.5 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 1.Rn.5; sourceTree = "<group>"; };
+		8416C38820BE906C00295F91 /* 4.Rn.5 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 4.Rn.5; sourceTree = "<group>"; };
+		8416C38920BE906D00295F91 /* 2.Rn.5 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 2.Rn.5; sourceTree = "<group>"; };
+		8416C38A20BE906D00295F91 /* 3.Rn.5 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 3.Rn.5; sourceTree = "<group>"; };
 		841C358E20BDBB2C0046E4AC /* edsall05 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = edsall05; sourceTree = "<group>"; };
 		8432FC3120AC8C7D00930CB9 /* MAGTriangleElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAGTriangleElement.swift; sourceTree = "<group>"; };
 		8437777E20A331C5009B1BE0 /* xyz4.dat */ = {isa = PBXFileReference; lastKnownFileType = file; path = xyz4.dat; sourceTree = "<group>"; };
@@ -219,6 +229,11 @@
 		8437777C20A33177009B1BE0 /* Test5 */ = {
 			isa = PBXGroup;
 			children = (
+				8416C38720BE906C00295F91 /* 1.Rn.5 */,
+				8416C38920BE906D00295F91 /* 2.Rn.5 */,
+				8416C38A20BE906D00295F91 /* 3.Rn.5 */,
+				8416C38820BE906C00295F91 /* 4.Rn.5 */,
+				8416C38620BE906C00295F91 /* 5.Rn.5 */,
 				841C358E20BDBB2C0046E4AC /* edsall05 */,
 				8437779E20A334DF009B1BE0 /* elem_neib5 */,
 				8437779D20A334DF009B1BE0 /* inftry5.dat */,
@@ -541,6 +556,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8416C38C20BE906D00295F91 /* 1.Rn.5 in Resources */,
 				8437778A20A331C5009B1BE0 /* elem_neib4 in Resources */,
 				84541B0F1FB0AD2300DC6E43 /* nver2.txt in Resources */,
 				843777A520A334E0009B1BE0 /* inftry5.dat in Resources */,
@@ -551,6 +567,9 @@
 				9AE6157C1F8A1A920067893C /* nver.dat in Resources */,
 				843777A820A334E0009B1BE0 /* xyz5.dat in Resources */,
 				843777A920A334E0009B1BE0 /* profile5 in Resources */,
+				8416C38E20BE906D00295F91 /* 2.Rn.5 in Resources */,
+				8416C38D20BE906D00295F91 /* 4.Rn.5 in Resources */,
+				8416C38F20BE906D00295F91 /* 3.Rn.5 in Resources */,
 				84F6C0FE20BC7E6B00793BEE /* profile.txt in Resources */,
 				9AE6157D1F8A1A920067893C /* nvkat.dat in Resources */,
 				9AE6157E1F8A1A920067893C /* xyz.dat in Resources */,
@@ -567,6 +586,7 @@
 				9AE615791F8A10FF0067893C /* xyz.txt in Resources */,
 				840D4EA120B2F6A500E9DF5C /* v3_3.t1.txt in Resources */,
 				9A05AA3F20AC508F00F44AE5 /* v3.t2.txt in Resources */,
+				8416C38B20BE906D00295F91 /* 5.Rn.5 in Resources */,
 				9ADE1EC61EED062B006D409E /* LaunchScreen.storyboard in Resources */,
 				9ADE1EC31EED062B006D409E /* Assets.xcassets in Resources */,
 				8437778B20A331C5009B1BE0 /* inftry4.dat in Resources */,

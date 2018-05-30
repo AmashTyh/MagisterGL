@@ -375,4 +375,32 @@ class MAGFileManager: NSObject
     }
     return []
   }
+  
+  func getRnArray(path: String) -> [[Float]]
+  {
+    do
+    {
+      let data = try String(contentsOfFile: path,
+                            encoding: String.Encoding.ascii)
+      var resultArray: [[Float]] = []
+      for string in data.components(separatedBy: "\n")
+      {
+        if string != ""
+        {
+          let array = string.components(separatedBy: "\t")
+          if array.count == 2
+          {
+            resultArray.append([Float(array[0])!, Float(array[1].components(separatedBy: "\r")[0])!])
+          }
+        }
+      }
+      return resultArray
+      
+    }
+    catch let err as NSError
+    {
+      print(err)
+    }
+    return []
+  }
 }
