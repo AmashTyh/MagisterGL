@@ -278,18 +278,18 @@ class MAGCustomGeometryView: SCNView
     var globalIndicies : [CInt] = []
  
     var h: Int = 0
-    let scaleCharts = self.model.chartsData.generateScaleParameter()
+    let scaleCharts = self.model.chartsData.generateScaleParameter()/4
     let delta = self.model.chartsData.minUValue * scaleCharts - self.model.chartsData.maxZValue
     for vectorsArray in self.model.chartsData.chartsValues {
-      for vector in vectorsArray {
-        for var vector in vectorsArray {
-          if (scaleCharts < 1) {
-            vector.z = vector.z * scaleCharts - delta
-          }
-          else {
-            vector.z = vector.z + self.model.chartsData.delta
-          }
+      for var vector in vectorsArray {
+
+        if (scaleCharts < 1) {
+          vector.z = vector.z * scaleCharts - delta
         }
+        else {
+          vector.z = vector.z * scaleCharts + self.model.chartsData.delta
+        }
+
         globalPositions.append(vector)
       }
       for i in 0..<vectorsArray.count - 1 {
@@ -310,7 +310,7 @@ class MAGCustomGeometryView: SCNView
     
     let geometryLines = SCNGeometry(sources: [positionSource],
                                      elements: [linesElement])
-    geometryLines.firstMaterial?.diffuse.contents = UIColor.red
+    geometryLines.firstMaterial?.diffuse.contents = UIColor.black
     let chartsNode = SCNNode(geometry: geometryLines)
     let scaleVector = SCNVector3(self.model.scaleValue, self.model.scaleValue, self.model.scaleValue)
     chartsNode.scale = scaleVector

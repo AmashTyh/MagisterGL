@@ -50,15 +50,23 @@ class MAGChartsData: NSObject
     return (maxZModel - maxZValue) / (maxUValue - minUValue)
   }
   
-  func generateChartsValuesWith(firstReceiver: SCNVector3, rnArray: [[Float]])
+  func generateChartsValuesWith(firstReceiver: SCNVector3, rnArray: [[Float]], maxZValue: Float, maxZModel: Float)
   {
     var chartsValuesLine: [SCNVector3] = []
     for i in 0..<rnArray.count {
       let vector: SCNVector3 = SCNVector3Make(firstReceiver.x + rnArray[i][0], firstReceiver.y, rnArray[i][1])
       chartsValuesLine.append(vector)
     }
+    chartsValues.append(chartsValuesLine)
+    minUValue = rnArray.min(by: { (v1, v2) -> Bool in
+      return v1[1] < v2[1]
+    })![1]
+    maxUValue = rnArray.max(by: { (v1, v2) -> Bool in
+      return v1[1] < v2[1]
+    })![1]
     
-    //minUValue =
+    self.maxZModel = maxZModel
+    self.maxZValue = maxZValue
   }
   
 }

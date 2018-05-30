@@ -42,6 +42,7 @@ class MAGCustomGeometryModel: NSObject
   var profileArray: [SCNVector3] = []
   var chartsData: MAGChartsData = MAGChartsData()
   var edsallArray: [[Float: Float]] = []
+  var rnArray: [[Float]] = []
   
   var timeSlices: [Float] = []
   
@@ -73,6 +74,11 @@ class MAGCustomGeometryModel: NSObject
       }
       return false
     }
+    
+    // Rn array
+    let rnPath = Bundle.main.path(forResource: "1.Rn.5",
+                                  ofType: "")!
+    rnArray = self.fileManager.getRnArray(path: rnPath)
     
     //v3 array
     let decodedArray = NSKeyedUnarchiver.unarchiveObject(with: project.v3FilePathsArray!) as? [String]
@@ -292,15 +298,24 @@ class MAGCustomGeometryModel: NSObject
     self.receiversSurface = trinaglesArray
  
     
-    self.chartsData.maxZValue = profileArray.max { (first, second) -> Bool in
-      return first.z < second.z
-      }!.z
-    self.chartsData.minUValue = minValue
-    self.chartsData.maxUValue = maxValue
-    self.chartsData.maxZModel = xyzArray.max { (first, second) -> Bool in
-      return first.z < second.z
-      }!.z
-    self.chartsData.updateZValueChartsData(sortedReceivers: receivers)
+//    self.chartsData.maxZValue = profileArray.max { (first, second) -> Bool in
+//      return first.z < second.z
+//      }!.z
+//    self.chartsData.minUValue = minValue
+//    self.chartsData.maxUValue = maxValue
+//    self.chartsData.maxZModel = xyzArray.max { (first, second) -> Bool in
+//      return first.z < second.z
+//      }!.z
+//    self.chartsData.updateZValueChartsData(sortedReceivers: receivers)
+    
+    self.chartsData.generateChartsValuesWith(firstReceiver: receivers[0][0],
+                                             rnArray: self.rnArray,
+                                             maxZValue: profileArray.max { (first, second) -> Bool in
+                                              return first.z < second.z
+                                              }!.z,
+                                             maxZModel: xyzArray.max { (first, second) -> Bool in
+                                              return first.z < second.z
+                                              }!.z)
   }
   
   func createElementsArray()
