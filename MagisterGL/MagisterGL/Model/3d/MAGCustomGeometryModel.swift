@@ -62,7 +62,7 @@ class MAGCustomGeometryModel: NSObject
     profileArray = self.fileManager.getProfileArray(path: documentsPath + project.profilePath!)
     
     // edsall array
-    let edsallPath = Bundle.main.path(forResource: "edsall04",
+    let edsallPath = Bundle.main.path(forResource: "edsall05",
                                       ofType: "")!
     edsallArray = self.fileManager.getEdsallArray(path: edsallPath)
     for key in edsallArray[0].keys {
@@ -215,7 +215,7 @@ class MAGCustomGeometryModel: NSObject
       numberArray.append(lineNumArray)
       lineNumArray = []
     }
-    
+/*
     var trinaglesArray: [MAGTriangleElement] = []
  
     for i in 0..<receivers.count - 1 {
@@ -304,8 +304,8 @@ class MAGCustomGeometryModel: NSObject
       }
     }
     self.receiversSurface = trinaglesArray
- 
-    
+ */
+    createTrianglesArray(receivers: receivers, numberArray: numberArray, colorGenerator: colorGenerator)
 //    self.chartsData.maxZValue = profileArray.max { (first, second) -> Bool in
 //      return first.z < second.z
 //      }!.z
@@ -315,6 +315,7 @@ class MAGCustomGeometryModel: NSObject
 //      return first.z < second.z
 //      }!.z
 //    self.chartsData.updateZValueChartsData(sortedReceivers: receivers)
+    
     
     self.chartsData.generateChartsValuesWith(firstReceiver: receivers[0][0],
                                              rnArray: self.rnArray,
@@ -327,6 +328,76 @@ class MAGCustomGeometryModel: NSObject
                                              maxZModel: xyzArray.max { (first, second) -> Bool in
                                               return first.z < second.z
                                               }!.z)
+  }
+  
+  func createTrianglesArray(receivers: [[SCNVector3]], numberArray: [[Int]], colorGenerator: MAGColorGenerator)
+  {
+    let uValueArray: [Float] = generateValuesFromEdsall(key: self.timeSlices[10]) // todo временные слоя
+    var triangleArray: [MAGTriangleElement] = []
+    
+    for i in 0..<receivers.count - 1
+    {
+      if (receivers[i].count >= receivers[i + 1].count) {
+        var j: Int = 0
+        var h0: Int = 0
+        var h: Int = 0
+        while (j < receivers[i + 1].count - 1) {
+          if (j < receivers[i + 1].count - 1)
+          {
+            h0 = h
+            while (h < receivers[i].count && receivers[i][h].x < receivers[i + 1][j + 1].x) {
+              if (h + 1 <= receivers[i].count) {
+                h += 1
+              }
+            }
+            if (h >= receivers[i].count) {
+              h = receivers[i].count - 1
+            }
+            triangleArray.append(MAGTriangleElement(positions: [receivers[i][h0], receivers[i][h], receivers[i + 1][j]],
+                                                    colors: colorGenerator.getColorsFor(values: [uValueArray[numberArray[i][h0]],
+                                                                                                 uValueArray[numberArray[i][h]],
+                                                                                                 uValueArray[numberArray[i + 1][j]]])))
+            triangleArray.append(MAGTriangleElement(positions: [receivers[i][h], receivers[i + 1][j + 1], receivers[i + 1][j]],
+                                                    colors: colorGenerator.getColorsFor(values: [uValueArray[numberArray[i][h]],
+                                                                                                 uValueArray[numberArray[i + 1][j + 1]],
+                                                                                                 uValueArray[numberArray[i + 1][j]]])))
+            
+          }
+          j += 1
+        }
+      }
+      else {
+          var j: Int = 0
+          var h0: Int = 0
+          var h: Int = 0
+          while (j < receivers[i].count - 1) {
+            if (j < receivers[i].count - 1)
+            {
+              h0 = h
+              while (h < receivers[i + 1].count && receivers[i + 1][h].x < receivers[i][j + 1].x) {
+                if (h + 1 <= receivers[i + 1].count) {
+                  h += 1
+                }
+              }
+              if (h >= receivers[i + 1].count) {
+                h = receivers[i + 1].count - 1
+              }
+              triangleArray.append(MAGTriangleElement(positions: [receivers[i][j], receivers[i][j + 1], receivers[i + 1][h0]],
+                                                      colors: colorGenerator.getColorsFor(values: [uValueArray[numberArray[i][j]],
+                                                                                                   uValueArray[numberArray[i][j + 1]],
+                                                                                                   uValueArray[numberArray[i + 1][h0]]])))
+              triangleArray.append(MAGTriangleElement(positions: [receivers[i][j + 1], receivers[i + 1][h], receivers[i + 1][h0]],
+                                                      colors: colorGenerator.getColorsFor(values: [uValueArray[numberArray[i][j + 1]],
+                                                                                                   uValueArray[numberArray[i + 1][h]],
+                                                                                                   uValueArray[numberArray[i + 1][h0]]])))
+              
+            }
+            j += 1
+          }
+      }
+    }
+    
+    self.receiversSurface = triangleArray
   }
   
   func createElementsArray()
