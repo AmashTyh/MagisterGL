@@ -290,12 +290,17 @@ class MAGCustomGeometryView: SCNView
           vector.z = vector.z * scaleCharts + self.model.chartsData.delta
         }
 
+        //vector.z = log(vector.z) + self.model.chartsData.minZValue)
+        
         globalPositions.append(vector)
       }
-      for i in 0..<vectorsArray.count - 1 {
-        globalIndicies.append(CInt(i + h))
-        globalIndicies.append(CInt(i + h + 1))
+      if (vectorsArray.count>=1) {
+        for i in 0..<vectorsArray.count - 1 {
+          globalIndicies.append(CInt(i + h))
+          globalIndicies.append(CInt(i + h + 1))
+        }
       }
+
       h += vectorsArray.count
     }
 

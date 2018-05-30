@@ -62,7 +62,7 @@ class MAGCustomGeometryModel: NSObject
     profileArray = self.fileManager.getProfileArray(path: documentsPath + project.profilePath!)
     
     // edsall array
-    let edsallPath = Bundle.main.path(forResource: "edsall05",
+    let edsallPath = Bundle.main.path(forResource: "edsall04",
                                       ofType: "")!
     edsallArray = self.fileManager.getEdsallArray(path: edsallPath)
     for key in edsallArray[0].keys {
@@ -76,18 +76,19 @@ class MAGCustomGeometryModel: NSObject
     }
     
     // Rn array
-    let rnPath = Bundle.main.path(forResource: "1.Rn.5",
-                                  ofType: "")!
-    rnArray = self.fileManager.getRnArray(path: rnPath)
-    
+//    let rnPath = Bundle.main.path(forResource: "1.Rn.5",
+//                                  ofType: "")!
+//    rnArray = self.fileManager.getRnArray(path: rnPath)
+//    
     //Rn array
     let decodedArray = NSKeyedUnarchiver.unarchiveObject(with: project.rnArrayPathsArray!) as? [String]
     for rnArrayFilePath in decodedArray!
     {
       let rnArrayTmp = self.fileManager.getRnArray(path: documentsPath + rnArrayFilePath)
-      
     }
   
+    rnArray = self.fileManager.getRnArray(path: documentsPath + decodedArray![0])
+    
     if sig3dArray.count > 0
     {
       //TODO: http://nshipster.com/kvc-collection-operators/
@@ -195,10 +196,20 @@ class MAGCustomGeometryModel: NSObject
     var numberArray: [[Int]] = []
     var lineNumArray: [Int] = []
     
+    
+    // todo cравнить первый элемент если разный то  count-1-h, если одинаковый то оставить
+
     var h = 0
     for i in 0..<receivers.count {
-      for j in 0..<receivers[i].count {
-        lineNumArray.append(self.profileArray.count - 1 - h)
+      for _ in 0..<receivers[i].count {
+        if (profileArray[0].x == receivers[0][0].x
+          && profileArray[0].y == receivers[0][0].y
+          && profileArray[0].z == receivers[0][0].z) {
+          lineNumArray.append(h)
+        }
+        else {
+          lineNumArray.append(self.profileArray.count - 1 - h)
+        }
         h += 1
       }
       numberArray.append(lineNumArray)
@@ -307,6 +318,9 @@ class MAGCustomGeometryModel: NSObject
     
     self.chartsData.generateChartsValuesWith(firstReceiver: receivers[0][0],
                                              rnArray: self.rnArray,
+                                             minZValue: profileArray.min { (first, second) -> Bool in
+                                              return first.z < second.z
+                                              }!.z,
                                              maxZValue: profileArray.max { (first, second) -> Bool in
                                               return first.z < second.z
                                               }!.z,

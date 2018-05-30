@@ -9,11 +9,6 @@
 /* Begin PBXBuildFile section */
 		840D4EA120B2F6A500E9DF5C /* v3_3.t1.txt in Resources */ = {isa = PBXBuildFile; fileRef = 840D4EA020B2F6A400E9DF5C /* v3_3.t1.txt */; };
 		840D4EA320B2FC6900E9DF5C /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840D4EA220B2FC6900E9DF5C /* Color.swift */; };
-		8416C38B20BE906D00295F91 /* 5.Rn.5 in Resources */ = {isa = PBXBuildFile; fileRef = 8416C38620BE906C00295F91 /* 5.Rn.5 */; };
-		8416C38C20BE906D00295F91 /* 1.Rn.5 in Resources */ = {isa = PBXBuildFile; fileRef = 8416C38720BE906C00295F91 /* 1.Rn.5 */; };
-		8416C38D20BE906D00295F91 /* 4.Rn.5 in Resources */ = {isa = PBXBuildFile; fileRef = 8416C38820BE906C00295F91 /* 4.Rn.5 */; };
-		8416C38E20BE906D00295F91 /* 2.Rn.5 in Resources */ = {isa = PBXBuildFile; fileRef = 8416C38920BE906D00295F91 /* 2.Rn.5 */; };
-		8416C38F20BE906D00295F91 /* 3.Rn.5 in Resources */ = {isa = PBXBuildFile; fileRef = 8416C38A20BE906D00295F91 /* 3.Rn.5 */; };
 		841C358F20BDBB2D0046E4AC /* edsall05 in Resources */ = {isa = PBXBuildFile; fileRef = 841C358E20BDBB2C0046E4AC /* edsall05 */; };
 		8432FC3220AC8C7D00930CB9 /* MAGTriangleElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8432FC3120AC8C7D00930CB9 /* MAGTriangleElement.swift */; };
 		8437778620A331C5009B1BE0 /* xyz4.dat in Resources */ = {isa = PBXBuildFile; fileRef = 8437777E20A331C5009B1BE0 /* xyz4.dat */; };
@@ -51,8 +46,38 @@
 		84743BB82084E6E4007049C6 /* MAGProjectTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84743BB62084E6E4007049C6 /* MAGProjectTableViewCell.xib */; };
 		84743BBA2084EB16007049C6 /* MAGCreateProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84743BB92084EB16007049C6 /* MAGCreateProjectViewController.swift */; };
 		84743BBE2084F455007049C6 /* MAGProjectsModels.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 84743BBC2084F455007049C6 /* MAGProjectsModels.xcdatamodeld */; };
+		8476CC1D20BF0CAE0044135E /* 3.Rn5.5 in Resources */ = {isa = PBXBuildFile; fileRef = 8476CC1820BF0CAD0044135E /* 3.Rn5.5 */; };
+		8476CC1E20BF0CAE0044135E /* 1.Rn5.5 in Resources */ = {isa = PBXBuildFile; fileRef = 8476CC1920BF0CAE0044135E /* 1.Rn5.5 */; };
+		8476CC1F20BF0CAE0044135E /* 4.Rn5.5 in Resources */ = {isa = PBXBuildFile; fileRef = 8476CC1A20BF0CAE0044135E /* 4.Rn5.5 */; };
+		8476CC2020BF0CAE0044135E /* 5.Rn5.5 in Resources */ = {isa = PBXBuildFile; fileRef = 8476CC1B20BF0CAE0044135E /* 5.Rn5.5 */; };
+		8476CC2120BF0CAE0044135E /* 2.Rn5.5 in Resources */ = {isa = PBXBuildFile; fileRef = 8476CC1C20BF0CAE0044135E /* 2.Rn5.5 */; };
+		8476CC3A20BF0E400044135E /* 1.Rn4.3 in Resources */ = {isa = PBXBuildFile; fileRef = 8476CC2220BF0E3E0044135E /* 1.Rn4.3 */; };
+		8476CC3B20BF0E400044135E /* 3.Rn4.5 in Resources */ = {isa = PBXBuildFile; fileRef = 8476CC2320BF0E3E0044135E /* 3.Rn4.5 */; };
+		8476CC3C20BF0E400044135E /* 3.Rn4.2 in Resources */ = {isa = PBXBuildFile; fileRef = 8476CC2420BF0E3E0044135E /* 3.Rn4.2 */; };
+		8476CC3D20BF0E400044135E /* 1.Rn4.1 in Resources */ = {isa = PBXBuildFile; fileRef = 8476CC2520BF0E3E0044135E /* 1.Rn4.1 */; };
+		8476CC3E20BF0E400044135E /* 2.Rn4.1 in Resources */ = {isa = PBXBuildFile; fileRef = 8476CC2620BF0E3E0044135E /* 2.Rn4.1 */; };
+		8476CC3F20BF0E400044135E /* 3.Rn4.3 in Resources */ = {isa = PBXBuildFile; fileRef = 8476CC2720BF0E3E0044135E /* 3.Rn4.3 */; };
+		8476CC4020BF0E400044135E /* 1.Rn4.4 in Resources */ = {isa = PBXBuildFile; fileRef = 8476CC2820BF0E3E0044135E /* 1.Rn4.4 */; };
+		8476CC4120BF0E400044135E /* 4.Rn4.5 in Resources */ = {isa = PBXBuildFile; fileRef = 8476CC2920BF0E3E0044135E /* 4.Rn4.5 */; };
+		8476CC4220BF0E400044135E /* 1.Rn4.5 in Resources */ = {isa = PBXBuildFile; fileRef = 8476CC2A20BF0E3F0044135E /* 1.Rn4.5 */; };
+		8476CC4320BF0E400044135E /* 3.Rn4.6 in Resources */ = {isa = PBXBuildFile; fileRef = 8476CC2B20BF0E3F0044135E /* 3.Rn4.6 */; };
+		8476CC4420BF0E400044135E /* 4.Rn4.4 in Resources */ = {isa = PBXBuildFile; fileRef = 8476CC2C20BF0E3F0044135E /* 4.Rn4.4 */; };
+		8476CC4520BF0E400044135E /* 4.Rn4.6 in Resources */ = {isa = PBXBuildFile; fileRef = 8476CC2D20BF0E3F0044135E /* 4.Rn4.6 */; };
+		8476CC4620BF0E400044135E /* 4.Rn4.2 in Resources */ = {isa = PBXBuildFile; fileRef = 8476CC2E20BF0E3F0044135E /* 4.Rn4.2 */; };
+		8476CC4720BF0E400044135E /* 1.Rn4.6 in Resources */ = {isa = PBXBuildFile; fileRef = 8476CC2F20BF0E3F0044135E /* 1.Rn4.6 */; };
+		8476CC4820BF0E400044135E /* 1.Rn4.2 in Resources */ = {isa = PBXBuildFile; fileRef = 8476CC3020BF0E3F0044135E /* 1.Rn4.2 */; };
+		8476CC4920BF0E400044135E /* 2.Rn4.2 in Resources */ = {isa = PBXBuildFile; fileRef = 8476CC3120BF0E3F0044135E /* 2.Rn4.2 */; };
+		8476CC4A20BF0E400044135E /* 2.Rn4.4 in Resources */ = {isa = PBXBuildFile; fileRef = 8476CC3220BF0E3F0044135E /* 2.Rn4.4 */; };
+		8476CC4B20BF0E400044135E /* 2.Rn4.5 in Resources */ = {isa = PBXBuildFile; fileRef = 8476CC3320BF0E3F0044135E /* 2.Rn4.5 */; };
+		8476CC4C20BF0E400044135E /* 3.Rn4.4 in Resources */ = {isa = PBXBuildFile; fileRef = 8476CC3420BF0E3F0044135E /* 3.Rn4.4 */; };
+		8476CC4D20BF0E400044135E /* 2.Rn4.6 in Resources */ = {isa = PBXBuildFile; fileRef = 8476CC3520BF0E3F0044135E /* 2.Rn4.6 */; };
+		8476CC4E20BF0E400044135E /* 4.Rn4.3 in Resources */ = {isa = PBXBuildFile; fileRef = 8476CC3620BF0E3F0044135E /* 4.Rn4.3 */; };
+		8476CC4F20BF0E400044135E /* 2.Rn4.3 in Resources */ = {isa = PBXBuildFile; fileRef = 8476CC3720BF0E400044135E /* 2.Rn4.3 */; };
+		8476CC5020BF0E400044135E /* 4.Rn4.1 in Resources */ = {isa = PBXBuildFile; fileRef = 8476CC3820BF0E400044135E /* 4.Rn4.1 */; };
+		8476CC5120BF0E400044135E /* 3.Rn4.1 in Resources */ = {isa = PBXBuildFile; fileRef = 8476CC3920BF0E400044135E /* 3.Rn4.1 */; };
 		84792E6220B47A7E00885EEC /* MAGChartsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84792E6120B47A7E00885EEC /* MAGChartsData.swift */; };
 		84792E6420B47F3C00885EEC /* MAGRecieversFuncGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84792E6320B47F3C00885EEC /* MAGRecieversFuncGenerator.swift */; };
+		84DB3F8E20BECE5300209C2A /* edsall04 in Resources */ = {isa = PBXBuildFile; fileRef = 84DB3F8D20BECE5300209C2A /* edsall04 */; };
 		84F6C0FE20BC7E6B00793BEE /* profile.txt in Resources */ = {isa = PBXBuildFile; fileRef = 84F6C0FC20BC7E6A00793BEE /* profile.txt */; };
 		84F6C0FF20BC7E6B00793BEE /* sig3d.txt in Resources */ = {isa = PBXBuildFile; fileRef = 84F6C0FD20BC7E6B00793BEE /* sig3d.txt */; };
 		992685A973168ED57CDB8564 /* Pods_MagisterGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DA4F8BFD9D8D310D40705BF /* Pods_MagisterGL.framework */; };
@@ -89,11 +114,6 @@
 		6DA4F8BFD9D8D310D40705BF /* Pods_MagisterGL.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MagisterGL.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		840D4EA020B2F6A400E9DF5C /* v3_3.t1.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = v3_3.t1.txt; sourceTree = "<group>"; };
 		840D4EA220B2FC6900E9DF5C /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
-		8416C38620BE906C00295F91 /* 5.Rn.5 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 5.Rn.5; sourceTree = "<group>"; };
-		8416C38720BE906C00295F91 /* 1.Rn.5 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 1.Rn.5; sourceTree = "<group>"; };
-		8416C38820BE906C00295F91 /* 4.Rn.5 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 4.Rn.5; sourceTree = "<group>"; };
-		8416C38920BE906D00295F91 /* 2.Rn.5 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 2.Rn.5; sourceTree = "<group>"; };
-		8416C38A20BE906D00295F91 /* 3.Rn.5 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 3.Rn.5; sourceTree = "<group>"; };
 		841C358E20BDBB2C0046E4AC /* edsall05 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = edsall05; sourceTree = "<group>"; };
 		8432FC3120AC8C7D00930CB9 /* MAGTriangleElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAGTriangleElement.swift; sourceTree = "<group>"; };
 		8437777E20A331C5009B1BE0 /* xyz4.dat */ = {isa = PBXFileReference; lastKnownFileType = file; path = xyz4.dat; sourceTree = "<group>"; };
@@ -134,8 +154,38 @@
 		84743BB62084E6E4007049C6 /* MAGProjectTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MAGProjectTableViewCell.xib; sourceTree = "<group>"; };
 		84743BB92084EB16007049C6 /* MAGCreateProjectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAGCreateProjectViewController.swift; sourceTree = "<group>"; };
 		84743BBD2084F455007049C6 /* MAGProjectsModels.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MAGProjectsModels.xcdatamodel; sourceTree = "<group>"; };
+		8476CC1820BF0CAD0044135E /* 3.Rn5.5 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 3.Rn5.5; sourceTree = "<group>"; };
+		8476CC1920BF0CAE0044135E /* 1.Rn5.5 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 1.Rn5.5; sourceTree = "<group>"; };
+		8476CC1A20BF0CAE0044135E /* 4.Rn5.5 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 4.Rn5.5; sourceTree = "<group>"; };
+		8476CC1B20BF0CAE0044135E /* 5.Rn5.5 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 5.Rn5.5; sourceTree = "<group>"; };
+		8476CC1C20BF0CAE0044135E /* 2.Rn5.5 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 2.Rn5.5; sourceTree = "<group>"; };
+		8476CC2220BF0E3E0044135E /* 1.Rn4.3 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 1.Rn4.3; sourceTree = "<group>"; };
+		8476CC2320BF0E3E0044135E /* 3.Rn4.5 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 3.Rn4.5; sourceTree = "<group>"; };
+		8476CC2420BF0E3E0044135E /* 3.Rn4.2 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 3.Rn4.2; sourceTree = "<group>"; };
+		8476CC2520BF0E3E0044135E /* 1.Rn4.1 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.man; path = 1.Rn4.1; sourceTree = "<group>"; };
+		8476CC2620BF0E3E0044135E /* 2.Rn4.1 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.man; path = 2.Rn4.1; sourceTree = "<group>"; };
+		8476CC2720BF0E3E0044135E /* 3.Rn4.3 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 3.Rn4.3; sourceTree = "<group>"; };
+		8476CC2820BF0E3E0044135E /* 1.Rn4.4 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 1.Rn4.4; sourceTree = "<group>"; };
+		8476CC2920BF0E3E0044135E /* 4.Rn4.5 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 4.Rn4.5; sourceTree = "<group>"; };
+		8476CC2A20BF0E3F0044135E /* 1.Rn4.5 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 1.Rn4.5; sourceTree = "<group>"; };
+		8476CC2B20BF0E3F0044135E /* 3.Rn4.6 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 3.Rn4.6; sourceTree = "<group>"; };
+		8476CC2C20BF0E3F0044135E /* 4.Rn4.4 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 4.Rn4.4; sourceTree = "<group>"; };
+		8476CC2D20BF0E3F0044135E /* 4.Rn4.6 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 4.Rn4.6; sourceTree = "<group>"; };
+		8476CC2E20BF0E3F0044135E /* 4.Rn4.2 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 4.Rn4.2; sourceTree = "<group>"; };
+		8476CC2F20BF0E3F0044135E /* 1.Rn4.6 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 1.Rn4.6; sourceTree = "<group>"; };
+		8476CC3020BF0E3F0044135E /* 1.Rn4.2 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 1.Rn4.2; sourceTree = "<group>"; };
+		8476CC3120BF0E3F0044135E /* 2.Rn4.2 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 2.Rn4.2; sourceTree = "<group>"; };
+		8476CC3220BF0E3F0044135E /* 2.Rn4.4 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 2.Rn4.4; sourceTree = "<group>"; };
+		8476CC3320BF0E3F0044135E /* 2.Rn4.5 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 2.Rn4.5; sourceTree = "<group>"; };
+		8476CC3420BF0E3F0044135E /* 3.Rn4.4 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 3.Rn4.4; sourceTree = "<group>"; };
+		8476CC3520BF0E3F0044135E /* 2.Rn4.6 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 2.Rn4.6; sourceTree = "<group>"; };
+		8476CC3620BF0E3F0044135E /* 4.Rn4.3 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 4.Rn4.3; sourceTree = "<group>"; };
+		8476CC3720BF0E400044135E /* 2.Rn4.3 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 2.Rn4.3; sourceTree = "<group>"; };
+		8476CC3820BF0E400044135E /* 4.Rn4.1 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.man; path = 4.Rn4.1; sourceTree = "<group>"; };
+		8476CC3920BF0E400044135E /* 3.Rn4.1 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.man; path = 3.Rn4.1; sourceTree = "<group>"; };
 		84792E6120B47A7E00885EEC /* MAGChartsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAGChartsData.swift; sourceTree = "<group>"; };
 		84792E6320B47F3C00885EEC /* MAGRecieversFuncGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAGRecieversFuncGenerator.swift; sourceTree = "<group>"; };
+		84DB3F8D20BECE5300209C2A /* edsall04 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = edsall04; sourceTree = "<group>"; };
 		84F6C0FC20BC7E6A00793BEE /* profile.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = profile.txt; sourceTree = "<group>"; };
 		84F6C0FD20BC7E6B00793BEE /* sig3d.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = sig3d.txt; sourceTree = "<group>"; };
 		8CAFC11BF7FD19D8CB4C5EF8 /* Pods-MagisterGL.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MagisterGL.release.xcconfig"; path = "Pods/Target Support Files/Pods-MagisterGL/Pods-MagisterGL.release.xcconfig"; sourceTree = "<group>"; };
@@ -215,6 +265,31 @@
 		8437777B20A330FD009B1BE0 /* Test4 */ = {
 			isa = PBXGroup;
 			children = (
+				8476CC2520BF0E3E0044135E /* 1.Rn4.1 */,
+				8476CC3020BF0E3F0044135E /* 1.Rn4.2 */,
+				8476CC2220BF0E3E0044135E /* 1.Rn4.3 */,
+				8476CC2820BF0E3E0044135E /* 1.Rn4.4 */,
+				8476CC2A20BF0E3F0044135E /* 1.Rn4.5 */,
+				8476CC2F20BF0E3F0044135E /* 1.Rn4.6 */,
+				8476CC2620BF0E3E0044135E /* 2.Rn4.1 */,
+				8476CC3120BF0E3F0044135E /* 2.Rn4.2 */,
+				8476CC3720BF0E400044135E /* 2.Rn4.3 */,
+				8476CC3220BF0E3F0044135E /* 2.Rn4.4 */,
+				8476CC3320BF0E3F0044135E /* 2.Rn4.5 */,
+				8476CC3520BF0E3F0044135E /* 2.Rn4.6 */,
+				8476CC3920BF0E400044135E /* 3.Rn4.1 */,
+				8476CC2420BF0E3E0044135E /* 3.Rn4.2 */,
+				8476CC2720BF0E3E0044135E /* 3.Rn4.3 */,
+				8476CC3420BF0E3F0044135E /* 3.Rn4.4 */,
+				8476CC2320BF0E3E0044135E /* 3.Rn4.5 */,
+				8476CC2B20BF0E3F0044135E /* 3.Rn4.6 */,
+				8476CC3820BF0E400044135E /* 4.Rn4.1 */,
+				8476CC2E20BF0E3F0044135E /* 4.Rn4.2 */,
+				8476CC3620BF0E3F0044135E /* 4.Rn4.3 */,
+				8476CC2C20BF0E3F0044135E /* 4.Rn4.4 */,
+				8476CC2920BF0E3E0044135E /* 4.Rn4.5 */,
+				8476CC2D20BF0E3F0044135E /* 4.Rn4.6 */,
+				84DB3F8D20BECE5300209C2A /* edsall04 */,
 				8437778220A331C5009B1BE0 /* elem_neib4 */,
 				8437778320A331C5009B1BE0 /* inftry4.dat */,
 				8437778120A331C5009B1BE0 /* nver4.dat */,
@@ -229,11 +304,11 @@
 		8437777C20A33177009B1BE0 /* Test5 */ = {
 			isa = PBXGroup;
 			children = (
-				8416C38720BE906C00295F91 /* 1.Rn.5 */,
-				8416C38920BE906D00295F91 /* 2.Rn.5 */,
-				8416C38A20BE906D00295F91 /* 3.Rn.5 */,
-				8416C38820BE906C00295F91 /* 4.Rn.5 */,
-				8416C38620BE906C00295F91 /* 5.Rn.5 */,
+				8476CC1920BF0CAE0044135E /* 1.Rn5.5 */,
+				8476CC1C20BF0CAE0044135E /* 2.Rn5.5 */,
+				8476CC1820BF0CAD0044135E /* 3.Rn5.5 */,
+				8476CC1A20BF0CAE0044135E /* 4.Rn5.5 */,
+				8476CC1B20BF0CAE0044135E /* 5.Rn5.5 */,
 				841C358E20BDBB2C0046E4AC /* edsall05 */,
 				8437779E20A334DF009B1BE0 /* elem_neib5 */,
 				8437779D20A334DF009B1BE0 /* inftry5.dat */,
@@ -556,49 +631,74 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8416C38C20BE906D00295F91 /* 1.Rn.5 in Resources */,
+				8476CC4F20BF0E400044135E /* 2.Rn4.3 in Resources */,
+				8476CC2020BF0CAE0044135E /* 5.Rn5.5 in Resources */,
+				8476CC1D20BF0CAE0044135E /* 3.Rn5.5 in Resources */,
 				8437778A20A331C5009B1BE0 /* elem_neib4 in Resources */,
+				8476CC4020BF0E400044135E /* 1.Rn4.4 in Resources */,
 				84541B0F1FB0AD2300DC6E43 /* nver2.txt in Resources */,
 				843777A520A334E0009B1BE0 /* inftry5.dat in Resources */,
+				8476CC4420BF0E400044135E /* 4.Rn4.4 in Resources */,
 				843777AB20A334E0009B1BE0 /* Sig3d5 in Resources */,
 				9AE6157A1F8A1A920067893C /* elem_neib in Resources */,
 				8437778620A331C5009B1BE0 /* xyz4.dat in Resources */,
 				9AE6157B1F8A1A920067893C /* inftry.dat in Resources */,
+				8476CC3D20BF0E400044135E /* 1.Rn4.1 in Resources */,
 				9AE6157C1F8A1A920067893C /* nver.dat in Resources */,
+				8476CC3F20BF0E400044135E /* 3.Rn4.3 in Resources */,
 				843777A820A334E0009B1BE0 /* xyz5.dat in Resources */,
+				8476CC4C20BF0E400044135E /* 3.Rn4.4 in Resources */,
+				8476CC3B20BF0E400044135E /* 3.Rn4.5 in Resources */,
 				843777A920A334E0009B1BE0 /* profile5 in Resources */,
-				8416C38E20BE906D00295F91 /* 2.Rn.5 in Resources */,
-				8416C38D20BE906D00295F91 /* 4.Rn.5 in Resources */,
-				8416C38F20BE906D00295F91 /* 3.Rn.5 in Resources */,
+				8476CC4520BF0E400044135E /* 4.Rn4.6 in Resources */,
+				8476CC4620BF0E400044135E /* 4.Rn4.2 in Resources */,
 				84F6C0FE20BC7E6B00793BEE /* profile.txt in Resources */,
+				8476CC4220BF0E400044135E /* 1.Rn4.5 in Resources */,
 				9AE6157D1F8A1A920067893C /* nvkat.dat in Resources */,
 				9AE6157E1F8A1A920067893C /* xyz.dat in Resources */,
 				8437778720A331C5009B1BE0 /* nvkat4.dat in Resources */,
 				9AE615761F8A10FF0067893C /* elem_neib.txt in Resources */,
+				8476CC5020BF0E400044135E /* 4.Rn4.1 in Resources */,
 				9AE615771F8A10FF0067893C /* nver.txt in Resources */,
 				8437778820A331C5009B1BE0 /* Sig3d4 in Resources */,
 				9AE615781F8A10FF0067893C /* nvkat.txt in Resources */,
 				9AF5853D2086053000A90D2D /* MAGProjectFileAddTableViewCell.xib in Resources */,
 				8437778920A331C5009B1BE0 /* nver4.dat in Resources */,
+				8476CC4A20BF0E400044135E /* 2.Rn4.4 in Resources */,
 				841C358F20BDBB2D0046E4AC /* edsall05 in Resources */,
+				8476CC2120BF0CAE0044135E /* 2.Rn5.5 in Resources */,
+				8476CC3A20BF0E400044135E /* 1.Rn4.3 in Resources */,
+				8476CC4B20BF0E400044135E /* 2.Rn4.5 in Resources */,
 				84541B0E1FB0AD2300DC6E43 /* xyz2.txt in Resources */,
+				8476CC4E20BF0E400044135E /* 4.Rn4.3 in Resources */,
 				843777AA20A334E0009B1BE0 /* nvkat5.dat in Resources */,
 				9AE615791F8A10FF0067893C /* xyz.txt in Resources */,
 				840D4EA120B2F6A500E9DF5C /* v3_3.t1.txt in Resources */,
+				84DB3F8E20BECE5300209C2A /* edsall04 in Resources */,
 				9A05AA3F20AC508F00F44AE5 /* v3.t2.txt in Resources */,
-				8416C38B20BE906D00295F91 /* 5.Rn.5 in Resources */,
+				8476CC1E20BF0CAE0044135E /* 1.Rn5.5 in Resources */,
 				9ADE1EC61EED062B006D409E /* LaunchScreen.storyboard in Resources */,
 				9ADE1EC31EED062B006D409E /* Assets.xcassets in Resources */,
+				8476CC3C20BF0E400044135E /* 3.Rn4.2 in Resources */,
 				8437778B20A331C5009B1BE0 /* inftry4.dat in Resources */,
 				9ADE1EC11EED062B006D409E /* Main.storyboard in Resources */,
+				8476CC1F20BF0CAE0044135E /* 4.Rn5.5 in Resources */,
+				8476CC4820BF0E400044135E /* 1.Rn4.2 in Resources */,
+				8476CC4720BF0E400044135E /* 1.Rn4.6 in Resources */,
 				843777A620A334E0009B1BE0 /* elem_neib5 in Resources */,
 				84541B101FB0AD2300DC6E43 /* nvkat2.txt in Resources */,
 				84F6C0FF20BC7E6B00793BEE /* sig3d.txt in Resources */,
+				8476CC4920BF0E400044135E /* 2.Rn4.2 in Resources */,
 				84541B0D1FB0AD2300DC6E43 /* elem_neib2.txt in Resources */,
 				9A05AA3A20AC3A2500F44AE5 /* v3.t1.txt in Resources */,
+				8476CC4320BF0E400044135E /* 3.Rn4.6 in Resources */,
+				8476CC3E20BF0E400044135E /* 2.Rn4.1 in Resources */,
+				8476CC4120BF0E400044135E /* 4.Rn4.5 in Resources */,
+				8476CC5120BF0E400044135E /* 3.Rn4.1 in Resources */,
 				843777A720A334E0009B1BE0 /* nver5.dat in Resources */,
 				8437778C20A331C5009B1BE0 /* profile4 in Resources */,
 				84743BB82084E6E4007049C6 /* MAGProjectTableViewCell.xib in Resources */,
+				8476CC4D20BF0E400044135E /* 2.Rn4.6 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
