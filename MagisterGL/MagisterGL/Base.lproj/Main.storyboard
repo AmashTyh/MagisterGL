@@ -209,7 +209,6 @@
         <!--Navigation Controller-->
         <scene sceneID="txZ-Fp-wAU">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="neh-R0-Ljn" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController id="4eP-Fj-frX" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="KY8-Et-Bod">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -219,6 +218,7 @@
                         <segue destination="fc5-rN-1wo" kind="relationship" relationship="rootViewController" id="qhX-bz-NlY"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="neh-R0-Ljn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-3829" y="1492"/>
         </scene>
@@ -351,6 +351,18 @@
                                     <constraint firstAttribute="height" constant="45" id="bmT-l7-h9K"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pCY-QX-cio">
+                                <rect key="frame" x="166" y="585" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rXI-Oa-068">
+                                <rect key="frame" x="166" y="626" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -360,15 +372,21 @@
                             <constraint firstItem="4xD-5T-eNi" firstAttribute="leading" secondItem="yXD-bt-t1G" secondAttribute="leading" constant="10" id="NkB-Xk-wjx"/>
                             <constraint firstItem="BxM-xQ-I8b" firstAttribute="centerX" secondItem="yXD-bt-t1G" secondAttribute="centerX" id="cKK-Yb-38N"/>
                             <constraint firstItem="mvL-MC-aqw" firstAttribute="top" secondItem="C5N-yv-Q2a" secondAttribute="bottom" constant="5" id="dcM-sa-c5f"/>
+                            <constraint firstItem="rXI-Oa-068" firstAttribute="top" secondItem="pCY-QX-cio" secondAttribute="bottom" constant="20" id="f5W-iy-SJC"/>
+                            <constraint firstItem="pCY-QX-cio" firstAttribute="centerX" secondItem="yXD-bt-t1G" secondAttribute="centerX" id="hWh-mj-biR"/>
                             <constraint firstItem="BxM-xQ-I8b" firstAttribute="top" secondItem="4xD-5T-eNi" secondAttribute="bottom" constant="10" id="i0l-9K-NYh"/>
                             <constraint firstItem="C5N-yv-Q2a" firstAttribute="leading" secondItem="4xD-5T-eNi" secondAttribute="trailing" constant="10" id="iUY-tv-Iow"/>
                             <constraint firstItem="Dbx-MF-N1c" firstAttribute="centerX" secondItem="yXD-bt-t1G" secondAttribute="centerX" id="jQw-XM-ICs"/>
+                            <constraint firstItem="qCS-lO-t9e" firstAttribute="top" secondItem="rXI-Oa-068" secondAttribute="bottom" constant="20" id="ja3-bV-OTF"/>
                             <constraint firstAttribute="trailing" secondItem="mvL-MC-aqw" secondAttribute="trailing" constant="20" id="ju2-qn-cIc"/>
+                            <constraint firstItem="rXI-Oa-068" firstAttribute="centerX" secondItem="yXD-bt-t1G" secondAttribute="centerX" id="spc-Uh-23S"/>
                             <constraint firstItem="C5N-yv-Q2a" firstAttribute="top" secondItem="Yya-f5-dRa" secondAttribute="bottom" constant="50" id="syU-Gu-nxK"/>
                             <constraint firstItem="Dbx-MF-N1c" firstAttribute="top" secondItem="BxM-xQ-I8b" secondAttribute="bottom" constant="20" id="xOG-i7-uz1"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="maxVectorLabel" destination="rXI-Oa-068" id="n7B-Yv-h63"/>
+                        <outlet property="minVectorLabel" destination="pCY-QX-cio" id="G6H-sh-sNS"/>
                         <outlet property="sectionGreater" destination="PId-Qn-Wza" id="0dA-yN-mve"/>
                         <outlet property="sectionTypePicker" destination="4xD-5T-eNi" id="oRO-g8-Ke4"/>
                         <outlet property="sectionXTextField" destination="C5N-yv-Q2a" id="1fu-hg-HSw"/>
