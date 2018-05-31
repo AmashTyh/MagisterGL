@@ -376,8 +376,20 @@ class MAGFileManager: NSObject
     return []
   }
   
-  func getRnArray(path: String) -> [[Float]]
+  func getRnArray(path: String) -> MAGRnData
   {
+    var newPath: String = path
+    
+    if newPath.contains("/") {
+      newPath = path.components(separatedBy: "/").last!
+    }
+    if newPath.contains("_") {
+      newPath = path.components(separatedBy: "_").last!
+    }
+    
+    let fileNameArray = newPath.components(separatedBy: ".")
+    let numberOfTime = Int(fileNameArray.first!)! - 1
+    let numberOfProfileLine = Int(fileNameArray.last!)! - 1
     do
     {
       let data = try String(contentsOfFile: path,
@@ -394,13 +406,15 @@ class MAGFileManager: NSObject
           }
         }
       }
-      return resultArray
+      return MAGRnData(numberOfTime: numberOfTime,
+                       numberOfProfileLine: numberOfProfileLine,
+                       profileChartsData: resultArray)
       
     }
     catch let err as NSError
     {
       print(err)
     }
-    return []
+    return MAGRnData(numberOfTime: -1, numberOfProfileLine: -1, profileChartsData: [])
   }
 }
