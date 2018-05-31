@@ -32,6 +32,9 @@ class MAGCreateProjectViewModel: NSObject
                                                       filePath: ""))
     array.append(MAGProjectFileAddTableViewCellObject(name: "profile",
                                                       filePath: ""))
+    array.append(MAGProjectFileAddTableViewCellObject(name: "edsallPath",
+                                                      filePath: ""))
+    cellObjects = array
     cellObjects = array
   }
   
@@ -44,6 +47,7 @@ class MAGCreateProjectViewModel: NSObject
                               elemNeibPath: self.cellObjects[3].filePath,
                               sigma3dPath: self.cellObjects[4].filePath,
                               profilePath: self.cellObjects[5].filePath,
+                              edsallPath: self.cellObjects[6].filePath,
                               rnArrayPathsArray: NSKeyedArchiver.archivedData(withRootObject: [""]),
                               isLocal: false)
   }

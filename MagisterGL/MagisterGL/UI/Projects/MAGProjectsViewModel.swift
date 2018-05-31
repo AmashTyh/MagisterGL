@@ -57,6 +57,7 @@ class MAGProjectsViewModel: NSObject
                   elemNeibPath: String,
                   sigma3dPath: String,
                   profilePath: String,
+                  edsallPath: String,
                   rnArrayPathsArray: Data,
                   isLocal: Bool)
   {
@@ -71,6 +72,7 @@ class MAGProjectsViewModel: NSObject
     newEntity.sigma3dPath = sigma3dPath
     newEntity.profilePath = profilePath
     newEntity.isLocal = isLocal
+    newEntity.edsallPath = edsallPath
     newEntity.rnArrayPathsArray = rnArrayPathsArray
     
     do

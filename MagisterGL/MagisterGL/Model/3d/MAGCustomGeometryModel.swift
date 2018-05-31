@@ -62,9 +62,7 @@ class MAGCustomGeometryModel: NSObject
     profileArray = self.fileManager.getProfileArray(path: documentsPath + project.profilePath!)
     
     // edsall array
-    let edsallPath = Bundle.main.path(forResource: "edsall05",
-                                      ofType: "")!
-    edsallArray = self.fileManager.getEdsallArray(path: edsallPath)
+    edsallArray = self.fileManager.getEdsallArray(path: documentsPath + project.edsallPath!)
     for key in edsallArray[0].keys {
       timeSlices.append(key)
     }

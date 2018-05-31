@@ -30,6 +30,7 @@ class MAGBaseProjectsGenerator: NSObject
                          elemNeibPath: "elem_neib.txt",
                          sigma3dPath: "sig3d.txt",
                          profilePath: "profile.txt",
+                         edsallPath: "",
                          rnArrayPathsArray: NSKeyedArchiver.archivedData(withRootObject: []),
                          isLocal: true)
     viewModel.addProject(name: "Test 2",
@@ -39,6 +40,7 @@ class MAGBaseProjectsGenerator: NSObject
                          elemNeibPath: "elem_neib2.txt",
                          sigma3dPath: "",
                          profilePath: "",
+                         edsallPath: "",
                          rnArrayPathsArray: NSKeyedArchiver.archivedData(withRootObject: []),
                          isLocal: true)
     viewModel.addProject(name: "Test 3",
@@ -48,6 +50,7 @@ class MAGBaseProjectsGenerator: NSObject
                          elemNeibPath: "elem_neib",
                          sigma3dPath: "",
                          profilePath: "",
+                         edsallPath: "",
                          rnArrayPathsArray: NSKeyedArchiver.archivedData(withRootObject: []),
                          isLocal: true)
     viewModel.addProject(name: "Test 4",
@@ -57,6 +60,7 @@ class MAGBaseProjectsGenerator: NSObject
                          elemNeibPath: "elem_neib4",
                          sigma3dPath: "Sig3d4",
                          profilePath: "profile4",
+                         edsallPath: "",
                          rnArrayPathsArray: NSKeyedArchiver.archivedData(withRootObject: ["1.Rn4.1",
                                                                                           "1.Rn4.2",
                                                                                           "1.Rn4.3",
@@ -89,6 +93,7 @@ class MAGBaseProjectsGenerator: NSObject
                          elemNeibPath: "elem_neib5",
                          sigma3dPath: "Sig3d5",
                          profilePath: "profile5",
+                         edsallPath: "edsall05",
                          rnArrayPathsArray: NSKeyedArchiver.archivedData(withRootObject: ["1.Rn5.5",
                                                                                           "2.Rn5.5",
                                                                                           "3.Rn5.5",
