@@ -262,7 +262,7 @@
                                     </segue>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem title="Field" id="pt8-xa-xQj">
+                            <barButtonItem title="Time Slice" id="pt8-xa-xQj">
                                 <connections>
                                     <segue destination="nuP-kb-1X9" kind="popoverPresentation" popoverAnchorBarButtonItem="pt8-xa-xQj" id="iRN-f4-brt">
                                         <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
@@ -414,7 +414,7 @@
                                     <constraint firstAttribute="height" constant="44" id="0YD-d3-cjh"/>
                                     <constraint firstAttribute="width" constant="300" id="TPp-Pa-5sZ"/>
                                 </constraints>
-                                <state key="normal" title="Not show"/>
+                                <state key="normal" title="Default"/>
                                 <connections>
                                     <action selector="notShowField" destination="nuP-kb-1X9" eventType="touchUpInside" id="u7j-5O-9Cp"/>
                                 </connections>

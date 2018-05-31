@@ -164,7 +164,7 @@ class MAGCustomGeometryModel: NSObject
     })
     
     let colorGenerator = MAGColorGenerator()
-    let uValueArray: [Float] = generateValuesFromEdsall(key: self.timeSlices[10])
+    let uValueArray: [Float] = generateValuesFromEdsall(key: self.timeSlices[showTimeSlicesNumber])
 //    for vector in receiversArraySortedByXY
 //    {
 //      uValueArray.append(Float(MAGRecieversFuncGenerator.uFunc(x: Double(vector.x),

@@ -39,7 +39,7 @@ class MAGChooseFieldViewController: UIViewController,
   
   @IBAction func notShowField()
   {
-    self.delegate?.chooseFieldNumber(fieldNumber: -1)
+    self.delegate?.chooseFieldNumber(fieldNumber: 0)
     self.dismiss(animated: true,
                  completion: nil)
   }
