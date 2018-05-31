@@ -5,7 +5,6 @@ class MAGChartsData: NSObject
 {
   var chosenTimeSlice: Int = 0
   
-  
   var timeSlicesArray: [Int] = []
   var numbersOfChartLineArray: [Int] = []
   
@@ -25,16 +24,24 @@ class MAGChartsData: NSObject
     return (maxZModel - maxZValue) / (maxUValue - minUValue)
   }
   
-  func generateChartsValuesWith(receivers: [[SCNVector3]], rnArray: [MAGRnData], minZValue: Float, maxZValue: Float, maxZModel: Float)
+  func generateChartsValuesWith(receivers: [[SCNVector3]],
+                                rnArray: [MAGRnData],
+                                minZValue: Float,
+                                maxZValue: Float,
+                                maxZModel: Float,
+                                choosenTimeSlice: Int) -> [Int]
   {
+    self.chosenTimeSlice = choosenTimeSlice
     self.receivers = receivers
+    self.chartsValues = []
+    
     var timeSlices: Set<Int> = Set<Int>()
     var numbersOfChartLine: Set<Int> = Set<Int>()
     for rnData in rnArray {
       timeSlices.insert(rnData.numberOfTime)
       numbersOfChartLine.insert(rnData.numberOfProfileLine)
     }
-    
+    timeSlicesArray = []
     for timeNumber in timeSlices {
       timeSlicesArray.append(timeNumber)
     }
@@ -42,6 +49,7 @@ class MAGChartsData: NSObject
       return v1 < v2
     }
 
+    numbersOfChartLineArray = []
     for number in numbersOfChartLine {
       numbersOfChartLineArray.append(number)
     }
@@ -57,7 +65,7 @@ class MAGChartsData: NSObject
     for i in numbersOfChartLineArray {
       for rnData in rnArray {
         if (rnData.numberOfProfileLine == i) && (rnData.numberOfTime == chosenTimeSlice) {
-          // работаем с данными
+          //
           var chartsValuesLine: [SCNVector3] = []
           for j in 0..<rnData.profileChartsData.count {
             let vector: SCNVector3 = SCNVector3Make(receivers[i][0].x + rnData.profileChartsData[j][0],
@@ -89,22 +97,8 @@ class MAGChartsData: NSObject
     self.maxZModel = maxZModel
     self.maxZValue = maxZValue
     self.minZValue = minZValue
-
     
-//    var chartsValuesLine: [SCNVector3] = []
-//    for i in 0..<rnArray.count {
-//      let vector: SCNVector3 = SCNVector3Make(firstReceiver.x + rnArray[i][0], firstReceiver.y, rnArray[i][1])
-//      chartsValuesLine.append(vector)
-//    }
-//    chartsValues.append(chartsValuesLine)
-//    if !rnArray.isEmpty {
-//      minUValue = rnArray.min(by: { (v1, v2) -> Bool in
-//        return v1[1] < v2[1]
-//      })![1]
-//      maxUValue = rnArray.max(by: { (v1, v2) -> Bool in
-//        return v1[1] < v2[1]
-//      })![1]
-//    }
+    return timeSlicesArray
   }
   
   func updateZValueChartsData(sortedReceivers: [[SCNVector3]])

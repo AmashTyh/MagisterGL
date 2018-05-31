@@ -1,28 +1,28 @@
 //
-//  MAGChooseFieldViewController.swift
+//  MAGTimeChartsViewController.swift
 //  MagisterGL
 //
-//  Created by Хохлова Татьяна on 16.05.2018.
+//  Created by Admin on 01.06.2018.
 //  Copyright © 2018 Хохлова Татьяна. All rights reserved.
 //
 
-
 import UIKit
 
-protocol MAGChooseFieldViewControllerDelegate: class
+protocol MAGTimeChartsViewControllerDelegate: class
 {
-  func chooseFieldNumber(fieldNumber: Int)
+  func chooseTimeFieldNumber(fieldNumber: Int)
 }
 
-class MAGChooseFieldViewController: UIViewController,
-                                    UITableViewDelegate,
-                                    UITableViewDataSource,
-                                    UIPopoverPresentationControllerDelegate
+class MAGTimeChartsViewController: UIViewController,
+                                   UITableViewDelegate,
+                                   UITableViewDataSource,
+                                   UIPopoverPresentationControllerDelegate
 {
-  weak var delegate: MAGChooseFieldViewControllerDelegate?
+
+  weak var delegate: MAGTimeChartsViewControllerDelegate?
   var showFieldNumber = -1
-  var timeSlices: [Float] = []
-  let cellReuseIdentifier = "kChooseFieldReuseCellID"
+  var timeSlices: [Int] = []
+  let cellReuseIdentifier = "kTimeChartsFieldReuseCellID"
   
   @IBOutlet weak var tableView: UITableView!
   
@@ -36,9 +36,9 @@ class MAGChooseFieldViewController: UIViewController,
   
   //MARK: Actions
   
-  @IBAction func notShowField()
+  @IBAction func defaultField()
   {
-    self.delegate?.chooseFieldNumber(fieldNumber: 0)
+    self.delegate?.chooseTimeFieldNumber(fieldNumber: 0)
     self.dismiss(animated: true,
                  completion: nil)
   }
@@ -67,7 +67,7 @@ class MAGChooseFieldViewController: UIViewController,
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
   {
-    self.delegate?.chooseFieldNumber(fieldNumber: indexPath.row)
+    self.delegate?.chooseTimeFieldNumber(fieldNumber: indexPath.row)
     self.dismiss(animated: true,
                  completion: nil)
   }

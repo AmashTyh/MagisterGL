@@ -78,6 +78,7 @@
 		84792E6220B47A7E00885EEC /* MAGChartsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84792E6120B47A7E00885EEC /* MAGChartsData.swift */; };
 		84792E6420B47F3C00885EEC /* MAGRecieversFuncGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84792E6320B47F3C00885EEC /* MAGRecieversFuncGenerator.swift */; };
 		84880B6120C05CAD00D70DD2 /* MAGRnData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84880B6020C05CAD00D70DD2 /* MAGRnData.swift */; };
+		84880B6320C0720900D70DD2 /* MAGTimeChartsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84880B6220C0720900D70DD2 /* MAGTimeChartsViewController.swift */; };
 		84DB3F8E20BECE5300209C2A /* edsall04 in Resources */ = {isa = PBXBuildFile; fileRef = 84DB3F8D20BECE5300209C2A /* edsall04 */; };
 		84F6C0FE20BC7E6B00793BEE /* profile.txt in Resources */ = {isa = PBXBuildFile; fileRef = 84F6C0FC20BC7E6A00793BEE /* profile.txt */; };
 		84F6C0FF20BC7E6B00793BEE /* sig3d.txt in Resources */ = {isa = PBXBuildFile; fileRef = 84F6C0FD20BC7E6B00793BEE /* sig3d.txt */; };
@@ -187,6 +188,7 @@
 		84792E6120B47A7E00885EEC /* MAGChartsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAGChartsData.swift; sourceTree = "<group>"; };
 		84792E6320B47F3C00885EEC /* MAGRecieversFuncGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAGRecieversFuncGenerator.swift; sourceTree = "<group>"; };
 		84880B6020C05CAD00D70DD2 /* MAGRnData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAGRnData.swift; sourceTree = "<group>"; };
+		84880B6220C0720900D70DD2 /* MAGTimeChartsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAGTimeChartsViewController.swift; sourceTree = "<group>"; };
 		84DB3F8D20BECE5300209C2A /* edsall04 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = edsall04; sourceTree = "<group>"; };
 		84F6C0FC20BC7E6A00793BEE /* profile.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = profile.txt; sourceTree = "<group>"; };
 		84F6C0FD20BC7E6B00793BEE /* sig3d.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = sig3d.txt; sourceTree = "<group>"; };
@@ -405,6 +407,7 @@
 			isa = PBXGroup;
 			children = (
 				9A05AA3C20AC4C9800F44AE5 /* MAGChooseFieldViewController.swift */,
+				84880B6220C0720900D70DD2 /* MAGTimeChartsViewController.swift */,
 			);
 			path = ChooseField;
 			sourceTree = "<group>";
@@ -791,6 +794,7 @@
 				846C260B20A1B7400049A6B6 /* MAGChooseMaterialViewController.swift in Sources */,
 				9AF5853F2086067000A90D2D /* MAGCreateProjectViewModel.swift in Sources */,
 				9AF322EC1F7A8054003AE463 /* MAGCustomGeometryView.swift in Sources */,
+				84880B6320C0720900D70DD2 /* MAGTimeChartsViewController.swift in Sources */,
 				84743BB72084E6E4007049C6 /* MAGProjectTableViewCell.swift in Sources */,
 				84880B6120C05CAD00D70DD2 /* MAGRnData.swift in Sources */,
 				84743BAB2084DE9C007049C6 /* MAGGoogleTableViewController.swift in Sources */,

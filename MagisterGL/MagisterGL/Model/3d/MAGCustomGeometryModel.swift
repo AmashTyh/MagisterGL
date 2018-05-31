@@ -18,6 +18,8 @@ class MAGCustomGeometryModel: NSObject
   var isShowMaterials = true
   var showFieldNumber = -1
   var showTimeSlicesNumber = 0
+  var showTimeSliceForCharts = 0
+  
   var colorGenerator: MAGColorGenerator?
   var project: MAGProject?
   
@@ -46,9 +48,9 @@ class MAGCustomGeometryModel: NSObject
   var rnArray: [MAGRnData] = []
   
   var timeSlices: [Float] = []
-  
   var receiversSurface: [MAGTriangleElement] = []
   
+  var timeSlicesForCharts: [Int] = []
   
   func configure(project: MAGProject)
   {
@@ -155,12 +157,7 @@ class MAGCustomGeometryModel: NSObject
     
     let colorGenerator = MAGColorGenerator()
     let uValueArray: [Float] = generateValuesFromEdsall(key: self.timeSlices[showTimeSlicesNumber])
-//    for vector in receiversArraySortedByXY
-//    {
-//      uValueArray.append(Float(MAGRecieversFuncGenerator.uFunc(x: Double(vector.x),
-//                                                               y: Double(vector.y),
-//                                                               z: Double(vector.z))))
-//    }
+
     
     let minValue = uValueArray.min { (first, second) -> Bool in
       return first < second
@@ -213,18 +210,7 @@ class MAGCustomGeometryModel: NSObject
     }
 
     createTrianglesArray(receivers: receivers, numberArray: numberArray, colorGenerator: colorGenerator)
-//    self.chartsData.maxZValue = profileArray.max { (first, second) -> Bool in
-//      return first.z < second.z
-//      }!.z
-//    self.chartsData.minUValue = minValue
-//    self.chartsData.maxUValue = maxValue
-//    self.chartsData.maxZModel = xyzArray.max { (first, second) -> Bool in
-//      return first.z < second.z
-//      }!.z
-//    self.chartsData.updateZValueChartsData(sortedReceivers: receivers)
-    
-    
-    self.chartsData.generateChartsValuesWith(receivers: receivers,
+    self.timeSlicesForCharts = self.chartsData.generateChartsValuesWith(receivers: receivers,
                                              rnArray: self.rnArray,
                                              minZValue: profileArray.min { (first, second) -> Bool in
                                               return first.z < second.z
@@ -234,7 +220,8 @@ class MAGCustomGeometryModel: NSObject
                                               }!.z,
                                              maxZModel: xyzArray.max { (first, second) -> Bool in
                                               return first.z < second.z
-                                              }!.z)
+                                              }!.z,
+                                             choosenTimeSlice: self.showTimeSliceForCharts)
   }
   
   func createTrianglesArray(receivers: [[SCNVector3]], numberArray: [[Int]], colorGenerator: MAGColorGenerator)
