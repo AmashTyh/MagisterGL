@@ -116,6 +116,16 @@ class MAG3DViewController: UIViewController,
     self.customGeometryView.setupScene()
   }
   
+  func minVector() -> SCNVector3
+  {
+    return self.customGeometryView.model.minVector
+  }
+  
+  func maxVector() -> SCNVector3
+  {
+    return self.customGeometryView.model.maxVector
+  }
+  
   // MARK: MAGChooseMaterialViewControllerDelegate
   
   func selectedMaterials(selectedMaterials: [MAGMaterial])
