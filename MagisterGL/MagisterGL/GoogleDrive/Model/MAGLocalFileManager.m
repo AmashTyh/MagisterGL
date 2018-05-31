@@ -12,7 +12,7 @@
 
 @interface MAGLocalFileManager ()
 
-@property (nonatomic, strong, readonly) NSMutableArray<NSString*> *filesnameArrayMutable;
+@property (nonatomic, strong) NSMutableArray <NSString*> *filesnameArrayMutable;
 
 @end
 
@@ -33,11 +33,12 @@
 
 - (NSArray <NSString*> *) getFilenamesArray
 {
-  return  [self.filesnameArrayMutable copy];
+  return [self.filesnameArrayMutable copy];
 }
 
 - (NSUInteger) findFilesInLocalDirectory
 {
+  self.filesnameArrayMutable = [NSMutableArray array];
   NSURL *workDirectory = [self workDirectory];
   NSError *error = nil;
   NSArray <NSURL *> *contents = [self.fileManager contentsOfDirectoryAtURL: workDirectory
@@ -49,6 +50,15 @@
     [self.filesnameArrayMutable addObject: fileURL.absoluteString];
   }
   return contents.count;
+}
+
+- (void) removeFileWithIndex: (NSUInteger) index
+{
+  NSString *fileName = [self.filesnameArrayMutable objectAtIndex: index];
+  NSError *error = nil;
+  [self.fileManager removeItemAtURL: [NSURL URLWithString: fileName]
+                              error: &error];
+  NSLog(@"%@", error);
 }
 
 - (NSURL *) workDirectory

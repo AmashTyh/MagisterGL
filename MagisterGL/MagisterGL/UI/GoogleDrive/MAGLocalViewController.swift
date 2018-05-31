@@ -17,18 +17,16 @@ class MAGLocalViewController: UIViewController, UITableViewDelegate, UITableView
   
   @IBOutlet weak var tableView: UITableView!
   
-  override func viewDidLoad() {
+  override func viewDidLoad()
+  {
     super.viewDidLoad()
     tableView.delegate = self
     tableView.dataSource = self
     
     filesCount = Int(localFileManager.findFilesInLocalDirectory())
     
-    
-    
+    self.tableView.allowsMultipleSelectionDuringEditing = false
     self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellReuseIdentifier)
-    
-    
   }
   
   // MARK: TableView
@@ -41,7 +39,7 @@ class MAGLocalViewController: UIViewController, UITableViewDelegate, UITableView
                  cellForRowAt indexPath: IndexPath) -> UITableViewCell
   {
     // create a new cell if needed or reuse an old one
-    let cell : UITableViewCell = (self.tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier) as UITableViewCell?)!
+    let cell : UITableViewCell = (tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier) as UITableViewCell?)!
     
     cell.textLabel?.text = localFileManager.filesnameArray[indexPath.row].components(separatedBy: "/").last;
     return cell
@@ -51,6 +49,24 @@ class MAGLocalViewController: UIViewController, UITableViewDelegate, UITableView
                  didSelectRowAt indexPath: IndexPath)
   {
     
+  }
+  
+  func tableView(_ tableView: UITableView,
+                 canEditRowAt indexPath: IndexPath) -> Bool
+  {
+    return true
+  }
+  
+  func tableView(_ tableView: UITableView,
+                 commit editingStyle: UITableViewCellEditingStyle,
+                 forRowAt indexPath: IndexPath)
+  {
+    if editingStyle == .delete
+    {
+      localFileManager.removeFile(with: UInt(indexPath.row))
+      filesCount = Int(localFileManager.findFilesInLocalDirectory())
+      tableView.reloadData()
+    }
   }
 
 }

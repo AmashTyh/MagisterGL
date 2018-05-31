@@ -15,4 +15,6 @@
 
 - (NSUInteger) findFilesInLocalDirectory;
 
+- (void) removeFileWithIndex: (NSUInteger) index;
+
 @end
