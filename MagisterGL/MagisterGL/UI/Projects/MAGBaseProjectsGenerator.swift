@@ -60,7 +60,7 @@ class MAGBaseProjectsGenerator: NSObject
                          elemNeibPath: "elem_neib4",
                          sigma3dPath: "Sig3d4",
                          profilePath: "profile4",
-                         edsallPath: "",
+                         edsallPath: "edsall04",
                          rnArrayPathsArray: NSKeyedArchiver.archivedData(withRootObject: ["1.Rn4.1",
                                                                                           "1.Rn4.2",
                                                                                           "1.Rn4.3",

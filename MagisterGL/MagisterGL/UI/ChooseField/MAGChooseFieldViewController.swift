@@ -22,7 +22,7 @@ class MAGChooseFieldViewController: UIViewController,
   
   weak var delegate: MAGChooseFieldViewControllerDelegate?
   var showFieldNumber = -1
-  var availableFields: [String] = []
+  var timeSlices: [Float] = []
   let cellReuseIdentifier = "kChooseFieldReuseCellID"
   
   @IBOutlet weak var tableView: UITableView!
@@ -48,13 +48,13 @@ class MAGChooseFieldViewController: UIViewController,
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
   {
-    return self.availableFields.count
+    return self.timeSlices.count
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
   {
     let cell : UITableViewCell = (tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier) as UITableViewCell?)!
-    cell.textLabel?.text = self.availableFields[indexPath.row]
+    cell.textLabel?.text = String(self.timeSlices[indexPath.row])
     if (self.showFieldNumber == indexPath.row)
     {
       tableView.selectRow(at: indexPath,

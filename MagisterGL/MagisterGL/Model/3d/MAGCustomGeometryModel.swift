@@ -17,6 +17,7 @@ class MAGCustomGeometryModel: NSObject
   
   var isShowMaterials = true
   var showFieldNumber = -1
+  var showTimeSlicesNumber = 10
   var colorGenerator: MAGColorGenerator?
   var project: MAGProject?
   
@@ -63,15 +64,19 @@ class MAGCustomGeometryModel: NSObject
     
     // edsall array
     edsallArray = self.fileManager.getEdsallArray(path: documentsPath + project.edsallPath!)
-    for key in edsallArray[0].keys {
-      timeSlices.append(key)
-    }
-    timeSlices.sort { (v1, v2) -> Bool in
-      if v1 < v2 {
-        return true
+    if edsallArray.count > 0
+    {
+      for key in edsallArray[0].keys {
+        timeSlices.append(key)
       }
-      return false
+      timeSlices.sort { (v1, v2) -> Bool in
+        if v1 < v2 {
+          return true
+        }
+        return false
+      }
     }
+    
     
     // Rn array
 //    let rnPath = Bundle.main.path(forResource: "1.Rn.5",
@@ -85,7 +90,10 @@ class MAGCustomGeometryModel: NSObject
       let rnArrayTmp = self.fileManager.getRnArray(path: documentsPath + rnArrayFilePath)
     }
   
-    rnArray = self.fileManager.getRnArray(path: documentsPath + decodedArray![0])
+    if (decodedArray?.count)! > 0
+    {
+      rnArray = self.fileManager.getRnArray(path: documentsPath + decodedArray![0])
+    }
     
     if sig3dArray.count > 0
     {
@@ -330,7 +338,7 @@ class MAGCustomGeometryModel: NSObject
   
   func createTrianglesArray(receivers: [[SCNVector3]], numberArray: [[Int]], colorGenerator: MAGColorGenerator)
   {
-    let uValueArray: [Float] = generateValuesFromEdsall(key: self.timeSlices[10]) // todo временные слоя
+    let uValueArray: [Float] = generateValuesFromEdsall(key: self.timeSlices[showTimeSlicesNumber]) // todo временные слоя
     var triangleArray: [MAGTriangleElement] = []
     
     for i in 0..<receivers.count - 1
