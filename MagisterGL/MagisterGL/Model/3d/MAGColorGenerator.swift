@@ -11,13 +11,12 @@ import SceneKit
 
 class MAGColorGenerator: NSObject
 {
-  let kCountOfColorAreas: Int = 255
+  let kCountOfColorAreas: Int = 20
   var rainbow: [Color] = []
-  
+  var baseColors: [Color] = []
   
   func generateColor(minValue: Double, maxValue: Double)
   {
-    var baseColors: [Color] = []
     var color = Color()
     color.red = 148
     color.green = 0
@@ -54,15 +53,13 @@ class MAGColorGenerator: NSObject
     color.blue = 0
     baseColors.append(color)
     
-    let hValues: Double = (maxValue - minValue) / Double(kCountOfColorAreas - 1)
-    for i in 0..<kCountOfColorAreas
+    let hValues: Double = (maxValue - minValue) / Double(kCountOfColorAreas * baseColors.count)
+    for i in 0..<kCountOfColorAreas * baseColors.count
     {
       let color = Color()
       color.value = minValue + Double(i) * hValues
       rainbow.append(color)
     }
-    
-    let countOfColors = kCountOfColorAreas / (baseColors.count - 1)
     for j in 0..<baseColors.count - 1
     {
       let colorRedMin: Double = baseColors[j].red
@@ -73,27 +70,53 @@ class MAGColorGenerator: NSObject
       let colorGreenMax: Double = baseColors[j + 1].green
       let colorBlueMax: Double = baseColors[j + 1].blue
       
-      let maxCountOfColors = (j == baseColors.count - 2) ? kCountOfColorAreas : (countOfColors * (j + 1) + 1)
-      rainbow[maxCountOfColors - 1].red = colorRedMax
-      rainbow[maxCountOfColors - 1].green = colorGreenMax
-      rainbow[maxCountOfColors - 1].blue = colorBlueMax
+      rainbow[(j + 1)*kCountOfColorAreas].red = colorRedMax
+      rainbow[(j + 1)*kCountOfColorAreas].green = colorGreenMax
+      rainbow[(j + 1)*kCountOfColorAreas].blue = colorBlueMax
       
-      let colorRedH: Double = (colorRedMax - colorRedMin) / Double(countOfColors - 1)
-      let colorGreenH: Double = (colorGreenMax - colorGreenMin) / Double(countOfColors - 1)
-      let colorBlueH: Double = (colorBlueMax - colorBlueMin) / Double(countOfColors - 1)
-      for i in countOfColors * j..<maxCountOfColors
+      let colorRedH: Double = (colorRedMax - colorRedMin) / Double(kCountOfColorAreas)
+      let colorGreenH: Double = (colorGreenMax - colorGreenMin) / Double(kCountOfColorAreas)
+      let colorBlueH: Double = (colorBlueMax - colorBlueMin) / Double(kCountOfColorAreas)
+      for i in 0..<kCountOfColorAreas
       {
-        rainbow[i].red = colorRedMin + Double(i) * colorRedH
-        rainbow[i].green = colorGreenMin + Double(i) * colorGreenH
-        rainbow[i].blue = colorBlueMin + Double(i) * colorBlueH
+        rainbow[i + j*kCountOfColorAreas].red = colorRedMin + Double(i) * colorRedH
+        rainbow[i + j*kCountOfColorAreas].green = colorGreenMin + Double(i) * colorGreenH
+        rainbow[i + j*kCountOfColorAreas].blue = colorBlueMin + Double(i) * colorBlueH
       }
     }
+    
+//    let countOfColors = kCountOfColorAreas / (baseColors.count - 1)
+//    for j in 0..<baseColors.count - 1
+//    {
+//      let colorRedMin: Double = baseColors[j].red
+//      let colorGreenMin: Double = baseColors[j].green
+//      let colorBlueMin: Double = baseColors[j].blue
+//
+//      let colorRedMax: Double = baseColors[j + 1].red
+//      let colorGreenMax: Double = baseColors[j + 1].green
+//      let colorBlueMax: Double = baseColors[j + 1].blue
+//
+//      let maxCountOfColors = (j == baseColors.count - 2) ? kCountOfColorAreas : (countOfColors * (j + 1) + 1)
+//      rainbow[maxCountOfColors - 1].red = colorRedMax
+//      rainbow[maxCountOfColors - 1].green = colorGreenMax
+//      rainbow[maxCountOfColors - 1].blue = colorBlueMax
+//
+//      let colorRedH: Double = (colorRedMax - colorRedMin) / Double(countOfColors - 1)
+//      let colorGreenH: Double = (colorGreenMax - colorGreenMin) / Double(countOfColors - 1)
+//      let colorBlueH: Double = (colorBlueMax - colorBlueMin) / Double(countOfColors - 1)
+//      for i in countOfColors * j..<maxCountOfColors
+//      {
+//        rainbow[i].red = colorRedMin + Double(i) * colorRedH
+//        rainbow[i].green = colorGreenMin + Double(i) * colorGreenH
+//        rainbow[i].blue = colorBlueMin + Double(i) * colorBlueH
+//      }
+//    }
   }
   
   func getColorForU(u: Double) -> SCNVector3
   {
     var i = 0
-    while i < kCountOfColorAreas - 1 && u >= rainbow[i + 1].value
+    while i < kCountOfColorAreas * baseColors.count - 1 && u >= rainbow[i + 1].value
     {
       i += 1
     }

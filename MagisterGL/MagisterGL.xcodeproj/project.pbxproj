@@ -1434,7 +1434,7 @@
 		8466F21520BD926A00E8F5FE /* 9980_jy.45 */ = {isa = PBXFileReference; lastKnownFileType = file; path = 9980_jy.45; sourceTree = "<group>"; };
 		8466F21620BD926A00E8F5FE /* 9980_jy.46 */ = {isa = PBXFileReference; lastKnownFileType = file; path = 9980_jy.46; sourceTree = "<group>"; };
 		8466F21720BD926A00E8F5FE /* 9980_jy.47 */ = {isa = PBXFileReference; lastKnownFileType = file; path = 9980_jy.47; sourceTree = "<group>"; };
-		8466F21820BD926A00E8F5FE /* 9980_jy.48 */ = {isa = PBXFileReference; lastKnownFileType = file; path = 9980_jy.48; sourceTree = "<group>"; };
+		8466F21820BD926A00E8F5FE /* 9980_jy.48 */ = {isa = PBXFileReference; lastKnownFileType = text; path = 9980_jy.48; sourceTree = "<group>"; };
 		8466F21920BD926A00E8F5FE /* 9980_jy.49 */ = {isa = PBXFileReference; lastKnownFileType = file; path = 9980_jy.49; sourceTree = "<group>"; };
 		8466F21A20BD926A00E8F5FE /* 9980_jy.5 */ = {isa = PBXFileReference; lastKnownFileType = file; path = 9980_jy.5; sourceTree = "<group>"; };
 		8466F21B20BD926A00E8F5FE /* 9980_jy.50 */ = {isa = PBXFileReference; lastKnownFileType = file; path = 9980_jy.50; sourceTree = "<group>"; };
@@ -1555,7 +1555,7 @@
 		8466F28E20BD926A00E8F5FE /* 9980_jz.81 */ = {isa = PBXFileReference; lastKnownFileType = file; path = 9980_jz.81; sourceTree = "<group>"; };
 		8466F28F20BD926A00E8F5FE /* 9980_jz.82 */ = {isa = PBXFileReference; lastKnownFileType = file; path = 9980_jz.82; sourceTree = "<group>"; };
 		8466F29020BD926A00E8F5FE /* 9980_jz.9 */ = {isa = PBXFileReference; lastKnownFileType = file; path = 9980_jz.9; sourceTree = "<group>"; };
-		8466F29220BD926B00E8F5FE /* 9981_elem_neib */ = {isa = PBXFileReference; lastKnownFileType = file; path = 9981_elem_neib; sourceTree = "<group>"; };
+		8466F29220BD926B00E8F5FE /* 9981_elem_neib */ = {isa = PBXFileReference; lastKnownFileType = text; path = 9981_elem_neib; sourceTree = "<group>"; };
 		8466F29320BD926B00E8F5FE /* 9981_inftry.dat */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 9981_inftry.dat; sourceTree = "<group>"; };
 		8466F29420BD926B00E8F5FE /* 9981_nver.dat */ = {isa = PBXFileReference; lastKnownFileType = file; path = 9981_nver.dat; sourceTree = "<group>"; };
 		8466F29520BD926B00E8F5FE /* 9981_nvkat.dat */ = {isa = PBXFileReference; lastKnownFileType = file; path = 9981_nvkat.dat; sourceTree = "<group>"; };
@@ -3455,7 +3455,7 @@
 				TargetAttributes = {
 					9ADE1EB71EED062B006D409E = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = 4AGU44C96R;
+						DevelopmentTeam = SZ46K2Z6E6;
 						LastSwiftMigration = 0930;
 						ProvisioningStyle = Automatic;
 					};
@@ -4732,11 +4732,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = 4AGU44C96R;
+				DEVELOPMENT_TEAM = SZ46K2Z6E6;
 				INFOPLIST_FILE = MagisterGL/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = tyh94.MagisterGL;
+				PRODUCT_BUNDLE_IDENTIFIER = taa.MagisterGL;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "MagisterGL/GoogleDrive/Model/MagisterGL-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -4752,11 +4752,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = 4AGU44C96R;
+				DEVELOPMENT_TEAM = SZ46K2Z6E6;
 				INFOPLIST_FILE = MagisterGL/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = tyh94.MagisterGL;
+				PRODUCT_BUNDLE_IDENTIFIER = taa.MagisterGL;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "MagisterGL/GoogleDrive/Model/MagisterGL-Bridging-Header.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
