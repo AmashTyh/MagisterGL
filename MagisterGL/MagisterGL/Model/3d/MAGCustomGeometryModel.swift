@@ -17,7 +17,7 @@ class MAGCustomGeometryModel: NSObject
   
   var isShowMaterials = true
   var showFieldNumber = -1
-  var showTimeSlicesNumber = 10
+  var showTimeSlicesNumber = 0
   var colorGenerator: MAGColorGenerator?
   var project: MAGProject?
   
