@@ -1,4 +1,5 @@
 #import <Foundation/Foundation.h>
+@class MSCRnData;
 
 @interface MSCFileManager : NSObject
 
@@ -8,5 +9,7 @@
 - (NSArray<NSArray *> *)getNEIBArrayWithPath:(NSString *)path;
 - (NSArray *)getSig3dArrayWithPath:(NSString *)path;
 - (NSArray *)getProfileArrayWithPath:(NSString *)path;
+- (NSArray<NSDictionary<NSNumber *, NSNumber *> *> *)getEdsallArrayWithPath:(NSString *)path;
+- (MSCRnData *)getRnArrayWithPath:(NSString *)path;
 
 @end

@@ -2,6 +2,7 @@
 
 #import <SceneKit/SceneKit.h>
 #import "MSCBinaryDataScanner.h"
+#import "MSCRnData.h"
 
 @implementation MSCFileManager
 
@@ -220,42 +221,65 @@
 
 - (NSArray<NSDictionary<NSNumber *, NSNumber *> *> *)getEdsallArrayWithPath:(NSString *)path
 {
-  return @[@{}];
+  int num = 0;
+  NSMutableArray<NSDictionary<NSNumber *, NSNumber *> *> *result = [NSMutableArray array];
+  
+  NSMutableString *data = [NSMutableString stringWithContentsOfURL:[NSURL URLWithString:path]
+                                                          encoding:NSASCIIStringEncoding
+                                                             error:nil];
+  NSMutableDictionary<NSNumber *, NSNumber *> *dictionaryOfReceiver = [NSMutableDictionary dictionary];
+  for (NSString* string in [data componentsSeparatedByString:@"\n"]) {
+    if (string.length != 0) {
+      NSArray<NSString *> *array = [string componentsSeparatedByString:@"\t"];
+      if (array.count == 4) {
+        dictionaryOfReceiver[[NSNumber numberWithFloat:[array[0] floatValue]]] =
+          [NSNumber numberWithFloat:[[array[3] componentsSeparatedByString:@"\r"][0] floatValue]];
+      } else {
+        if ([string containsString:@"element"]) {
+          if (num != 0) {
+            [result addObject:[dictionaryOfReceiver copy]];
+          }
+        }
+      }
+    }
+  }
+  [result addObject:[dictionaryOfReceiver copy]];
+
+  return [result copy];
 }
-//func getEdsallArray(path: String) -> [[Float: Float]]
-//{
-//  var num: Int = 0
-//  var result: [[Float: Float]] = []
-//  do {
-//    let data = try String(contentsOfFile: path,
-//                          encoding: String.Encoding.ascii)
-//    //var arrayOfVectors: [SCNVector3]? = []
-//    var dictionaryOfReceiver: [Float: Float] = [:]
-//    for string in data.components(separatedBy: "\n") {
-//      if string != "" {
-//        let array = string.components(separatedBy: "\t")
-//        if array.count == 4 {
-//          dictionaryOfReceiver[Float(array[0])!] = Float(array[3].components(separatedBy: "\r")[0])!
-//        }
-//        else {
-//          if string.contains("element") {
-//            if (num != 0) {
-//              result.append(dictionaryOfReceiver)
-//            }
-//            num += 1
-//          }
-//        }
-//      }
-//    }
-//    result.append(dictionaryOfReceiver)
-//    return result
-//
-//  }
-//  catch let err as NSError
-//  {
-//    print(err)
-//  }
-//  return []
-//}
+
+- (MSCRnData *)getRnArrayWithPath:(NSString *)path
+{
+  NSString *newPath = path;
+  if ([newPath containsString:@"/"]) {
+    newPath = [[newPath componentsSeparatedByString:@"/"] lastObject];
+  }
+  if ([newPath containsString:@"_"]) {
+    newPath = [[newPath componentsSeparatedByString:@"_"] lastObject];
+  }
+  
+  NSArray<NSString *> *fileNameArray = [newPath componentsSeparatedByString:@"."];
+  int numberOfTime = [[fileNameArray firstObject] intValue] - 1;
+  int numberOfProfileLine = [[fileNameArray firstObject] intValue] - 1;
+  
+  NSMutableString *data = [NSMutableString stringWithContentsOfURL:[NSURL URLWithString:path]
+                                                          encoding:NSASCIIStringEncoding
+                                                             error:nil];
+  NSMutableArray<NSArray<NSNumber *> *> *resultArray = [NSMutableArray array];
+  for (NSString* string in [data componentsSeparatedByString:@"\n"]) {
+    if (string.length != 0) {
+      NSArray<NSString *> *array = [string componentsSeparatedByString:@"\t"];
+      if (array.count == 2) {
+        NSMutableArray<NSNumber *> *tempArray = [NSMutableArray array];
+        tempArray[0] = [NSNumber numberWithFloat:[array[0] floatValue]];
+        tempArray[1] = [NSNumber numberWithFloat:[[array[1] componentsSeparatedByString:@"\r"][0] floatValue]];
+        [resultArray addObject: [tempArray copy]];
+      }
+    }
+  }
+  return [[MSCRnData alloc] initWithNumberOfTime:numberOfTime
+                             numberOfProfileLine:numberOfProfileLine
+                               profileChartsData:[resultArray copy]];
+}
 
 @end
