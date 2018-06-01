@@ -1,11 +1,3 @@
-//
-//  MSCRnData.m
-//  MagisterGL
-//
-//  Created by Admin on 02.06.2018.
-//  Copyright © 2018 Хохлова Татьяна. All rights reserved.
-//
-
 #import "MSCRnData.h"
 
 @implementation MSCRnData
