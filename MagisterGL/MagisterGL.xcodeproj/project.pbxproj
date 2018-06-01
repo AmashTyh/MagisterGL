@@ -50,6 +50,39 @@
 		84792E6220B47A7E00885EEC /* MAGChartsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84792E6120B47A7E00885EEC /* MAGChartsData.swift */; };
 		84792E6420B47F3C00885EEC /* MAGRecieversFuncGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84792E6320B47F3C00885EEC /* MAGRecieversFuncGenerator.swift */; };
 		84792E6920B4913600885EEC /* MSCFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84792E6820B4913600885EEC /* MSCFileManager.m */; };
+		84F8C3E420C1F49100259867 /* MAGTimeChartsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F8C3E320C1F49100259867 /* MAGTimeChartsViewController.swift */; };
+		84F8C3E620C1F4A300259867 /* MAGRnData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F8C3E520C1F4A300259867 /* MAGRnData.swift */; };
+		84F8C40020C1F4CA00259867 /* 1.Rn4.1 in Resources */ = {isa = PBXBuildFile; fileRef = 84F8C3E720C1F4C800259867 /* 1.Rn4.1 */; };
+		84F8C40120C1F4CA00259867 /* 3.Rn4.3 in Resources */ = {isa = PBXBuildFile; fileRef = 84F8C3E820C1F4C800259867 /* 3.Rn4.3 */; };
+		84F8C40220C1F4CA00259867 /* 4.Rn4.5 in Resources */ = {isa = PBXBuildFile; fileRef = 84F8C3E920C1F4C800259867 /* 4.Rn4.5 */; };
+		84F8C40320C1F4CA00259867 /* 3.Rn4.6 in Resources */ = {isa = PBXBuildFile; fileRef = 84F8C3EA20C1F4C900259867 /* 3.Rn4.6 */; };
+		84F8C40420C1F4CA00259867 /* 4.Rn4.4 in Resources */ = {isa = PBXBuildFile; fileRef = 84F8C3EB20C1F4C900259867 /* 4.Rn4.4 */; };
+		84F8C40520C1F4CA00259867 /* edsall04 in Resources */ = {isa = PBXBuildFile; fileRef = 84F8C3EC20C1F4C900259867 /* edsall04 */; };
+		84F8C40620C1F4CA00259867 /* 2.Rn4.6 in Resources */ = {isa = PBXBuildFile; fileRef = 84F8C3ED20C1F4C900259867 /* 2.Rn4.6 */; };
+		84F8C40720C1F4CA00259867 /* 4.Rn4.1 in Resources */ = {isa = PBXBuildFile; fileRef = 84F8C3EE20C1F4C900259867 /* 4.Rn4.1 */; };
+		84F8C40820C1F4CA00259867 /* 3.Rn4.1 in Resources */ = {isa = PBXBuildFile; fileRef = 84F8C3EF20C1F4C900259867 /* 3.Rn4.1 */; };
+		84F8C40920C1F4CA00259867 /* 1.Rn4.3 in Resources */ = {isa = PBXBuildFile; fileRef = 84F8C3F020C1F4C900259867 /* 1.Rn4.3 */; };
+		84F8C40A20C1F4CA00259867 /* 3.Rn4.5 in Resources */ = {isa = PBXBuildFile; fileRef = 84F8C3F120C1F4C900259867 /* 3.Rn4.5 */; };
+		84F8C40B20C1F4CA00259867 /* 3.Rn4.2 in Resources */ = {isa = PBXBuildFile; fileRef = 84F8C3F220C1F4C900259867 /* 3.Rn4.2 */; };
+		84F8C40C20C1F4CA00259867 /* 2.Rn4.1 in Resources */ = {isa = PBXBuildFile; fileRef = 84F8C3F320C1F4C900259867 /* 2.Rn4.1 */; };
+		84F8C40D20C1F4CA00259867 /* 1.Rn4.4 in Resources */ = {isa = PBXBuildFile; fileRef = 84F8C3F420C1F4C900259867 /* 1.Rn4.4 */; };
+		84F8C40E20C1F4CA00259867 /* 1.Rn4.5 in Resources */ = {isa = PBXBuildFile; fileRef = 84F8C3F520C1F4C900259867 /* 1.Rn4.5 */; };
+		84F8C40F20C1F4CA00259867 /* 4.Rn4.6 in Resources */ = {isa = PBXBuildFile; fileRef = 84F8C3F620C1F4C900259867 /* 4.Rn4.6 */; };
+		84F8C41020C1F4CA00259867 /* 4.Rn4.2 in Resources */ = {isa = PBXBuildFile; fileRef = 84F8C3F720C1F4C900259867 /* 4.Rn4.2 */; };
+		84F8C41120C1F4CA00259867 /* 1.Rn4.6 in Resources */ = {isa = PBXBuildFile; fileRef = 84F8C3F820C1F4C900259867 /* 1.Rn4.6 */; };
+		84F8C41220C1F4CA00259867 /* 1.Rn4.2 in Resources */ = {isa = PBXBuildFile; fileRef = 84F8C3F920C1F4CA00259867 /* 1.Rn4.2 */; };
+		84F8C41320C1F4CA00259867 /* 2.Rn4.2 in Resources */ = {isa = PBXBuildFile; fileRef = 84F8C3FA20C1F4CA00259867 /* 2.Rn4.2 */; };
+		84F8C41420C1F4CA00259867 /* 2.Rn4.4 in Resources */ = {isa = PBXBuildFile; fileRef = 84F8C3FB20C1F4CA00259867 /* 2.Rn4.4 */; };
+		84F8C41520C1F4CA00259867 /* 2.Rn4.5 in Resources */ = {isa = PBXBuildFile; fileRef = 84F8C3FC20C1F4CA00259867 /* 2.Rn4.5 */; };
+		84F8C41620C1F4CA00259867 /* 3.Rn4.4 in Resources */ = {isa = PBXBuildFile; fileRef = 84F8C3FD20C1F4CA00259867 /* 3.Rn4.4 */; };
+		84F8C41720C1F4CA00259867 /* 4.Rn4.3 in Resources */ = {isa = PBXBuildFile; fileRef = 84F8C3FE20C1F4CA00259867 /* 4.Rn4.3 */; };
+		84F8C41820C1F4CA00259867 /* 2.Rn4.3 in Resources */ = {isa = PBXBuildFile; fileRef = 84F8C3FF20C1F4CA00259867 /* 2.Rn4.3 */; };
+		84F8C41F20C1F4D800259867 /* 3.Rn5.5 in Resources */ = {isa = PBXBuildFile; fileRef = 84F8C41920C1F4D700259867 /* 3.Rn5.5 */; };
+		84F8C42020C1F4D800259867 /* 1.Rn5.5 in Resources */ = {isa = PBXBuildFile; fileRef = 84F8C41A20C1F4D700259867 /* 1.Rn5.5 */; };
+		84F8C42120C1F4D800259867 /* 4.Rn5.5 in Resources */ = {isa = PBXBuildFile; fileRef = 84F8C41B20C1F4D800259867 /* 4.Rn5.5 */; };
+		84F8C42220C1F4D800259867 /* 5.Rn5.5 in Resources */ = {isa = PBXBuildFile; fileRef = 84F8C41C20C1F4D800259867 /* 5.Rn5.5 */; };
+		84F8C42320C1F4D800259867 /* 2.Rn5.5 in Resources */ = {isa = PBXBuildFile; fileRef = 84F8C41D20C1F4D800259867 /* 2.Rn5.5 */; };
+		84F8C42420C1F4D800259867 /* edsall05 in Resources */ = {isa = PBXBuildFile; fileRef = 84F8C41E20C1F4D800259867 /* edsall05 */; };
 		992685A973168ED57CDB8564 /* Pods_MagisterGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6DA4F8BFD9D8D310D40705BF /* Pods_MagisterGL.framework */; };
 		9A05AA3A20AC3A2500F44AE5 /* v3.t1.txt in Resources */ = {isa = PBXBuildFile; fileRef = 9A05AA3920AC3A2500F44AE5 /* v3.t1.txt */; };
 		9A05AA3D20AC4C9800F44AE5 /* MAGChooseFieldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A05AA3C20AC4C9800F44AE5 /* MAGChooseFieldViewController.swift */; };
@@ -131,6 +164,39 @@
 		84792E6320B47F3C00885EEC /* MAGRecieversFuncGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAGRecieversFuncGenerator.swift; sourceTree = "<group>"; };
 		84792E6720B4913600885EEC /* MSCFileManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSCFileManager.h; sourceTree = "<group>"; };
 		84792E6820B4913600885EEC /* MSCFileManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MSCFileManager.m; sourceTree = "<group>"; };
+		84F8C3E320C1F49100259867 /* MAGTimeChartsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MAGTimeChartsViewController.swift; sourceTree = "<group>"; };
+		84F8C3E520C1F4A300259867 /* MAGRnData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MAGRnData.swift; sourceTree = "<group>"; };
+		84F8C3E720C1F4C800259867 /* 1.Rn4.1 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.man; path = 1.Rn4.1; sourceTree = "<group>"; };
+		84F8C3E820C1F4C800259867 /* 3.Rn4.3 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 3.Rn4.3; sourceTree = "<group>"; };
+		84F8C3E920C1F4C800259867 /* 4.Rn4.5 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 4.Rn4.5; sourceTree = "<group>"; };
+		84F8C3EA20C1F4C900259867 /* 3.Rn4.6 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 3.Rn4.6; sourceTree = "<group>"; };
+		84F8C3EB20C1F4C900259867 /* 4.Rn4.4 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 4.Rn4.4; sourceTree = "<group>"; };
+		84F8C3EC20C1F4C900259867 /* edsall04 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = edsall04; sourceTree = "<group>"; };
+		84F8C3ED20C1F4C900259867 /* 2.Rn4.6 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 2.Rn4.6; sourceTree = "<group>"; };
+		84F8C3EE20C1F4C900259867 /* 4.Rn4.1 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.man; path = 4.Rn4.1; sourceTree = "<group>"; };
+		84F8C3EF20C1F4C900259867 /* 3.Rn4.1 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.man; path = 3.Rn4.1; sourceTree = "<group>"; };
+		84F8C3F020C1F4C900259867 /* 1.Rn4.3 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 1.Rn4.3; sourceTree = "<group>"; };
+		84F8C3F120C1F4C900259867 /* 3.Rn4.5 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 3.Rn4.5; sourceTree = "<group>"; };
+		84F8C3F220C1F4C900259867 /* 3.Rn4.2 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 3.Rn4.2; sourceTree = "<group>"; };
+		84F8C3F320C1F4C900259867 /* 2.Rn4.1 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.man; path = 2.Rn4.1; sourceTree = "<group>"; };
+		84F8C3F420C1F4C900259867 /* 1.Rn4.4 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 1.Rn4.4; sourceTree = "<group>"; };
+		84F8C3F520C1F4C900259867 /* 1.Rn4.5 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 1.Rn4.5; sourceTree = "<group>"; };
+		84F8C3F620C1F4C900259867 /* 4.Rn4.6 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 4.Rn4.6; sourceTree = "<group>"; };
+		84F8C3F720C1F4C900259867 /* 4.Rn4.2 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 4.Rn4.2; sourceTree = "<group>"; };
+		84F8C3F820C1F4C900259867 /* 1.Rn4.6 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 1.Rn4.6; sourceTree = "<group>"; };
+		84F8C3F920C1F4CA00259867 /* 1.Rn4.2 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 1.Rn4.2; sourceTree = "<group>"; };
+		84F8C3FA20C1F4CA00259867 /* 2.Rn4.2 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 2.Rn4.2; sourceTree = "<group>"; };
+		84F8C3FB20C1F4CA00259867 /* 2.Rn4.4 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 2.Rn4.4; sourceTree = "<group>"; };
+		84F8C3FC20C1F4CA00259867 /* 2.Rn4.5 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 2.Rn4.5; sourceTree = "<group>"; };
+		84F8C3FD20C1F4CA00259867 /* 3.Rn4.4 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 3.Rn4.4; sourceTree = "<group>"; };
+		84F8C3FE20C1F4CA00259867 /* 4.Rn4.3 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 4.Rn4.3; sourceTree = "<group>"; };
+		84F8C3FF20C1F4CA00259867 /* 2.Rn4.3 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 2.Rn4.3; sourceTree = "<group>"; };
+		84F8C41920C1F4D700259867 /* 3.Rn5.5 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 3.Rn5.5; sourceTree = "<group>"; };
+		84F8C41A20C1F4D700259867 /* 1.Rn5.5 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 1.Rn5.5; sourceTree = "<group>"; };
+		84F8C41B20C1F4D800259867 /* 4.Rn5.5 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 4.Rn5.5; sourceTree = "<group>"; };
+		84F8C41C20C1F4D800259867 /* 5.Rn5.5 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 5.Rn5.5; sourceTree = "<group>"; };
+		84F8C41D20C1F4D800259867 /* 2.Rn5.5 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 2.Rn5.5; sourceTree = "<group>"; };
+		84F8C41E20C1F4D800259867 /* edsall05 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = edsall05; sourceTree = "<group>"; };
 		8CAFC11BF7FD19D8CB4C5EF8 /* Pods-MagisterGL.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MagisterGL.release.xcconfig"; path = "Pods/Target Support Files/Pods-MagisterGL/Pods-MagisterGL.release.xcconfig"; sourceTree = "<group>"; };
 		9A05AA3920AC3A2500F44AE5 /* v3.t1.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = v3.t1.txt; sourceTree = "<group>"; };
 		9A05AA3C20AC4C9800F44AE5 /* MAGChooseFieldViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAGChooseFieldViewController.swift; sourceTree = "<group>"; };
@@ -225,6 +291,31 @@
 		8437777B20A330FD009B1BE0 /* Test4 */ = {
 			isa = PBXGroup;
 			children = (
+				84F8C3E720C1F4C800259867 /* 1.Rn4.1 */,
+				84F8C3F920C1F4CA00259867 /* 1.Rn4.2 */,
+				84F8C3F020C1F4C900259867 /* 1.Rn4.3 */,
+				84F8C3F420C1F4C900259867 /* 1.Rn4.4 */,
+				84F8C3F520C1F4C900259867 /* 1.Rn4.5 */,
+				84F8C3F820C1F4C900259867 /* 1.Rn4.6 */,
+				84F8C3F320C1F4C900259867 /* 2.Rn4.1 */,
+				84F8C3FA20C1F4CA00259867 /* 2.Rn4.2 */,
+				84F8C3FF20C1F4CA00259867 /* 2.Rn4.3 */,
+				84F8C3FB20C1F4CA00259867 /* 2.Rn4.4 */,
+				84F8C3FC20C1F4CA00259867 /* 2.Rn4.5 */,
+				84F8C3ED20C1F4C900259867 /* 2.Rn4.6 */,
+				84F8C3EF20C1F4C900259867 /* 3.Rn4.1 */,
+				84F8C3F220C1F4C900259867 /* 3.Rn4.2 */,
+				84F8C3E820C1F4C800259867 /* 3.Rn4.3 */,
+				84F8C3FD20C1F4CA00259867 /* 3.Rn4.4 */,
+				84F8C3F120C1F4C900259867 /* 3.Rn4.5 */,
+				84F8C3EA20C1F4C900259867 /* 3.Rn4.6 */,
+				84F8C3EE20C1F4C900259867 /* 4.Rn4.1 */,
+				84F8C3F720C1F4C900259867 /* 4.Rn4.2 */,
+				84F8C3FE20C1F4CA00259867 /* 4.Rn4.3 */,
+				84F8C3EB20C1F4C900259867 /* 4.Rn4.4 */,
+				84F8C3E920C1F4C800259867 /* 4.Rn4.5 */,
+				84F8C3F620C1F4C900259867 /* 4.Rn4.6 */,
+				84F8C3EC20C1F4C900259867 /* edsall04 */,
 				8437778220A331C5009B1BE0 /* elem_neib4 */,
 				8437778320A331C5009B1BE0 /* inftry4.dat */,
 				8437778120A331C5009B1BE0 /* nver4.dat */,
@@ -239,6 +330,12 @@
 		8437777C20A33177009B1BE0 /* Test5 */ = {
 			isa = PBXGroup;
 			children = (
+				84F8C41A20C1F4D700259867 /* 1.Rn5.5 */,
+				84F8C41D20C1F4D800259867 /* 2.Rn5.5 */,
+				84F8C41920C1F4D700259867 /* 3.Rn5.5 */,
+				84F8C41B20C1F4D800259867 /* 4.Rn5.5 */,
+				84F8C41C20C1F4D800259867 /* 5.Rn5.5 */,
+				84F8C41E20C1F4D800259867 /* edsall05 */,
 				8437779E20A334DF009B1BE0 /* elem_neib5 */,
 				8437779D20A334DF009B1BE0 /* inftry5.dat */,
 				8437779F20A334DF009B1BE0 /* nver5.dat */,
@@ -350,6 +447,7 @@
 		9A05AA3B20AC4C1000F44AE5 /* ChooseField */ = {
 			isa = PBXGroup;
 			children = (
+				84F8C3E320C1F49100259867 /* MAGTimeChartsViewController.swift */,
 				9A05AA3C20AC4C9800F44AE5 /* MAGChooseFieldViewController.swift */,
 			);
 			path = ChooseField;
@@ -461,6 +559,7 @@
 		9AE615671F8A004C0067893C /* FileManager */ = {
 			isa = PBXGroup;
 			children = (
+				84F8C3E520C1F4A300259867 /* MAGRnData.swift */,
 				9AE615681F8A009D0067893C /* MAGFileManager.swift */,
 				9A4B279C1F91EA8900068550 /* MAGBinaryDataScanner.swift */,
 			);
@@ -579,17 +678,29 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84F8C41820C1F4CA00259867 /* 2.Rn4.3 in Resources */,
+				84F8C40720C1F4CA00259867 /* 4.Rn4.1 in Resources */,
+				84F8C42220C1F4D800259867 /* 5.Rn5.5 in Resources */,
+				84F8C40120C1F4CA00259867 /* 3.Rn4.3 in Resources */,
 				8437778A20A331C5009B1BE0 /* elem_neib4 in Resources */,
 				84541B0F1FB0AD2300DC6E43 /* nver2.txt in Resources */,
 				843777A520A334E0009B1BE0 /* inftry5.dat in Resources */,
+				84F8C41420C1F4CA00259867 /* 2.Rn4.4 in Resources */,
+				84F8C41F20C1F4D800259867 /* 3.Rn5.5 in Resources */,
 				843777AB20A334E0009B1BE0 /* Sig3d5 in Resources */,
 				9AE6157A1F8A1A920067893C /* elem_neib in Resources */,
+				84F8C40220C1F4CA00259867 /* 4.Rn4.5 in Resources */,
 				8437778620A331C5009B1BE0 /* xyz4.dat in Resources */,
 				9AE6157B1F8A1A920067893C /* inftry.dat in Resources */,
+				84F8C40320C1F4CA00259867 /* 3.Rn4.6 in Resources */,
+				84F8C41720C1F4CA00259867 /* 4.Rn4.3 in Resources */,
+				84F8C40A20C1F4CA00259867 /* 3.Rn4.5 in Resources */,
 				9AE6157C1F8A1A920067893C /* nver.dat in Resources */,
 				843777A820A334E0009B1BE0 /* xyz5.dat in Resources */,
+				84F8C40020C1F4CA00259867 /* 1.Rn4.1 in Resources */,
 				843777A920A334E0009B1BE0 /* profile5 in Resources */,
 				9AE6157D1F8A1A920067893C /* nvkat.dat in Resources */,
+				84F8C41520C1F4CA00259867 /* 2.Rn4.5 in Resources */,
 				9AE6157E1F8A1A920067893C /* xyz.dat in Resources */,
 				8437778720A331C5009B1BE0 /* nvkat4.dat in Resources */,
 				9AE615761F8A10FF0067893C /* elem_neib.txt in Resources */,
@@ -598,20 +709,39 @@
 				9AE615781F8A10FF0067893C /* nvkat.txt in Resources */,
 				9AF5853D2086053000A90D2D /* MAGProjectFileAddTableViewCell.xib in Resources */,
 				8437778920A331C5009B1BE0 /* nver4.dat in Resources */,
+				84F8C41020C1F4CA00259867 /* 4.Rn4.2 in Resources */,
+				84F8C41620C1F4CA00259867 /* 3.Rn4.4 in Resources */,
+				84F8C40920C1F4CA00259867 /* 1.Rn4.3 in Resources */,
+				84F8C42120C1F4D800259867 /* 4.Rn5.5 in Resources */,
 				84541B0E1FB0AD2300DC6E43 /* xyz2.txt in Resources */,
+				84F8C40E20C1F4CA00259867 /* 1.Rn4.5 in Resources */,
 				843777AA20A334E0009B1BE0 /* nvkat5.dat in Resources */,
+				84F8C41220C1F4CA00259867 /* 1.Rn4.2 in Resources */,
 				9AE615791F8A10FF0067893C /* xyz.txt in Resources */,
+				84F8C40820C1F4CA00259867 /* 3.Rn4.1 in Resources */,
 				840D4EA120B2F6A500E9DF5C /* v3_3.t1.txt in Resources */,
+				84F8C40520C1F4CA00259867 /* edsall04 in Resources */,
 				9A05AA3F20AC508F00F44AE5 /* v3.t2.txt in Resources */,
+				84F8C42420C1F4D800259867 /* edsall05 in Resources */,
+				84F8C41320C1F4CA00259867 /* 2.Rn4.2 in Resources */,
 				9ADE1EC61EED062B006D409E /* LaunchScreen.storyboard in Resources */,
 				9ADE1EC31EED062B006D409E /* Assets.xcassets in Resources */,
+				84F8C40B20C1F4CA00259867 /* 3.Rn4.2 in Resources */,
 				8437778B20A331C5009B1BE0 /* inftry4.dat in Resources */,
+				84F8C40420C1F4CA00259867 /* 4.Rn4.4 in Resources */,
+				84F8C41120C1F4CA00259867 /* 1.Rn4.6 in Resources */,
+				84F8C40F20C1F4CA00259867 /* 4.Rn4.6 in Resources */,
 				9ADE1EC11EED062B006D409E /* Main.storyboard in Resources */,
 				843777A620A334E0009B1BE0 /* elem_neib5 in Resources */,
+				84F8C42320C1F4D800259867 /* 2.Rn5.5 in Resources */,
 				84541B101FB0AD2300DC6E43 /* nvkat2.txt in Resources */,
 				84541B0D1FB0AD2300DC6E43 /* elem_neib2.txt in Resources */,
+				84F8C40C20C1F4CA00259867 /* 2.Rn4.1 in Resources */,
 				9A05AA3A20AC3A2500F44AE5 /* v3.t1.txt in Resources */,
+				84F8C40D20C1F4CA00259867 /* 1.Rn4.4 in Resources */,
 				843777A720A334E0009B1BE0 /* nver5.dat in Resources */,
+				84F8C42020C1F4D800259867 /* 1.Rn5.5 in Resources */,
+				84F8C40620C1F4CA00259867 /* 2.Rn4.6 in Resources */,
 				8437778C20A331C5009B1BE0 /* profile4 in Resources */,
 				84743BB82084E6E4007049C6 /* MAGProjectTableViewCell.xib in Resources */,
 			);
@@ -698,6 +828,7 @@
 				84743BAD2084DEB6007049C6 /* MAGLocalViewController.swift in Sources */,
 				9AE615691F8A009D0067893C /* MAGFileManager.swift in Sources */,
 				8436E48520B9DAD60035B6A0 /* MSCCustomGeometryModel.m in Sources */,
+				84F8C3E620C1F4A300259867 /* MAGRnData.swift in Sources */,
 				9AF585412086069E00A90D2D /* MAGProjectFileAddTableViewCellObject.swift in Sources */,
 				84792E6420B47F3C00885EEC /* MAGRecieversFuncGenerator.swift in Sources */,
 				9ADE1EBC1EED062B006D409E /* AppDelegate.swift in Sources */,
@@ -711,6 +842,7 @@
 				9AF5853C2086053000A90D2D /* MAGProjectFileAddTableViewCell.swift in Sources */,
 				840D4EA320B2FC6900E9DF5C /* Color.swift in Sources */,
 				84743BA72084DD3B007049C6 /* MAGLocalFileManager.m in Sources */,
+				84F8C3E420C1F49100259867 /* MAGTimeChartsViewController.swift in Sources */,
 				8444971B20A469B300AB8D54 /* MAGBaseProjectsGenerator.swift in Sources */,
 				9AE615701F8A07250067893C /* MAGCustomGeometryModel.swift in Sources */,
 				8432FC3220AC8C7D00930CB9 /* MAGTriangleElement.swift in Sources */,

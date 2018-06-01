@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SceneKit
 
 protocol MAGChooseSectionViewControllerDelegate : class
 {
@@ -14,6 +15,9 @@ protocol MAGChooseSectionViewControllerDelegate : class
                    sectionValue: Float,
                    greater: Bool)
   func deleteSection()
+  
+  func minVector() -> SCNVector3
+  func maxVector() -> SCNVector3
 }
 
 class MAGChooseSectionViewController: UIViewController,
@@ -27,8 +31,28 @@ class MAGChooseSectionViewController: UIViewController,
   @IBOutlet weak var sectionXTextField: UITextField!
   @IBOutlet weak var sectionTypePicker: UIPickerView!
   @IBOutlet weak var sectionGreater: UISwitch!
+  @IBOutlet weak var minVectorLabel: UILabel!
+  @IBOutlet weak var maxVectorLabel: UILabel!
   
   let pickerData = ["X", "Y", "Z"]
+  
+  
+  override func viewDidLoad()
+  {
+    super.viewDidLoad()
+    
+    let minVector = delegate?.minVector()
+    if minVector != nil
+    {
+      minVectorLabel.text = String(format: "min: %.2f %.2f %.2f", (minVector?.x)!, (minVector?.y)!, (minVector?.z)!)
+    }
+    
+    let maxVector = delegate?.maxVector()
+    if maxVector != nil
+    {
+      maxVectorLabel.text = String(format: "max: %.2f %.2f %.2f", (maxVector?.x)!, (maxVector?.y)!, (maxVector?.z)!)
+    }
+  }
   
   
   @IBAction func drawSectionButtonTapped()

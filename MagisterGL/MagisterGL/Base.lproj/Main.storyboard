@@ -209,7 +209,6 @@
         <!--Navigation Controller-->
         <scene sceneID="txZ-Fp-wAU">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="neh-R0-Ljn" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController id="4eP-Fj-frX" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="KY8-Et-Bod">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -219,6 +218,7 @@
                         <segue destination="fc5-rN-1wo" kind="relationship" relationship="rootViewController" id="qhX-bz-NlY"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="neh-R0-Ljn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-3829" y="1492"/>
         </scene>
@@ -235,26 +235,41 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <sceneKitView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" autoenablesDefaultLighting="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Lyg-Da-mv5" customClass="MAGCustomGeometryView" customModule="MagisterGL" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="559"/>
                             </sceneKitView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ena-5w-n96">
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <items>
+                                    <barButtonItem title="Charts Time Slice" id="5Ln-fE-ARf">
+                                        <connections>
+                                            <segue destination="r05-7b-toK" kind="popoverPresentation" popoverAnchorBarButtonItem="5Ln-fE-ARf" id="Mv8-4M-CrA">
+                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                            </segue>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem title="Section" id="JIs-Sg-bh9">
+                                        <connections>
+                                            <segue destination="Yia-fo-B5Z" kind="popoverPresentation" popoverAnchorBarButtonItem="JIs-Sg-bh9" id="qME-yA-Mos">
+                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                            </segue>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="zCg-JB-xlA" firstAttribute="top" secondItem="Lyg-Da-mv5" secondAttribute="bottom" id="3I4-GK-Zr6"/>
-                            <constraint firstAttribute="trailing" secondItem="Lyg-Da-mv5" secondAttribute="trailing" id="Rr1-KZ-vl5"/>
-                            <constraint firstItem="Lyg-Da-mv5" firstAttribute="leading" secondItem="zK3-8f-F0h" secondAttribute="leading" id="szi-Bs-Avt"/>
-                            <constraint firstItem="Lyg-Da-mv5" firstAttribute="top" secondItem="8sy-F7-irp" secondAttribute="bottom" id="w8i-VH-BgP"/>
+                            <constraint firstAttribute="trailing" secondItem="Lyg-Da-mv5" secondAttribute="trailing" id="3LU-uN-g6e"/>
+                            <constraint firstItem="Lyg-Da-mv5" firstAttribute="leading" secondItem="zK3-8f-F0h" secondAttribute="leading" id="EsL-HG-eVF"/>
+                            <constraint firstAttribute="trailing" secondItem="ena-5w-n96" secondAttribute="trailing" id="IU5-2T-YI2"/>
+                            <constraint firstItem="ena-5w-n96" firstAttribute="leading" secondItem="zK3-8f-F0h" secondAttribute="leading" id="LM0-lh-MIL"/>
+                            <constraint firstItem="Lyg-Da-mv5" firstAttribute="top" secondItem="8sy-F7-irp" secondAttribute="bottom" id="Ok6-ae-I3d"/>
+                            <constraint firstItem="ena-5w-n96" firstAttribute="top" secondItem="Lyg-Da-mv5" secondAttribute="bottom" id="aB1-LP-Jar"/>
+                            <constraint firstItem="zCg-JB-xlA" firstAttribute="top" secondItem="ena-5w-n96" secondAttribute="bottom" id="l1i-5U-nCN"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="hnv-r4-Fgi">
                         <rightBarButtonItems>
-                            <barButtonItem title="Section" id="JIs-Sg-bh9">
-                                <connections>
-                                    <segue destination="Yia-fo-B5Z" kind="popoverPresentation" popoverAnchorBarButtonItem="JIs-Sg-bh9" id="qME-yA-Mos">
-                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                    </segue>
-                                </connections>
-                            </barButtonItem>
                             <barButtonItem title="Materials" id="KlX-sr-LT4">
                                 <connections>
                                     <segue destination="gFw-Q2-PGG" kind="popoverPresentation" popoverAnchorBarButtonItem="KlX-sr-LT4" id="C4J-u6-yVH">
@@ -262,7 +277,7 @@
                                     </segue>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem title="Field" id="pt8-xa-xQj">
+                            <barButtonItem title="Time Slice" id="pt8-xa-xQj">
                                 <connections>
                                     <segue destination="nuP-kb-1X9" kind="popoverPresentation" popoverAnchorBarButtonItem="pt8-xa-xQj" id="iRN-f4-brt">
                                         <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
@@ -277,7 +292,58 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lgB-Av-xWo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2710" y="1492"/>
+            <point key="canvasLocation" x="-2711.1999999999998" y="1491.9040479760122"/>
+        </scene>
+        <!--Time Charts View Controller-->
+        <scene sceneID="irz-N8-juF">
+            <objects>
+                <viewController id="r05-7b-toK" customClass="MAGTimeChartsViewController" customModule="MagisterGL" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="IbB-lu-JmF"/>
+                        <viewControllerLayoutGuide type="bottom" id="O21-Kd-LSN"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="9v9-Mm-oaP">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="nln-Zi-Dno">
+                                <rect key="frame" x="0.0" y="20" width="375" height="583"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="r05-7b-toK" id="rGn-US-Oem"/>
+                                    <outlet property="delegate" destination="r05-7b-toK" id="R6S-0J-7yV"/>
+                                </connections>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sgp-CA-KKr">
+                                <rect key="frame" x="37.5" y="603" width="300" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="jDx-zI-Nby"/>
+                                    <constraint firstAttribute="width" constant="300" id="mmV-o9-FIH"/>
+                                </constraints>
+                                <state key="normal" title="Default"/>
+                                <connections>
+                                    <action selector="defaultField" destination="r05-7b-toK" eventType="touchUpInside" id="9Jt-Ki-Kz4"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="sgp-CA-KKr" firstAttribute="top" secondItem="nln-Zi-Dno" secondAttribute="bottom" id="C4R-4J-Pz5"/>
+                            <constraint firstItem="nln-Zi-Dno" firstAttribute="top" secondItem="IbB-lu-JmF" secondAttribute="bottom" id="HLt-Ax-7Cy"/>
+                            <constraint firstAttribute="trailing" secondItem="nln-Zi-Dno" secondAttribute="trailing" id="HRY-wB-AHM"/>
+                            <constraint firstItem="sgp-CA-KKr" firstAttribute="centerX" secondItem="9v9-Mm-oaP" secondAttribute="centerX" id="bMA-Tz-gv3"/>
+                            <constraint firstItem="O21-Kd-LSN" firstAttribute="top" secondItem="sgp-CA-KKr" secondAttribute="bottom" constant="20" id="ml8-d8-j6J"/>
+                            <constraint firstItem="nln-Zi-Dno" firstAttribute="centerX" secondItem="9v9-Mm-oaP" secondAttribute="centerX" id="s1P-KZ-WMW"/>
+                            <constraint firstItem="nln-Zi-Dno" firstAttribute="leading" secondItem="9v9-Mm-oaP" secondAttribute="leading" id="wPx-Yz-KQx"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="nln-Zi-Dno" id="PCq-eC-K6z"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="R6h-MA-lKF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3236" y="2370"/>
         </scene>
         <!--Choose Section View Controller-->
         <scene sceneID="D8r-x7-cRE">
@@ -351,6 +417,18 @@
                                     <constraint firstAttribute="height" constant="45" id="bmT-l7-h9K"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pCY-QX-cio">
+                                <rect key="frame" x="166" y="585" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rXI-Oa-068">
+                                <rect key="frame" x="166" y="626" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -360,15 +438,21 @@
                             <constraint firstItem="4xD-5T-eNi" firstAttribute="leading" secondItem="yXD-bt-t1G" secondAttribute="leading" constant="10" id="NkB-Xk-wjx"/>
                             <constraint firstItem="BxM-xQ-I8b" firstAttribute="centerX" secondItem="yXD-bt-t1G" secondAttribute="centerX" id="cKK-Yb-38N"/>
                             <constraint firstItem="mvL-MC-aqw" firstAttribute="top" secondItem="C5N-yv-Q2a" secondAttribute="bottom" constant="5" id="dcM-sa-c5f"/>
+                            <constraint firstItem="rXI-Oa-068" firstAttribute="top" secondItem="pCY-QX-cio" secondAttribute="bottom" constant="20" id="f5W-iy-SJC"/>
+                            <constraint firstItem="pCY-QX-cio" firstAttribute="centerX" secondItem="yXD-bt-t1G" secondAttribute="centerX" id="hWh-mj-biR"/>
                             <constraint firstItem="BxM-xQ-I8b" firstAttribute="top" secondItem="4xD-5T-eNi" secondAttribute="bottom" constant="10" id="i0l-9K-NYh"/>
                             <constraint firstItem="C5N-yv-Q2a" firstAttribute="leading" secondItem="4xD-5T-eNi" secondAttribute="trailing" constant="10" id="iUY-tv-Iow"/>
                             <constraint firstItem="Dbx-MF-N1c" firstAttribute="centerX" secondItem="yXD-bt-t1G" secondAttribute="centerX" id="jQw-XM-ICs"/>
+                            <constraint firstItem="qCS-lO-t9e" firstAttribute="top" secondItem="rXI-Oa-068" secondAttribute="bottom" constant="20" id="ja3-bV-OTF"/>
                             <constraint firstAttribute="trailing" secondItem="mvL-MC-aqw" secondAttribute="trailing" constant="20" id="ju2-qn-cIc"/>
+                            <constraint firstItem="rXI-Oa-068" firstAttribute="centerX" secondItem="yXD-bt-t1G" secondAttribute="centerX" id="spc-Uh-23S"/>
                             <constraint firstItem="C5N-yv-Q2a" firstAttribute="top" secondItem="Yya-f5-dRa" secondAttribute="bottom" constant="50" id="syU-Gu-nxK"/>
                             <constraint firstItem="Dbx-MF-N1c" firstAttribute="top" secondItem="BxM-xQ-I8b" secondAttribute="bottom" constant="20" id="xOG-i7-uz1"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="maxVectorLabel" destination="rXI-Oa-068" id="n7B-Yv-h63"/>
+                        <outlet property="minVectorLabel" destination="pCY-QX-cio" id="G6H-sh-sNS"/>
                         <outlet property="sectionGreater" destination="PId-Qn-Wza" id="0dA-yN-mve"/>
                         <outlet property="sectionTypePicker" destination="4xD-5T-eNi" id="oRO-g8-Ke4"/>
                         <outlet property="sectionXTextField" destination="C5N-yv-Q2a" id="1fu-hg-HSw"/>
@@ -376,7 +460,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FhZ-SY-XXy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3164" y="2318"/>
+            <point key="canvasLocation" x="-2470" y="2370"/>
         </scene>
         <!--Choose Field View Controller-->
         <scene sceneID="KsT-X3-BJl">
@@ -396,7 +480,7 @@
                                     <constraint firstAttribute="height" constant="44" id="0YD-d3-cjh"/>
                                     <constraint firstAttribute="width" constant="300" id="TPp-Pa-5sZ"/>
                                 </constraints>
-                                <state key="normal" title="Not show"/>
+                                <state key="normal" title="Default"/>
                                 <connections>
                                     <action selector="notShowField" destination="nuP-kb-1X9" eventType="touchUpInside" id="u7j-5O-9Cp"/>
                                 </connections>
@@ -426,7 +510,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0nC-Ob-YZN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2711" y="2318"/>
+            <point key="canvasLocation" x="-2738" y="663"/>
         </scene>
         <!--Choose Material View Controller-->
         <scene sceneID="WFh-Sb-JLE">
@@ -476,7 +560,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3ih-cA-scq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2260" y="2318"/>
+            <point key="canvasLocation" x="-1865" y="663"/>
         </scene>
         <!--GoogleTableVC-->
         <scene sceneID="ufs-6q-peo">

@@ -17,7 +17,8 @@ class MAG3DViewController: UIViewController,
                            SCNSceneRendererDelegate,
                            MAGChooseSectionViewControllerDelegate,
                            MAGChooseMaterialViewControllerDelegate,
-                           MAGChooseFieldViewControllerDelegate
+                           MAGChooseFieldViewControllerDelegate,
+                           MAGTimeChartsViewControllerDelegate
 
 {
   
@@ -66,9 +67,16 @@ class MAG3DViewController: UIViewController,
     {
       let vc = segue.destination as! MAGChooseFieldViewController
       vc.delegate = self
-      vc.showFieldNumber = self.customGeometryView.model.showFieldNumber
-      let decodedArray = NSKeyedUnarchiver.unarchiveObject(with: (self.customGeometryView.model.project?.v3FilePathsArray!)!) as? [String]
-      vc.availableFields = decodedArray!
+      vc.showFieldNumber = self.customGeometryView.model.showTimeSlicesNumber
+      vc.timeSlices = self.customGeometryView.model.timeSlices
+      vc.popoverPresentationController?.delegate = self
+    }
+    else if segue.destination.isKind(of: MAGTimeChartsViewController.self)
+    {
+      let vc = segue.destination as! MAGTimeChartsViewController
+      vc.delegate = self
+      vc.showFieldNumber = self.customGeometryView.model.showTimeSliceForCharts
+      vc.timeSlices = self.customGeometryView.model.timeSlicesForCharts
       vc.popoverPresentationController?.delegate = self
     }
   }
@@ -116,6 +124,16 @@ class MAG3DViewController: UIViewController,
     self.customGeometryView.setupScene()
   }
   
+  func minVector() -> SCNVector3
+  {
+    return self.customGeometryView.model.minVector
+  }
+  
+  func maxVector() -> SCNVector3
+  {
+    return self.customGeometryView.model.maxVector
+  }
+  
   // MARK: MAGChooseMaterialViewControllerDelegate
   
   func selectedMaterials(selectedMaterials: [MAGMaterial])
@@ -129,8 +147,15 @@ class MAG3DViewController: UIViewController,
   
   func chooseFieldNumber(fieldNumber: Int)
   {
-    self.customGeometryView.model.showFieldNumber = fieldNumber
-    self.customGeometryView.model.createElementsArray()
+    self.customGeometryView.model.showTimeSlicesNumber = fieldNumber
+    self.customGeometryView.model.createReceiverSurface()
+    self.customGeometryView.setupScene()
+  }
+  
+  //MARK: MAGTimeChartsViewControllerDelegate
+  func chooseTimeFieldNumber(fieldNumber: Int) {
+    self.customGeometryView.model.showTimeSliceForCharts = fieldNumber
+    self.customGeometryView.model.createReceiverSurface()
     self.customGeometryView.setupScene()
   }
   

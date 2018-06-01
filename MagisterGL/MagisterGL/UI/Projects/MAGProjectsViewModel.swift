@@ -57,7 +57,8 @@ class MAGProjectsViewModel: NSObject
                   elemNeibPath: String,
                   sigma3dPath: String,
                   profilePath: String,
-                  v3FilePathsArray: Data,
+                  edsallPath: String,
+                  rnArrayPathsArray: Data,
                   isLocal: Bool)
   {
     let newEntity = NSEntityDescription.insertNewObject(forEntityName: "MAGProject",
@@ -71,7 +72,8 @@ class MAGProjectsViewModel: NSObject
     newEntity.sigma3dPath = sigma3dPath
     newEntity.profilePath = profilePath
     newEntity.isLocal = isLocal
-    newEntity.v3FilePathsArray = v3FilePathsArray
+    newEntity.edsallPath = edsallPath
+    newEntity.rnArrayPathsArray = rnArrayPathsArray
     
     do
     {

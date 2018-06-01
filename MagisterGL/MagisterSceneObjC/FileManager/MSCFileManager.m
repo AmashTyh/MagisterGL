@@ -220,7 +220,7 @@
 
 - (NSArray<NSDictionary<NSNumber *, NSNumber *> *> *)getEdsallArrayWithPath:(NSString *)path
 {
-  return @[@{}]
+  return @[@{}];
 }
 //func getEdsallArray(path: String) -> [[Float: Float]]
 //{

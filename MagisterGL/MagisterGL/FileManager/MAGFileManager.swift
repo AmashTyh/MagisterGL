@@ -339,4 +339,82 @@ class MAGFileManager: NSObject
     }
     return []
   }
+  
+  func getEdsallArray(path: String) -> [[Float: Float]]
+  {
+    var num: Int = 0
+    var result: [[Float: Float]] = []
+    do {
+      let data = try String(contentsOfFile: path,
+                            encoding: String.Encoding.ascii)
+      //var arrayOfVectors: [SCNVector3]? = []
+      var dictionaryOfReceiver: [Float: Float] = [:]
+      for string in data.components(separatedBy: "\n") {
+        if string != "" {
+          let array = string.components(separatedBy: "\t")
+          if array.count == 4 {
+            dictionaryOfReceiver[Float(array[0])!] = Float(array[3].components(separatedBy: "\r")[0])!
+          }
+          else {
+            if string.contains("element") {
+              if (num != 0) {
+                result.append(dictionaryOfReceiver)
+              }   
+              num += 1
+            }
+          }
+        }
+      }
+      result.append(dictionaryOfReceiver)
+      return result
+      
+    }
+    catch let err as NSError
+    {
+      print(err)
+    }
+    return []
+  }
+  
+  func getRnArray(path: String) -> MAGRnData
+  {
+    var newPath: String = path
+    
+    if newPath.contains("/") {
+      newPath = path.components(separatedBy: "/").last!
+    }
+    if newPath.contains("_") {
+      newPath = path.components(separatedBy: "_").last!
+    }
+    
+    let fileNameArray = newPath.components(separatedBy: ".")
+    let numberOfTime = Int(fileNameArray.first!)! - 1
+    let numberOfProfileLine = Int(fileNameArray.last!)! - 1
+    do
+    {
+      let data = try String(contentsOfFile: path,
+                            encoding: String.Encoding.ascii)
+      var resultArray: [[Float]] = []
+      for string in data.components(separatedBy: "\n")
+      {
+        if string != ""
+        {
+          let array = string.components(separatedBy: "\t")
+          if array.count == 2
+          {
+            resultArray.append([Float(array[0])!, Float(array[1].components(separatedBy: "\r")[0])!])
+          }
+        }
+      }
+      return MAGRnData(numberOfTime: numberOfTime,
+                       numberOfProfileLine: numberOfProfileLine,
+                       profileChartsData: resultArray)
+      
+    }
+    catch let err as NSError
+    {
+      print(err)
+    }
+    return MAGRnData(numberOfTime: -1, numberOfProfileLine: -1, profileChartsData: [])
+  }
 }

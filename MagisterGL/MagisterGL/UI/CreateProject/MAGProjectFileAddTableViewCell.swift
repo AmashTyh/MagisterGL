@@ -34,7 +34,7 @@ class MAGProjectFileAddTableViewCell: UITableViewCell
   {
     self.cellObject = cellObject;
     self.titleLabel.text = cellObject.name
-    self.filePathLabel.text = cellObject.filePath
+    self.filePathLabel.text = cellObject.filePathArray.description
     self.delegate = delegate
   }
 

@@ -56,7 +56,6 @@
      }
      else
      {
-       NSLog(@"Something strange");
        completion(NO);
      }
    }];
@@ -74,24 +73,15 @@
    {
      if (error == nil)
      {
-       NSString *fileType = @"";
-       NSString *lastPath = [[fileName componentsSeparatedByString: @"."] lastObject];
-       if ([lastPath isEqualToString: @"txt"] ||
-           [lastPath isEqualToString: @"dat"])
-       {
-         fileType = lastPath;
-       }
-       NSURL *filePath = [self localRandomURLforFileWithType: fileType];
+       NSURL *filePath = [self localRandomURLforFileName: fileName];
        [file.data writeToURL: filePath
                   atomically: NO];
-       NSLog(@"Downloaded %lu bytes", file.data.length);
        
        NSString *filePathString = [[filePath.absoluteString componentsSeparatedByString: @"/"] lastObject];
        completion(YES, filePathString);
      }
      else
      {
-       NSLog(@"An error occurred: %@", error);
        completion(NO, nil);
      }
    }];
@@ -100,12 +90,12 @@
 
 #pragma mark - Private
 
-- (NSURL *) localRandomURLforFileWithType: (NSString *) type
+- (NSURL *) localRandomURLforFileName: (NSString *) filename
 {
   NSString *workDirectoryPath = [self workDirectory].path;
   while (YES)
   {
-    NSString *fileName = [[NSString stringWithFormat: @"file_%u.", arc4random()] stringByAppendingString: type];
+    NSString *fileName = [[NSString stringWithFormat: @"%u_", arc4random()] stringByAppendingString: filename];
     NSString *path = [workDirectoryPath stringByAppendingPathComponent: fileName];
     
     if (![self.fileManager fileExistsAtPath: path])

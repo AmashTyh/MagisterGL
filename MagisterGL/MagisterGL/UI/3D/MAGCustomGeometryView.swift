@@ -81,36 +81,40 @@ class MAGCustomGeometryView: SCNView
     drawReceivers()
     drawModel()
     drawReceiversSurface()
-
     drawReceiversCharts()
+    drawAsix()
   }
   
   private func drawReceivers()
   {
-    var globalIndicies : [CInt] = []
-    for i in 0..<self.model.profileArray.count
-    {
-      globalIndicies.append(CInt(i))
+    if (self.model.profileArray.count != 0) {
+    
+      
+      
+      var globalIndicies : [CInt] = []
+      for i in 0..<self.model.profileArray.count {
+        globalIndicies.append(CInt(i))
+      }
+      let globalPositions : [SCNVector3] = self.model.profileArray
+      let positionSource = SCNGeometrySource(vertices: globalPositions)
+      let indexDataCarcas = Data(bytes: globalIndicies,
+                                 count: MemoryLayout<CInt>.size * globalIndicies.count)
+      let elementBorder = SCNGeometryElement(data: indexDataCarcas,
+                                             primitiveType: .point,
+                                             primitiveCount: globalIndicies.count,
+                                             bytesPerIndex: MemoryLayout<CInt>.size)
+      let pointSize: CGFloat = 5.0
+      elementBorder.pointSize = pointSize
+      elementBorder.minimumPointScreenSpaceRadius = pointSize
+      elementBorder.maximumPointScreenSpaceRadius = pointSize
+      let geometryBorder = SCNGeometry(sources: [positionSource],
+                                       elements: [elementBorder])
+      geometryBorder.firstMaterial?.diffuse.contents = UIColor.red
+      let borderCubeNode = SCNNode(geometry: geometryBorder)
+      let scaleVector = SCNVector3(self.model.scaleValue, self.model.scaleValue, self.model.scaleValue)
+      borderCubeNode.scale = scaleVector
+      self.scene?.rootNode.addChildNode(borderCubeNode)
     }
-    let globalPositions : [SCNVector3] = self.model.profileArray
-    let positionSource = SCNGeometrySource(vertices: globalPositions)
-    let indexDataCarcas = Data(bytes: globalIndicies,
-                               count: MemoryLayout<CInt>.size * globalIndicies.count)
-    let elementBorder = SCNGeometryElement(data: indexDataCarcas,
-                                           primitiveType: .point,
-                                           primitiveCount: globalIndicies.count,
-                                           bytesPerIndex: MemoryLayout<CInt>.size)
-    let pointSize: CGFloat = 5.0
-    elementBorder.pointSize = pointSize
-    elementBorder.minimumPointScreenSpaceRadius = pointSize
-    elementBorder.maximumPointScreenSpaceRadius = pointSize
-    let geometryBorder = SCNGeometry(sources: [positionSource],
-                                     elements: [elementBorder])
-    geometryBorder.firstMaterial?.diffuse.contents = UIColor.red
-    let borderCubeNode = SCNNode(geometry: geometryBorder)
-    let scaleVector = SCNVector3(self.model.scaleValue, self.model.scaleValue, self.model.scaleValue)
-    borderCubeNode.scale = scaleVector
-    self.scene?.rootNode.addChildNode(borderCubeNode)
   }
   
   private func drawModel()
@@ -221,6 +225,45 @@ class MAGCustomGeometryView: SCNView
     self.scene?.rootNode.addChildNode(borderCubeNode)
   }
   
+  //MARK: Draw asix
+  
+  func drawAsix()
+  {
+    drawAsixX()
+    drawAsixY()
+    drawAsixZ()
+  }
+  
+  func drawAsixX()
+  {
+    let geometry = SCNGeometry.lineFrom(vector: SCNVector3Make(0, 0, 0), toVector: SCNVector3Make(self.model.maxVector.x * 1.3, 0, 0))
+    let modelNode = SCNNode(geometry: geometry)
+    geometry.firstMaterial?.diffuse.contents = UIColor.red
+    let scaleVector = SCNVector3(self.model.scaleValue, self.model.scaleValue, self.model.scaleValue)
+    modelNode.scale = scaleVector
+    self.scene?.rootNode.addChildNode(modelNode)
+  }
+  
+  func drawAsixY()
+  {
+    let geometry = SCNGeometry.lineFrom(vector: SCNVector3Make(0, 0, 0), toVector: SCNVector3Make(0, self.model.maxVector.y * 1.3, 0))
+    let modelNode = SCNNode(geometry: geometry)
+    geometry.firstMaterial?.diffuse.contents = UIColor.green
+    let scaleVector = SCNVector3(self.model.scaleValue, self.model.scaleValue, self.model.scaleValue)
+    modelNode.scale = scaleVector
+    self.scene?.rootNode.addChildNode(modelNode)
+  }
+  
+  func drawAsixZ()
+  {
+    let geometry = SCNGeometry.lineFrom(vector: SCNVector3Make(0, 0, 0), toVector: SCNVector3Make(0, 0, self.model.maxVector.z * 1.3))
+    let modelNode = SCNNode(geometry: geometry)
+    geometry.firstMaterial?.diffuse.contents = UIColor.blue
+    let scaleVector = SCNVector3(self.model.scaleValue, self.model.scaleValue, self.model.scaleValue)
+    modelNode.scale = scaleVector
+    self.scene?.rootNode.addChildNode(modelNode)
+  }
+  
   private func drawReceiversSurface()
   {
     var globalElements: [SCNGeometryElement] = []
@@ -275,19 +318,32 @@ class MAGCustomGeometryView: SCNView
     var globalIndicies : [CInt] = []
  
     var h: Int = 0
+    let scaleCharts = self.model.chartsData.generateScaleParameter()/4
+    let delta = self.model.chartsData.minUValue * scaleCharts - self.model.chartsData.maxZValue
     for vectorsArray in self.model.chartsData.chartsValues {
-      for vector in vectorsArray {
+      for var vector in vectorsArray {
+
+        if (scaleCharts < 1) {
+          vector.z = vector.z * scaleCharts - delta
+        }
+        else {
+          vector.z = vector.z * scaleCharts + self.model.chartsData.delta
+        }
+
+        //vector.z = log(vector.z) + self.model.chartsData.minZValue)
+        
         globalPositions.append(vector)
       }
-      for i in 0..<vectorsArray.count - 1 {
-        globalIndicies.append(CInt(i + h))
-        globalIndicies.append(CInt(i + h + 1))
+      if (vectorsArray.count>=1) {
+        for i in 0..<vectorsArray.count - 1 {
+          globalIndicies.append(CInt(i + h))
+          globalIndicies.append(CInt(i + h + 1))
+        }
       }
+
       h += vectorsArray.count
     }
-    
-    
-    
+
     let positionSource = SCNGeometrySource(vertices: globalPositions)
     
     let indexData = Data(bytes: globalIndicies,
@@ -299,7 +355,7 @@ class MAGCustomGeometryView: SCNView
     
     let geometryLines = SCNGeometry(sources: [positionSource],
                                      elements: [linesElement])
-    geometryLines.firstMaterial?.diffuse.contents = UIColor.red
+    geometryLines.firstMaterial?.diffuse.contents = UIColor.black
     let chartsNode = SCNNode(geometry: geometryLines)
     let scaleVector = SCNVector3(self.model.scaleValue, self.model.scaleValue, self.model.scaleValue)
     chartsNode.scale = scaleVector
@@ -368,5 +424,22 @@ class MAGCustomGeometryView: SCNView
                                elements: globalElements)
     let modelNode = SCNNode(geometry: geometry)
     self.scene?.rootNode.addChildNode(modelNode)
+  }
+}
+
+extension SCNGeometry
+{
+  class func lineFrom(vector vector1: SCNVector3, toVector vector2: SCNVector3) -> SCNGeometry
+  {
+    let indices: [Int32] = [0, 1]
+    
+    let source = SCNGeometrySource(vertices: [vector1,
+                                              vector2])
+    let element = SCNGeometryElement(indices: indices,
+                                     primitiveType: .line)
+    let geometry = SCNGeometry(sources: [source],
+                               elements: [element])
+    geometry.firstMaterial?.lightingModel = SCNMaterial.LightingModel.constant
+    return geometry
   }
 }

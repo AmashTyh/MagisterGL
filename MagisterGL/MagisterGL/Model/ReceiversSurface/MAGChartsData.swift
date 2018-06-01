@@ -3,14 +3,103 @@ import SceneKit
 
 class MAGChartsData: NSObject
 {
+  var chosenTimeSlice: Int = 0
+  
+  var timeSlicesArray: [Int] = []
+  var numbersOfChartLineArray: [Int] = []
+  
   var minUValue: Float = 0.0
   var maxUValue: Float = 0.0
   var receivers: [[SCNVector3]] = []
   var chartsValues: [[SCNVector3]] = []
   
   var minZValue: Float = 0.0
-  private var delta: Float = 0.0
+  var maxZValue: Float = 0.0
   
+  var maxZModel: Float = 0.0
+  var delta: Float = 0.0
+  
+  func generateScaleParameter() -> Float
+  {
+    return (maxZModel - maxZValue) / (maxUValue - minUValue)
+  }
+  
+  func generateChartsValuesWith(receivers: [[SCNVector3]],
+                                rnArray: [MAGRnData],
+                                minZValue: Float,
+                                maxZValue: Float,
+                                maxZModel: Float,
+                                choosenTimeSlice: Int) -> [Int]
+  {
+    self.chosenTimeSlice = choosenTimeSlice
+    self.receivers = receivers
+    self.chartsValues = []
+    
+    var timeSlices: Set<Int> = Set<Int>()
+    var numbersOfChartLine: Set<Int> = Set<Int>()
+    for rnData in rnArray {
+      timeSlices.insert(rnData.numberOfTime)
+      numbersOfChartLine.insert(rnData.numberOfProfileLine)
+    }
+    timeSlicesArray = []
+    for timeNumber in timeSlices {
+      timeSlicesArray.append(timeNumber)
+    }
+    timeSlicesArray.sort { (v1, v2) -> Bool in
+      return v1 < v2
+    }
+
+    numbersOfChartLineArray = []
+    for number in numbersOfChartLine {
+      numbersOfChartLineArray.append(number)
+    }
+    numbersOfChartLineArray.sort{ (v1, v2) -> Bool in
+      return v1 < v2
+    }
+    
+    var minUValueArray: [Float] = []
+    var maxUValueArray: [Float] = []
+    var min: Float = 0.0
+    var max: Float = 0.0
+    
+    for i in numbersOfChartLineArray {
+      for rnData in rnArray {
+        if (rnData.numberOfProfileLine == i) && (rnData.numberOfTime == chosenTimeSlice) {
+          //
+          var chartsValuesLine: [SCNVector3] = []
+          for j in 0..<rnData.profileChartsData.count {
+            let vector: SCNVector3 = SCNVector3Make(receivers[i][0].x + rnData.profileChartsData[j][0],
+                                                    receivers[i][0].y,
+                                                    rnData.profileChartsData[j][1])
+            chartsValuesLine.append(vector)
+          }
+          chartsValues.append(chartsValuesLine)
+          if !rnData.profileChartsData.isEmpty {
+            min = rnData.profileChartsData.min(by: { (v1, v2) -> Bool in
+              return v1[1] < v2[1]
+            })![1]
+            max = rnData.profileChartsData.max(by: { (v1, v2) -> Bool in
+              return v1[1] < v2[1]
+            })![1]
+            minUValueArray.append(min)
+            maxUValueArray.append(max)
+          }
+        }
+      }
+    }
+    
+    minUValue = minUValueArray.min(by: {(v1, v2) -> Bool in
+      return v1 < v2
+    })!
+    maxUValue = maxUValueArray.max(by: {(v1, v2) -> Bool in
+      return v1 < v2
+    })!
+    self.maxZModel = maxZModel
+    self.maxZValue = maxZValue
+    self.minZValue = minZValue
+    
+    return timeSlicesArray
+  }
   
   func updateZValueChartsData(sortedReceivers: [[SCNVector3]])
   {
@@ -19,9 +108,12 @@ class MAGChartsData: NSObject
     var resultChartsPoints: [[SCNVector3]] = []
     var tempPoints: [SCNVector3] = []
     
-    if (minZValue > minUValue) {
-      delta = fabsf(minUValue) + fabsf(minZValue)
+    if (maxZValue > minUValue) {
+      delta = fabsf(minUValue) + fabsf(maxZValue)
     }
+    //    else {
+    //      delta = minUValue - minZValue
+    //    }
     
     for chartsLine in receivers
     {
@@ -32,16 +124,11 @@ class MAGChartsData: NSObject
                                          vector.y,
                                          Float(MAGRecieversFuncGenerator.uFunc(x: Double(vector.x),
                                                                                y: Double(vector.y),
-                                                                               z: Double(vector.z))) + delta))
+                                                                               z: Double(vector.z)))))
       }
       resultChartsPoints.append(tempPoints)
     }
-    
-
-    
-    
-    
-    
     chartsValues = resultChartsPoints
   }
+  
 }

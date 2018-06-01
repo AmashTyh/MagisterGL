@@ -39,7 +39,7 @@ class MAGGoogleTableViewController: UIViewController,
       (success: Bool) -> Void in
       self.tableView.reloadData()
       self.activityIndicator.stopAnimating()
-      print(self.provider.filesDictionary)
+//      print(self.provider.filesDictionary)
     })
   }
   
