@@ -8,8 +8,9 @@
 
 import UIKit
 
-class MAGProjectTableViewCell: UITableViewCell {
-
+class MAGProjectTableViewCell: UITableViewCell
+{
+  
   @IBOutlet weak var nameLabel: UILabel!
   
   func configure(cellObject: MAGProjectCellObject)
@@ -19,14 +20,20 @@ class MAGProjectTableViewCell: UITableViewCell {
   
   override func awakeFromNib()
   {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
+    super.awakeFromNib()
+    let selectedBackgroundView = UIView()
+    selectedBackgroundView.backgroundColor = UIColor(white: 240.0 / 255.0,
+                                                     alpha: 1.0)
+    self.selectedBackgroundView = selectedBackgroundView
+  }
+  
+  override func setSelected(_ selected: Bool,
+                            animated: Bool)
+  {
+    super.setSelected(selected,
+                      animated: animated)
     
+    // Configure the view for the selected state
+  }
+  
 }

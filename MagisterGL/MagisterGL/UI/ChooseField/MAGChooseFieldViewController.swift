@@ -55,6 +55,10 @@ class MAGChooseFieldViewController: UIViewController,
   {
     let cell : UITableViewCell = (tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier) as UITableViewCell?)!
     cell.textLabel?.text = self.availableFields[indexPath.row]
+    let selectedBackgroundView = UIView()
+    selectedBackgroundView.backgroundColor = UIColor(white: 240.0 / 255.0,
+                                                     alpha: 1.0)
+    cell.selectedBackgroundView = selectedBackgroundView
     if (self.showFieldNumber == indexPath.row)
     {
       tableView.selectRow(at: indexPath,

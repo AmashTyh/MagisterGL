@@ -18,6 +18,16 @@ class AppDelegate: UIResponder,
   func applicationDidFinishLaunching(_ application: UIApplication) {
     // Initialize Google sign-in.
     GIDSignIn.sharedInstance().clientID = "1039528957452-rcbtr2gadj378kqecvu73ef3lh68sha4.apps.googleusercontent.com"
+    
+    let navigationBarAppearace = UINavigationBar.appearance()
+    navigationBarAppearace.tintColor = UIColor(red: 107.0 / 255.0,
+                                               green: 71.0 / 255.0,
+                                               blue: 219.0 / 255.0,
+                                               alpha: 1.0)
+    navigationBarAppearace.barTintColor =  UIColor(red: 217.0 / 255.0,
+                                                   green: 217.0 / 255.0,
+                                                   blue: 217.0 / 255.0,
+                                                   alpha: 1.0)
   }
   
   func application(_ application: UIApplication,
