@@ -55,7 +55,7 @@
     MSCBinaryDataScanner *scaner = [[MSCBinaryDataScanner alloc] initWithData:[[NSData alloc] initWithContentsOfFile:path]
                                                                  littleEndian:true
                                                                      encoding:NSASCIIStringEncoding];
-    NSMutableArray<NSMutableArray *> *arrayOfVectors = [NSMutableArray array];
+    NSMutableArray<NSArray *> *arrayOfVectors = [NSMutableArray array];
     NSMutableArray<NSNumber *> *array = [NSMutableArray array];
     int value = [scaner readInt];
     while (value) {
@@ -71,7 +71,7 @@
     NSMutableString *data = [NSMutableString stringWithContentsOfURL:[NSURL URLWithString:path]
                                                             encoding:NSASCIIStringEncoding
                                                                error:nil];
-    NSMutableArray<NSMutableArray *> *arrayOfVectors = [NSMutableArray array];
+    NSMutableArray<NSArray *> *arrayOfVectors = [NSMutableArray array];
     for (NSString* string in [data componentsSeparatedByString:@"\n"]) {
       if (string.length != 0) {
         NSArray<NSString *> *strArray = [string componentsSeparatedByString:@" "];
@@ -79,7 +79,7 @@
         for (int i = 0; i < strArray.count; i++) {
           [array addObject:[NSNumber numberWithInt:[strArray[i] intValue]]];
         }
-        [arrayOfVectors addObject:array];
+        [arrayOfVectors addObject:[array copy]];
       }
     }
     return [arrayOfVectors copy];
@@ -122,7 +122,7 @@
     MSCBinaryDataScanner *scaner = [[MSCBinaryDataScanner alloc] initWithData:[[NSData alloc] initWithContentsOfFile:path]
                                                                  littleEndian:true
                                                                      encoding:NSASCIIStringEncoding];
-    NSMutableArray<NSMutableArray *> *arrayOfVectors = [NSMutableArray array];
+    NSMutableArray<NSArray *> *arrayOfVectors = [NSMutableArray array];
     NSMutableArray<NSNumber *> *array = [NSMutableArray array];
     int value = [scaner readInt];
     while (value) {
@@ -149,14 +149,14 @@
     NSMutableString *data = [NSMutableString stringWithContentsOfURL:[NSURL URLWithString:path]
                                                             encoding:NSASCIIStringEncoding
                                                                error:nil];
-    NSMutableArray<NSMutableArray *> *arrayOfVectors = [NSMutableArray array];
+    NSMutableArray<NSArray *> *arrayOfVectors = [NSMutableArray array];
     for (NSString* string in [data componentsSeparatedByString:@"\n"]) {
       if (string.length != 0) {
         NSArray *array = [[[string componentsSeparatedByString:@"\r"][0] stringByTrimmingCharactersInSet:NSCharacterSet.whitespaceCharacterSet] componentsSeparatedByString:@" "];
         if (array.count == 1) {
           int value = [array[0] intValue];
           if (value == 0) {
-            [arrayOfVectors addObject:[@[@0] mutableCopy]];
+            [arrayOfVectors addObject:@[@0]];
           }
         }
         else if (array.count > 1) {
@@ -177,12 +177,85 @@
 
 - (NSArray *)getSig3dArrayWithPath:(NSString *)path
 {
-  return @[@0];
+  NSMutableString *data = [NSMutableString stringWithContentsOfURL:[NSURL URLWithString:path]
+                                                          encoding:NSASCIIStringEncoding
+                                                             error:nil];
+  NSMutableArray<NSArray *> *arrayOfSig3d = [NSMutableArray array];
+  for (NSString *string in [data componentsSeparatedByString:@"\n"]) {
+    if (string.length != 0) {
+      NSMutableArray<NSNumber *> *sig3dArray = [NSMutableArray array];
+      NSArray *array = [[[string componentsSeparatedByString:@"\r"][0] stringByTrimmingCharactersInSet:NSCharacterSet.whitespaceCharacterSet] componentsSeparatedByString:@" "];
+      for (NSString *elem in array) {
+        if (elem.length != 0) {
+          double doubleElem = [elem doubleValue];
+          [sig3dArray addObject:[NSNumber numberWithDouble:doubleElem]];
+        }
+      }
+      [arrayOfSig3d addObject: [sig3dArray copy]];
+    }
+  }
+  return [arrayOfSig3d copy];
 }
 
 - (NSArray *)getProfileArrayWithPath:(NSString *)path
 {
-  return @[@0];
+  NSMutableString *data = [NSMutableString stringWithContentsOfURL:[NSURL URLWithString:path]
+                                                          encoding:NSASCIIStringEncoding
+                                                             error:nil];
+  NSMutableArray *arrayOfVectors = [NSMutableArray array];
+  
+  for (NSString* string in [data componentsSeparatedByString:@"\n"]) {
+    if (string.length != 0) {
+      NSArray<NSString *> *array = [string componentsSeparatedByString:@"\t"];
+      if (array.count == 4) {
+        SCNVector3 vector = SCNVector3Make([array[1] floatValue],
+                                           [array[2] floatValue],
+                                           [array[3] floatValue]);
+        [arrayOfVectors addObject:[NSValue valueWithSCNVector3:vector]];
+      }
+    }
+  }
+  return [arrayOfVectors copy];
 }
+
+- (NSArray<NSDictionary<NSNumber *, NSNumber *> *> *)getEdsallArrayWithPath:(NSString *)path
+{
+  return @[@{}]
+}
+//func getEdsallArray(path: String) -> [[Float: Float]]
+//{
+//  var num: Int = 0
+//  var result: [[Float: Float]] = []
+//  do {
+//    let data = try String(contentsOfFile: path,
+//                          encoding: String.Encoding.ascii)
+//    //var arrayOfVectors: [SCNVector3]? = []
+//    var dictionaryOfReceiver: [Float: Float] = [:]
+//    for string in data.components(separatedBy: "\n") {
+//      if string != "" {
+//        let array = string.components(separatedBy: "\t")
+//        if array.count == 4 {
+//          dictionaryOfReceiver[Float(array[0])!] = Float(array[3].components(separatedBy: "\r")[0])!
+//        }
+//        else {
+//          if string.contains("element") {
+//            if (num != 0) {
+//              result.append(dictionaryOfReceiver)
+//            }
+//            num += 1
+//          }
+//        }
+//      }
+//    }
+//    result.append(dictionaryOfReceiver)
+//    return result
+//
+//  }
+//  catch let err as NSError
+//  {
+//    print(err)
+//  }
+//  return []
+//}
 
 @end

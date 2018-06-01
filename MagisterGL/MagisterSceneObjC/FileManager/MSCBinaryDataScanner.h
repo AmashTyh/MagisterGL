@@ -14,9 +14,9 @@
 @property (nonatomic) BOOL littleEndian;
 @property (nonatomic) NSStringEncoding encoding;
 
-- (instancetype)initWithData: (NSData *)data
-                littleEndian: (BOOL)littleEndian
-                    encoding: (NSStringEncoding)encoding;
+- (instancetype)initWithData:(NSData *)data
+                littleEndian:(BOOL)littleEndian
+                    encoding:(NSStringEncoding)encoding;
 
 - (double)readDouble;
 - (int)readInt;
