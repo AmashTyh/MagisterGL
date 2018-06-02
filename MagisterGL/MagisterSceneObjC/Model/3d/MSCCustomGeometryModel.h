@@ -1,14 +1,13 @@
 #import <Foundation/Foundation.h>
 #import <SceneKit/SceneKit.h>
-
+#import "MSCCrossSection.h"
 
 @class MAGProject;
 @class MSCFileManager;
 @class MSCRnData;
 @class MSCColorGenerator;
-
 @class MSCMaterial;
-@class MSCCrossSection;
+
 @class MSCHexahedron;
 @class MSCChartsData;
 @class MSCTriangleElement;
@@ -33,7 +32,7 @@
 @property (nonatomic, strong) NSArray<NSArray *> *nverArray;
 @property (nonatomic, strong) NSArray *nvkatArray;
 @property (nonatomic, strong) NSArray<NSArray *> *neibArray;
-//@property (nonatomic) PlaneType sectionType; // need value in init
+@property (nonatomic) PlaneType sectionType;
 @property (nonatomic) float sectionValue;
 @property (nonatomic) BOOL greater;
 @property (nonatomic, strong) NSArray<MSCMaterial *> *materials;
