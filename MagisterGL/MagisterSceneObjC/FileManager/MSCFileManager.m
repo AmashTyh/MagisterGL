@@ -51,6 +51,38 @@
   }
 }
 
+
+- (NSArray<NSNumber *> *)getXYZValuesWithPath:(NSString *)path
+{
+  NSString* fileExtension = [NSURL URLWithString:path].pathExtension;
+  if ([fileExtension isEqualToString:@"dat"]) {
+    MSCBinaryDataScanner *scaner = [[MSCBinaryDataScanner alloc] initWithData:[[NSData alloc] initWithContentsOfFile:path]
+                                                                 littleEndian:true
+                                                                     encoding:NSASCIIStringEncoding];
+    NSMutableArray<NSNumber *> *array = [NSMutableArray array];
+    double value = [scaner readDouble];
+    while (value) {
+      [array addObject:[NSNumber numberWithDouble:value]];
+    }
+    
+    return [array copy];
+  }
+  else {
+    NSMutableString *data = [NSMutableString stringWithContentsOfURL:[NSURL URLWithString:path]
+                                                            encoding:NSASCIIStringEncoding
+                                                               error:nil];
+    NSMutableArray *array = [NSMutableArray array];
+    
+    for (NSString* string in [data componentsSeparatedByString:@"\n"]) {
+      if (string.length != 0) {
+        [array addObject:[NSNumber numberWithDouble:[string doubleValue]]];
+        }
+      }
+    return [array copy];
+  }
+}
+
+
 - (NSArray<NSArray *> *)getNVERArrayWithPath:(NSString *)path
 {
   NSString* fileExtension = [NSURL URLWithString:path].pathExtension;

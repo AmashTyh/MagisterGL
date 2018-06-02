@@ -1,6 +1,7 @@
 #import <Foundation/Foundation.h>
 #import <SceneKit/SceneKit.h>
 
+
 @class MAGProject;
 @class MSCFileManager;
 @class MSCRnData;
@@ -51,5 +52,6 @@
 - (void)configureWithProject:(MAGProject *)project;
 - (void)createElementArray;
 - (void)createReceiverSurface;
+
 
 @end

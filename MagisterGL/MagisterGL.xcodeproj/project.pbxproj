@@ -54,6 +54,8 @@
 		84815E2520C303AF00E034AA /* Color.m in Sources */ = {isa = PBXBuildFile; fileRef = 84815E2420C303AF00E034AA /* Color.m */; };
 		84815E2920C3073900E034AA /* MSC3DViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84815E2820C3073900E034AA /* MSC3DViewController.m */; };
 		84815E2C20C30B2F00E034AA /* MSCMaterial.m in Sources */ = {isa = PBXBuildFile; fileRef = 84815E2B20C30B2F00E034AA /* MSCMaterial.m */; };
+		84815E2F20C330C000E034AA /* MSCHexahedron.m in Sources */ = {isa = PBXBuildFile; fileRef = 84815E2E20C330C000E034AA /* MSCHexahedron.m */; };
+		84815E3220C331F700E034AA /* MSCSide.m in Sources */ = {isa = PBXBuildFile; fileRef = 84815E3120C331F700E034AA /* MSCSide.m */; };
 		84F8C3E420C1F49100259867 /* MAGTimeChartsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F8C3E320C1F49100259867 /* MAGTimeChartsViewController.swift */; };
 		84F8C3E620C1F4A300259867 /* MAGRnData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F8C3E520C1F4A300259867 /* MAGRnData.swift */; };
 		84F8C40020C1F4CA00259867 /* 1.Rn4.1 in Resources */ = {isa = PBXBuildFile; fileRef = 84F8C3E720C1F4C800259867 /* 1.Rn4.1 */; };
@@ -177,6 +179,10 @@
 		84815E2820C3073900E034AA /* MSC3DViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MSC3DViewController.m; sourceTree = "<group>"; };
 		84815E2A20C30B2F00E034AA /* MSCMaterial.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSCMaterial.h; sourceTree = "<group>"; };
 		84815E2B20C30B2F00E034AA /* MSCMaterial.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MSCMaterial.m; sourceTree = "<group>"; };
+		84815E2D20C330C000E034AA /* MSCHexahedron.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSCHexahedron.h; sourceTree = "<group>"; };
+		84815E2E20C330C000E034AA /* MSCHexahedron.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MSCHexahedron.m; sourceTree = "<group>"; };
+		84815E3020C331F700E034AA /* MSCSide.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSCSide.h; sourceTree = "<group>"; };
+		84815E3120C331F700E034AA /* MSCSide.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MSCSide.m; sourceTree = "<group>"; };
 		84F8C3E320C1F49100259867 /* MAGTimeChartsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MAGTimeChartsViewController.swift; sourceTree = "<group>"; };
 		84F8C3E520C1F4A300259867 /* MAGRnData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MAGRnData.swift; sourceTree = "<group>"; };
 		84F8C3E720C1F4C800259867 /* 1.Rn4.1 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.man; path = 1.Rn4.1; sourceTree = "<group>"; };
@@ -305,6 +311,10 @@
 				84815E2420C303AF00E034AA /* Color.m */,
 				84815E2A20C30B2F00E034AA /* MSCMaterial.h */,
 				84815E2B20C30B2F00E034AA /* MSCMaterial.m */,
+				84815E2D20C330C000E034AA /* MSCHexahedron.h */,
+				84815E2E20C330C000E034AA /* MSCHexahedron.m */,
+				84815E3020C331F700E034AA /* MSCSide.h */,
+				84815E3120C331F700E034AA /* MSCSide.m */,
 			);
 			path = 3d;
 			sourceTree = "<group>";
@@ -874,7 +884,9 @@
 				846C260B20A1B7400049A6B6 /* MAGChooseMaterialViewController.swift in Sources */,
 				8436E48820B9E3BA0035B6A0 /* MSCBinaryDataScanner.m in Sources */,
 				9AF5853F2086067000A90D2D /* MAGCreateProjectViewModel.swift in Sources */,
+				84815E3220C331F700E034AA /* MSCSide.m in Sources */,
 				9AF322EC1F7A8054003AE463 /* MAGCustomGeometryView.swift in Sources */,
+				84815E2F20C330C000E034AA /* MSCHexahedron.m in Sources */,
 				84743BB72084E6E4007049C6 /* MAGProjectTableViewCell.swift in Sources */,
 				84743BAB2084DE9C007049C6 /* MAGGoogleTableViewController.swift in Sources */,
 				9AF5853C2086053000A90D2D /* MAGProjectFileAddTableViewCell.swift in Sources */,
