@@ -43,6 +43,7 @@
     _nverArray = [NSArray array];
     _nvkatArray = [NSArray array];
     _neibArray = [NSArray array];
+    _sectionType = X;
     _sectionValue = 0;
     _greater = YES;
     _mMaterials = [NSMutableArray array];
@@ -182,18 +183,11 @@
                                     (self.maxVector.z - self.minVector.z) / 2.0f + self.minVector.z);
   
   if (self.isDrawingSectionEnabled) {
-//    MSCCrossSection *crossSection = [[MSCCrossSection alloc] initWithPlane: ]
+    MSCCrossSection *crossSection = [[MSCCrossSection alloc] initWithPlane:self.sectionType
+                                                                     value:self.sectionValue
+                                                                   greater:self.greater];
+    self.crossSection = crossSection;
   }
-
-//
-//  if isDrawingSectionEnabled
-//  {
-//    let crossSection: MAGCrossSection = MAGCrossSection(plane: sectionType,
-//                                                        value: sectionValue,
-//                                                        greater: self.greater)
-//    self.crossSection = crossSection
-//  }
-//
   
   NSMutableArray<NSNumber *> *xyzValuesArray = [NSMutableArray array];
   if (self.showFieldNumber != -1) {
@@ -211,11 +205,8 @@
   for (int i=0; i<self.nverArray.count; i++) {
     NSArray *positionArray = [self getNVERArrayForNumber:i];
     
-//   HexahedronVisible isVisibleHexahedron = self.isDrawingSectionEnabled ? [self.crossSection setVisibleToHexahedronWithPositions: positionArray] : isVisible;
+    HexahedronVisible visible = self.isDrawingSectionEnabled ? [self.crossSection setVisibleToHexahedronWithPositions: positionArray] : isVisible;
     
-    //заглушка
-    HexahedronVisible visible = isVisible;
-
     NSArray<NSArray<NSNumber *> *> *elementsNeibsArray = [self generateNeibsElementArrayWithNumber:i];
     
     MSCHexahedron *hexahedron;
@@ -355,7 +346,7 @@
   NSArray *positionArray = [self getNVERArrayForNumber:numberOfElement];
   if (positionArray.count > 0) {
     if (self.crossSection != nil) {
-//      return [self.crossSection setVisibleToHexahedronWithPositions: positionArray];
+      return [self.crossSection setVisibleToHexahedronWithPositions: positionArray];
       return NO;
     }
     else {
