@@ -4,6 +4,8 @@
 #import "MSCBinaryDataScanner.h"
 #import "MSCRnData.h"
 
+#import "MagisterGL-Swift.h"
+
 @implementation MSCFileManager
 
 - (NSArray *)getXYZArrayWithPath:(NSString *)path

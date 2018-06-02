@@ -9,13 +9,15 @@
 import UIKit
 import SceneKit
 
+@objc
 class Color: NSObject
 {
    var value: Double = 0.0
    var red: Double = 0
    var green: Double = 0
    var blue: Double = 0
-   
+  
+   @objc
    public var color: UIColor
    {
       get
@@ -26,7 +28,8 @@ class Color: NSObject
                         alpha: 1.0)
       }
    }
-   
+  
+   @objc
    public var colorVector: SCNVector3
    {
       get
@@ -34,7 +37,8 @@ class Color: NSObject
           return SCNVector3Make(Float(red / 255.0), Float(green / 255.0), Float(blue / 255.0))
       }
    }
-   
+  
+   @objc
    override init()
    {
    }

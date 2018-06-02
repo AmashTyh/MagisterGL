@@ -1,23 +1,29 @@
 #import <Foundation/Foundation.h>
 #import <SceneKit/SceneKit.h>
 
+@class MAGProject;
 @class MSCFileManager;
+@class MSCRnData;
+
 @class MSCColorGenerator;
-@class MSCProject;
 @class MSCHexahedron;
+@class MSCMaterial;
+@class MSCCrossSection;
+@class MSCChartsData;
+@class MSCTriangleElement;
 
 @interface MSCCustomGeometryModel : NSObject
 
-@property (nonatomic, strong) MSCFileManager *fileManager; // need value in init
+@property (nonatomic, strong) MSCFileManager *fileManager;
 @property (nonatomic, strong) MSCColorGenerator *colorGenerator;
-@property (nonatomic, strong) MSCProject *project;
-@property (nonatomic) BOOL isShowMaterial; // need value in init
-@property (nonatomic) int showFieldNumber; // need value in init
-@property (nonatomic) int showTimeSliceNumber; // need value in init
-@property (nonatomic) int showTimeSliceForCharts; // need value in init
-@property (nonatomic) float scaleValue; // need value in init
-@property (nonatomic) BOOL isDrawingSectionEnabled; // need value in init
-@property (nonatomic) MSCHexahedron *elementsArray; // need value in init
+@property (nonatomic, strong) MAGProject *project;  
+@property (nonatomic) BOOL isShowMaterial;
+@property (nonatomic) int showFieldNumber;
+@property (nonatomic) int showTimeSliceNumber;
+@property (nonatomic) int showTimeSliceForCharts;
+@property (nonatomic) float scaleValue;
+@property (nonatomic) BOOL isDrawingSectionEnabled;
+@property (nonatomic, strong) NSArray<MSCHexahedron *> *elementsArray; // arrayWork
 @property (nonatomic) SCNVector3 centerPoint;
 @property (nonatomic) SCNVector3 minVector;
 @property (nonatomic) SCNVector3 maxVector;
@@ -26,30 +32,24 @@
 @property (nonatomic, strong) NSArray<NSArray *> *nverArray;
 @property (nonatomic, strong) NSArray *nvkatArray;
 @property (nonatomic, strong) NSArray<NSArray *> *neibArray;
+//@property (nonatomic) PlaneType sectionType; // need value in init
+@property (nonatomic) float sectionValue;
+@property (nonatomic) BOOL greater;
+@property (nonatomic, strong) NSArray<MSCMaterial *> *materials;
+@property (nonatomic, strong) NSArray<MSCMaterial *> *selectedMaterials;
+@property (nonatomic, strong) MSCCrossSection *crossSection;
+@property (nonatomic, strong) NSArray<NSArray *> *sig3dArray;
+@property (nonatomic, strong) NSArray *profileArray;
+@property (nonatomic, strong) MSCChartsData *chartsData; // need value in init
+@property (nonatomic, strong) NSArray<NSDictionary *> *edsallArray;
+@property (nonatomic, strong) NSArray<MSCRnData *> *rnArray;
+@property (nonatomic, strong) NSArray *timeSlices;
+@property (nonatomic, strong) NSArray<MSCTriangleElement *> *receiversSurface;
+@property (nonatomic, strong) NSArray *timeSlicesForCharts;
 
 
-
-
-
-
-
+- (void)configureWithProject:(MAGProject *)project;
 
 //var sectionType: PlaneType = .X
-//var sectionValue: Float = 0
-//var greater: Bool = true
-//var materials: [MAGMaterial] = []
-//var selectedMaterials: [MAGMaterial] = []
-//var crossSection: MAGCrossSection?
-//var sig3dArray: [[Double]] = []
-//var profileArray: [SCNVector3] = []
-//var chartsData: MAGChartsData = MAGChartsData()
-//var edsallArray: [[Float: Float]] = []
-//var rnArray: [MAGRnData] = []
-//
-//var timeSlices: [Float] = []
-//var receiversSurface: [MAGTriangleElement] = []
-//
-//var timeSlicesForCharts: [Int] = []
-
 
 @end
