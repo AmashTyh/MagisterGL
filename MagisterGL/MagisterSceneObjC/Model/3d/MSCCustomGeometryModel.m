@@ -3,6 +3,8 @@
 #import "MagisterGL-Swift.h"
 
 #import "MSCFileManager.h"
+#import "MSCColorGenerator.h"
+#import "MSCMaterial.h"
 
 @interface MSCCustomGeometryModel ()
 
@@ -96,17 +98,18 @@
     float min = [[mSigma3dArray firstObject][1] floatValue];
     float max = [[mSigma3dArray lastObject][1] floatValue];
     
-    //    MSCColorGenerator *colorGenerator = [[MSCColorGenerator alloc] init];
-    //
-    //    [colorGenerator generateColorWithMinValue: min
-    //                                     maxValue: max];
-    //    self.colorGenerator = colorGenerator;
+    MSCColorGenerator *colorGenerator = [[MSCColorGenerator alloc] init];
+    
+    [colorGenerator generateColorWithMinValue: min
+                                     maxValue: max];
+    self.colorGenerator = colorGenerator;
     
     for (int i = 0; i < self.sig3dArray.count; i++) {
       int materialNumber = [self.sig3dArray[i][0] intValue];
-      // SCNVector3 vector = [self.colorGenerator getColorForU: [self.sig3dArray[i][1] floatValue]];
-      //      MSCMaterial *material = [[MSCMaterial alloc] initWithNumberOfMaterial: materialNumber
-      //                                                                      color: vector];
+      SCNVector3 vector = [self.colorGenerator getColorForU: [self.sig3dArray[i][1] floatValue]];
+      MSCMaterial *material = [[MSCMaterial alloc] initWithNumberOfMaterial: materialNumber
+                                                                      color: vector];
+      [self.mMaterials addObject:material];
     }
   }
   else  {
@@ -115,17 +118,68 @@
       [set addObject:nvkat];
     }
     for (NSNumber *materialNumber in set) {
-//      MSCMaterial *material = [[MSCMaterial alloc] initWithNumberOfMaterial: materialNumber
-//                                                                      color: vector];
-//      [self.mMaterials addObject:material];
+      MSCMaterial *material = [[MSCMaterial alloc] initWithNumberOfMaterial: [materialNumber intValue]
+                                                                      color: [self getColorForMaterialNumber:[materialNumber intValue]]];
+      [self.mMaterials addObject:material];
     }
     self.materials = [self.mMaterials copy];
     self.selectedMaterials = [self.mMaterials copy];
     
-//    [self createElementArray];
-//    if (self.profileArray.count > 0) {
-//      [self createReceiverSurface];
-//    }
+    [self createElementArray];
+    if (self.profileArray.count > 0) {
+      [self createReceiverSurface];
+    }
+  }
+}
+
+- (void)createElementArray
+{
+  
+}
+
+- (void)createReceiverSurface
+{
+  
+}
+
+- (SCNVector3)getColorForMaterialNumber:(int)materialNumber
+{
+  switch (materialNumber)
+  {
+  case 0:
+    return SCNVector3Make(0.5, 0, 0);
+  case 1:
+    return SCNVector3Make(1, 0, 0);
+  case 2:
+    return SCNVector3Make(0, 1, 0);
+  case 3:
+    return SCNVector3Make(0, 0, 1);
+  case 4:
+    return SCNVector3Make(1, 0, 1);
+  case 5:
+    return SCNVector3Make(1, 0.5, 0);
+  case 6:
+    return SCNVector3Make(0.2, 0.4, 1);
+  case 7:
+    return SCNVector3Make(0.8, 1, 0);
+  case 8:
+    return SCNVector3Make(0.4, 0, 1);
+  case 9:
+    return SCNVector3Make(0.4, 0.4, 0.4);
+  case 10:
+    return SCNVector3Make(1, 0.4, 0.5);
+  case 11:
+    return SCNVector3Make(0, 0.5, 0.5);
+  case 12:
+    return SCNVector3Make(0, 0.3, 0);
+  case 13:
+    return SCNVector3Make(0, 1, 0.5);
+  case 14:
+    return SCNVector3Make(1, 1, 0.5);
+  case 15:
+    return SCNVector3Make(1, 0.5, 0.5);
+  default:
+    return SCNVector3Make(0.6, 0.6, 0.6);
   }
 }
 

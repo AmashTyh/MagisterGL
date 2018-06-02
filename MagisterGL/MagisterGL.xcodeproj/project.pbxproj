@@ -50,6 +50,10 @@
 		84792E6220B47A7E00885EEC /* MAGChartsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84792E6120B47A7E00885EEC /* MAGChartsData.swift */; };
 		84792E6420B47F3C00885EEC /* MAGRecieversFuncGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84792E6320B47F3C00885EEC /* MAGRecieversFuncGenerator.swift */; };
 		84792E6920B4913600885EEC /* MSCFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 84792E6820B4913600885EEC /* MSCFileManager.m */; };
+		84815E2220C2FA0800E034AA /* MSCColorGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 84815E2120C2FA0800E034AA /* MSCColorGenerator.m */; };
+		84815E2520C303AF00E034AA /* Color.m in Sources */ = {isa = PBXBuildFile; fileRef = 84815E2420C303AF00E034AA /* Color.m */; };
+		84815E2920C3073900E034AA /* MSC3DViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84815E2820C3073900E034AA /* MSC3DViewController.m */; };
+		84815E2C20C30B2F00E034AA /* MSCMaterial.m in Sources */ = {isa = PBXBuildFile; fileRef = 84815E2B20C30B2F00E034AA /* MSCMaterial.m */; };
 		84F8C3E420C1F49100259867 /* MAGTimeChartsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F8C3E320C1F49100259867 /* MAGTimeChartsViewController.swift */; };
 		84F8C3E620C1F4A300259867 /* MAGRnData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F8C3E520C1F4A300259867 /* MAGRnData.swift */; };
 		84F8C40020C1F4CA00259867 /* 1.Rn4.1 in Resources */ = {isa = PBXBuildFile; fileRef = 84F8C3E720C1F4C800259867 /* 1.Rn4.1 */; };
@@ -165,6 +169,14 @@
 		84792E6320B47F3C00885EEC /* MAGRecieversFuncGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAGRecieversFuncGenerator.swift; sourceTree = "<group>"; };
 		84792E6720B4913600885EEC /* MSCFileManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSCFileManager.h; sourceTree = "<group>"; };
 		84792E6820B4913600885EEC /* MSCFileManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MSCFileManager.m; sourceTree = "<group>"; };
+		84815E2020C2FA0800E034AA /* MSCColorGenerator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSCColorGenerator.h; sourceTree = "<group>"; };
+		84815E2120C2FA0800E034AA /* MSCColorGenerator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MSCColorGenerator.m; sourceTree = "<group>"; };
+		84815E2320C303AF00E034AA /* Color.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Color.h; sourceTree = "<group>"; };
+		84815E2420C303AF00E034AA /* Color.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Color.m; sourceTree = "<group>"; };
+		84815E2720C3073900E034AA /* MSC3DViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSC3DViewController.h; sourceTree = "<group>"; };
+		84815E2820C3073900E034AA /* MSC3DViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MSC3DViewController.m; sourceTree = "<group>"; };
+		84815E2A20C30B2F00E034AA /* MSCMaterial.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MSCMaterial.h; sourceTree = "<group>"; };
+		84815E2B20C30B2F00E034AA /* MSCMaterial.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MSCMaterial.m; sourceTree = "<group>"; };
 		84F8C3E320C1F49100259867 /* MAGTimeChartsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MAGTimeChartsViewController.swift; sourceTree = "<group>"; };
 		84F8C3E520C1F4A300259867 /* MAGRnData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MAGRnData.swift; sourceTree = "<group>"; };
 		84F8C3E720C1F4C800259867 /* 1.Rn4.1 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.man; path = 1.Rn4.1; sourceTree = "<group>"; };
@@ -287,6 +299,12 @@
 			children = (
 				8436E48320B9DAD60035B6A0 /* MSCCustomGeometryModel.h */,
 				8436E48420B9DAD60035B6A0 /* MSCCustomGeometryModel.m */,
+				84815E2020C2FA0800E034AA /* MSCColorGenerator.h */,
+				84815E2120C2FA0800E034AA /* MSCColorGenerator.m */,
+				84815E2320C303AF00E034AA /* Color.h */,
+				84815E2420C303AF00E034AA /* Color.m */,
+				84815E2A20C30B2F00E034AA /* MSCMaterial.h */,
+				84815E2B20C30B2F00E034AA /* MSCMaterial.m */,
 			);
 			path = 3d;
 			sourceTree = "<group>";
@@ -430,6 +448,7 @@
 		84792E6520B48F2300885EEC /* MagisterSceneObjC */ = {
 			isa = PBXGroup;
 			children = (
+				84815E2620C3071900E034AA /* UI */,
 				84792E6620B4911C00885EEC /* FileManager */,
 				8436E48120B9DA790035B6A0 /* Model */,
 			);
@@ -447,6 +466,15 @@
 				84F8C42620C1FACB00259867 /* MSCRnData.m */,
 			);
 			path = FileManager;
+			sourceTree = "<group>";
+		};
+		84815E2620C3071900E034AA /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				84815E2720C3073900E034AA /* MSC3DViewController.h */,
+				84815E2820C3073900E034AA /* MSC3DViewController.m */,
+			);
+			path = UI;
 			sourceTree = "<group>";
 		};
 		9A05AA3B20AC4C1000F44AE5 /* ChooseField */ = {
@@ -826,6 +854,7 @@
 				843D004F209B521000B824CF /* MAGChooseSectionViewController.swift in Sources */,
 				846C260D20A1BF9C0049A6B6 /* MAGMaterial.swift in Sources */,
 				84792E6920B4913600885EEC /* MSCFileManager.m in Sources */,
+				84815E2C20C30B2F00E034AA /* MSCMaterial.m in Sources */,
 				9AF322EA1F7A7FE4003AE463 /* MAG3DViewController.swift in Sources */,
 				843FFE82208792E700B717D2 /* MAGColorGenerator.swift in Sources */,
 				9A4B279D1F91EA8900068550 /* MAGBinaryDataScanner.swift in Sources */,
@@ -838,7 +867,10 @@
 				84792E6420B47F3C00885EEC /* MAGRecieversFuncGenerator.swift in Sources */,
 				9ADE1EBC1EED062B006D409E /* AppDelegate.swift in Sources */,
 				84F8C42720C1FACB00259867 /* MSCRnData.m in Sources */,
+				84815E2220C2FA0800E034AA /* MSCColorGenerator.m in Sources */,
+				84815E2520C303AF00E034AA /* Color.m in Sources */,
 				84743BBA2084EB16007049C6 /* MAGCreateProjectViewController.swift in Sources */,
+				84815E2920C3073900E034AA /* MSC3DViewController.m in Sources */,
 				846C260B20A1B7400049A6B6 /* MAGChooseMaterialViewController.swift in Sources */,
 				8436E48820B9E3BA0035B6A0 /* MSCBinaryDataScanner.m in Sources */,
 				9AF5853F2086067000A90D2D /* MAGCreateProjectViewModel.swift in Sources */,

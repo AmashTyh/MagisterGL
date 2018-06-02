@@ -4,11 +4,11 @@
 @class MAGProject;
 @class MSCFileManager;
 @class MSCRnData;
-
 @class MSCColorGenerator;
-@class MSCHexahedron;
+
 @class MSCMaterial;
 @class MSCCrossSection;
+@class MSCHexahedron;
 @class MSCChartsData;
 @class MSCTriangleElement;
 
@@ -46,10 +46,10 @@
 @property (nonatomic, strong) NSArray *timeSlices;
 @property (nonatomic, strong) NSArray<MSCTriangleElement *> *receiversSurface;
 @property (nonatomic, strong) NSArray *timeSlicesForCharts;
-
+//var sectionType: PlaneType = .X
 
 - (void)configureWithProject:(MAGProject *)project;
-
-//var sectionType: PlaneType = .X
+- (void)createElementArray;
+- (void)createReceiverSurface;
 
 @end
