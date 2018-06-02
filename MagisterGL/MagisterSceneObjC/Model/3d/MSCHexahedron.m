@@ -13,6 +13,8 @@
     _neighbours = neighbours;
     _material = material;
     _colors = colors;
+    //_sidesArray = [NSArray array]; ADD THIS
+    
   }
   return self;
 }

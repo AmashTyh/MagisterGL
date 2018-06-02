@@ -6,6 +6,7 @@
 #import "MSCColorGenerator.h"
 #import "MSCMaterial.h"
 #import "MSCHexahedron.h"
+#import "MSCTriangleElement.h"
 
 @interface MSCCustomGeometryModel ()
 
@@ -259,9 +260,180 @@
   self.elementsArray = [self.mElementsArray copy];
 }
 
+- (NSArray<NSNumber *> *)generateValuesFromEdsallWithKey:(float)key
+{
+  NSMutableArray<NSNumber *> *result = [NSMutableArray array];
+  
+  for (int i = 0; i<self.edsallArray.count; i++) {
+    [result addObject:self.edsallArray[i][[NSNumber numberWithFloat:key]]];
+  }
+  return [result copy];
+}
+
 - (void)createReceiverSurface
 {
+  NSMutableArray *receiversArraySortedByXY = [[self.profileArray sortedArrayUsingComparator:^NSComparisonResult(NSValue *v1, NSValue *v2) {
+    SCNVector3 vector1 = [v1 SCNVector3Value];
+    SCNVector3 vector2 = [v2 SCNVector3Value];
+    if (vector1.y - vector2.y >=5) {
+      return [[NSNumber numberWithFloat:vector1.y] compare:[NSNumber numberWithFloat:vector2.y]];
+    }
+    else {
+      return [[NSNumber numberWithFloat:vector1.x] compare:[NSNumber numberWithFloat:vector2.x]];
+    }
+  }] mutableCopy];
   
+  MSCColorGenerator *colorGenerator = [[MSCColorGenerator alloc] init];
+  NSMutableArray<NSNumber *> *uValueArray = [[self generateValuesFromEdsallWithKey:[self.timeSlices[self.showTimeSliceNumber] floatValue]] mutableCopy];
+  
+  NSSortDescriptor *lowestToHighest = [NSSortDescriptor sortDescriptorWithKey:@"self" ascending:YES];
+  [uValueArray sortUsingDescriptors:@[lowestToHighest]];
+  float minValue = [[uValueArray firstObject] floatValue];
+  float maxValue = [[uValueArray lastObject] floatValue];
+  
+  [colorGenerator generateColorWithMinValue:(double)minValue
+                                   maxValue:(double)maxValue];
+  NSMutableArray<NSArray *> *receivers = [NSMutableArray array];
+  NSMutableArray *lineArray = [NSMutableArray array];
+  
+  for (int i=0; i<receiversArraySortedByXY.count - 1; i++) {
+    if ([receiversArraySortedByXY[i] SCNVector3Value].x < [receiversArraySortedByXY[i+1] SCNVector3Value].x) {
+      [lineArray addObject:receiversArraySortedByXY[i]];
+    }
+    else {
+      [lineArray addObject:receiversArraySortedByXY[i]];
+      [receivers addObject:[lineArray copy]];
+      [lineArray removeAllObjects];
+    }
+  }
+  [lineArray addObject:receiversArraySortedByXY[receiversArraySortedByXY.count -1]];
+  [receivers addObject:[lineArray copy]];
+  
+  NSMutableArray<NSArray<NSNumber *> *> *numberArray = [NSMutableArray array];
+  NSMutableArray<NSNumber *> *lineNumArray = [NSMutableArray array];
+  //TODO:  cравнить первый элемент если разный то  count-1-h, если одинаковый то оставить
+  int h = 0;
+  for (int i = 0; i < receivers.count; i++) {
+    for (int j = 0; j < receivers[i].count; i++) {
+      if (([self.profileArray[0] SCNVector3Value].x == [receivers[0][0] SCNVector3Value].x) &&
+          ([self.profileArray[0] SCNVector3Value].y == [receivers[0][0] SCNVector3Value].y) &&
+          ([self.profileArray[0] SCNVector3Value].z == [receivers[0][0] SCNVector3Value].z)) {
+        [lineNumArray addObject:[NSNumber numberWithInt:h]];
+      }
+      else {
+        [lineNumArray addObject:[NSNumber numberWithInt:(int)self.profileArray.count - 1 - h]];
+      }
+      h++;
+    }
+    [numberArray addObject:[lineNumArray copy]];
+    [lineNumArray removeAllObjects];
+  }
+
+  [self createTrianglesArrayWithReceivers:receivers
+                              numberArray:numberArray
+                           colorGenerator:colorGenerator];
+  
+
+//  self.timeSlicesForCharts = self.chartsData.generateChartsValuesWith(receivers: receivers,
+//                                                                      rnArray: self.rnArray,
+//                                                                      minZValue: profileArray.min { (first, second) -> Bool in
+//                                                                        return first.z < second.z
+//                                                                      }!.z,
+//                                                                      maxZValue: profileArray.max { (first, second) -> Bool in
+//                                                                        return first.z < second.z
+//                                                                      }!.z,
+//                                                                      maxZModel: xyzArray.max { (first, second) -> Bool in
+//                                                                        return first.z < second.z
+//                                                                      }!.z,
+//                                                                      choosenTimeSlice: self.showTimeSliceForCharts)
+}
+
+- (void)createTrianglesArrayWithReceivers: (NSArray<NSArray *> *)receivers
+                              numberArray: (NSArray<NSArray<NSNumber *> *> *)numberArray
+                           colorGenerator: (MSCColorGenerator *)colorGenerator
+{
+  NSArray<NSNumber *> *uValueArray = [self generateValuesFromEdsallWithKey:[self.timeSlices[self.showTimeSliceNumber] floatValue]];
+  NSMutableArray *triangleArray = [NSMutableArray array];
+  
+  for (int i = 0; i<receivers.count - 1; i++) {
+    if (receivers[i].count >= receivers[i + 1].count) {
+      int j = 0;
+      int h0 = 0;
+      int h = 0;
+      while (j < receivers[i + 1].count - 1) {
+        if (j < receivers[i + 1].count - 1) {
+          h0 = h;
+          while (h < receivers[i].count && [receivers[i][h] SCNVector3Value].x < [receivers[i + 1][j + 1] SCNVector3Value].x)
+          {
+            if (h + 1 <= receivers[i].count) {
+              h++;
+            }
+          }
+          if (h >= receivers[i].count) {
+            h = (int)(receivers[i].count) - 1;
+          }
+          NSArray *tempValues1 = @[uValueArray[[numberArray[i][h0] intValue]],
+                                  uValueArray[[numberArray[i][h] intValue]],
+                                  uValueArray[[numberArray[i + 1][j] intValue]]];
+          NSArray *tempValues2 = @[uValueArray[[numberArray[i][h] intValue]],
+                                   uValueArray[[numberArray[i + 1][j + 1] intValue]],
+                                   uValueArray[[numberArray[i + 1][j] intValue]]];
+          MSCTriangleElement *triangleElement1 = [[MSCTriangleElement alloc] initWithPositions:@[receivers[i][h0],
+                                                                                                receivers[i][h],
+                                                                                                receivers[i + 1][j]
+                                                                                                ]
+                                                                                       colors:tempValues1];
+          [triangleArray addObject:triangleElement1];
+          MSCTriangleElement *triangleElement2 = [[MSCTriangleElement alloc] initWithPositions:@[receivers[i][h],
+                                                                                                 receivers[i + 1][j + 1],
+                                                                                                 receivers[i + 1][j]
+                                                                                                 ]
+                                                                                        colors:tempValues2];
+          [triangleArray addObject:triangleElement2];
+        }
+        j++;
+      }
+    }
+    else {
+      int j = 0;
+      int h0 = 0;
+      int h = 0;
+      while (j < receivers[i].count - 1) {
+        if (j < receivers[i].count - 1) {
+          h0 = h;
+          while (h < receivers[i + 1].count && [receivers[i + 1][h] SCNVector3Value].x < [receivers[i][j + 1] SCNVector3Value].x)
+          {
+            if (h + 1 <= receivers[i + 1].count) {
+              h++;
+            }
+          }
+          if (h >= receivers[i + 1].count) {
+            h = (int)(receivers[i + 1].count) - 1;
+          }
+          NSArray *tempValues1 = @[uValueArray[[numberArray[i][j] intValue]],
+                                   uValueArray[[numberArray[i][j + 1] intValue]],
+                                   uValueArray[[numberArray[i + 1][h0] intValue]]];
+          NSArray *tempValues2 = @[uValueArray[[numberArray[i][j + 1] intValue]],
+                                   uValueArray[[numberArray[i + 1][h] intValue]],
+                                   uValueArray[[numberArray[i + 1][h0] intValue]]];
+          MSCTriangleElement *triangleElement1 = [[MSCTriangleElement alloc] initWithPositions:@[receivers[i][j],
+                                                                                                 receivers[i][j + 1],
+                                                                                                 receivers[i + 1][h0]
+                                                                                                 ]
+                                                                                        colors:tempValues1];
+          [triangleArray addObject:triangleElement1];
+          MSCTriangleElement *triangleElement2 = [[MSCTriangleElement alloc] initWithPositions:@[receivers[i][j + 1],
+                                                                                                 receivers[i + 1][h],
+                                                                                                 receivers[i + 1][h0]
+                                                                                                 ]
+                                                                                        colors:tempValues2];
+          [triangleArray addObject:triangleElement2];
+        }
+        j++;
+      }
+    }
+  }
+  self.receiversSurface = triangleArray;
 }
 
 - (NSArray *)getNVERArrayForNumber:(int)number
