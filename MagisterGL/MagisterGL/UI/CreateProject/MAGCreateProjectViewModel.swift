@@ -43,7 +43,6 @@ class MAGCreateProjectViewModel: NSObject
                               nvkatPath: self.cellObjects[2].filePathArray.first!,
                               elemNeibPath: self.cellObjects[3].filePathArray.first!,
                               sigma3dPath: self.cellObjects[4].filePathArray.first!,
-                              profilePath: "",
                               v3FilePathsArray: NSKeyedArchiver.archivedData(withRootObject: self.cellObjects[5].filePathArray),
                               isLocal: false)
   }

@@ -1,20 +1,19 @@
-//
-//  MAGCustomGeometryModel.swift
-//  MagisterGL
-//
-//  Created by Хохлова Татьяна on 08.10.17.
-//  Copyright © 2017 Хохлова Татьяна. All rights reserved.
-//
-
-
 import UIKit
 import SceneKit
 
-
+/**
+ Основная модель приложения
+ */
 class MAGCustomGeometryModel: NSObject
 {
+  /**
+   Работа с файлами
+   */
   let fileManager: MAGFileManager = MAGFileManager()
   
+  /**
+   Пользовательские настройки
+   */
   var isShowMaterials = true
   var showFieldNumber = -1
   var colorGenerator: MAGColorGenerator?
@@ -23,7 +22,6 @@ class MAGCustomGeometryModel: NSObject
   var scaleValue : Float = 1.0
   var isDrawingSectionEnabled: Bool = false
   var elementsArray: [MAGHexahedron] = []
-  //TODO: NSValue *value = [NSValue valueWithSCNVector3:vector]
   var centerPoint: SCNVector3 = SCNVector3Zero
   var minVector: SCNVector3 = SCNVector3Zero
   var maxVector: SCNVector3 = SCNVector3Zero
@@ -39,12 +37,10 @@ class MAGCustomGeometryModel: NSObject
   var selectedMaterials: [MAGMaterial] = []
   var crossSection: MAGCrossSection?
   var sig3dArray: [[Double]] = []
-  var profileArray: [SCNVector3] = []
-  var chartsData: MAGChartsData = MAGChartsData()
   
-  var receiversSurface: [MAGTriangleElement] = []
-  
-  
+  /**
+   Настроить модель с помощью проекта
+   */
   func configure(project: MAGProject)
   {
     self.project = project
@@ -55,7 +51,6 @@ class MAGCustomGeometryModel: NSObject
     nvkatArray = self.fileManager.getNVKATArray(path: documentsPath + project.nvkatFilePath!)
     neibArray = self.fileManager.getNEIBArray(path: documentsPath + project.elemNeibFilePath!)
     sig3dArray = self.fileManager.getSig3dArray(path: documentsPath + project.sigma3dPath!)
-    profileArray = self.fileManager.getProfileArray(path: documentsPath + project.profilePath!)
     
     //v3 array
     let decodedArray = NSKeyedUnarchiver.unarchiveObject(with: project.v3FilePathsArray!) as? [String]
@@ -70,7 +65,6 @@ class MAGCustomGeometryModel: NSObject
     
     if sig3dArray.count > 0
     {
-      //TODO: http://nshipster.com/kvc-collection-operators/
       let min = sig3dArray.min { (first, second) -> Bool in
         return first[1] < second[1]
         }![1]
@@ -106,130 +100,8 @@ class MAGCustomGeometryModel: NSObject
     }
     self.selectedMaterials  = self.materials
     createElementsArray()
-    if profileArray.count > 0
-    {
-      createReceiverSurface()
-    }
   }
-  
-  func createReceiverSurface()
-  {
-    var receiversArraySortedByXY = profileArray.sorted(by: { (v1, v2) -> Bool in
-      if fabs(v1.y - v2.y)>=5
-      {
-        return v1.y < v2.y
-      }
-      else
-      {
-        return v1.x < v2.x
-      }
-    })
     
-    let colorGenerator = MAGColorGenerator()
-    var uValueArray: [Float] = []
-    for vector in receiversArraySortedByXY
-    {
-      uValueArray.append(Float(MAGRecieversFuncGenerator.uFunc(x: Double(vector.x),
-                                                               y: Double(vector.y),
-                                                               z: Double(vector.z))))
-    }
-    
-    let minValue = uValueArray.min { (first, second) -> Bool in
-      return first < second
-      }!
-    let maxValue = uValueArray.max { (first, second) -> Bool in
-      return first < second
-      }!
-    colorGenerator.generateColor(minValue: Double(minValue),
-                                 maxValue: Double(maxValue))
-
-    var receivers: [[SCNVector3]] = []
-    var lineArray: [SCNVector3] = []
-    for i in 0..<receiversArraySortedByXY.count - 1
-    {
-      if (receiversArraySortedByXY[i].x < receiversArraySortedByXY[i + 1].x)
-      {
-        lineArray.append(receiversArraySortedByXY[i])
-      }
-      else
-      {
-        lineArray.append(receiversArraySortedByXY[i])
-        receivers.append(lineArray)
-        lineArray = []
-      }
-    }
-    lineArray.append(receiversArraySortedByXY[receiversArraySortedByXY.count - 1])
-    receivers.append(lineArray)
-    
-    var trinaglesArray: [MAGTriangleElement] = []
- 
-    for i in 0..<receivers.count - 1 {
-      var j: Int = 0
-      if (receivers[i].count <= receivers[i + 1].count)
-      {
-        while (j < receivers[i + 1].count - 1)
-        {
-          if (j < receivers[i].count - 1)
-          {
-            trinaglesArray.append(MAGTriangleElement(positions: [receivers[i][j], receivers[i][j + 1], receivers[i + 1][j]],
-                                                     colors: colorGenerator.getColorsFor(vertexes: [receivers[i][j],
-                                                                                                    receivers[i][j + 1],
-                                                                                                    receivers[i + 1][j]])))
-            trinaglesArray.append(MAGTriangleElement(positions: [receivers[i][j + 1], receivers[i + 1][j + 1], receivers[i + 1][j]],
-                                                     colors: colorGenerator.getColorsFor(vertexes: [receivers[i][j + 1],
-                                                                                                    receivers[i + 1][j + 1],
-                                                                                                    receivers[i + 1][j]])))
-          }
-          else
-          {
-            trinaglesArray.append(MAGTriangleElement(positions: [receivers[i][receivers[i].count - 1],
-                                                                 receivers[i + 1][j + 1],
-                                                                 receivers[i + 1][j]],
-                                                     colors: colorGenerator.getColorsFor(vertexes: [receivers[i][receivers[i].count - 1],
-                                                                                                    receivers[i + 1][j + 1],
-                                                                                                    receivers[i + 1][j]])))
-          }
-          j += 1
-        }
-      }
-      else {
-        while (j < receivers[i].count - 1)
-        {
-          if (j < receivers[i + 1].count - 1)
-          {
-            trinaglesArray.append(MAGTriangleElement(positions: [receivers[i][j], receivers[i][j + 1], receivers[i + 1][j]],
-                                                     colors: colorGenerator.getColorsFor(vertexes: [receivers[i][j],
-                                                                                                    receivers[i][j + 1],
-                                                                                                    receivers[i + 1][j]])))
-            trinaglesArray.append(MAGTriangleElement(positions: [receivers[i][j + 1], receivers[i + 1][j + 1], receivers[i + 1][j]],
-                                                     colors: colorGenerator.getColorsFor(vertexes: [receivers[i][j + 1],
-                                                                                                    receivers[i + 1][j + 1],
-                                                                                                    receivers[i + 1][j]])))
-          }
-          else
-          {
-            trinaglesArray.append(MAGTriangleElement(positions: [receivers[i][j],
-                                                                 receivers[i][j + 1],
-                                                                 receivers[i + 1][receivers[i + 1].count - 1]],
-                                                     colors: colorGenerator.getColorsFor(vertexes: [receivers[i][j],
-                                                                                                    receivers[i][j + 1],
-                                                                                                    receivers[i + 1][receivers[i + 1].count - 1]])))
-          }
-          j += 1
-        }
-      }
-    }
-    self.receiversSurface = trinaglesArray
- 
-    
-    self.chartsData.minZValue = profileArray.min { (first, second) -> Bool in
-      return first.z < second.z
-      }!.z
-    self.chartsData.minUValue = minValue
-    self.chartsData.maxUValue = maxValue
-    self.chartsData.updateZValueChartsData(sortedReceivers: receivers)
-  }
-  
   func createElementsArray()
   {
     elementsArray = []

@@ -1,19 +1,17 @@
-//
-//  MAGFileManager.swift
-//  MagisterGL
-//
-//  Created by Хохлова Татьяна on 08.10.17.
-//  Copyright © 2017 Хохлова Татьяна. All rights reserved.
-//
-
-
 import UIKit
 import SceneKit
 
-
+/**
+ модуль для работы с файловой системой.
+ На вход получает путь файла и считывает данные.
+ На выходе преобразованные данные, например массив целых значений.
+ */
 class MAGFileManager: NSObject
 {
   
+  /**
+   Получить массив xyz векторов из файла
+ */
   func getXYZArray(path: String) -> Array<SCNVector3>
   {
     do
@@ -70,6 +68,9 @@ class MAGFileManager: NSObject
     return []
   }
   
+  /**
+   Получить массив xyz значений из файла
+   */
   func getXYZValuesArray(path: String) -> [Double]
   {
     do
@@ -109,6 +110,9 @@ class MAGFileManager: NSObject
     return []
   }
   
+  /**
+   Получить массив глобальных номеров вершин из файла
+   */
   func getNVERArray(path: String) -> [[Int]]
   {
     do
@@ -155,6 +159,9 @@ class MAGFileManager: NSObject
     return []
   }
   
+  /**
+   Получить массив материалов всех конечных элементов из файла
+   */
   func getNVKATArray(path: String) -> Array<Int>
   {
     do
@@ -196,6 +203,9 @@ class MAGFileManager: NSObject
     return []
   }
   
+  /**
+   Получить количество соседей и их глобальные номера из файла
+   */
   func getNEIBArray(path: String) -> [[Int]]
   {
     do
@@ -276,6 +286,9 @@ class MAGFileManager: NSObject
     return []
   }
   
+  /**
+   Получить массив sigma для каждого материала из файла
+   */
   func getSig3dArray(path: String) -> [[Double]]
   {
     do

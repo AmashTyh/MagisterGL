@@ -9,7 +9,7 @@
 import UIKit
 import SceneKit
 
-class Color: NSObject
+class MAGColor: NSObject
 {
    var value: Double = 0.0
    var red: Double = 0

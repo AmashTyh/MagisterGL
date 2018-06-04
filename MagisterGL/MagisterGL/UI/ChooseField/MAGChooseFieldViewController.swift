@@ -14,6 +14,9 @@ protocol MAGChooseFieldViewControllerDelegate: class
   func chooseFieldNumber(fieldNumber: Int)
 }
 
+/**
+ Модуль экрана выбора поля
+ */
 class MAGChooseFieldViewController: UIViewController,
                                     UITableViewDelegate,
                                     UITableViewDataSource,
@@ -63,7 +66,7 @@ class MAGChooseFieldViewController: UIViewController,
     {
       tableView.selectRow(at: indexPath,
                           animated: false,
-                          scrollPosition: .none)
+                          scrollPosition: .top)
     }
     return cell
   }

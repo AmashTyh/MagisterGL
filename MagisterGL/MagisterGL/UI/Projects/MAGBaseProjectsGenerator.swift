@@ -29,7 +29,6 @@ class MAGBaseProjectsGenerator: NSObject
                          nvkatPath: "nvkat.txt",
                          elemNeibPath: "elem_neib.txt",
                          sigma3dPath: "sig3d.txt",
-                         profilePath: "profile.txt",
                          v3FilePathsArray: NSKeyedArchiver.archivedData(withRootObject: ["v3.t1.txt", "v3.t2.txt"]),
                          isLocal: true)
     viewModel.addProject(name: "Test 2",
@@ -38,7 +37,6 @@ class MAGBaseProjectsGenerator: NSObject
                          nvkatPath: "nvkat2.txt",
                          elemNeibPath: "elem_neib2.txt",
                          sigma3dPath: "",
-                         profilePath: "",
                          v3FilePathsArray: NSKeyedArchiver.archivedData(withRootObject: [""]),
                          isLocal: true)
     viewModel.addProject(name: "Test 3",
@@ -47,7 +45,6 @@ class MAGBaseProjectsGenerator: NSObject
                          nvkatPath: "nvkat.dat",
                          elemNeibPath: "elem_neib",
                          sigma3dPath: "",
-                         profilePath: "",
                          v3FilePathsArray: NSKeyedArchiver.archivedData(withRootObject: ["v3_3.t1.txt"]),
                          isLocal: true)
     viewModel.addProject(name: "Test 4",
@@ -56,7 +53,6 @@ class MAGBaseProjectsGenerator: NSObject
                          nvkatPath: "nvkat4.dat",
                          elemNeibPath: "elem_neib4",
                          sigma3dPath: "Sig3d4",
-                         profilePath: "profile4",
                          v3FilePathsArray: NSKeyedArchiver.archivedData(withRootObject: [""]),
                          isLocal: true)
     viewModel.addProject(name: "Test 5",
@@ -65,7 +61,6 @@ class MAGBaseProjectsGenerator: NSObject
                          nvkatPath: "nvkat5.dat",
                          elemNeibPath: "elem_neib5",
                          sigma3dPath: "Sig3d5",
-                         profilePath: "profile5",
                          v3FilePathsArray: NSKeyedArchiver.archivedData(withRootObject: [""]),
                          isLocal: true)
     viewModel.addProject(name: "Test 9980",
@@ -74,7 +69,6 @@ class MAGBaseProjectsGenerator: NSObject
                          nvkatPath: "9980_nvkat.dat",
                          elemNeibPath: "9980_elem_neib",
                          sigma3dPath: "9980_Sig3d",
-                         profilePath: "",
                          v3FilePathsArray: NSKeyedArchiver.archivedData(withRootObject: ["9980_bx.10",
                                                                                          "9980_bx.11",
                                                                                          "9980_bx.12",
@@ -559,7 +553,6 @@ class MAGBaseProjectsGenerator: NSObject
                          nvkatPath: "9981_nvkat.dat",
                          elemNeibPath: "9981_elem_neib",
                          sigma3dPath: "9981_Sig3d",
-                         profilePath: "",
                          v3FilePathsArray: NSKeyedArchiver.archivedData(withRootObject: ["9981_bx.10",
                                                                                          "9981_bx.11",
                                                                                          "9981_bx.12",

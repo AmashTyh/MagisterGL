@@ -56,7 +56,6 @@ class MAGProjectsViewModel: NSObject
                   nvkatPath: String,
                   elemNeibPath: String,
                   sigma3dPath: String,
-                  profilePath: String,
                   v3FilePathsArray: Data,
                   isLocal: Bool)
   {
@@ -69,7 +68,6 @@ class MAGProjectsViewModel: NSObject
     newEntity.xyzFilePath = xyzPath
     newEntity.elemNeibFilePath = elemNeibPath
     newEntity.sigma3dPath = sigma3dPath
-    newEntity.profilePath = profilePath
     newEntity.isLocal = isLocal
     newEntity.v3FilePathsArray = v3FilePathsArray
     

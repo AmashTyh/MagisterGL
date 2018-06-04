@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		840D4EA120B2F6A500E9DF5C /* v3_3.t1.txt in Resources */ = {isa = PBXBuildFile; fileRef = 840D4EA020B2F6A400E9DF5C /* v3_3.t1.txt */; };
-		840D4EA320B2FC6900E9DF5C /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840D4EA220B2FC6900E9DF5C /* Color.swift */; };
+		840D4EA320B2FC6900E9DF5C /* MAGColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840D4EA220B2FC6900E9DF5C /* MAGColor.swift */; };
 		8432FC3220AC8C7D00930CB9 /* MAGTriangleElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8432FC3120AC8C7D00930CB9 /* MAGTriangleElement.swift */; };
 		8437778620A331C5009B1BE0 /* xyz4.dat in Resources */ = {isa = PBXBuildFile; fileRef = 8437777E20A331C5009B1BE0 /* xyz4.dat */; };
 		8437778720A331C5009B1BE0 /* nvkat4.dat in Resources */ = {isa = PBXBuildFile; fileRef = 8437777F20A331C5009B1BE0 /* nvkat4.dat */; };
@@ -1053,7 +1053,7 @@
 /* Begin PBXFileReference section */
 		6DA4F8BFD9D8D310D40705BF /* Pods_MagisterGL.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MagisterGL.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		840D4EA020B2F6A400E9DF5C /* v3_3.t1.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = v3_3.t1.txt; sourceTree = "<group>"; };
-		840D4EA220B2FC6900E9DF5C /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		840D4EA220B2FC6900E9DF5C /* MAGColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MAGColor.swift; sourceTree = "<group>"; };
 		8432FC3120AC8C7D00930CB9 /* MAGTriangleElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAGTriangleElement.swift; sourceTree = "<group>"; };
 		8437777E20A331C5009B1BE0 /* xyz4.dat */ = {isa = PBXFileReference; lastKnownFileType = file; path = xyz4.dat; sourceTree = "<group>"; };
 		8437777F20A331C5009B1BE0 /* nvkat4.dat */ = {isa = PBXFileReference; lastKnownFileType = file; path = nvkat4.dat; sourceTree = "<group>"; };
@@ -3388,7 +3388,7 @@
 		9AE6156C1F8A01910067893C /* 3d */ = {
 			isa = PBXGroup;
 			children = (
-				840D4EA220B2FC6900E9DF5C /* Color.swift */,
+				840D4EA220B2FC6900E9DF5C /* MAGColor.swift */,
 				9AE6156D1F8A03B00067893C /* MAGHexahedron.swift */,
 				9AE6156F1F8A07250067893C /* MAGCustomGeometryModel.swift */,
 				9A889F0E204D606000CA6069 /* MAGSide.swift */,
@@ -4598,7 +4598,7 @@
 				84743BB72084E6E4007049C6 /* MAGProjectTableViewCell.swift in Sources */,
 				84743BAB2084DE9C007049C6 /* MAGGoogleTableViewController.swift in Sources */,
 				9AF5853C2086053000A90D2D /* MAGProjectFileAddTableViewCell.swift in Sources */,
-				840D4EA320B2FC6900E9DF5C /* Color.swift in Sources */,
+				840D4EA320B2FC6900E9DF5C /* MAGColor.swift in Sources */,
 				84743BA72084DD3B007049C6 /* MAGLocalFileManager.m in Sources */,
 				8444971B20A469B300AB8D54 /* MAGBaseProjectsGenerator.swift in Sources */,
 				9AE615701F8A07250067893C /* MAGCustomGeometryModel.swift in Sources */,
@@ -4750,12 +4750,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A4DA327470A9B4072E5FB8C0 /* Pods-MagisterGL.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 4AGU44C96R;
 				INFOPLIST_FILE = MagisterGL/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = tyh94.MagisterGL;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "MagisterGL/GoogleDrive/Model/MagisterGL-Bridging-Header.h";
@@ -4770,12 +4771,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8CAFC11BF7FD19D8CB4C5EF8 /* Pods-MagisterGL.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = 4AGU44C96R;
 				INFOPLIST_FILE = MagisterGL/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = tyh94.MagisterGL;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "MagisterGL/GoogleDrive/Model/MagisterGL-Bridging-Header.h";

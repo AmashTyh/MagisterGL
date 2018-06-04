@@ -8,6 +8,9 @@
 
 import UIKit
 
+/**
+ Ячейка с материалом
+ */
 class MAGChooseFieldTableViewCell: UITableViewCell
 {
 

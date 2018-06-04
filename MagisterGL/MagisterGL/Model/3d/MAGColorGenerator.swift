@@ -12,7 +12,7 @@ import SceneKit
 class MAGColorGenerator: NSObject
 {
    private static let kCountOfColorAreas: Int = 255
-   var rainbow: [Color] = []
+   var rainbow: [MAGColor] = []
   
    
    func generateColor(minValue: Double, maxValue: Double)
@@ -20,14 +20,14 @@ class MAGColorGenerator: NSObject
       let hValues: Double = (maxValue - minValue) / Double(MAGColorGenerator.kCountOfColorAreas - 1)
       for i in 0..<MAGColorGenerator.kCountOfColorAreas
       {
-         let color = Color()
+         let color = MAGColor()
          color.value = minValue + Double(i) * hValues
          rainbow.append(color)
       }
       
-      let colorRedMin: Double = 0
-      let colorGreenMin: Double = 5
-      let colorBlueMin: Double = 255
+      let colorRedMin: Double = 255
+      let colorGreenMin: Double = 0
+      let colorBlueMin: Double = 0
       
       let colorRedMax: Double = 0
       let colorGreenMax: Double = 255

@@ -1,17 +1,10 @@
-//
-//  MAG3DViewController.swift
-//  MagisterGL
-//
-//  Created by Хохлова Татьяна on 26.09.17.
-//  Copyright © 2017 Хохлова Татьяна. All rights reserved.
-//
-
-
 import UIKit
 import SceneKit
 import OpenGLES
 
-
+/**
+ Главный экран отрисовки модели
+ */
 class MAG3DViewController: UIViewController,
                            UIPopoverPresentationControllerDelegate,
                            SCNSceneRendererDelegate,
@@ -21,11 +14,19 @@ class MAG3DViewController: UIViewController,
 
 {
   
-  
+  /**
+   View с 3Д моделью
+   */
   @IBOutlet weak var customGeometryView: MAGCustomGeometryView!
   
+  /**
+   Проект, с которым сейчас работаем
+   */
   var project: MAGProject!
   
+  /**
+   Настроить экран с помощью проекта
+   */
   func configure(project: MAGProject)
   {
     self.project = project

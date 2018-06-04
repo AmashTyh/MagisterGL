@@ -19,6 +19,7 @@ class MAGChooseMaterialTableViewCell: UITableViewCell
     super.awakeFromNib()
     
     colorView.layer.cornerRadius = 9.0
+    colorView.backgroundColor = UIColor.clear
     let view = UIView()
     view.backgroundColor = UIColor.clear
     self.selectedBackgroundView = view
