@@ -20,7 +20,7 @@ enum PositionType : Int {
    case Top
 }
 
-
+@objc
 class MAGSide: NSObject
 {
    /**

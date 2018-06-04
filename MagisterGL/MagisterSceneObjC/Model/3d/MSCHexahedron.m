@@ -1,5 +1,7 @@
 #import "MSCHexahedron.h"
 
+#import "MagisterGL-Swift.h"
+
 @implementation MSCHexahedron
 
 - (instancetype)initWithPositions:(NSArray *)positions
@@ -14,6 +16,7 @@
     _material = material;
     _colors = colors;
     //_sidesArray = [NSArray array]; ADD THIS
+    _sidesArray = [NSArray array];
     
   }
   return self;

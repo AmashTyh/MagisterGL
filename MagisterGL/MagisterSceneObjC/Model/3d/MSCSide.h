@@ -11,5 +11,7 @@ typedef NS_ENUM(NSUInteger, PositionType) {
 
 @interface MSCSide : NSObject
 
+
+
 @end
 

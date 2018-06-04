@@ -1,6 +1,7 @@
 #import <Foundation/Foundation.h>
 
-@class MSCSide;
+
+@class MAGSide;
 
 typedef NS_ENUM(NSUInteger, HexahedronVisible) {
   isVisible,
@@ -14,7 +15,7 @@ typedef NS_ENUM(NSUInteger, HexahedronVisible) {
  Массив сторон шестигранника - 6 штук
  порядок: левая, передняя, нижняя, правая, задняя, верхняя
  */
-@property(nonatomic, strong) NSArray<MSCSide *> *sidesArray;
+@property(nonatomic, strong) NSArray<MAGSide *> *sidesArray;
 @property(nonatomic, strong) NSArray *isSideVisibleArray;
 /**
  Массив nvkat для элемента
