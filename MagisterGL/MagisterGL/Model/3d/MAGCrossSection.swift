@@ -88,11 +88,11 @@ class MAGCrossSection: NSObject
                             maxValue: maxValue)
     case .Y:
       let minValue = positions.min { (first, second) -> Bool in
-        return first.x < second.x
+        return first.y < second.y
         }!.y
       
       let maxValue = positions.max { (first, second) -> Bool in
-        return first.x < second.x
+        return first.y < second.y
         }!.y
       
       return self.isVisible(value: value,
@@ -100,11 +100,11 @@ class MAGCrossSection: NSObject
                             maxValue: maxValue)
     case .Z:
       let minValue = positions.min { (first, second) -> Bool in
-        return first.x < second.x
+        return first.z < second.z
         }!.z
       
       let maxValue = positions.max { (first, second) -> Bool in
-        return first.x < second.x
+        return first.z < second.z
         }!.z
       
       return self.isVisible(value: value,
