@@ -3275,14 +3275,14 @@
 		9AB601A71F762998004C50AB /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				9AF322E81F7A7F3A003AE463 /* 3D */,
 				9A05AA3B20AC4C1000F44AE5 /* ChooseField */,
 				846C260620A1B7060049A6B6 /* ChooseMaterial */,
 				843D004D209B51F600B824CF /* ChooseSection */,
 				9AF58539208604E500A90D2D /* CreateProject */,
-				84743BAE2084E55D007049C6 /* Projects */,
 				84743BA92084DE6E007049C6 /* GoogleDrive */,
-				9AF322E81F7A7F3A003AE463 /* 3D */,
 				9AD5AD6D20C0F48500A80322 /* MAGStandartButton.swift */,
+				84743BAE2084E55D007049C6 /* Projects */,
 			);
 			path = UI;
 			sourceTree = "<group>";

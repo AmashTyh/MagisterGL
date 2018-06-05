@@ -57,7 +57,7 @@ class MAGCustomGeometryView: SCNView
     scene.rootNode.addChildNode(cameraNode)
     
     self.allowsCameraControl = true
-    self.showsStatistics = true
+//    self.showsStatistics = true
     
     // create and add an ambient light to the scene
     let ambientLightNode = SCNNode()

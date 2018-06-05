@@ -13,18 +13,22 @@ import UIKit
  */
 class MAGChooseFieldTableViewCell: UITableViewCell
 {
+  @IBOutlet weak var titleLabel: UILabel!
+  
+  override func awakeFromNib()
+  {
+    super.awakeFromNib()
+    let selectedBackgroundView = UIView()
+    selectedBackgroundView.backgroundColor = UIColor(white: 240.0 / 255.0,
+                                                     alpha: 1.0)
+    self.selectedBackgroundView = selectedBackgroundView
+  }
 
-    override func awakeFromNib()
-    {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool)
-    {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
+  override func setSelected(_ selected: Bool, animated: Bool)
+  {
+    super.setSelected(selected, animated: animated)
     
+    // Configure the view for the selected state
+  }
+  
 }

@@ -202,18 +202,19 @@ class MAGCustomGeometryModel: NSObject
       }
       else
       {
-        var uValue = 0.0
-        for materialSig3d in sig3dArray
+        var color = SCNVector3Zero
+        for materialElem in materials
         {
-          if material == Int(materialSig3d[0])
+          if materialElem.numberOfMaterial == material
           {
-            uValue = materialSig3d[1]
+            color = materialElem.color
+            break
           }
         }
         hexahedron = MAGHexahedron(positions: positionArray,
                                    neighbours: elementNeibsArray,
                                    material: material,
-                                   color: [(self.colorGenerator?.getColorForU(u: uValue))!])
+                                   color: [color])
         
       }
       

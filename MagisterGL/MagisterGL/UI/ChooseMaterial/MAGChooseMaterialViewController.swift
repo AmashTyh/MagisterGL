@@ -59,12 +59,11 @@ class MAGChooseMaterialViewController: UIViewController, UITableViewDelegate, UI
     cell.isSelected = isSelected
     if isSelected
     {
-      // работает, не трогай
       tableView.selectRow(at: indexPath,
                           animated: false,
-                          scrollPosition: UITableViewScrollPosition.none)
+                          scrollPosition: .none)
     }
-    let color = UIColor(displayP3Red: CGFloat(material.color.x),
+    let color = UIColor(red: CGFloat(material.color.x),
                         green: CGFloat(material.color.y),
                         blue: CGFloat(material.color.z),
                         alpha: 1.0)
@@ -81,7 +80,7 @@ class MAGChooseMaterialViewController: UIViewController, UITableViewDelegate, UI
     cell.accessoryType = .checkmark
     let material = self.materials![indexPath.row]
     self.selectedMaterials?.append(material)
-    let color = UIColor(displayP3Red: CGFloat(material.color.x),
+    let color = UIColor(red: CGFloat(material.color.x),
                         green: CGFloat(material.color.y),
                         blue: CGFloat(material.color.z),
                         alpha: 1.0)
@@ -96,7 +95,7 @@ class MAGChooseMaterialViewController: UIViewController, UITableViewDelegate, UI
     let material = self.materials![indexPath.row]
     let index = self.selectedMaterials?.index(of: material)
     self.selectedMaterials?.remove(at: index!)
-    let color = UIColor(displayP3Red: CGFloat(material.color.x),
+    let color = UIColor(red: CGFloat(material.color.x),
                         green: CGFloat(material.color.y),
                         blue: CGFloat(material.color.z),
                         alpha: 1.0)

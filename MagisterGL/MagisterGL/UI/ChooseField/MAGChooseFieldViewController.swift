@@ -26,7 +26,7 @@ class MAGChooseFieldViewController: UIViewController,
   weak var delegate: MAGChooseFieldViewControllerDelegate?
   var showFieldNumber = -1
   var availableFields: [String] = []
-  let cellReuseIdentifier = "kChooseFieldReuseCellID"
+  let cellReuseIdentifier = "MAGChooseFieldTableViewCell"
   
   @IBOutlet weak var tableView: UITableView!
   
@@ -34,7 +34,8 @@ class MAGChooseFieldViewController: UIViewController,
   {
     super.viewDidLoad()
     
-    self.tableView.register(UITableViewCell.self,
+    self.tableView.register(UINib.init(nibName: cellReuseIdentifier,
+                                       bundle: nil),
                             forCellReuseIdentifier: cellReuseIdentifier)
   }
   
@@ -49,31 +50,31 @@ class MAGChooseFieldViewController: UIViewController,
   
   // MARK: UITableViewDataSource
   
-  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+  func tableView(_ tableView: UITableView,
+                 numberOfRowsInSection section: Int) -> Int
   {
     return self.availableFields.count
   }
   
-  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
+  func tableView(_ tableView: UITableView,
+                 cellForRowAt indexPath: IndexPath) -> UITableViewCell
   {
-    let cell : UITableViewCell = (tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier) as UITableViewCell?)!
-    cell.textLabel?.text = self.availableFields[indexPath.row]
-    let selectedBackgroundView = UIView()
-    selectedBackgroundView.backgroundColor = UIColor(white: 240.0 / 255.0,
-                                                     alpha: 1.0)
-    cell.selectedBackgroundView = selectedBackgroundView
+    let cell : MAGChooseFieldTableViewCell = (tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier) as! MAGChooseFieldTableViewCell?)!
+    let field = self.availableFields[indexPath.row]
+    cell.titleLabel?.text = field
     if (self.showFieldNumber == indexPath.row)
     {
       tableView.selectRow(at: indexPath,
                           animated: false,
-                          scrollPosition: .top)
+                          scrollPosition: .none)
     }
     return cell
   }
   
   //MARK: UITableViewDelegate
   
-  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
+  func tableView(_ tableView: UITableView,
+                 didSelectRowAt indexPath: IndexPath)
   {
     self.delegate?.chooseFieldNumber(fieldNumber: indexPath.row)
     self.dismiss(animated: true,
