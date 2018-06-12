@@ -70,7 +70,7 @@ class MAGChartsData: NSObject
           for j in 0..<rnData.profileChartsData.count {
             let vector: SCNVector3 = SCNVector3Make(receivers[i][0].x + rnData.profileChartsData[j][0],
                                                     receivers[i][0].y,
-                                                    rnData.profileChartsData[j][1])
+                                                    log10(rnData.profileChartsData[j][1]))
             chartsValuesLine.append(vector)
           }
           chartsValues.append(chartsValuesLine)
@@ -81,8 +81,8 @@ class MAGChartsData: NSObject
             max = rnData.profileChartsData.max(by: { (v1, v2) -> Bool in
               return v1[1] < v2[1]
             })![1]
-            minUValueArray.append(min)
-            maxUValueArray.append(max)
+            minUValueArray.append(log10(min))
+            maxUValueArray.append(log10(max))
           }
         }
       }

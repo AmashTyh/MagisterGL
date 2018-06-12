@@ -324,17 +324,19 @@ class MAGCustomGeometryView: SCNView
     var globalIndicies : [CInt] = []
  
     var h: Int = 0
-    let scaleCharts = self.model.chartsData.generateScaleParameter()/4
+    let scaleCharts = self.model.chartsData.generateScaleParameter()/15
     let delta = self.model.chartsData.minUValue * scaleCharts - self.model.chartsData.maxZValue
     for vectorsArray in self.model.chartsData.chartsValues {
       for var vector in vectorsArray {
 
-        if (scaleCharts < 1) {
-          vector.z = vector.z * scaleCharts - delta
-        }
-        else {
-          vector.z = vector.z * scaleCharts + self.model.chartsData.delta
-        }
+        vector.z = vector.z * scaleCharts - delta
+        
+//        if (scaleCharts < 1) {
+//          vector.z = vector.z * scaleCharts - delta
+//        }
+//        else {
+//          vector.z = vector.z * scaleCharts + self.model.chartsData.delta
+//        }
 
         //vector.z = log(vector.z) + self.model.chartsData.minZValue)
         
@@ -367,71 +369,8 @@ class MAGCustomGeometryView: SCNView
     chartsNode.scale = scaleVector
     self.scene?.rootNode.addChildNode(chartsNode)
   }
-  
-  
-  // использовать только для тестирования чего-либо
-  private func drawPlayground()
-  {
-    var globalElements: [SCNGeometryElement] = []
-    var globalColors: [SCNVector3] = []
-    
-    var vertexPositions: [SCNVector3] = []
-    
-    let indicesSide: [CInt] = [0,1,2]
-    let indexDataSide = Data(bytes: indicesSide,
-                             count: MemoryLayout<CInt>.size * indicesSide.count)
-    
-    let elementSide = SCNGeometryElement(data: indexDataSide,
-                                         primitiveType: .triangles,
-                                         primitiveCount: indicesSide.count / 3,
-                                         bytesPerIndex: MemoryLayout<CInt>.size)
-    let indicesSide2: [CInt] = [3,4,5]
-    let indexDataSide2 = Data(bytes: indicesSide2,
-                              count: MemoryLayout<CInt>.size * indicesSide.count)
-    let elementSide2 = SCNGeometryElement(data: indexDataSide2,
-                                          primitiveType: .triangles,
-                                          primitiveCount: indicesSide.count / 3,
-                                          bytesPerIndex: MemoryLayout<CInt>.size)
-    
-    vertexPositions.append(SCNVector3Make(0, 0, 0))
-    vertexPositions.append(SCNVector3Make(2, 0, 0))
-    vertexPositions.append(SCNVector3Make(1, 4, 0))
-    
-    vertexPositions.append(SCNVector3Make(4, 0, 0))
-    vertexPositions.append(SCNVector3Make(6, 0, 0))
-    vertexPositions.append(SCNVector3Make(5, 10, 0))
-    
-    
-    globalColors.append(SCNVector3Make(1, 0, 0))
-    globalColors.append(SCNVector3Make(0, 1, 0))
-    globalColors.append(SCNVector3Make(0, 0, 1))
-    
-    globalColors.append(SCNVector3Make(1, 0, 0))
-    globalColors.append(SCNVector3Make(0, 1, 0))
-    globalColors.append(SCNVector3Make(0, 0, 1))
-    
-    globalElements.append(elementSide)
-    globalElements.append(elementSide2)
-    let vertexSource = SCNGeometrySource(vertices: vertexPositions)
-    
-    let dataColor = NSData(bytes: globalColors,
-                           length: MemoryLayout<SCNVector3>.size * globalColors.count) as Data
-    let colors = SCNGeometrySource(data: dataColor,
-                                   semantic: .color,
-                                   vectorCount: globalColors.count,
-                                   usesFloatComponents: true,
-                                   componentsPerVector: 3,
-                                   bytesPerComponent: MemoryLayout<Float>.size,
-                                   dataOffset: 0,
-                                   dataStride: MemoryLayout<SCNVector3>.stride)
-    
-    
-    let geometry = SCNGeometry(sources: [vertexSource, colors],
-                               elements: globalElements)
-    let modelNode = SCNNode(geometry: geometry)
-    self.scene?.rootNode.addChildNode(modelNode)
-  }
 }
+  
 
 extension SCNGeometry
 {

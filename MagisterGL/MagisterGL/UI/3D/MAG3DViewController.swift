@@ -42,6 +42,8 @@ class MAG3DViewController: UIViewController,
     if self.project != nil
     {
       self.customGeometryView.configure(project: self.project)
+      self.receiversTimeSliceButton.isEnabled = self.customGeometryView.model.isShowReceiversSurface
+      self.chartsTimeSliceButton.isEnabled = self.customGeometryView.model.isShowCharts
     }
   }
     
