@@ -79,6 +79,9 @@
 		84792E6420B47F3C00885EEC /* MAGRecieversFuncGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84792E6320B47F3C00885EEC /* MAGRecieversFuncGenerator.swift */; };
 		84880B6120C05CAD00D70DD2 /* MAGRnData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84880B6020C05CAD00D70DD2 /* MAGRnData.swift */; };
 		84880B6320C0720900D70DD2 /* MAGTimeChartsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84880B6220C0720900D70DD2 /* MAGTimeChartsViewController.swift */; };
+		849DBF2A20D032EC001A5781 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849DBF2920D032EC001A5781 /* SettingsViewController.swift */; };
+		849DBF2D20D04375001A5781 /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849DBF2B20D04375001A5781 /* SettingsTableViewCell.swift */; };
+		849DBF2E20D04375001A5781 /* SettingsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 849DBF2C20D04375001A5781 /* SettingsTableViewCell.xib */; };
 		84DB3F8E20BECE5300209C2A /* edsall04 in Resources */ = {isa = PBXBuildFile; fileRef = 84DB3F8D20BECE5300209C2A /* edsall04 */; };
 		84F6C0FE20BC7E6B00793BEE /* profile.txt in Resources */ = {isa = PBXBuildFile; fileRef = 84F6C0FC20BC7E6A00793BEE /* profile.txt */; };
 		84F6C0FF20BC7E6B00793BEE /* sig3d.txt in Resources */ = {isa = PBXBuildFile; fileRef = 84F6C0FD20BC7E6B00793BEE /* sig3d.txt */; };
@@ -189,6 +192,9 @@
 		84792E6320B47F3C00885EEC /* MAGRecieversFuncGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAGRecieversFuncGenerator.swift; sourceTree = "<group>"; };
 		84880B6020C05CAD00D70DD2 /* MAGRnData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAGRnData.swift; sourceTree = "<group>"; };
 		84880B6220C0720900D70DD2 /* MAGTimeChartsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAGTimeChartsViewController.swift; sourceTree = "<group>"; };
+		849DBF2920D032EC001A5781 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		849DBF2B20D04375001A5781 /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
+		849DBF2C20D04375001A5781 /* SettingsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsTableViewCell.xib; sourceTree = "<group>"; };
 		84DB3F8D20BECE5300209C2A /* edsall04 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = edsall04; sourceTree = "<group>"; };
 		84F6C0FC20BC7E6A00793BEE /* profile.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = profile.txt; sourceTree = "<group>"; };
 		84F6C0FD20BC7E6B00793BEE /* sig3d.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = sig3d.txt; sourceTree = "<group>"; };
@@ -403,6 +409,16 @@
 			path = CoreData;
 			sourceTree = "<group>";
 		};
+		849DBF2820D032C4001A5781 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				849DBF2920D032EC001A5781 /* SettingsViewController.swift */,
+				849DBF2B20D04375001A5781 /* SettingsTableViewCell.swift */,
+				849DBF2C20D04375001A5781 /* SettingsTableViewCell.xib */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
 		9A05AA3B20AC4C1000F44AE5 /* ChooseField */ = {
 			isa = PBXGroup;
 			children = (
@@ -415,6 +431,7 @@
 		9AB601A71F762998004C50AB /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				849DBF2820D032C4001A5781 /* Settings */,
 				9A05AA3B20AC4C1000F44AE5 /* ChooseField */,
 				846C260620A1B7060049A6B6 /* ChooseMaterial */,
 				843D004D209B51F600B824CF /* ChooseSection */,
@@ -673,6 +690,7 @@
 				8476CC4A20BF0E400044135E /* 2.Rn4.4 in Resources */,
 				841C358F20BDBB2D0046E4AC /* edsall05 in Resources */,
 				8476CC2120BF0CAE0044135E /* 2.Rn5.5 in Resources */,
+				849DBF2E20D04375001A5781 /* SettingsTableViewCell.xib in Resources */,
 				8476CC3A20BF0E400044135E /* 1.Rn4.3 in Resources */,
 				8476CC4B20BF0E400044135E /* 2.Rn4.5 in Resources */,
 				84541B0E1FB0AD2300DC6E43 /* xyz2.txt in Resources */,
@@ -780,6 +798,7 @@
 			files = (
 				84743BBE2084F455007049C6 /* MAGProjectsModels.xcdatamodeld in Sources */,
 				843D004F209B521000B824CF /* MAGChooseSectionViewController.swift in Sources */,
+				849DBF2D20D04375001A5781 /* SettingsTableViewCell.swift in Sources */,
 				846C260D20A1BF9C0049A6B6 /* MAGMaterial.swift in Sources */,
 				9AF322EA1F7A7FE4003AE463 /* MAG3DViewController.swift in Sources */,
 				843FFE82208792E700B717D2 /* MAGColorGenerator.swift in Sources */,
@@ -801,6 +820,7 @@
 				9AF5853C2086053000A90D2D /* MAGProjectFileAddTableViewCell.swift in Sources */,
 				840D4EA320B2FC6900E9DF5C /* Color.swift in Sources */,
 				84743BA72084DD3B007049C6 /* MAGLocalFileManager.m in Sources */,
+				849DBF2A20D032EC001A5781 /* SettingsViewController.swift in Sources */,
 				8444971B20A469B300AB8D54 /* MAGBaseProjectsGenerator.swift in Sources */,
 				9AE615701F8A07250067893C /* MAGCustomGeometryModel.swift in Sources */,
 				8432FC3220AC8C7D00930CB9 /* MAGTriangleElement.swift in Sources */,

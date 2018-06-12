@@ -18,11 +18,13 @@ class MAG3DViewController: UIViewController,
                            MAGChooseSectionViewControllerDelegate,
                            MAGChooseMaterialViewControllerDelegate,
                            MAGChooseFieldViewControllerDelegate,
-                           MAGTimeChartsViewControllerDelegate
+                           MAGTimeChartsViewControllerDelegate,
+                           SettingsViewControllerDelegate
 
 {
   
-  
+  @IBOutlet weak var chartsTimeSliceButton: UIBarButtonItem!
+  @IBOutlet weak var receiversTimeSliceButton: UIBarButtonItem!
   @IBOutlet weak var customGeometryView: MAGCustomGeometryView!
   
   var project: MAGProject!
@@ -77,6 +79,14 @@ class MAG3DViewController: UIViewController,
       vc.delegate = self
       vc.showFieldNumber = self.customGeometryView.model.showTimeSliceForCharts
       vc.timeSlices = self.customGeometryView.model.timeSlicesForCharts
+      vc.popoverPresentationController?.delegate = self
+    }
+    else if segue.destination.isKind(of: SettingsViewController.self)
+    {
+      let vc = segue.destination as! SettingsViewController
+      vc.delegate = self
+      vc.isSurfaceEnabled = self.customGeometryView.model.isShowReceiversSurface
+      vc.isChartsEnabled = self.customGeometryView.model.isShowCharts
       vc.popoverPresentationController?.delegate = self
     }
   }
@@ -153,11 +163,24 @@ class MAG3DViewController: UIViewController,
   }
   
   //MARK: MAGTimeChartsViewControllerDelegate
-  func chooseTimeFieldNumber(fieldNumber: Int) {
+  func chooseTimeFieldNumber(fieldNumber: Int)
+  {
     self.customGeometryView.model.showTimeSliceForCharts = fieldNumber
     self.customGeometryView.model.createReceiverSurface()
     self.customGeometryView.setupScene()
   }
+  
+  //MARK: UISettingsViewControllerDelegate
+  func updateSettings(isSurfaceEnabled: Bool,
+                      isChartsEnabled: Bool)
+  {
+    self.customGeometryView.model.isShowReceiversSurface = isSurfaceEnabled
+    self.customGeometryView.model.isShowCharts = isChartsEnabled
+    self.receiversTimeSliceButton.isEnabled = isSurfaceEnabled
+    self.chartsTimeSliceButton.isEnabled = isChartsEnabled
+    self.customGeometryView.setupScene()
+  }
+  
   
   //MARK: UIPopoverPresentationControllerDelegate
   
@@ -171,5 +194,6 @@ class MAG3DViewController: UIViewController,
   {
     return .none
   }
+  
   
 }

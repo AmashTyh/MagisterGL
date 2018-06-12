@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Ksh-TJ-avS">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Ksh-TJ-avS">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -254,6 +254,14 @@
                                             </segue>
                                         </connections>
                                     </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="ot9-TN-Psp"/>
+                                    <barButtonItem title="Settings" id="CvX-mK-zZu">
+                                        <connections>
+                                            <segue destination="SiI-bu-YNQ" kind="popoverPresentation" popoverAnchorBarButtonItem="CvX-mK-zZu" id="UiD-P0-M6g">
+                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                            </segue>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                         </subviews>
@@ -287,12 +295,66 @@
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
+                        <outlet property="chartsTimeSliceButton" destination="5Ln-fE-ARf" id="ksW-J5-Ajf"/>
                         <outlet property="customGeometryView" destination="Lyg-Da-mv5" id="dZ7-sS-rwd"/>
+                        <outlet property="receiversTimeSliceButton" destination="pt8-xa-xQj" id="ucE-Gw-tCX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lgB-Av-xWo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2711.1999999999998" y="1491.9040479760122"/>
+        </scene>
+        <!--Settings View Controller-->
+        <scene sceneID="2kB-Zs-dMO">
+            <objects>
+                <viewController id="SiI-bu-YNQ" customClass="SettingsViewController" customModule="MagisterGL" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Er0-uK-CiV"/>
+                        <viewControllerLayoutGuide type="bottom" id="gC4-sw-xOp"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="5MK-lr-BQW">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="xdg-OB-o6c">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="SiI-bu-YNQ" id="8iY-57-MD6"/>
+                                    <outlet property="delegate" destination="SiI-bu-YNQ" id="UCt-Kd-WTa"/>
+                                </connections>
+                            </tableView>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tdW-5b-3dQ">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <items>
+                                    <navigationItem title="Settings" id="MsB-TS-bGe">
+                                        <barButtonItem key="rightBarButtonItem" title="Save" id="KLK-oN-o2Z">
+                                            <connections>
+                                                <action selector="saveTouch:" destination="SiI-bu-YNQ" id="CHX-gS-k4e"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="tdW-5b-3dQ" firstAttribute="leading" secondItem="5MK-lr-BQW" secondAttribute="leading" id="3QB-lJ-F3z"/>
+                            <constraint firstItem="xdg-OB-o6c" firstAttribute="leading" secondItem="5MK-lr-BQW" secondAttribute="leading" id="Rfx-Qd-LJw"/>
+                            <constraint firstAttribute="trailing" secondItem="tdW-5b-3dQ" secondAttribute="trailing" id="UwT-cZ-HrH"/>
+                            <constraint firstItem="tdW-5b-3dQ" firstAttribute="top" secondItem="Er0-uK-CiV" secondAttribute="bottom" id="d6L-sl-aia"/>
+                            <constraint firstAttribute="trailing" secondItem="xdg-OB-o6c" secondAttribute="trailing" id="iDa-yT-G5g"/>
+                            <constraint firstItem="gC4-sw-xOp" firstAttribute="top" secondItem="xdg-OB-o6c" secondAttribute="bottom" id="jiQ-5U-99c"/>
+                            <constraint firstItem="xdg-OB-o6c" firstAttribute="top" secondItem="tdW-5b-3dQ" secondAttribute="bottom" id="kmk-Og-zt8"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="xdg-OB-o6c" id="oVL-fk-PDC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Mhj-8i-AyQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1884" y="1485.6071964017992"/>
         </scene>
         <!--Time Charts View Controller-->
         <scene sceneID="irz-N8-juF">

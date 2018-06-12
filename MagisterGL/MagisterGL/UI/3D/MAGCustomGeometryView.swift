@@ -78,10 +78,16 @@ class MAGCustomGeometryView: SCNView
     
     self.scene = scene
     
-    drawReceivers()
     drawModel()
-    drawReceiversSurface()
-    drawReceiversCharts()
+    
+    if (self.model.isShowReceiversSurface) {
+      drawReceivers()
+      drawReceiversSurface()
+      
+    }
+    if (self.model.isShowCharts) {
+      drawReceiversCharts()
+    }
     drawAsix()
   }
   

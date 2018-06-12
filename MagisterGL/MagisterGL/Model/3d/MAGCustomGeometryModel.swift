@@ -15,6 +15,9 @@ class MAGCustomGeometryModel: NSObject
 {
   let fileManager: MAGFileManager = MAGFileManager()
   
+  var isShowCharts = true
+  var isShowReceiversSurface = true
+  
   var isShowMaterials = true
   var showFieldNumber = -1
   var showTimeSlicesNumber = 0
