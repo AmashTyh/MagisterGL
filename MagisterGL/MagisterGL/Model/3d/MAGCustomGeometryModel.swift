@@ -100,8 +100,8 @@ class MAGCustomGeometryModel: NSObject
         return first[1] < second[1]
         }![1]
       let colorGenerator = MAGColorGenerator()
-      colorGenerator.generateColor(minValue: min,
-                                   maxValue: max)
+      colorGenerator.generateColorForMaterials(minValue: min,
+                                               maxValue: max)
       self.colorGenerator = colorGenerator
       for i in 0..<sig3dArray.count
       {
@@ -168,8 +168,8 @@ class MAGCustomGeometryModel: NSObject
     let maxValue = uValueArray.max { (first, second) -> Bool in
       return first < second
       }!
-    colorGenerator.generateColor(minValue: Double(minValue),
-                                 maxValue: Double(maxValue))
+    colorGenerator.generateColorForSurface(minValue: Double(minValue),
+                                           maxValue: Double(maxValue))
 
     var receivers: [[SCNVector3]] = []
     var lineArray: [SCNVector3] = []
@@ -348,8 +348,8 @@ class MAGCustomGeometryModel: NSObject
         return first < second
         }!
       let colorGenerator = MAGColorGenerator()
-      colorGenerator.generateColor(minValue: min,
-                                   maxValue: max)
+      colorGenerator.generateColorForMaterials(minValue: min,
+                                               maxValue: max)
       self.colorGenerator = colorGenerator
     }
 
