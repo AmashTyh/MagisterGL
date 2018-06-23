@@ -45,7 +45,7 @@ class MAGCustomGeometryView: SCNView
   {
     self.scene?.rootNode.cleanup()
     // Configure the Scene View
-    self.backgroundColor = .lightGray
+    self.backgroundColor = .darkGray
     
     // Create the scene
     let scene = SCNScene()
@@ -69,7 +69,7 @@ class MAGCustomGeometryView: SCNView
     let ambientLightNode = SCNNode()
     ambientLightNode.light = SCNLight()
     ambientLightNode.light?.type = .ambient
-    //ambientLightNode.light?.color = UIColor.white
+    ambientLightNode.light?.color = UIColor.white
     scene.rootNode.addChildNode(ambientLightNode)
     
     scene.rootNode.pivot = SCNMatrix4MakeTranslation(self.model.centerPoint.x * self.model.scaleValue,

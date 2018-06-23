@@ -32,7 +32,7 @@ class MAGColorGenerator: NSObject
     
     color = Color()
     color.red = 255
-    color.green = 255
+    color.green = 140
     color.blue = 0
     baseColors.append(color)
     
