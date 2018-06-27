@@ -1,11 +1,3 @@
-//
-//  MAGRecieversFuncGenerator.swift
-//  MagisterGL
-//
-//  Created by Admin on 22.05.2018.
-//  Copyright © 2018 Хохлова Татьяна. All rights reserved.
-//
-
 import UIKit
 
 class MAGRecieversFuncGenerator: NSObject
@@ -16,6 +8,4 @@ class MAGRecieversFuncGenerator: NSObject
   {
     return x + y
   }
-  
-  // написать функцию для чтения значений из файла
 }

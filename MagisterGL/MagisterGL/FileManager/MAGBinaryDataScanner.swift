@@ -1,11 +1,3 @@
-//
-//  MAGBinaryDataScanner.swift
-//  MagisterGL
-//
-//  Created by Хохлова Татьяна on 14.10.17.
-//  Copyright © 2017 Хохлова Татьяна. All rights reserved.
-//
-
 import UIKit
 
 protocol MAGBinaryReadable

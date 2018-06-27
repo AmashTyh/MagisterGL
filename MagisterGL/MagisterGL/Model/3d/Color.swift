@@ -1,11 +1,3 @@
-//
-//  Color.swift
-//  MagisterGL
-//
-//  Created by Хохлова Татьяна on 12.06.17.
-//  Copyright © 2017 Хохлова Татьяна. All rights reserved.
-//
-
 import UIKit
 import SceneKit
 

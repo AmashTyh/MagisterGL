@@ -1,12 +1,3 @@
-//
-//  MAGSide.swift
-//  MagisterGL
-//
-//  Created by Хохлова Татьяна on 05.03.18.
-//  Copyright © 2018 Хохлова Татьяна. All rights reserved.
-//
-
-
 import Foundation
 import SceneKit
 

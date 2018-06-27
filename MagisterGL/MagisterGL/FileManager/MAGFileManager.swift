@@ -1,12 +1,3 @@
-//
-//  MAGFileManager.swift
-//  MagisterGL
-//
-//  Created by Хохлова Татьяна on 08.10.17.
-//  Copyright © 2017 Хохлова Татьяна. All rights reserved.
-//
-
-
 import UIKit
 import SceneKit
 

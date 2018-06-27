@@ -1,12 +1,3 @@
-//
-//  MAGChooseFieldViewController.swift
-//  MagisterGL
-//
-//  Created by Хохлова Татьяна on 16.05.2018.
-//  Copyright © 2018 Хохлова Татьяна. All rights reserved.
-//
-
-
 import UIKit
 
 protocol MAGChooseFieldViewControllerDelegate: class
